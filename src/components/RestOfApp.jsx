@@ -8,6 +8,8 @@ import Navbar from "./Navbar";
 import Network from "../pages/Network";
 import Videos from "../pages/Videos";
 import Settings from "../pages/Settings";
+import Logout from "../pages/Logout";
+import NotFound from "../pages/NotFound";
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -22,7 +24,10 @@ export const RestOfApp = () => {
           <Route path="network" element={<Network />} />
           <Route path="videos" element={<Videos />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import "./Navbar.css";
+// import "./Navbar.css";
 import { Outlet } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import ALN_LOGO_3_47 from "../assets/ALN_LOGO-3-47.png";
 import AvatarTemp from "../assets/avatar-temp.png";
 
 const navigation = [
-  { name: "Profile", href: "/home/profile", current: true },
-  { name: "My Network", href: "/home/network", current: false },
-  { name: "My Videos", href: "/home/videos", current: false },
+  { name: "Home", href: "/home" },
+  { name: "My Network", href: "/home/network" },
+  { name: "My Videos", href: "/home/videos" },
 ];
 
 function classNames(...classes: string[]) {
@@ -38,30 +38,32 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
-                    <img
-                      className="block h-8 w-auto lg:hidden"
-                      src={ALN_LOGO_3_47}
-                      alt="African Network Live"
-                    />
-                    <img
-                      className="hidden h-8 w-auto lg:block"
-                      src={ALN_LOGO_3_47}
-                      alt="African Network Live"
-                    />
+                    <Link to="/home">
+                      <img
+                        className="block h-8 w-auto lg:hidden"
+                        src={ALN_LOGO_3_47}
+                        alt="African Network Live"
+                      />
+                      <img
+                        className="hidden h-8 w-auto lg:block"
+                        src={ALN_LOGO_3_47}
+                        alt="African Network Live"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <NavLink
+                          end
                           key={item.name}
                           to={item.href}
-                          className={classNames(
-                            item.current
+                          className={({ isActive }) =>
+                            " px-3 py-2 rounded-md text-sm font-medium " +
+                            (isActive
                               ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                          }
                         >
                           {item.name}
                         </NavLink>
@@ -115,20 +117,21 @@ export default function Navbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <NavLink
+                              end
                               to="/home/settings"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Settings!!
+                              Settings
                             </NavLink>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                              to="/logout"
+                              to="/home/logout"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
@@ -145,21 +148,20 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden">
+            <Disclosure.Panel className="sm:hidden ">
               <div className="space-y-1 px-2 pt-2 pb-3">
                 {navigation.map((item) => (
-                  <NavLink to={item.href} key={item.name}>
-                    <Disclosure.Button
-                      className={classNames(
-                        item.current
-                          ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "block px-3 py-2 rounded-md text-base font-medium"
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
+                  <NavLink
+                    to={item.href}
+                    key={item.name}
+                    className={({ isActive }) =>
+                      " block px-3 py-2 rounded-md text-base font-medium" +
+                      (isActive
+                        ? " bg-gray-900 text-white "
+                        : " text-gray-300 hover:bg-gray-700 hover:text-white ")
+                    }
+                  >
+                    {item.name}
                   </NavLink>
                 ))}
               </div>
