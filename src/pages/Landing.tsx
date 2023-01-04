@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import ALN_LOGO_3_43 from "../assets/ALN_LOGO-3-43.png";
+import HeroSection from "../components/HeroSection";
+import InterObserver from "../components/InterObserver";
+import LandingFooter from "../components/LandingFooter";
 
 function Landing() {
   const [count, setCount] = useState(0);
   return (
-    <>
-      <h1>Landing</h1>
-      <img src={ALN_LOGO_3_43} />
-      <Link to="/home">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-          Get Started
-        </button>
-      </Link>
-    </>
+    <div className="bg-gray-800 h-full">
+      <HeroSection />
+      <InterObserver
+        image="https://picsum.photos/400/400"
+        heading="Learn More About Africa"
+        message="Great Testing"
+        imagePosition="left"
+      />
+      <InterObserver
+        image="https://picsum.photos/seed/11/400/400"
+        heading="See your content on"
+        message="Here are the supported devices"
+        imagePosition="right"
+      />
+      <LandingFooter />
+    </div>
   );
 }
 
