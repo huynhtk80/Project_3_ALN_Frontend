@@ -6,11 +6,13 @@ import { Outlet } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import ALN_LOGO_3_47 from "../assets/ALN_LOGO-3-47.png";
 import AvatarTemp from "../assets/avatar-temp.png";
+import { LoginForm } from './LoginForm';
 
 const navigation = [
   { name: "Home", href: "/home" },
   { name: "My Network", href: "/home/network" },
   { name: "My Videos", href: "/home/videos" },
+  { name: "Login", href: "/home/LoginForm"},
 ];
 
 function classNames(...classes: string[]) {

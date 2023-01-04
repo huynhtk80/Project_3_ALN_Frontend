@@ -21,6 +21,7 @@ export const LoginForm = () => {
           <br />
           <input
             className='border border-black rounded m-1 p-1'
+            type='password'
             name='password'
             value={password}
             onChange={(e) => setpassword(e.target.value)}
