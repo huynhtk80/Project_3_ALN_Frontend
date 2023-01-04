@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./InterObserver.css";
+import React, { useEffect, useRef, useState } from 'react';
+import './InterObserver.css';
 
 const useElementOnScreen = (
   options: any
@@ -15,14 +15,14 @@ const useElementOnScreen = (
       // entry.target.classList.remove("appear");
       return;
     } else {
-      entry.target.classList.add("appear");
+      entry.target.classList.add('appear');
     }
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(callbackFunction, options);
     if (containerRef.current) observer.observe(containerRef.current);
-    console.log("cont ref", containerRef);
+    console.log('cont ref', containerRef);
     return () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
@@ -33,43 +33,50 @@ const useElementOnScreen = (
 
 interface AppProps {
   image: string;
+  sectionId: string;
   heading: string;
   message: string;
-  imagePosition: "left" | "right";
+  imagePosition: 'left' | 'right';
 }
 
-function InterObserver({ image, heading, message, imagePosition }: AppProps) {
+function InterObserver({
+  image,
+  sectionId,
+  heading,
+  message,
+  imagePosition,
+}: AppProps) {
   const [containerRef, isVisible] = useElementOnScreen({
     root: null,
-    rootMargin: "0px 0px -100px 0px",
+    rootMargin: '0px 0px -100px 0px',
     threshold: 0.5,
   });
 
   const [containerRef2, isVisible2] = useElementOnScreen({
     root: null,
-    rootMargin: "0px 0px -100px 0px",
+    rootMargin: '0px 0px -100px 0px',
     threshold: 0.5,
   });
 
-  if (imagePosition === "right")
+  if (imagePosition === 'right')
     return (
-      <section className="h-fit my-6">
+      <section id={sectionId} className='h-fit my-10 sm:my-60'>
         {/* <div className="isVisible mx-auto bg-gray-600">
           {isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}
         </div> */}
-        <div className="flex flex-col  justify-center  gap-10 sm:flex-row place-content-center">
+        <div className='flex flex-col  justify-center  gap-10 sm:flex-row place-content-center'>
           <div
-            className="flex flex-col justify-center fade-in-l mx-auto sm:mx-1 prose prose-invert text-center"
+            className='flex flex-col justify-center fade-in-l mx-auto basis-3/5 sm:mx-1 prose prose-invert text-center'
             ref={containerRef2}
           >
-            <h2 className="">{heading}</h2>
+            <h2 className=''>{heading}</h2>
             <p>{message}</p>
           </div>
           <div
-            className="flex flex-col justify-center fade-in-r  bg-slate-100 mx-auto sm:mx-1"
+            className='flex flex-col justify-center fade-in-r mx-auto max-w-max basis-2/5 sm:mx-1'
             ref={containerRef}
           >
-            <img className="" src={image} alt="moe" />
+            <img className='min-w-0' src={image} alt='moe' />
           </div>
         </div>
         {/* <div className="isVisible mx-auto bg-gray-600">
@@ -80,16 +87,19 @@ function InterObserver({ image, heading, message, imagePosition }: AppProps) {
     );
   return (
     <>
-      <section className="h-fit my-6">
+      <section id={sectionId} className='h-fit my-10 sm:my-60'>
         {/* <div className="isVisible mx-auto bg-gray-600">
           {isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}
         </div> */}
-        <div className="flex flex-col justify-center gap-10 sm:flex-row ">
-          <div className="fade-in-l mx-auto sm:mx-1" ref={containerRef}>
-            <img className="sm:object-center" src={image} alt="moe" />
+        <div className='flex flex-col justify-center gap-10 sm:flex-row '>
+          <div
+            className='fade-in-l mx-auto sm:mx-1 max-w-max basis-2/5'
+            ref={containerRef}
+          >
+            <img className='sm:object-center' src={image} alt='moe' />
           </div>
           <div
-            className="flex flex-col justify-center fade-in-r prose prose-invert mx-auto sm:mx-1 order-first sm:order-last text-center"
+            className='flex flex-col justify-center fade-in-r prose prose-invert basis-3/5 mx-auto sm:mx-1 order-first sm:order-last text-center'
             ref={containerRef2}
           >
             <h2>{heading}</h2>
