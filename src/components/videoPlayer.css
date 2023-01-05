@@ -1,4 +1,5 @@
-.VideoPlayer {
+.videoPlayer {
   display: flex;
   justify-content: center;
+  box-shadow: darkgrey 0px 0px 10px;
 }

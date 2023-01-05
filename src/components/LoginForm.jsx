@@ -9,42 +9,6 @@ export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   return (
-    // <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-    //   {!user ? (
-    //     <>
-    //       <input
-    //         className='border border-black rounded m-1 p-1'
-    //         name='email'
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         placeholder='email@example.com'
-    //       />
-    //       <br />
-    //       <input
-    //         className='border border-black rounded m-1 p-1'
-    //         type='password'
-    //         name='password'
-    //         value={password}
-    //         onChange={(e) => setpassword(e.target.value)}
-    //         placeholder='**********'
-    //       />
-    //       <br />
-    //       <button
-    //         className='bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 px-4 rounded'
-    //         onClick={() => loginFn(email, password)}
-    //       >
-    //         LOGIN
-    //       </button>
-    //     </>
-    //   ) : (
-    //     <button
-    //       className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-    //       onClick={() => logoutFn()}
-    //     >
-    //       LOG OUT
-    //     </button>
-    //   )}
-    // </div>
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8 shadow-xl p-6 bg-slate-100'>
