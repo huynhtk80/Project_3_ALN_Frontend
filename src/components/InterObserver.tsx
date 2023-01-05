@@ -58,6 +58,8 @@ function InterObserver({
     threshold: 0.5,
   });
 
+  const scrollRef = useRef(null);
+
   if (imagePosition === 'right')
     return (
       <section id={sectionId} className='h-fit my-10 sm:my-60'>
@@ -66,7 +68,7 @@ function InterObserver({
         </div> */}
         <div className='flex flex-col  justify-center  gap-10 sm:flex-row place-content-center'>
           <div
-            className='flex flex-col justify-center fade-in-l mx-auto basis-3/5 sm:mx-1 prose prose-invert text-center'
+            className='flex flex-col justify-center fade-in-l mx-auto basis-3/5 sm:mx-1 prose dark:prose-invert text-center'
             ref={containerRef2}
           >
             <h2 className=''>{heading}</h2>
@@ -99,7 +101,7 @@ function InterObserver({
             <img className='sm:object-center' src={image} alt='moe' />
           </div>
           <div
-            className='flex flex-col justify-center fade-in-r prose prose-invert basis-3/5 mx-auto sm:mx-1 order-first sm:order-last text-center'
+            className='flex flex-col justify-center fade-in-r prose dark:prose-invert basis-3/5 mx-auto sm:mx-1 order-first sm:order-last text-center'
             ref={containerRef2}
           >
             <h2>{heading}</h2>
