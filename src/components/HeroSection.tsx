@@ -7,10 +7,10 @@ function HeroSection() {
   return (
     <section className='mb-20'>
       <div
-        className='relative overflow-hidden bg-no-repeat bg-cover'
+        className='relative overflow-hidden bg-no-repeat bg-cover bg-center'
         style={{
           backgroundPosition: '50%',
-          background: `linear-gradient(74deg, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.50) 70%, rgba(0,0,0,0.25) 100%), url('${HeroImage}')`,
+          background: `linear-gradient(74deg, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.50) 70%, rgba(0,0,0,0.25) 100%), url(${HeroImage})`,
           height: '500px',
         }}
       >
