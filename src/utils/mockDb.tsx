@@ -1,5 +1,6 @@
 export const videoArray = [
   {
+    id: "1",
     title: "Jamaican 60th Celebration",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -8,6 +9,7 @@ export const videoArray = [
     categories: "Documentary",
   },
   {
+    id: "2",
     title: "Cleaning for Hope",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -16,6 +18,7 @@ export const videoArray = [
     categories: "Documentary",
   },
   {
+    id: "3",
     title: "Nu G Ep4 - Candice",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -24,6 +27,7 @@ export const videoArray = [
     categories: "Documentary",
   },
   {
+    id: "4",
     title: "JPEC Documentary University of Iowa",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",

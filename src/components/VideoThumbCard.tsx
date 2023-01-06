@@ -1,34 +1,26 @@
 import React from "react";
 import imgPlaceHolder from "../assets/card-top-temp.jpg";
+import VideoPlayer from "./videoPlayer";
 
-function VideoThumbCard() {
+interface AppProps {
+  url: string
+  title: string
+  description: string
+}
+
+function VideoThumbCard({url, title, description}: AppProps) {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg">
-      <img
-        className="w-full"
-        src={imgPlaceHolder}
-        alt="Sunset in the mountains"
+    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <VideoPlayer
+              height="215px" url={url}
+      
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-          quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-          nihil.
+        <div className="font-bold text-xl mb-2">{title}</div>
+        <p className="text-gray-700 text-base">{description}
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #photography
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #travel
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #winter
-        </span>
-      </div>
-    </div>
+         </div>
   );
 }
 

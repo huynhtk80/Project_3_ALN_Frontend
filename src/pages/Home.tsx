@@ -27,6 +27,12 @@ function Home() {
           <div>
             <VideoPlayer url="https://www.youtube.com/watch?v=WQQKkjmc8wo" />
           </div>
+          
+          <video controls width="250">
+
+    <source src="https://www.youtube.com/watch?v=vbmfVubluMc"
+            />
+</video>
         </div>
       </div>
     </>
