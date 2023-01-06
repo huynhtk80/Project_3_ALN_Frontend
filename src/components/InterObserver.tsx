@@ -58,8 +58,6 @@ function InterObserver({
     threshold: 0.5,
   });
 
-  const scrollRef = useRef(null);
-
   if (imagePosition === 'right')
     return (
       <section id={sectionId} className='h-fit my-10 sm:my-60'>
