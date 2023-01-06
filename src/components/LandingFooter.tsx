@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 
 function LandingFooter() {
@@ -17,14 +18,19 @@ function LandingFooter() {
             </h2>
             <ul className='text-gray-600 dark:text-gray-400'>
               <li className='mb-4'>
-                <a href='https://flowbite.com/' className='hover:underline'>
-                  Flowbite
-                </a>
+                <Link to='aboutus/' className='hover:underline'>
+                  About us
+                </Link>
               </li>
               <li>
-                <a href='https://tailwindcss.com/' className='hover:underline'>
-                  Tailwind CSS
-                </a>
+                <Link to='contactus/' className='hover:underline'>
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link to='careers/' className='hover:underline'>
+                  Careers
+                </Link>
               </li>
             </ul>
           </div>
@@ -54,7 +60,7 @@ function LandingFooter() {
         </span>
         <div className='flex mt-4 space-x-6 sm:justify-center sm:mt-0'>
           <a
-            href='#'
+            href='https://www.facebook.com/africalivenetwork'
             className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
           >
             <svg
