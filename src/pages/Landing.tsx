@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
-import HeroSection from '../components/HeroSection';
-import InterObserver from '../components/InterObserver';
-import LandingFooter from '../components/LandingFooter';
+import ALN_LOGO_3_43 from "../assets/ALN_LOGO-3-43.png";
+import HeroSection from "../components/HeroSection";
+import InterObserver from "../components/InterObserver";
+import LandingFooter from "../components/LandingFooter";
 
 function Landing() {
   const [count, setCount] = useState(0);
@@ -19,23 +19,30 @@ function Landing() {
 
   const message2 = ` Watch your favorite shows and movies on African Network Live. Stream live TV, movies and more from your favorite networks and premiums channels. It’s all on African Network Live.`;
   return (
-    <div className='bg-gray-800 h-full'>
+    <div className="bg-white dark:bg-gray-800">
       <HeroSection />
-      <hr id='LearnMore' className='w-4/5 mx-auto'></hr>
+      <hr
+        id="LearnMore"
+        className="w-4/5 h-0.5 border-0 rounded mx-auto bg-slate-500"
+      ></hr>
+
       <InterObserver
-        image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/film2.jpg'
-        sectionId='Learn'
-        heading='Who we are'
+        image="https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/film2.jpg"
+        sectionId="Learn"
+        heading="Who we are"
         message={message}
-        imagePosition='left'
+        imagePosition="left"
       />
-      <hr className='w-4/5 mx-auto'></hr>
+      <hr
+        id="LearnMore"
+        className="w-4/5 h-0.5 border-0 rounded mx-auto bg-slate-500"
+      ></hr>
       <InterObserver
-        image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/proj2.jpg'
-        sectionId='See Content'
-        heading='See your content on'
+        image="https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/proj2.jpg"
+        sectionId="See Content"
+        heading="See your content on"
         message={message2}
-        imagePosition='right'
+        imagePosition="right"
       />
       <LandingFooter />
     </div>
