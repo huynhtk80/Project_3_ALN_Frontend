@@ -14,6 +14,7 @@ const navigation = [
   { name: 'My Network', href: '/home/network' },
   { name: 'My Videos', href: '/home/videos' },
   { name: 'Login', href: '/home/LoginForm' },
+  { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
 
 function classNames(...classes: string[]) {
