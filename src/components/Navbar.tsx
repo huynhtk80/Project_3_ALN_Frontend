@@ -8,6 +8,7 @@ import ALN_LOGO_3_47 from '../assets/ALN_LOGO-3-47.png';
 import AvatarTemp from '../assets/avatar-temp.png';
 import { LoginForm } from './LoginForm';
 import Switcher from './ThemeSwitcher';
+import LandingFooter from './LandingFooter';
 
 const navigation = [
   { name: 'Home', href: '/home' },
@@ -24,7 +25,7 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
   console.log(navigation);
   return (
-    <>
+    <div className='bg-white dark:bg-gray-800 '>
       <Disclosure as='nav' className='bg-gray-800'>
         {({ open }) => (
           <>
@@ -177,7 +178,10 @@ export default function Navbar() {
           </>
         )}
       </Disclosure>
-      <Outlet />
-    </>
+      <div className='min-h-screen'>
+        <Outlet />
+      </div>
+      <LandingFooter />
+    </div>
   );
 }
