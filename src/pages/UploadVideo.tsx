@@ -139,19 +139,37 @@ function UploadVideo() {
 
   return (
     <>
-      <div>UploadVideo</div>;
-      {user && (
-        <>
-          <p>uid:{user.uid}</p>
-          <p>Email:{user.email}</p>
-        </>
-      )}
-      <input type="file" accept="video/*" onChange={handleChange} />
-      {tempFile && <video id="video" width="500px" controls src={tempFile} />}
+      <div className="text-center text-cyan-900 tracking-wide text-3xl">
+        UploadVideo
+      </div>
+      ;
+      <div className="flex flex-col mx-auto w-4/5 lg:flex-row">
+        <div className="grid flex-grow h-auto card bg-base-300 rounded-box place-items-center">
+          <input
+            type="file"
+            className="file-input file-input-bordered file-input-secondary w-full max-w-xs"
+            accept="video/*"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="divider lg:divider-horizontal"></div>
+        <div className="grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center">
+          {tempFile && (
+            <video id="video" width="500px" controls src={tempFile} />
+          )}
+          {videoFile && (
+            <button className="btn btn-primary" onClick={onClickHandle}>
+              {" "}
+              Generate ThumbNail
+            </button>
+          )}
+        </div>
+      </div>
       {console.log(tempFile)}
-      <div id="canvasloc"></div>
-      {videoFile && <button onClick={onClickHandle}> Canvas</button>}
-      {thumbFile && <p>{thumbFile.name}</p>}
+      <div className="card mx-auto h-100 w-content my-8 p-2 bg-base-300 rounded-box place-items-center">
+        <div id="canvasloc"></div>
+        {thumbFile && <p>{thumbFile.name}</p>}
+      </div>
     </>
   );
 }
