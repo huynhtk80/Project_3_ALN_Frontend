@@ -6,33 +6,11 @@ function Home() {
     <>
       <div className="bg-white dark:bg-gray-800 ">
         <h1 className="text-center text-cyan-900 tracking-wide text-3xl">
-          Africa Live Network Videos
+        Home Page -Africa Live Network Under Construction - Beta Testing Site
         </h1>
         <div className="grid grid-cols-2 grid-rows-3 gap-10 p-5 justify-items-center">
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=vbmfVubluMc" />
-          </div>
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=34-5ZRq3W_M" />
-          </div>
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=p00MGPjp1Ow" />
-          </div>
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=g6JGg16O-ig" />
-          </div>
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=3h0cw6EOnFw" />
-          </div>
-          <div>
-            <VideoPlayer url="https://www.youtube.com/watch?v=WQQKkjmc8wo" />
-          </div>
           
-          <video controls width="250">
-
-    <source src="https://www.youtube.com/watch?v=vbmfVubluMc"
-            />
-</video>
+          Content Coming Soon
         </div>
       </div>
     </>
