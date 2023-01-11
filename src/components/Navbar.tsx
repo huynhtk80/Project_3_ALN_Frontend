@@ -61,7 +61,7 @@ export default function Navbar() {
                       {navigation.map((item) => (
                         <NavLink
                           end
-                          key={item.name}
+                          index={item.name}
                           to={item.href}
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
@@ -162,7 +162,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <NavLink
                     to={item.href}
-                    key={item.name}
+                    index={item.name}
                     className={({ isActive }) =>
                       ' block px-3 py-2 rounded-md text-base font-medium' +
                       (isActive

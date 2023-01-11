@@ -8,14 +8,14 @@ function Videos() {
   
   return (
     <div>
-      <h1>My Videos</h1>
+      <h1>Africa Live Network Under Construction - Beta Testing Site </h1>
       <div className="flex flex-row flex-wrap justify-evenly" >
 
-      {videoArray.map((vid, key)=>{
+      {videoArray.map((vid, index)=>{
         console.log(vid)
-        console.log(key)
+        console.log(index)
         return(
-        <VideoThumbCard url={vid.url} description={vid.description} title={vid.title} key={key} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
+        <VideoThumbCard url={vid.url} description={vid.description} title={vid.title} index={index} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
       )}
       )}
       
