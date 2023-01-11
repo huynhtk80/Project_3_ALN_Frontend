@@ -8,7 +8,7 @@ function Videos() {
   
   return (
     <div>
-      <h1>Africa Live Network Under Construction - Beta Testing Site </h1>
+      <h1>Africa Live Network - Under Construction - Beta Testing Site </h1>
       <div className="flex flex-row flex-wrap justify-evenly" >
 
       {videoArray.map((vid, index)=>{

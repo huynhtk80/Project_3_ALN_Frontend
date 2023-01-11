@@ -8,6 +8,7 @@ function LandingFooter() {
       <div className='md:flex md:justify-between'>
         <div className='mb-6 md:mb-0'>
           <a href='https://flowbite.com/' className='flex items-center'>
+            //TODO:ALN Logo Link leads to Flowbite.com, not Home page, or any of our site pages. Need to update to ALN page.
             <img src={ALN_LOGO_3_43} className='h-8 mr-3' alt='FlowBite Logo' />
           </a>
         </div>
