@@ -22,7 +22,7 @@ export const videoArray = [
     title: "Nu G Ep4 - Candice",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "https://www.youtube.com/watch?v=34-5ZRq3W_M",
+    url: "https://www.youtube.com/watch?v=p00MGPjp1Ow",
     thumbnailUrl: "https://picsum.photos/500/300",
     categories: "Documentary",
   },
