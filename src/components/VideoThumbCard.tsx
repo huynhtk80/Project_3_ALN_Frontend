@@ -17,8 +17,8 @@ function VideoThumbCard({url, title, description, index: index, activeIndex, set
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <div className= "flex justify-center">
-      <ReactPlayer
-              id={index} height="215px" url={url} playing={activeIndex === index  ? true : false} onPlay={()=>{setActiveIndex(index)}}
+      <ReactPlayer 
+              controls id={index} height="215px" url={url} playing={activeIndex === index  ? true : false} onPlay={()=>{setActiveIndex(index)}}
       /></div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
