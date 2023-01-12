@@ -37,7 +37,6 @@ function UploadVideo() {
     try {
       let collectionRef = collection(db, 'videos2');
       await addDoc(collectionRef, videoDoc);
-      console.log('uploaded', JSON.stringify(videoDoc));
     } catch (ex) {
       console.log('FIRESTORE ADD FAILURE!', ex.message);
     }
@@ -47,22 +46,16 @@ function UploadVideo() {
     let file = e.target.files[0];
     var reader = new FileReader();
     setVideoFile(file);
-    console.log(file);
     var url = URL.createObjectURL(file);
-    console.log(url);
     setTempFile(url);
   };
 
   const onClickHandle = () => {
-    console.log('hello canvas');
     const canvas = document.createElement('canvas');
     canvas.width = 640;
     canvas.height = 360;
     const context = canvas.getContext('2d');
     const vid = document.querySelector('video');
-    console.log('vid width', vid?.videoWidth);
-    console.log('vid height', vid?.videoHeight);
-    console.log('vid height', vid?.currentSrc);
 
     const video_width = vid?.videoWidth;
     const video_height = vid?.videoHeight;
@@ -108,9 +101,7 @@ function UploadVideo() {
     const thumbnail = canvas.toBlob((blob) => {
       if (!blob) return;
       const newImg = document.createElement('img');
-      console.log(blob);
       const url = URL.createObjectURL(blob);
-      console.log('image', url);
       // newImg.onload = () => {
       //   // no longer need to read the blob so it's revoked
       //   URL.revokeObjectURL(url);
@@ -126,9 +117,7 @@ function UploadVideo() {
       const file = new File([blob], `${thumbName}_thumbnail.png`, {
         type: 'image/png',
       });
-      console.log('the file', file);
       setThumbFile(file);
-      console.log('thumbFile', thumbFile);
     });
 
     const currentDiv = document.getElementById('canvasloc');
@@ -143,9 +132,7 @@ function UploadVideo() {
     }
 
     const tempUrl = await uploadFile(store, videoFile, 'video', setProgress);
-    console.log('before', downloadURL);
     setDownloadURL(tempUrl);
-    console.log('after', downloadURL);
 
     await addMovie({
       userId: user.uid,

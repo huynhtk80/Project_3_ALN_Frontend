@@ -23,7 +23,6 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
-  console.log(navigation);
   return (
     <div className='bg-white dark:bg-gray-800 '>
       <Disclosure as='nav' className='bg-gray-800'>

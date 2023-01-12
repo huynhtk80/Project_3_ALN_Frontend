@@ -12,7 +12,6 @@ export const uploadFile = async (
   return new Promise((resolve, reject) => {
     const docId = uuidv4();
     const FileRef = ref(store, `${location}/${docId}`);
-    console.log(`VideoRef is `, FileRef);
     const uploadTask = uploadBytesResumable(FileRef, file);
     uploadTask.on(
       'state_changed',
