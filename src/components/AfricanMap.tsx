@@ -13,8 +13,8 @@ function App() {
         country.style.fill = "#2FAA9F";
       });
       const countrySelected = document.getElementById(cName);
-      countrySelected.style.fill = "black";
-      const countryData = africanCountries[cName.toUpperCase()];
+      countrySelected.style.fill = black;
+      const countryData = AfricanCountryList[cName.toUpperCase()];
       setCountryName(countryData["Country Name"]);
     }
   };
@@ -681,7 +681,7 @@ function App() {
         <div className="footer">
           <p>
             Note: this map is a bit outdated (see Sudan) - the test map is up to
-            date and includes island nations (for example, Cabo Verde,
+            date and includes island nations (for example, Cape Verde,
             Mauritius, etc.)
           </p>
         </div>
