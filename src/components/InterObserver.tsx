@@ -10,7 +10,7 @@ const useElementOnScreen = (
   const callbackFunction = (entries: any) => {
     const [entry] = entries;
     setIsVisible(entry.isIntersecting);
-    console.log(entry);
+
     if (!entry.isIntersecting) {
       // entry.target.classList.remove("appear");
       return;
@@ -22,7 +22,7 @@ const useElementOnScreen = (
   useEffect(() => {
     const observer = new IntersectionObserver(callbackFunction, options);
     if (containerRef.current) observer.observe(containerRef.current);
-    console.log('cont ref', containerRef);
+
     return () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
