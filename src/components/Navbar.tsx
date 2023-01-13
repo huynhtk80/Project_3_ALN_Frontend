@@ -8,12 +8,14 @@ import ALN_LOGO_3_47 from '../assets/ALN_LOGO-3-47.png';
 import AvatarTemp from '../assets/avatar-temp.png';
 import { LoginForm } from './LoginForm';
 import Switcher from './ThemeSwitcher';
+import LandingFooter from './LandingFooter';
 
 const navigation = [
   { name: 'Home', href: '/home' },
   { name: 'My Network', href: '/home/network' },
   { name: 'My Videos', href: '/home/videos' },
   { name: 'Login', href: '/home/LoginForm' },
+  { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
 
 function classNames(...classes: string[]) {
@@ -21,9 +23,8 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
-  console.log(navigation);
   return (
-    <>
+    <div className='bg-white dark:bg-gray-800 '>
       <Disclosure as='nav' className='bg-gray-800'>
         {({ open }) => (
           <>
@@ -59,7 +60,7 @@ export default function Navbar() {
                       {navigation.map((item) => (
                         <NavLink
                           end
-                          key={item.name}
+                          index={item.name}
                           to={item.href}
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
@@ -160,7 +161,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <NavLink
                     to={item.href}
-                    key={item.name}
+                    index={item.name}
                     className={({ isActive }) =>
                       ' block px-3 py-2 rounded-md text-base font-medium' +
                       (isActive
@@ -176,7 +177,10 @@ export default function Navbar() {
           </>
         )}
       </Disclosure>
-      <Outlet />
-    </>
+      <div className='min-h-screen'>
+        <Outlet />
+      </div>
+      <LandingFooter />
+    </div>
   );
 }

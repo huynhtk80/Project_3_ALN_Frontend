@@ -3,16 +3,20 @@ import ReactPlayer from 'react-player';
 import React from 'react';
 import { SourceProps } from 'react-player/base';
 
-function VideoPlayer(props: {
-  url: string | string[] | SourceProps[] | MediaStream | undefined;
-}) {
+interface AppProps {
+  url: string
+  height?: string
+}
+
+function VideoPlayer({url, height="360px"}:AppProps) {
   return (
     <>
       <div className='videoPlayer'>
-        <ReactPlayer url={props.url} />
+        <ReactPlayer height={height} controls={true} url={url} />
       </div>
     </>
   );
 }
 
 export default VideoPlayer;
+

@@ -1,0 +1,89 @@
+:root {
+  --background: #ebebeb;
+  --land: #2faa9f;
+}
+#name {
+  position: relative;
+}
+
+.map-container {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-gap: 10px;
+  position: relative;
+  max-width: 70%;
+  margin: auto;
+}
+.circle,
+.land,
+.st0 {
+  fill: var(--land);
+  fill-opacity: 1;
+  stroke: var(--background);
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  stroke-miterlimit: 3.97446823;
+  stroke-dasharray: none;
+}
+.flag {
+  padding-top: 0;
+  font-size: 14vw;
+  line-height: 0.8em;
+}
+#capital,
+#currency,
+#flag,
+.map {
+  display: inline-grid;
+  padding: 10px;
+  margin: 10px;
+  border: solid 2px;
+  animation: fade-in 3.5s forwards;
+}
+#capital > p,
+#currency > p,
+#flag > p,
+.map > p {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#capital > img,
+#capital > p,
+#currency > img,
+#currency > p,
+#flag > img,
+#flag > p,
+.map > img,
+.map > p {
+  animation: fade-in 3s forwards;
+}
+.map {
+  grid-row-start: 1;
+  grid-row-end: 5;
+}
+#flag {
+  grid-row-start: 3;
+  grid-row-end: 5;
+}
+#capital {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 10px;
+}
+#currency {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding: 10px;
+}
+.container span {
+  font-size: 24px;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
