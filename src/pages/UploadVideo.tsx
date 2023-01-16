@@ -8,7 +8,6 @@ import { uploadFileStorage } from '../utils/FireStorageAPI';
 import ListUserMovies from '../components/ListUserMovies';
 import SelectAndUpFile from '../components/SelectAndUpFile';
 import { addMovie } from '../utils/FireStoreAPI';
-import GenerateThumb from '../components/GenerateThumb';
 import UploadedVidDetail from '../components/UploadedVidDetail';
 
 function UploadVideo() {
