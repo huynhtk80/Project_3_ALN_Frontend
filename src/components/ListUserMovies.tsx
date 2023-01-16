@@ -57,10 +57,12 @@ function ListUserMovies() {
 
   return (
     <>
-      <div>ListUserMovies</div>
+      <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
+        ListUserMovies
+      </div>
 
       <div className='overflow-x-auto w-full'>
-        <table className='table table-auto'>
+        <table className='table table-auto mx-auto'>
           <thead>
             <tr>
               <th>
