@@ -42,7 +42,7 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
     return () => {};
   }, []);
 
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     const { name, value } = e.target;
     setVideoDetails({ ...videoDetails, [name]: value });
   };
@@ -67,9 +67,9 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   return (
     <>
       <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
-        <div className='fixed mx-auto w-4/5 max-w-3xl h-5/6 overflow-y-auto'>
+        <div className='fixed mx-auto w-4/5 max-w-4xl h-5/6 overflow-y-auto'>
           {/*content*/}
-          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none '>
+          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-base-100 outline-none focus:outline-none '>
             {/*header*/}
             <div className='flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t'>
               <h3 className='text-2xl font-semibold'>
@@ -85,7 +85,7 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
               </button>
             </div>
             {/*body*/}
-            <div className='relative p-6 flex-auto flex flex-row gap-1 mx-auto'>
+            <div className='relative p-6 flex-auto flex flex-row justify-around gap-3'>
               <div className='form-control w-full max-w-xs'>
                 <label className='label'>
                   <span className='label-text'>Movie Title</span>
@@ -117,28 +117,29 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                   value={videoDetails.collection}
                   onChange={onChange}
                 >
-                  <option disabled selected>
-                    Who shot first?
+                  <option disabled selected value={''}>
+                    Select Category
                   </option>
                   <option>Documentary</option>
                   <option>Film</option>
                   <option>Short Film</option>
                   <option>Series</option>
                 </select>
-              </div>
-              <div className='form-control w-full max-w-xs'>
-                <label className='label'>
-                  <span className='label-text'>Video</span>
-                </label>
-                <video src={videoDetails.url} controls></video>
                 <label className='label'>
                   <span className='label-text'>Thumbnail</span>
                 </label>
-                <img src={videoDetails.thumbnail}></img>
-                <button onClick={onClickThumb} className='btn btn-primary'>
-                  {' '}
-                  Generate Thumb
-                </button>
+                <div className='flex flex-row gap-2'>
+                  <button
+                    onClick={onClickThumb}
+                    className='btn btn-primary w-1/3'
+                  >
+                    {' '}
+                    Generate Thumb
+                  </button>{' '}
+                  <div className=' w-1/3 '>
+                    <img src={videoDetails.thumbnail}></img>
+                  </div>
+                </div>
                 <label className='label'>
                   <span className='label-text'>upload custom thumbnail</span>
                 </label>
@@ -146,6 +147,16 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                   type='file'
                   className='file-input file-input-bordered w-full max-w-xs'
                 />
+              </div>
+              <div className='form-control w-full max-w-xs'>
+                <label className='label'>
+                  <span className='label-text'>Video</span>
+                </label>
+                <video
+                  src={videoDetails.url}
+                  controls
+                  poster={videoDetails.thumbnail}
+                ></video>
               </div>
             </div>
             {/*footer*/}
