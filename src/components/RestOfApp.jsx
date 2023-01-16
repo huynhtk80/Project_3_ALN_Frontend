@@ -13,6 +13,7 @@ import NotFound from '../pages/NotFound';
 import { AuthContext } from '../providers/AuthProvider';
 import { LoginForm } from './LoginForm';
 import UploadVideo from '../pages/UploadVideo';
+import Signin  from '../pages/Signin';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -33,6 +34,7 @@ export const RestOfApp = () => {
           <Route path='settings' element={<Settings />} />
           <Route path='logout' element={<Logout />} />
           <Route path='LoginForm' element={<LoginForm />} />
+          <Route path='Signin' element={<Signin />} />
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='*' element={<NotFound />} />
