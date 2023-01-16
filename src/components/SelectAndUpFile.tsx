@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadFileStorage } from '../utils/FireStorageAPI';
 import { addMovie } from '../utils/FireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
-import GenerateThumb from './GenerateThumb';
 import UploadedVidDetail from './UploadedVidDetail';
 
 function SelectAndUpFile() {
@@ -17,16 +16,24 @@ function SelectAndUpFile() {
   const [movieDocId, setMovieDocID] = useState('');
 
   const [videoBlob, setVideoBlob] = useState<string | null>(null);
-  const [videoFile, setVideoFile] = useState<File | null>();
+  const [videoFile, setVideoFile] = useState<File | null>(null);
   const [downloadURL, setDownloadURL] = useState('');
   const [progress, setProgress] = useState<number>(0);
   const [loading, setLoading] = useState(false);
+  const inputFileRef = useRef(null);
+
   const [videoDoc, setVideoDoc] = useState({
     title: '',
     url: '',
     description: '',
     collection: '',
   });
+
+  const resetFileInput = () => {
+    if (!inputFileRef.current) return;
+
+    inputFileRef.current.value = null;
+  };
 
   const handleChange = (e: any) => {
     let file = e.target.files[0];
@@ -82,6 +89,9 @@ function SelectAndUpFile() {
 
       setLoading(false);
       setShowModal(true);
+      resetFileInput();
+      setVideoFile(null);
+      setVideoBlob(null);
     } catch (e: any) {
       console.log(e.message);
     }
@@ -97,24 +107,27 @@ function SelectAndUpFile() {
         <div className='grid flex-grow h-auto card my-2 bg-base-300 rounded-box place-items-center'>
           <input
             type='file'
+            ref={inputFileRef}
             className='file-input file-input-bordered file-input-primary w-full max-w-xs'
             accept='video/*'
             onChange={handleChange}
           />
         </div>
-        <div className='divider lg:divider-horizontal'></div>
+        {/* <div className='divider lg:divider-horizontal'></div> */}
         <div className='grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center'>
           {videoBlob && <video width='500px' controls src={videoBlob} />}
         </div>
       </div>
-      <button className='btn btn-primary' onClick={onSubmitHandle}>
-        Upload
-      </button>
-      {loading && (
-        <div className='radial-progress' style={{ '--value': `${progress}` }}>
-          {Math.floor(progress)}%
-        </div>
-      )}
+      <div className='flex flex-row justify-center'>
+        <button className='btn btn-primary m-auto' onClick={onSubmitHandle}>
+          Upload
+        </button>
+        {loading && (
+          <div className='radial-progress' style={{ '--value': `${progress}` }}>
+            {Math.floor(progress)}%
+          </div>
+        )}
+      </div>
       {showModal && (
         <UploadedVidDetail docID={movieDocId} setShowModal={setShowModal} />
       )}
