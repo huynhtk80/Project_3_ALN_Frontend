@@ -1,4 +1,4 @@
-const AfricanCountryList = [
+const AfricanCountryList = [{ Number:
   { GeoLocation: 'String' },
   { CountryAbbrv: 'String' },
   { CountryName: 'string' },
@@ -11,7 +11,7 @@ const AfricanCountryList = [
   { Currency: 'string' },
   //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
   { futureConnections: Number },
-  { PopulationSize: Number },
+  { PopulationSize: Number },}
 ];
 
 <img src='https://flagsapi.com/:country_code/:style/:size.png'></img>;

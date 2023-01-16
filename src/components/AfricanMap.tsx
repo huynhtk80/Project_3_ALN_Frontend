@@ -15,7 +15,7 @@ function App() {
       const countrySelected = document.getElementById(cName);
       countrySelected.style.fill = black;
       const countryData = AfricanCountryList[cName.toUpperCase()];
-      setCountryName(countryData["Country Name"]);
+      setCountryName(countryData["AfricanCountryList"]);
     }
   };
   return (
