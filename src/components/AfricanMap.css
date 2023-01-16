@@ -1,17 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-$land: #2faa9f;
-$background: #ebebeb;
+/*Brand Colours
+California YELLOW = HEX: #f1a104  /  rgb(241, 161, 4)
+Fun GREEN (Dark reg green) = HEX: #00743f  /  rgb(0, 116, 63)
+Jungle GREEN (Light sea green) = HEX: #25b396  /  rgb(37, 179, 150)
+Downy BLUE (Light Sky blue) = HEX: #70ced0  /  rgb(112, 206, 208)
+Matisse BLUE (Med Blue) = HEX: #1e65a7  /  rgb(30, 101, 167)
+Biscay BLUE (Dark Navy Blue) = HEX: #192e5b  /  rgb(25, 46, 91)
 
-html,
-body {
-  text-align: center;
-  min-width: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-color: $background;
-  position: relative;
-  display: inline-block;
+*/
+
+:root {
+  --background: #192e5b;
+  --land: #f1a104;
 }
-.container {
+#name {
+  position: relative;
+}
+
+.map-container {
   display: grid;
   grid-template-columns: 55% 45%;
   grid-gap: 10px;
@@ -19,123 +24,76 @@ body {
   max-width: 70%;
   margin: auto;
 }
-
-.st0,
+.circle,
 .land,
-.circle {
-  fill: $land;
+.st0 {
+  fill: var(--land);
   fill-opacity: 1;
-  stroke: $background;
+  stroke: var(--background);
   stroke-opacity: 1;
   stroke-width: 0.5;
   stroke-miterlimit: 3.97446823;
   stroke-dasharray: none;
 }
-
 .flag {
   padding-top: 0;
   font-size: 14vw;
   line-height: 0.8em;
 }
-
-.map,
-#flag,
 #capital,
-#currency {
+#currency,
+#flag,
+.map {
   display: inline-grid;
   padding: 10px;
   margin: 10px;
   border: solid 2px;
-  p,
-  img {
-    animation: fade-in 3s forwards;
-  }
-  p {
-    padding-top: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
   animation: fade-in 3.5s forwards;
 }
-
+#capital > p,
+#currency > p,
+#flag > p,
+.map > p {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#capital > img,
+#capital > p,
+#currency > img,
+#currency > p,
+#flag > img,
+#flag > p,
+.map > img,
+.map > p {
+  animation: fade-in 3s forwards;
+}
 .map {
   grid-row-start: 1;
   grid-row-end: 5;
 }
-
 #flag {
   grid-row-start: 3;
   grid-row-end: 5;
 }
-
 #capital {
   grid-row-start: 1;
   grid-row-end: 2;
   padding: 10px;
 }
-
 #currency {
   grid-row-start: 2;
   grid-row-end: 3;
   padding: 10px;
 }
-
-span {
+.container span {
   font-size: 24px;
 }
-
 @keyframes fade-in {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  body,
-  html {
-    max-width: 90%;
-    overflow-x: hidden;
-  }
-  .container {
-    display: inline-block;
-    max-width: 90%;
-  }
-
-  .map {
-    display: inline-block;
-    margin: auto;
-    width: 90%;
-    padding: 10px;
-    border: none;
-  }
-
-  #flag,
-  #capital,
-  #currency {
-    display: inline-block;
-    width: 90%;
-    margin: auto;
-    padding: 10px;
-  }
-  #currency,
-  #flag {
-    border-top: none;
-  }
-}
-
-.footer {
-  position: relative;
-  width: 400px;
-  margin: auto;
-  padding-top: 20px;
-  p {
-    font-size: 11px;
-  }
-  button {
-    padding: 5px;
-    border-radius: 10px;
   }
 }

@@ -42,7 +42,7 @@ function HeroSection() {
       <div className='container mx-auto px-6 md:px-12 xl:px-32'>
         <div className='text-center text-gray-800'>
           <div
-            className='block rounded-lg shadow-lg px-6 py-12 md:py-16 md:px-12 bg-slate-800 bg-opacity-70 dark:bg-slate-300'
+            className='block rounded-lg shadow-lg px-6 py-12 md:py-16 md:px-12 bg-slate-800 bg-opacity-70 dark:bg-slate-100 dark:bg-opacity-50'
             style={{
               marginTop: '-170px',
               // background: 'hsla(0, 0%, 100%, 0.7)',
