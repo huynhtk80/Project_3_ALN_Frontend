@@ -30,6 +30,10 @@ function ListUserMovies() {
   ]);
   const [showModal, setShowModal] = useState(false);
   const [currentDocID, setCurrentDocID] = useState('');
+  const [isCheckAll, setIsCheckAll] = useState(false);
+  const [isCheck, setIsCheck] = useState(['']);
+
+  console.log(isCheck);
 
   useEffect(() => {
     if (!user) return;
@@ -55,6 +59,22 @@ function ListUserMovies() {
     setShowModal(true);
   };
 
+  const handleSelectAll = (e: any) => {
+    setIsCheckAll(!isCheckAll);
+    setIsCheck(videos.map((video) => video.DOC_ID));
+    if (isCheckAll) {
+      setIsCheck([]);
+    }
+  };
+
+  const handleCheckClick = (e: any) => {
+    const { id, checked } = e.target;
+    setIsCheck([...isCheck, id]);
+    if (!checked) {
+      setIsCheck(isCheck.filter((item) => item !== id));
+    }
+  };
+
   return (
     <>
       <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
@@ -67,7 +87,12 @@ function ListUserMovies() {
             <tr>
               <th>
                 <label>
-                  <input type='checkbox' className='checkbox' />
+                  <input
+                    type='checkbox'
+                    className='checkbox'
+                    onChange={handleSelectAll}
+                    checked={isCheckAll}
+                  />
                 </label>
               </th>
               <th>Video</th>
@@ -80,10 +105,16 @@ function ListUserMovies() {
           <tbody>
             {videos?.map((video) => {
               return (
-                <tr>
+                <tr key={video.DOC_ID}>
                   <th>
                     <label>
-                      <input type='checkbox' className='checkbox' />
+                      <input
+                        id={video.DOC_ID}
+                        type='checkbox'
+                        className='checkbox'
+                        checked={isCheck.includes(video.DOC_ID)}
+                        onChange={handleCheckClick}
+                      />
                     </label>
                   </th>
                   <td>
