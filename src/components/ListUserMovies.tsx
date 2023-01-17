@@ -7,6 +7,8 @@ import {
   orderBy,
   onSnapshot,
   where,
+  doc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
@@ -31,7 +33,9 @@ function ListUserMovies() {
   const [showModal, setShowModal] = useState(false);
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState(['']);
+  const [isCheck, setIsCheck] = useState([]);
+  const [select, setSelect] = useState('');
+  const [category, setCategory] = useState('');
 
   console.log(isCheck);
 
@@ -75,6 +79,17 @@ function ListUserMovies() {
     }
   };
 
+  const onClickUpdateMulti = async () => {
+    isCheck.map(async (id) => {
+      const docRef = doc(db, 'videos', id);
+      if (select == 'Collections') {
+        await updateDoc(docRef, {
+          collection: category,
+        });
+      }
+    });
+  };
+
   return (
     <>
       <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
@@ -103,6 +118,45 @@ function ListUserMovies() {
             </tr>
           </thead>
           <tbody>
+            {isCheck.length > 0 ? (
+              <tr>
+                <td colSpan={5}>
+                  {' '}
+                  Update Multiple:
+                  <select
+                    className='select select-bordered w-full max-w-xs'
+                    name='collection'
+                    value={select}
+                    onChange={(e) => setSelect(e.target.value)}
+                  >
+                    <option disabled selected value={''}>
+                      Select property
+                    </option>
+                    <option>Collections</option>
+                    <option>Tags</option>
+                  </select>
+                  {select === 'Collections' ? (
+                    <select
+                      className='select select-bordered w-full max-w-xs'
+                      name='collection'
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                    >
+                      <option disabled selected value={''}>
+                        Select Category
+                      </option>
+                      <option>Documentary</option>
+                      <option>Film</option>
+                      <option>Short Film</option>
+                      <option>Series</option>
+                    </select>
+                  ) : null}
+                  <button className='btn' onClick={onClickUpdateMulti}>
+                    Update Selected
+                  </button>
+                </td>
+              </tr>
+            ) : null}
             {videos?.map((video) => {
               return (
                 <tr key={video.DOC_ID}>
