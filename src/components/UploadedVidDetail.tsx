@@ -2,6 +2,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { deleteFile, uploadFileStorage } from '../utils/FireStorageAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 
 interface AppProps {
@@ -12,15 +13,31 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videoDetails, setVideoDetails] = useState({
+  const store = fbContext.store;
+  const [videoDetailOnLoad, setVideoDetailOnload] = useState({
     userId: '',
     title: '',
     url: '',
+    videoFileId: '',
     thumbnail: '',
+    thumbnailFileId: '',
     description: '',
     collection: '',
     DOC_ID: '',
   });
+  const [videoDetails, setVideoDetails] = useState({
+    userId: '',
+    title: '',
+    url: '',
+    videoFileId: '',
+    thumbnail: '',
+    thumbnailFileId: '',
+    description: '',
+    collection: '',
+    DOC_ID: '',
+  });
+  const [newThumbnail, setNewThumbnail] = useState<File>();
+  const [newThumbnailUrl, setNewThumbnailUrl] = useState<string>(null);
 
   useEffect(() => {
     console.log('loading information from doc', docID);
@@ -32,6 +49,7 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
         console.log('Document data:', docSnap.data());
         const videoData = { ...docSnap.data(), DOC_ID: docSnap.id };
         setVideoDetails(videoData);
+        setVideoDetailOnload(videoData);
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
@@ -47,7 +65,14 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
     setVideoDetails({ ...videoDetails, [name]: value });
   };
 
-  const onClickCancel = () => {};
+  // const onClickCancel = () => {};
+
+  const onChangeUpload = (e: any) => {
+    const newCustomThumb = e.target.files[0];
+    const url = URL.createObjectURL(newCustomThumb);
+    setNewThumbnailUrl(url);
+    setNewThumbnail(newCustomThumb);
+  };
 
   const onClickThumb = async () => {
     const { imageUrl, thumbnailFile } = await getThumbnailForVideo(
@@ -55,7 +80,33 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
       videoDetails.title
     );
 
-    setVideoDetails({ ...videoDetails, thumbnail: imageUrl });
+    //setVideoDetails({ ...videoDetails, thumbnail: imageUrl });
+    setNewThumbnailUrl(imageUrl);
+    setNewThumbnail(thumbnailFile);
+    // setVideoDetails({ ...videoDetails, thumbnail: imageUrl });
+  };
+
+  const onClickPickNewThumb = async () => {
+    if (!newThumbnail) {
+      alert('no new thumbnail');
+      return;
+    }
+    await deleteFile(store, 'thumbnail', videoDetails.thumbnailFileId);
+    const { downloadURL, docId: thumbId } = await uploadFileStorage(
+      store,
+      newThumbnail,
+      'thumbnail'
+    );
+    setVideoDetails({
+      ...videoDetails,
+      thumbnail: downloadURL,
+      thumbnailFileId: thumbId,
+    });
+    const docRef = doc(db, 'videos', docID);
+    await updateDoc(docRef, {
+      thumbnail: downloadURL,
+      thumbnailFileId: thumbId,
+    });
   };
 
   const onClickSave = async () => {
@@ -125,28 +176,51 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                   <option>Short Film</option>
                   <option>Series</option>
                 </select>
-                <label className='label'>
-                  <span className='label-text'>Thumbnail</span>
-                </label>
                 <div className='flex flex-row gap-2'>
-                  <button
-                    onClick={onClickThumb}
-                    className='btn btn-primary w-1/3'
-                  >
-                    {' '}
-                    Generate Thumb
-                  </button>{' '}
                   <div className=' w-1/3 '>
+                    <label className='label'>
+                      <span className='label-text'>Current</span>
+                    </label>
                     <img src={videoDetails.thumbnail}></img>
                   </div>
+
+                  <div className=' w-1/4 flex flex-col items-center justify-center'>
+                    <label className='label'>
+                      <span className='label-text'>update</span>
+                    </label>
+                    <button onClick={onClickPickNewThumb} className='btn'>
+                      {'<'}
+                    </button>
+                  </div>
+                  <div className=' w-1/3 '>
+                    <label className='label'>
+                      <span className='label-text'>New thumbnail</span>
+                    </label>
+                    <img src={newThumbnailUrl}></img>
+                  </div>
                 </div>
-                <label className='label'>
-                  <span className='label-text'>upload custom thumbnail</span>
-                </label>
-                <input
-                  type='file'
-                  className='file-input file-input-bordered w-full max-w-xs'
-                />
+
+                <div className='flex flex-row gap-2'>
+                  <div>
+                    <label className='label'>
+                      <span className='label-text'>Random</span>
+                    </label>
+                    <button onClick={onClickThumb} className='btn btn-primary'>
+                      {' '}
+                      Generate
+                    </button>
+                  </div>
+                  <div>
+                    <label className='label'>
+                      <span className='label-text'>upload custom</span>
+                    </label>
+                    <input
+                      type='file'
+                      className='file-input file-input-bordered w-full max-w-xs'
+                      onChange={onChangeUpload}
+                    />
+                  </div>
+                </div>
               </div>
               <div className='form-control w-full max-w-xs'>
                 <label className='label'>
