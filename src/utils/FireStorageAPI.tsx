@@ -1,4 +1,9 @@
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from 'firebase/storage';
 import { FirebaseProvider } from '../providers/FirebaseProvider';
 import { v4 as uuidv4 } from 'uuid';
 import { updateDoc } from 'firebase/firestore';
@@ -31,4 +36,21 @@ export const uploadFileStorage = async (
       }
     );
   });
+};
+
+export const deleteFile = async (
+  store: any,
+  location: 'video' | 'image' | 'audio' | 'thumbnail',
+  FileId: string
+) => {
+  const fileRef = ref(store, `${location}/${FileId}`);
+
+  // Delete the file
+  deleteObject(fileRef)
+    .then(() => {
+      console.log('File deleted successfully');
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
