@@ -12,22 +12,27 @@ import {
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
-import ReactPlayer from 'react-player';
+
 import UploadedVidDetail from './UploadedVidDetail';
+import { VideoParams } from '../utils/FireStoreAPI';
+
 
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState([
+  const [videos, setVideos] = useState<[VideoParams]>([
     {
       userId: '',
       title: '',
       url: '',
+      videoFileId: '',
       thumbnail: '',
+      thumbnailFileId: '',
       description: '',
       collection: '',
       DOC_ID: '',
+      approval: '',
     },
   ]);
   const [showModal, setShowModal] = useState(false);
@@ -86,8 +91,56 @@ function ListUserMovies() {
         await updateDoc(docRef, {
           collection: category,
         });
+      } else if (select === 'Submit for Approval') {
+        await updateDoc(docRef, {
+          approval: 'pending',
+        });
       }
     });
+  };
+
+  const onClickApproveHandle = async (
+    videoId: string,
+    action: 'cancel' | 'submit'
+  ) => {
+    const docRef = doc(db, 'videos', videoId);
+    if (action === 'submit') {
+      await updateDoc(docRef, {
+        approval: 'pending',
+      });
+    } else {
+      await updateDoc(docRef, {
+        approval: '',
+      });
+    }
+  };
+
+  const renderApprovalStatus = (approval: string, viddocId: string) => {
+    if (approval == 'pending') {
+      return (
+        <>
+          <p>pending</p>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={() => onClickApproveHandle(viddocId, 'cancel')}
+          >
+            Cancel
+          </button>
+        </>
+      );
+    } else if (approval === 'approved') {
+      return <p>Approved</p>;
+    } else {
+      return (
+        <button
+          className='btn btn-primary btn-sm'
+          onClick={() => onClickApproveHandle(viddocId, 'submit')}
+        >
+          Submit for <br />
+          Approval
+        </button>
+      );
+    }
   };
 
   return (
@@ -114,13 +167,14 @@ function ListUserMovies() {
               <th>Title</th>
               <th>Description</th>
               <th>Collection</th>
-              <th></th>
+              <th>Details</th>
+              <th>approval</th>
             </tr>
           </thead>
           <tbody>
             {isCheck.length > 0 ? (
               <tr>
-                <td colSpan={5}>
+                <td colSpan={7}>
                   {' '}
                   Update Multiple:
                   <select
@@ -134,6 +188,7 @@ function ListUserMovies() {
                     </option>
                     <option>Collections</option>
                     <option>Tags</option>
+                    <option>Submit for Approval</option>
                   </select>
                   {select === 'Collections' ? (
                     <select
@@ -191,6 +246,7 @@ function ListUserMovies() {
                       details
                     </button>
                   </th>
+                  <th>{renderApprovalStatus(video.approval, video.DOC_ID)}</th>
                 </tr>
               );
             })}
@@ -203,7 +259,8 @@ function ListUserMovies() {
               <th>Title</th>
               <th>Description</th>
               <th>Collection</th>
-              <th></th>
+              <th>Details</th>
+              <th>Approval</th>
             </tr>
           </tfoot>
         </table>
