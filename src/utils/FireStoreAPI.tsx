@@ -1,6 +1,6 @@
 import { addDoc, collection } from 'firebase/firestore';
 
-interface VideoParams {
+export interface VideoParams {
   userId: string;
   title: string;
   url: string;
@@ -9,6 +9,8 @@ interface VideoParams {
   thumbnailFileId: string;
   description: string;
   collection: string;
+  approval?: string;
+  DOC_ID?: string;
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {
