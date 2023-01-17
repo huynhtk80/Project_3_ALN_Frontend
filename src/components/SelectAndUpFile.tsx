@@ -119,7 +119,7 @@ function SelectAndUpFile() {
         </div>
       </div>
       <div className='flex flex-row justify-center'>
-        <button className='btn btn-primary m-auto' onClick={onSubmitHandle}>
+        <button className='btn btn-primary' onClick={onSubmitHandle}>
           Upload
         </button>
         {loading && (
