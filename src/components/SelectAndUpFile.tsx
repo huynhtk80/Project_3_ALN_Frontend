@@ -38,7 +38,7 @@ function SelectAndUpFile() {
   const handleChange = (e: any) => {
     let file = e.target.files[0];
     setVideoFile(file);
-    var url = URL.createObjectURL(file);
+    const url = URL.createObjectURL(file);
     setVideoBlob(url);
   };
 
