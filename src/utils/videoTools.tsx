@@ -19,7 +19,7 @@ export async function getThumbnailForVideo(
       video.currentTime = randomTime;
     });
     video.addEventListener('seeked', () => resolve(1));
-    // video.crossOrigin = 'anonymous';
+    video.crossOrigin = 'anonymous';
     video.src = videoUrl;
   });
 
