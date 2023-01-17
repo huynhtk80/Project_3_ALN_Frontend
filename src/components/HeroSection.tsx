@@ -15,7 +15,7 @@ function HeroSection() {
           height: '500px',
         }}
       >
-        <div className=' flex flex-1 p-2 items-center justify-between sm:items-stretch bg-opacity-80 bg-white dark:bg-transparent'>
+        <div className=' fixed w-full flex flex-1 p-2 items-center justify-between sm:items-stretch bg-opacity-80 bg-white dark:bg-slate-800 dark:bg-opacity-80'>
           <div className='flex flex-shrink-0 items-center'>
             <Link to='/home'>
               <img
@@ -31,7 +31,7 @@ function HeroSection() {
             </div>
             <Link
               to='/home/loginform'
-              className='px-3 py-2 bg-blue-700 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+              className='px-3 py-2 bg-primary rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
             >
               Login
             </Link>
@@ -42,7 +42,7 @@ function HeroSection() {
       <div className='container mx-auto px-6 md:px-12 xl:px-32'>
         <div className='text-center text-gray-800'>
           <div
-            className='block rounded-lg shadow-lg px-6 py-12 md:py-16 md:px-12 bg-slate-800 bg-opacity-70 dark:bg-slate-100 dark:bg-opacity-50'
+            className='block rounded-lg shadow-lg px-6 py-12 md:py-16 md:px-12 bg-slate-800 bg-opacity-70 dark:bg-slate-50 dark:bg-opacity-50'
             style={{
               marginTop: '-170px',
               // background: 'hsla(0, 0%, 100%, 0.7)',
@@ -54,7 +54,7 @@ function HeroSection() {
               <span className='text-blue-600'>for your needs</span>
             </h1>
             <Link
-              className='inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
+              className='inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-secondary text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
               data-mdb-ripple='true'
               data-mdb-ripple-color='light'
               to='/home'
@@ -63,7 +63,7 @@ function HeroSection() {
               Get started
             </Link>
             <a
-              className='inline-block px-7 py-3 text-white font-medium text-sm leading-snug bg-slate-500 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out'
+              className='inline-block px-7 py-3 text-white font-medium text-sm leading-snug bg-slate-500 uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out'
               data-mdb-ripple='true'
               data-mdb-ripple-color='light'
               href='#LearnMore'
