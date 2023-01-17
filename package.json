@@ -13,7 +13,11 @@
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
     "daisyui": "^2.46.1",
+<<<<<<< HEAD
+    "esbuild": "^0.16.17",
+=======
     "esbuild": "^0.17.0",
+>>>>>>> 9d8d57553714cb1072638e64a73cdc55a7ee9615
     "eslint": "^8.30.0",
     "firebase": "^9.15.0",
     "react": "^18.2.0",
