@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 // import "./Navbar.css";
@@ -9,6 +9,8 @@ import AvatarTemp from '../assets/avatar-temp.png';
 import { LoginForm } from './LoginForm';
 import Switcher from './ThemeSwitcher';
 import LandingFooter from './LandingFooter';
+import { FirebaseContext } from '../providers/FirebaseProvider';
+import { AuthContext } from '../providers/AuthProvider';
 
 const navigation = [
   { name: 'Home', href: '/home' },
@@ -23,6 +25,12 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const fbContext = useContext(FirebaseContext);
+  const app = fbContext.app;
+  const authContext = useContext(AuthContext);
+  const user = authContext.user;
+  const logout = authContext.logout;
+
   return (
     <div className='bg-white dark:bg-gray-800 '>
       <Disclosure as='nav' className='bg-gray-800'>
@@ -137,6 +145,7 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link
                               to='/home/logout'
+                              onClick={logout}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
