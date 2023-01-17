@@ -7,10 +7,9 @@ function LandingFooter() {
     <footer className='p-4 bg-white sm:p-6 dark:bg-gray-900'>
       <div className='md:flex md:justify-between'>
         <div className='mb-6 md:mb-0'>
-          <a href='https://flowbite.com/' className='flex items-center'>
-            //TODO:ALN Logo Link leads to Flowbite.com, not Home page, or any of our site pages. Need to update to ALN page.
+          <Link to='/' className='flex items-center'>
             <img src={ALN_LOGO_3_43} className='h-8 mr-3' alt='FlowBite Logo' />
-          </a>
+          </Link>
         </div>
         <div className='grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2'>
           <div>

@@ -1,4 +1,4 @@
-const AfricanCountryList = [
+const AfricanCountryList = [{ Number:
   { GeoLocation: 'String' },
   { CountryAbbrv: 'String' },
   { CountryName: 'string' },
@@ -9,10 +9,12 @@ const AfricanCountryList = [
   { Flag: 'string' },
   { Capital: 'string' },
   { Currency: 'string' },
-  //  futureConnections  =  "Internet users"
+  //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
   { futureConnections: Number },
-  { Population: Number },
+  { PopulationSize: Number },}
 ];
+
+<img src='https://flagsapi.com/:country_code/:style/:size.png'></img>;
 
 //North Africa_(1-8)
 //East Africa_(9-28)
@@ -30,9 +32,9 @@ AfricanCountryList = {
     officialLanguage: 'Arabic',
     Capital: 'Algiers',
     Currency: 'Algerian dinar',
-    Flag: '🇩🇿',
-    futureConnections: 4700000,
-    Population: 38813722,
+    Flag: '<img src="https://flagsapi.com/:DZ/:flat/:64.png">',
+    futureConnections: 27280000,
+    PopulationSize: 44903225,
   },
 
   2: {
@@ -44,8 +46,8 @@ AfricanCountryList = {
     Capital: 'Cairo',
     Currency: 'Egyptian Pound',
     'Country Flag': '🇪🇬',
-    futureConnections: 20136000,
-    Population: 86895099,
+    futureConnections: 75660000,
+    PopulationSize: 102880000,
   },
 
   3: {
@@ -57,8 +59,8 @@ AfricanCountryList = {
     Capital: 'Tripoli',
     Currency: 'Libyan dinar',
     'Country Flag': '🇱🇾',
-    futureConnections: 353900,
-    Population: 6244174,
+    futureConnections: 3470000,
+    PopulationSize: 6812341,
   },
 
   4: {
@@ -70,8 +72,8 @@ AfricanCountryList = {
     Capital: 'Rabat',
     Currency: 'Moroccan dirham',
     'Country Flag': '🇲🇦',
-    futureConnections: 13213000,
-    Population: 32987206,
+    futureConnections: 31590000,
+    PopulationSize: 36400000,
   },
 
   5: {
@@ -83,8 +85,8 @@ AfricanCountryList = {
     Capital: 'Tunis',
     Currency: 'Tunisian dinar',
     'Country Flag': '🇹🇳',
-    futureConnections: 3500000,
-    Population: 10937521,
+    futureConnections: 8000000,
+    PopulationSize: 12356117,
   },
 
   6: {
@@ -96,8 +98,8 @@ AfricanCountryList = {
     Capital: 'Khartoum',
     Currency: 'Sudanese Pound',
     Flag: '🇸🇩',
-    futureConnections: 4200000,
-    Population: 35482233,
+    futureConnections: 14030000,
+    PopulationSize: 46874204,
   },
 
   7: {
@@ -107,6 +109,8 @@ AfricanCountryList = {
     Capital: 'Laayoune',
     Currency: 'Sahrawi peseta, Moroccan dirham',
     'Country Flag': '🇲🇦/🇪🇭',
+    futureConnections: 379300,
+    PopulationSize: 619000,
   },
 
   8: {
@@ -116,6 +120,8 @@ AfricanCountryList = {
     Capital: 'Las Palmas de Gran Canaria and Santa Cruz de Tenerife',
     Currency: 'Euro',
     'Country Flag': '🇮🇨',
+    futureConnections: null,
+    PopulationSize: 2252465,
   },
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
@@ -128,8 +134,8 @@ AfricanCountryList = {
     Capital: 'Bujumbura',
     Currency: 'Burundi franc',
     'Country Flag': '🇧🇮',
-    futureConnections: 157800,
-    Population: 10395931,
+    futureConnections: 1820000,
+    PopulationSize: 12889576,
   },
 
   10: {
@@ -141,8 +147,8 @@ AfricanCountryList = {
     Capital: 'Moroni',
     Currency: 'Comorian franc',
     'Country Flag': '🇰🇲',
-    futureConnections: 24300,
-    Population: 766865,
+    futureConnections: 76100000,
+    PopulationSize: 836774,
   },
 
   11: {
@@ -154,8 +160,8 @@ AfricanCountryList = {
     Capital: 'Djibouti (city)',
     Currency: 'Djiboutian franc',
     'Country Flag': '🇩🇯',
-    futureConnections: 25900,
-    Population: 810179,
+    futureConnections: 595400,
+    PopulationSize: 1120849,
   },
 
   12: {
@@ -167,8 +173,8 @@ AfricanCountryList = {
     Capital: 'Asmara',
     Currency: 'Eritrean nakfa',
     'Country Flag': '🇪🇷',
-    futureConnections: 200000,
-    Population: 6380803,
+    futureConnections: 290500,
+    PopulationSize: 3630000,
   },
 
   13: {
@@ -180,8 +186,8 @@ AfricanCountryList = {
     Capital: 'Addis Ababa',
     Currency: 'Ethiopian birr',
     'Country Flag': '🇪🇹',
-    futureConnections: 447300,
-    Population: 96633458,
+    futureConnections: 29830000,
+    PopulationSize: 123000000,
   },
 
   14: {
@@ -193,8 +199,8 @@ AfricanCountryList = {
     Capital: 'Nairobi',
     Currency: 'Kenyan shilling',
     'Country Flag': '🇰🇪',
-    futureConnections: 3996000,
-    Population: 45010056,
+    futureConnections: 23350000,
+    PopulationSize: 54027487,
   },
 
   15: {
@@ -206,8 +212,8 @@ AfricanCountryList = {
     Capital: 'Antananarivo',
     Currency: 'Malagasy ariary',
     'Country Flag': '🇲🇬',
-    futureConnections: 319900,
-    Population: 23201926,
+    futureConnections: 6430000,
+    PopulationSize: 29611714(2022),
   },
 
   16: {
@@ -219,8 +225,8 @@ AfricanCountryList = {
     Capital: 'Lilongwe',
     Currency: 'Malawian kwacha',
     'Country Flag': '🇲🇼',
-    futureConnections: 716400,
-    Population: 17377468,
+    futureConnections: 4030000,
+    PopulationSize: 20405317,
   },
 
   17: {
@@ -232,8 +238,8 @@ AfricanCountryList = {
     Capital: 'Port Louis',
     Currency: 'Mauritian rupee',
     'Country Flag': '🇲🇺',
-    futureConnections: 290000,
-    Population: 1331155,
+    futureConnections: 826900,
+    PopulationSize: 1262523,
   },
 
   18: {
@@ -245,8 +251,8 @@ AfricanCountryList = {
     Capital: 'Maputo',
     Currency: 'Mozambican metical',
     'Country Flag': '🇲🇿',
-    futureConnections: 613600,
-    Population: 24692144,
+    futureConnections: 7540000,
+    PopulationSize: 32969518,
   },
 
   19: {
@@ -258,8 +264,8 @@ AfricanCountryList = {
     Capital: 'Kigali',
     Currency: 'Rwandan franc',
     'Country Flag': '🇷🇼',
-    futureConnections: 450000,
-    Population: 12337138,
+    futureConnections: 3540000,
+    PopulationSize: 13776698,
   },
 
   20: {
@@ -271,8 +277,8 @@ AfricanCountryList = {
     Capital: 'Victoria',
     Currency: 'Seychellois rupee',
     'Country Flag': '🇸🇨',
-    futureConnections: 32000,
-    Population: 91650,
+    futureConnections: 78300,
+    PopulationSize: 107341,
   },
 
   21: {
@@ -284,8 +290,8 @@ AfricanCountryList = {
     Capital: 'Mogadishu',
     Currency: 'Somali shilling',
     'Country Flag': '🇸🇴',
-    futureConnections: 106000,
-    Population: 10428043,
+    futureConnections: 2270000,
+    PopulationSize: 17597511,
   },
 
   22: {
@@ -297,8 +303,8 @@ AfricanCountryList = {
     Capital: 'Juba',
     Currency: 'South Sudanese Pound',
     'Country Flag': '🇸🇸',
-    futureConnections: null,
-    Population: 11562695,
+    futureConnections: 1250000,
+    PopulationSize: 10913164,
   },
 
   23: {
@@ -310,8 +316,8 @@ AfricanCountryList = {
     Capital: 'Dodoma',
     Currency: 'Tanzanian shilling',
     'Country Flag': '🇹🇿',
-    futureConnections: 678000,
-    Population: 49639138,
+    futureConnections: 15600000,
+    PopulationSize: 65497748,
   },
 
   24: {
@@ -323,8 +329,8 @@ AfricanCountryList = {
     Capital: 'Kampala',
     Currency: 'Ugandan shilling',
     'Country Flag': '🇺🇬',
-    futureConnections: 3200000,
-    Population: 35918915,
+    futureConnections: 13920000,
+    PopulationSize: 47249585,
   },
 
   25: {
@@ -336,8 +342,8 @@ AfricanCountryList = {
     Capital: 'Lusaka',
     Currency: 'Zambian kwacha',
     'Country Flag': '🇿🇲',
-    futureConnections: 816200,
-    Population: 14638505,
+    futureConnections: 5470000,
+    PopulationSize: 20017675,
   },
 
   26: {
@@ -349,8 +355,8 @@ AfricanCountryList = {
     Capital: 'Harare',
     Currency: 'United States Dollar',
     'Country Flag': '🇿🇼',
-    futureConnections: 1423000,
-    Population: 13771721,
+    futureConnections: 4650000,
+    PopulationSize: 15100000,
   },
 
   27: {
@@ -360,6 +366,8 @@ AfricanCountryList = {
     Capital: 'Saint-Denis',
     Currency: 'Euro',
     'Country Flag': '🇷🇪',
+    futureConnections: 373500,
+    PopulationSize: 874400,
   },
 
   28: {
@@ -369,6 +377,8 @@ AfricanCountryList = {
     Capital: 'Mamoudzou',
     Currency: 'Euro',
     'Country Flag': '🇾🇹',
+    futureConnections: 65700,
+    PopulationSize: 282900,
   },
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
@@ -381,8 +391,8 @@ AfricanCountryList = {
     Capital: 'Gaborone',
     Currency: 'Botswana pula',
     'Country Flag': '🇧🇼',
-    futureConnections: 120000,
-    Population: 2155784,
+    futureConnections: 1480000,
+    PopulationSize: 2630296,
   },
 
   30: {
@@ -394,8 +404,8 @@ AfricanCountryList = {
     Capital: 'Maseru',
     Currency: 'Lesotho loti',
     'Country Flag': '🇱🇸',
-    futureConnections: 76800,
-    Population: 1942008,
+    futureConnections: 1130000,
+    PopulationSize: 2305825,
   },
 
   31: {
@@ -407,8 +417,8 @@ AfricanCountryList = {
     Capital: 'Windhoek',
     Currency: 'Namibian Dollar',
     'Country Flag': '🇳🇦',
-    futureConnections: 127500,
-    Population: 2198406,
+    futureConnections: 1330000,
+    PopulationSize: 2567012,
   },
 
   32: {
@@ -420,8 +430,8 @@ AfricanCountryList = {
     Capital: 'Pretoria / Cape Town',
     Currency: 'South African rand',
     'Country Flag': '🇿🇦',
-    futureConnections: 4420000,
-    Population: 48375645,
+    futureConnections: 41190000,
+    PopulationSize: 60600000,
   },
 
   33: {
@@ -433,8 +443,8 @@ AfricanCountryList = {
     Capital: 'Mbabane',
     Currency: 'Swazi lilangeni',
     'Country Flag': '🇸🇿',
-    futureConnections: 90100,
-    Population: 1419623,
+    futureConnections: 553900,
+    PopulationSize: 1180000,
   },
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
@@ -447,8 +457,8 @@ AfricanCountryList = {
     Capital: 'Porto-Novo',
     Currency: 'West African CFA franc',
     'Country Flag': '🇧🇯',
-    futureConnections: 200100,
-    Population: 10160556,
+    futureConnections: 3660000,
+    PopulationSize: 13712828,
   },
 
   35: {
@@ -460,21 +470,21 @@ AfricanCountryList = {
     Capital: 'Ouagadougou',
     Currency: 'West African CFA franc',
     'Country Flag': '🇧🇫',
-    futureConnections: 178100,
-    Population: 18365123,
+    futureConnections: 5950000,
+    PopulationSize: 22673762,
   },
 
   36: {
     GeoLocation: 'West',
     CountryAbbrv: 'CV',
-    CountryName: 'Cape Verde',
+    CountryName: 'Cabo Verde',
     AreaCode: 238,
     officialLanguage: 'Portuguese',
     Capital: 'Praia',
     Currency: 'Cape Verdean escudo',
     'Country Flag': '🇨🇻',
-    futureConnections: 150000,
-    Population: 538535,
+    futureConnections: 349800,
+    PopulationSize: 593149,
   },
 
   37: {
@@ -486,8 +496,8 @@ AfricanCountryList = {
     Capital: 'Yamoussoukro',
     Currency: 'West African CFA franc',
     'Country Flag': '🇨🇮',
-    futureConnections: 967300,
-    Population: 22848945,
+    futureConnections: 9940000,
+    PopulationSize: 27720000,
   },
 
   38: {
@@ -499,8 +509,8 @@ AfricanCountryList = {
     Capital: 'Accra',
     Currency: 'Ghanaian cedi',
     'Country Flag': '🇬🇭',
-    futureConnections: 1297000,
-    Population: 25758108,
+    futureConnections: 16990000,
+    PopulationSize: 33475870,
   },
 
   39: {
@@ -512,8 +522,8 @@ AfricanCountryList = {
     Capital: 'Banjul',
     Currency: 'Dalasi',
     'Country Flag': '🇬🇲',
-    futureConnections: null,
-    Population: 1857181,
+    futureConnections: 1290000,
+    PopulationSize: 2705992,
   },
 
   40: {
@@ -525,8 +535,8 @@ AfricanCountryList = {
     Capital: 'Conakry',
     Currency: 'Guinean franc',
     'Country Flag': '🇬🇳',
-    futureConnections: 95000,
-    Population: 11474383,
+    futureConnections: 3150000,
+    PopulationSize: 13859341,
   },
 
   41: {
@@ -538,8 +548,8 @@ AfricanCountryList = {
     Capital: 'Bissau',
     Currency: 'West African CFA franc',
     'Country Flag': '🇬🇼',
-    futureConnections: 37100,
-    Population: 1693398,
+    futureConnections: 571000,
+    PopulationSize: 2110000,
   },
 
   42: {
@@ -551,8 +561,8 @@ AfricanCountryList = {
     Capital: 'Monrovia',
     Currency: 'Liberian Dollar',
     'Country Flag': '🇱🇷',
-    futureConnections: 20000,
-    Population: 4092310,
+    futureConnections: 1150000,
+    PopulationSize: 5302681,
   },
 
   43: {
@@ -564,8 +574,8 @@ AfricanCountryList = {
     Capital: 'Bamako',
     Currency: 'West African CFA franc',
     'Country Flag': '🇲🇱',
-    futureConnections: 249800,
-    Population: 16455903,
+    futureConnections: 6330000,
+    PopulationSize: 22593590,
   },
 
   44: {
@@ -577,8 +587,8 @@ AfricanCountryList = {
     Capital: 'Nouakchott',
     Currency: 'Mauritanian ouguiya',
     'Country Flag': '🇲🇷',
-    futureConnections: 75000,
-    Population: 3516806,
+    futureConnections: 1730000,
+    PopulationSize: 4736139,
   },
 
   45: {
@@ -590,8 +600,8 @@ AfricanCountryList = {
     Capital: 'Niamey',
     Currency: 'West African CFA franc',
     'Country Flag': '🇳🇪',
-    futureConnections: 115900,
-    Population: 17466172,
+    futureConnections: 3720000,
+    PopulationSize: 26207977,
   },
 
   46: {
@@ -603,8 +613,8 @@ AfricanCountryList = {
     Capital: 'Abuja',
     Currency: 'Nigerian naira',
     'Country Flag': '🇳🇬',
-    futureConnections: 43989000,
-    Population: 200963599,
+    futureConnections: 109200000,
+    PopulationSize: 218541212,
   },
 
   47: {
@@ -616,8 +626,8 @@ AfricanCountryList = {
     Capital: 'Dakar',
     Currency: 'West African CFA franc',
     'Country Flag': '🇸🇳',
-    futureConnections: 1818000,
-    Population: 13635927,
+    futureConnections: 8010000,
+    PopulationSize: 17316449,
   },
 
   48: {
@@ -629,8 +639,8 @@ AfricanCountryList = {
     Capital: 'Freetown',
     Currency: 'Sierra Leonean leone',
     'Country Flag': '🇸🇱',
-    futureConnections: 14900,
-    Population: 5743725,
+    futureConnections: 2670000,
+    PopulationSize: 8605718,
   },
 
   49: {
@@ -642,8 +652,8 @@ AfricanCountryList = {
     Capital: 'Lomé',
     Currency: 'West African CFA franc',
     'Country Flag': '🇹🇬',
-    futureConnections: 356300,
-    Population: 7351374,
+    futureConnections: 2230000,
+    PopulationSize: 8848699,
   },
 
   50: {
@@ -653,6 +663,8 @@ AfricanCountryList = {
     Capital: 'Jamestown',
     Currency: 'Saint Helena pound & pound sterling',
     'Country Flag': '🇸🇭',
+    futureConnections: 2294,
+    PopulationSize: 6135,
   },
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
@@ -665,8 +677,8 @@ AfricanCountryList = {
     Capital: 'Luanda',
     Currency: 'Angolan kwanza',
     Flag: '🇦🇴',
-    futureConnections: 606700,
-    Population: 19088106,
+    futureConnections: 12410000,
+    PopulationSize: 35588987,
   },
 
   52: {
@@ -678,8 +690,8 @@ AfricanCountryList = {
     Capital: 'Yaoundé',
     Currency: 'Central African CFA franc',
     'Country Flag': '🇨🇲',
-    futureConnections: 749600,
-    Population: 23130708,
+    futureConnections: 10050000,
+    PopulationSize: 27914536,
   },
 
   53: {
@@ -691,8 +703,8 @@ AfricanCountryList = {
     Capital: 'Bangui',
     Currency: 'Central African CFA franc',
     'Country Flag': '🇨🇫',
-    futureConnections: 22600,
-    Population: 5277959,
+    futureConnections: 355100,
+    PopulationSize: 5579144,
   },
 
   54: {
@@ -704,8 +716,8 @@ AfricanCountryList = {
     Capital: "N'Djamena",
     Currency: 'Central African CFA franc',
     'Country Flag': '🇹🇩',
-    futureConnections: 168100,
-    Population: 11412107,
+    futureConnections: 3260000,
+    PopulationSize: 17723315,
   },
 
   55: {
@@ -717,8 +729,8 @@ AfricanCountryList = {
     Capital: 'Kinshasa',
     Currency: 'Congolese franc',
     'Country Flag': '🇨🇩',
-    futureConnections: 290000,
-    Population: 77433744,
+    futureConnections: 16500000,
+    PopulationSize: 99010212,
   },
 
   56: {
@@ -730,8 +742,8 @@ AfricanCountryList = {
     Capital: 'Brazzaville',
     Currency: 'Central African CFA franc',
     'Country Flag': '🇨🇬',
-    futureConnections: 245200,
-    Population: 4662446,
+    futureConnections: 1450000,
+    PopulationSize: 5884363,
   },
 
   57: {
@@ -743,8 +755,8 @@ AfricanCountryList = {
     Capital: 'Malabo',
     Currency: 'Central African CFA franc',
     'Country Flag': '🇬🇶',
-    futureConnections: 14400,
-    Population: 722254,
+    futureConnections: 386500,
+    PopulationSize: 1530098,
   },
 
   58: {
@@ -756,8 +768,8 @@ AfricanCountryList = {
     Capital: 'Libreville',
     Currency: 'Central African CFA franc',
     'Country Flag': '🇬🇦',
-    futureConnections: 98800,
-    Population: 1672597,
+    futureConnections: 1430000,
+    PopulationSize: 2388992,
   },
 
   59: {
@@ -769,8 +781,8 @@ AfricanCountryList = {
     Capital: 'São Tomé',
     Currency: 'Sao Tome and Principe dobra',
     'Country Flag': '🇸🇹',
-    futureConnections: 26700,
-    Population: 190428,
+    futureConnections: 72200,
+    PopulationSize: 227380,
   },
 };
 

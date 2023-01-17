@@ -1,6 +1,16 @@
+/*Brand Colours
+California YELLOW = HEX: #f1a104  /  rgb(241, 161, 4)
+Fun GREEN (Dark reg green) = HEX: #00743f  /  rgb(0, 116, 63)
+Jungle GREEN (Light sea green) = HEX: #25b396  /  rgb(37, 179, 150)
+Downy BLUE (Light Sky blue) = HEX: #70ced0  /  rgb(112, 206, 208)
+Matisse BLUE (Med Blue) = HEX: #1e65a7  /  rgb(30, 101, 167)
+Biscay BLUE (Dark Navy Blue) = HEX: #192e5b  /  rgb(25, 46, 91)
+
+*/
+
 :root {
-  --background: #ebebeb;
-  --land: #2faa9f;
+  --background: #192e5b;
+  --land: #f1a104;
 }
 #name {
   position: relative;
