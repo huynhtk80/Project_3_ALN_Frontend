@@ -12,10 +12,10 @@ import {
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
-import ReactPlayer from 'react-player';
+
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/FireStoreAPI';
-import { act } from 'react-dom/test-utils';
+
 
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
