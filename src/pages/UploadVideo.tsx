@@ -9,6 +9,7 @@ import ListUserMovies from '../components/ListUserMovies';
 import SelectAndUpFile from '../components/SelectAndUpFile';
 import { addMovie } from '../utils/FireStoreAPI';
 import UploadedVidDetail from '../components/UploadedVidDetail';
+import AdminApproveC from '../components/AdminApproveC';
 
 function UploadVideo() {
   const fbContext = useContext(FirebaseContext);
@@ -22,6 +23,7 @@ function UploadVideo() {
       <SelectAndUpFile />
 
       <ListUserMovies />
+      <AdminApproveC />
     </>
   );
 }

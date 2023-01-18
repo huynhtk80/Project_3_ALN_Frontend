@@ -14,8 +14,12 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const navigation = [
   { name: 'Home', href: '/home' },
-  { name: 'My Network', href: '/home/network' },
-  { name: 'My Videos', href: '/home/videos' },
+  { name: 'Baobab Community', href: '/home/network' },
+  { name: 'Documentaries', href: '/home/videos' },
+  { name: 'Movies', href: '/home/Movies' },
+  { name: 'Podcasts', href: '/home/Podcasts' },
+  { name: 'TV Series', href: '/home/TVSeries' },
+
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
@@ -32,8 +36,8 @@ export default function Navbar() {
   const logout = authContext.logout;
 
   return (
-    <div className='bg-base-100'>
-      <Disclosure as='nav' className='bg-accent'>
+    <div className='bg-white dark:bg-slate-900 '>
+      <Disclosure as='nav' className='bg-slate-900'>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
@@ -68,7 +72,7 @@ export default function Navbar() {
                       {navigation.map((item) => (
                         <NavLink
                           end
-                          index={item.name}
+                          key={item.name}
                           to={item.href}
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
@@ -170,7 +174,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <NavLink
                     to={item.href}
-                    index={item.name}
+                    key={item.name}
                     className={({ isActive }) =>
                       ' block px-3 py-2 rounded-md text-base font-medium' +
                       (isActive

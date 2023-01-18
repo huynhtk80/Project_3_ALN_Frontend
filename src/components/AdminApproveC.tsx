@@ -16,28 +16,15 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/FireStoreAPI';
 
-function ListUserMovies() {
+function AdminApproveC() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState<VideoParams[]>([
-    {
-      userId: '',
-      title: '',
-      url: '',
-      videoFileId: '',
-      thumbnail: '',
-      thumbnailFileId: '',
-      description: '',
-      collection: '',
-      DOC_ID: '',
-      approval: '',
-    },
-  ]);
+  const [videos, setVideos] = useState<[VideoParams] | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState<string[]>([]);
+  const [isCheck, setIsCheck] = useState([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
 
@@ -47,19 +34,16 @@ function ListUserMovies() {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef = query(collectionRef, where('userId', '==', user.uid));
+    let queryRef = query(collectionRef, where('approval', '==', 'pending'));
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
-        setVideos([]);
+        setVideos(null);
       } else {
-        let videoData = querySnap.docs.map(
-          (doc) =>
-            ({
-              ...doc.data(),
-              DOC_ID: doc.id,
-            } as VideoParams)
-        );
+        let videoData = querySnap.docs.map((doc) => ({
+          ...doc.data(),
+          DOC_ID: doc.id,
+        }));
         setVideos(videoData);
       }
     });
@@ -73,7 +57,6 @@ function ListUserMovies() {
 
   const handleSelectAll = (e: any) => {
     setIsCheckAll(!isCheckAll);
-
     setIsCheck(videos.map((video) => video.DOC_ID));
     if (isCheckAll) {
       setIsCheck([]);
@@ -96,23 +79,21 @@ function ListUserMovies() {
           collection: category,
         });
       } else if (select === 'Submit for Approval') {
-        const videoDoc = videos.find((vid) => vid.DOC_ID === id);
-        if (videoDoc?.approval !== 'approved')
-          await updateDoc(docRef, {
-            approval: 'pending',
-          });
+        await updateDoc(docRef, {
+          approval: 'pending',
+        });
       }
     });
   };
 
   const onClickApproveHandle = async (
     videoId: string,
-    action: 'cancel' | 'submit'
+    action: 'cancel' | 'submit' | 'approved'
   ) => {
     const docRef = doc(db, 'videos', videoId);
-    if (action === 'submit') {
+    if (action === 'approved') {
       await updateDoc(docRef, {
-        approval: 'pending',
+        approval: 'approved',
       });
     } else {
       await updateDoc(docRef, {
@@ -125,34 +106,25 @@ function ListUserMovies() {
     if (approval == 'pending') {
       return (
         <>
-          <p>pending</p>
           <button
             className='btn btn-primary btn-sm'
-            onClick={() => onClickApproveHandle(viddocId, 'cancel')}
+            onClick={() => onClickApproveHandle(viddocId, 'approved')}
           >
-            Cancel
+            Approve
           </button>
         </>
       );
     } else if (approval === 'approved') {
       return <p>Approved</p>;
     } else {
-      return (
-        <button
-          className='btn btn-primary btn-sm'
-          onClick={() => onClickApproveHandle(viddocId, 'submit')}
-        >
-          Submit for <br />
-          Approval
-        </button>
-      );
+      return <></>;
     }
   };
 
   return (
     <>
       <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
-        ListUserMovies
+        Content to be Approved
       </div>
 
       <div className='overflow-x-auto w-full'>
@@ -178,7 +150,7 @@ function ListUserMovies() {
             </tr>
           </thead>
           <tbody>
-            {isCheck?.length > 0 ? (
+            {isCheck.length > 0 ? (
               <tr>
                 <td colSpan={7}>
                   {' '}
@@ -194,7 +166,7 @@ function ListUserMovies() {
                     </option>
                     <option>Collections</option>
                     <option>Tags</option>
-                    <option>Submit for Approval</option>
+                    <option>Approval</option>
                   </select>
                   {select === 'Collections' ? (
                     <select
@@ -227,7 +199,7 @@ function ListUserMovies() {
                         id={video.DOC_ID}
                         type='checkbox'
                         className='checkbox'
-                        checked={isCheck?.includes(video.DOC_ID)}
+                        checked={isCheck.includes(video.DOC_ID)}
                         onChange={handleCheckClick}
                       />
                     </label>
@@ -278,4 +250,4 @@ function ListUserMovies() {
   );
 }
 
-export default ListUserMovies;
+export default AdminApproveC;
