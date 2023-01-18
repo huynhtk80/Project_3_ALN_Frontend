@@ -16,12 +16,11 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/FireStoreAPI';
 
-
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState<[VideoParams]>([
+  const [videos, setVideos] = useState<VideoParams[]>([
     {
       userId: '',
       title: '',
@@ -38,7 +37,7 @@ function ListUserMovies() {
   const [showModal, setShowModal] = useState(false);
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
+  const [isCheck, setIsCheck] = useState<string[]>([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
 
@@ -52,11 +51,15 @@ function ListUserMovies() {
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
+        setVideos([]);
       } else {
-        let videoData = querySnap.docs.map((doc) => ({
-          ...doc.data(),
-          DOC_ID: doc.id,
-        }));
+        let videoData = querySnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as VideoParams)
+        );
         setVideos(videoData);
       }
     });
@@ -70,6 +73,7 @@ function ListUserMovies() {
 
   const handleSelectAll = (e: any) => {
     setIsCheckAll(!isCheckAll);
+
     setIsCheck(videos.map((video) => video.DOC_ID));
     if (isCheckAll) {
       setIsCheck([]);
@@ -92,9 +96,11 @@ function ListUserMovies() {
           collection: category,
         });
       } else if (select === 'Submit for Approval') {
-        await updateDoc(docRef, {
-          approval: 'pending',
-        });
+        const videoDoc = videos.find((vid) => vid.DOC_ID === id);
+        if (videoDoc?.approval !== 'approved')
+          await updateDoc(docRef, {
+            approval: 'pending',
+          });
       }
     });
   };
@@ -172,7 +178,7 @@ function ListUserMovies() {
             </tr>
           </thead>
           <tbody>
-            {isCheck.length > 0 ? (
+            {isCheck?.length > 0 ? (
               <tr>
                 <td colSpan={7}>
                   {' '}
@@ -221,7 +227,7 @@ function ListUserMovies() {
                         id={video.DOC_ID}
                         type='checkbox'
                         className='checkbox'
-                        checked={isCheck.includes(video.DOC_ID)}
+                        checked={isCheck?.includes(video.DOC_ID)}
                         onChange={handleCheckClick}
                       />
                     </label>
