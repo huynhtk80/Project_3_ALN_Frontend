@@ -1,9 +1,10 @@
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { deleteFile, uploadFileStorage } from '../utils/FireStorageAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
+import DeleteModal from './DeleteModal';
 
 interface AppProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,6 +39,8 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   });
   const [newThumbnail, setNewThumbnail] = useState<File>();
   const [newThumbnailUrl, setNewThumbnailUrl] = useState<string>(null);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     console.log('loading information from doc', docID);
@@ -112,6 +115,18 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   const onClickSave = async () => {
     const docRef = doc(db, 'videos', docID);
     await updateDoc(docRef, videoDetails);
+    setShowModal(false);
+  };
+
+  const onClickDeleteVideo = async () => {
+    setShowDeleteModal(true);
+  };
+
+  const deleteVideo = async () => {
+    const docRef = doc(db, 'videos', docID);
+    await deleteFile(store, 'thumbnail', videoDetails.thumbnailFileId);
+    await deleteFile(store, 'video', videoDetails.videoFileId);
+    await deleteDoc(docRef);
     setShowModal(false);
   };
 
@@ -234,26 +249,42 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
               </div>
             </div>
             {/*footer*/}
-            <div className='flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b'>
+            <div className='flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b'>
               <button
-                className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                className='btn btn-primary'
                 type='button'
-                onClick={() => setShowModal(false)}
+                onClick={onClickDeleteVideo}
               >
-                Close
+                Delete
               </button>
-              <button
-                className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                type='button'
-                onClick={onClickSave}
-              >
-                Save Changes
-              </button>
+              <div>
+                <button
+                  className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                  type='button'
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
+                <button
+                  className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                  type='button'
+                  onClick={onClickSave}
+                >
+                  Save Changes
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
+      {showDeleteModal && (
+        <DeleteModal
+          setShowModal={setShowDeleteModal}
+          deleteFunction={deleteVideo}
+        />
+      )}
     </>
   );
 }
