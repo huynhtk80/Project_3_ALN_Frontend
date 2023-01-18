@@ -16,9 +16,9 @@ const navigation = [
   { name: 'Home', href: '/home' },
   { name: 'Baobab Community', href: '/home/network' },
   { name: 'Documentaries', href: '/home/videos' },
-  { name: 'Movies', href: '/home/' },
-  { name: 'Podcasts', href: '/home/' },
-  { name: 'TV Series', href: '/home/' },
+  { name: 'Movies', href: '/home/Movies' },
+  { name: 'Podcasts', href: '/home/Podcasts' },
+  { name: 'TV Series', href: '/home/TVSeries' },
 
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
