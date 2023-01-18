@@ -15,7 +15,7 @@ function HeroSection() {
           height: '500px',
         }}
       >
-        <div className=' bg-base-100 fixed w-full top-0 flex flex-1 p-2 items-center justify-between sm:items-stretch bg-opacity-80'>
+        <div className=' bg-base-100 fixed w-full top-0 flex flex-1 z-10 p-2 items-center justify-between sm:items-stretch bg-opacity-80'>
           <div className='flex flex-shrink-0 items-center'>
             <Link to='/home'>
               <img
