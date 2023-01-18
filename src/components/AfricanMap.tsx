@@ -3,7 +3,7 @@ import AfricanCountryList from './AfricanCountryList';
 
 function AfricanMap() {
   const [countryName, setCountryName] = useState(
-    'Discover African Culture And Each Countries Individuality By Clicking On The Map Below'
+    'Discover Each Countries Individuality & Opportunities By Clicking On The Map Below'
   );
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
@@ -24,12 +24,18 @@ function AfricanMap() {
   };
   return (
     <>
-      <div className='bg-slate-700'>
+      <div className='bg-slate-900'>
         <h1 id='name'>{countryName}</h1>
 
         <div className='container'>
           <div className='map' onClick={(e) => handleClick(e.target)}>
-            <svg version='1.1' viewBox='0 0 1000 1000' fill='#00743f'>
+            <svg
+              version='1.1'
+              viewBox='0 0 1000 1000'
+              fill='#00743f'
+              strokeWidth='0.60'
+              stroke='black'
+            >
               <g transform='matrix(1.59433, 0, 0, 1.59433, -1721.78, -693.262)'>
                 <path
                   className='land bf'

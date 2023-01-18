@@ -14,8 +14,12 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const navigation = [
   { name: 'Home', href: '/home' },
-  { name: 'My Network', href: '/home/network' },
-  { name: 'My Videos', href: '/home/videos' },
+  { name: 'Baobab Community', href: '/home/network' },
+  { name: 'Documentaries', href: '/home/videos' },
+  { name: 'Movies', href: '/home/' },
+  { name: 'Podcasts', href: '/home/' },
+  { name: 'TV Series', href: '/home/' },
+
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
@@ -32,8 +36,8 @@ export default function Navbar() {
   const logout = authContext.logout;
 
   return (
-    <div className='bg-white dark:bg-gray-800 '>
-      <Disclosure as='nav' className='bg-gray-800'>
+    <div className='bg-white dark:bg-slate-900 '>
+      <Disclosure as='nav' className='bg-slate-900'>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>

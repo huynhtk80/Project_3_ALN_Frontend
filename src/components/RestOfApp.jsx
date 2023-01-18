@@ -6,14 +6,14 @@ import Home from '../pages/Home';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import Navbar from './Navbar';
 import Network from '../pages/Network';
-import Videos from '../pages/Videos';
+import Videos from '../pages/Documentaries';
 import Settings from '../pages/Settings';
 import Logout from '../pages/Logout';
 import NotFound from '../pages/NotFound';
 import { AuthContext } from '../providers/AuthProvider';
 import { LoginForm } from './LoginForm';
 import UploadVideo from '../pages/UploadVideo';
-import Signin  from '../pages/Signin';
+import Signin from '../pages/Signin';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
