@@ -15,7 +15,7 @@ function HeroSection() {
           height: '500px',
         }}
       >
-        <div className=' fixed w-full flex flex-1 p-2 items-center justify-between sm:items-stretch bg-opacity-80 bg-white dark:bg-slate-800 dark:bg-opacity-80'>
+        <div className=' bg-base-100 fixed w-full top-0 flex flex-1 p-2 items-center justify-between sm:items-stretch bg-opacity-80'>
           <div className='flex flex-shrink-0 items-center'>
             <Link to='/home'>
               <img
@@ -51,7 +51,7 @@ function HeroSection() {
           >
             <h1 className='text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-8 text-gray-200 dark:text-gray-800'>
               African Curated Content <br />
-              <span className='text-blue-600'>for your needs</span>
+              <span className='text-primary'>made for you</span>
             </h1>
             <Link
               className='inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-secondary text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'

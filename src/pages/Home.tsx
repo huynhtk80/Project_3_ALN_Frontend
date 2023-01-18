@@ -6,11 +6,11 @@ import { videoArray } from '../utils/mockDb';
 function Home() {
   return (
     <>
-      <div className='bg-white dark:bg-gray-800 '>
-        <h1 className='text-center text-cyan-900 tracking-wide text-3xl'>
+      <div className='bg-base-100 '>
+        <h1 className='text-center tracking-wide text-3xl'>
           Home Page -Africa Live Network Under Construction - Beta Testing Site
         </h1>
-        <div className='grid grid-cols-2 grid-rows-3 gap-10 p-5 justify-items-center'>
+        <div className='justify-items-center text-center m-5'>
           Content Coming Soon
         </div>
       </div>
