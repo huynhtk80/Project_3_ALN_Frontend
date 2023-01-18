@@ -18,8 +18,13 @@ function AfricanMap() {
       });
       const countrySelected = document.getElementById(cName);
       countrySelected.style.fill = '#f1a104';
-      const countryData = AfricanCountryList[cName.toUpperCase()];
-      setCountryName(countryData['AfricanCountryList']);
+      // const countryData = AfricanCountryList[];
+      for (const key in AfricanCountryList) {
+        if (AfricanCountryList[key].CountryAbbrv === cName.toUpperCase()) {
+          console.log(AfricanCountryList[key]);
+          setCountryName(AfricanCountryList[key].CountryName);
+        }
+      }
     }
   };
   return (
