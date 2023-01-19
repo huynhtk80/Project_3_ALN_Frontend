@@ -13,7 +13,7 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
 
 const navigation = [
-  { name: 'Home', href: '/home' },
+  { name: 'Home Roots', href: '/home' },
   { name: 'Baobab Community', href: '/home/network' },
   { name: 'Documentaries', href: '/home/videos' },
   { name: 'Movies', href: '/home/Movies' },
