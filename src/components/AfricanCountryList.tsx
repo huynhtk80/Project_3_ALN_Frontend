@@ -1,19 +1,17 @@
-interface AfricanCountryList {
-  Number: [
-    GeoLocation: string,
-    CountryAbbrv: string,
-    CountryName: string,
-    AreaCode: number,
-    officialLanguage: string,
-    Capital: string,
-    Currency: string,
-    Flag: string,
-    Capital: string,
-    Currency: string,
+interface AfricanCountries {
+  [key: number]: {
+    GeoLocation: string;
+    CountryAbbrv: string;
+    CountryName: string;
+    AreaCode: number;
+    officialLanguage: string;
+    Capital: string;
+    Currency: string;
+    Flag: string;
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
-    futureConnections: Number,
-    PopulationSize: Number
-  ];
+    futureConnections: Number;
+    PopulationSize: Number;
+  };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
 
@@ -23,7 +21,7 @@ interface AfricanCountryList {
 //West Africa_(34-50)
 //Central Africa_(51-59)
 
-const AfricanCountryList = {
+const AfricanCountryList: AfricanCountries = {
   //North Africa__(1-8)_________________________________________________________________________________________________________________________
   1: {
     GeoLocation: 'North',

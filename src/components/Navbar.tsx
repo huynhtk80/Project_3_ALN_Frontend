@@ -43,7 +43,7 @@ export default function Navbar() {
             <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
               <div className='relative flex h-16 items-center justify-between'>
                 <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
-                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-100 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='sr-only'>Open main menu</span>
                     {open ? (
                       <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -72,13 +72,13 @@ export default function Navbar() {
                       {navigation.map((item) => (
                         <NavLink
                           end
-                          index={item.name}
+                          key={item.name}
                           to={item.href}
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
                             (isActive
-                              ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white')
+                              ? 'bg-gray-700 text-white'
+                              : 'text-primaryText hover:bg-gray-700 hover:text-white')
                           }
                         >
                           {item.name}
@@ -90,7 +90,7 @@ export default function Navbar() {
                 <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                   <button
                     type='button'
-                    className='rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
+                    className='rounded-full bg-gray-700 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                   >
                     <span className='sr-only'>View notifications</span>
 
@@ -99,7 +99,7 @@ export default function Navbar() {
 
                   <Menu as='div' className='relative ml-3'>
                     <div>
-                      <Menu.Button className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                      <Menu.Button className='flex rounded-full bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                         <span className='sr-only'>Open user menu</span>
                         <img
                           className='h-8 w-8 rounded-full'
@@ -174,7 +174,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <NavLink
                     to={item.href}
-                    index={item.name}
+                    key={item.name}
                     className={({ isActive }) =>
                       ' block px-3 py-2 rounded-md text-base font-medium' +
                       (isActive

@@ -8,7 +8,7 @@ function Videos() {
   return (
     <div>
       <h1>Africa Live Network - Under Construction - Beta Testing Site </h1>
-      <div className='flex flex-row flex-wrap justify-evenly mt-10 gap-10'>
+      <div className='flex flex-row flex-wrap justify-evenly gap-10'>
         {videoArray.map((vid, index) => {
           console.log(vid);
           console.log(index);

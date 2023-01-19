@@ -15,6 +15,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/FireStoreAPI';
+import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 
 function AdminApproveC() {
   const fbContext = useContext(FirebaseContext);
@@ -22,6 +23,8 @@ function AdminApproveC() {
   const db = fbContext.db;
   const [videos, setVideos] = useState<[VideoParams] | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [confirmModalShow, setConfirmModalShow] = useState(false);
+  const [rejectId, setRejectId] = useState('');
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
@@ -88,13 +91,16 @@ function AdminApproveC() {
 
   const onClickApproveHandle = async (
     videoId: string,
-    action: 'cancel' | 'submit' | 'approved'
+    action: 'cancel' | 'submit' | 'approved' | 'reject'
   ) => {
     const docRef = doc(db, 'videos', videoId);
     if (action === 'approved') {
       await updateDoc(docRef, {
         approval: 'approved',
       });
+    } else if (action === 'reject') {
+      setConfirmModalShow(true);
+      setRejectId(videoId);
     } else {
       await updateDoc(docRef, {
         approval: '',
@@ -112,6 +118,12 @@ function AdminApproveC() {
           >
             Approve
           </button>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={() => onClickApproveHandle(viddocId, 'reject')}
+          >
+            Reject
+          </button>
         </>
       );
     } else if (approval === 'approved') {
@@ -119,6 +131,14 @@ function AdminApproveC() {
     } else {
       return <></>;
     }
+  };
+
+  const rejectWithMessage = async (inputMsg: string) => {
+    const docRef = doc(db, 'videos', rejectId);
+    await updateDoc(docRef, {
+      approval: 'reject',
+      rejectMsg: inputMsg,
+    });
   };
 
   return (
@@ -245,6 +265,15 @@ function AdminApproveC() {
       </div>
       {showModal && (
         <UploadedVidDetail setShowModal={setShowModal} docID={currentDocID} />
+      )}
+      {confirmModalShow && (
+        <ConfirmModalInputMsg
+          setShowModal={setConfirmModalShow}
+          modalFunction={rejectWithMessage}
+          headingMessage='Confirm Reject'
+          bodyMessage='Please provide information for rejection reason'
+          inputLabel='Rejection Reason'
+        />
       )}
     </>
   );

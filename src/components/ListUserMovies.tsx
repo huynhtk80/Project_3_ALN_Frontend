@@ -16,12 +16,11 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/FireStoreAPI';
 
-
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState<[VideoParams]>([
+  const [videos, setVideos] = useState<VideoParams[]>([
     {
       userId: '',
       title: '',
@@ -33,12 +32,13 @@ function ListUserMovies() {
       collection: '',
       DOC_ID: '',
       approval: '',
+      rejectMsg: '',
     },
   ]);
   const [showModal, setShowModal] = useState(false);
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
+  const [isCheck, setIsCheck] = useState<string[]>([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
 
@@ -52,11 +52,15 @@ function ListUserMovies() {
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
+        setVideos([]);
       } else {
-        let videoData = querySnap.docs.map((doc) => ({
-          ...doc.data(),
-          DOC_ID: doc.id,
-        }));
+        let videoData = querySnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as VideoParams)
+        );
         setVideos(videoData);
       }
     });
@@ -70,6 +74,7 @@ function ListUserMovies() {
 
   const handleSelectAll = (e: any) => {
     setIsCheckAll(!isCheckAll);
+
     setIsCheck(videos.map((video) => video.DOC_ID));
     if (isCheckAll) {
       setIsCheck([]);
@@ -92,9 +97,11 @@ function ListUserMovies() {
           collection: category,
         });
       } else if (select === 'Submit for Approval') {
-        await updateDoc(docRef, {
-          approval: 'pending',
-        });
+        const videoDoc = videos.find((vid) => vid.DOC_ID === id);
+        if (videoDoc?.approval !== 'approved')
+          await updateDoc(docRef, {
+            approval: 'pending',
+          });
       }
     });
   };
@@ -130,6 +137,49 @@ function ListUserMovies() {
       );
     } else if (approval === 'approved') {
       return <p>Approved</p>;
+    } else if (approval === 'reject') {
+      return (
+        <>
+          Rejected
+          <div className=' inline-block dropdown dropdown-end'>
+            <label
+              tabIndex={0}
+              className='btn btn-circle btn-ghost btn-xs text-info'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                className='w-4 h-4 stroke-current'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                ></path>
+              </svg>
+            </label>
+            <div
+              tabIndex={0}
+              className='card compact dropdown-content shadow bg-base-100 rounded-box w-64'
+            >
+              <div className='card-body'>
+                <h2 className='card-title'>Reason for Rejection</h2>
+                <p>{videos.find((vid) => vid.DOC_ID === viddocId).rejectMsg}</p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={() => onClickApproveHandle(viddocId, 'submit')}
+          >
+            Resubmit for <br />
+            Approval
+          </button>
+        </>
+      );
     } else {
       return (
         <button
@@ -172,7 +222,7 @@ function ListUserMovies() {
             </tr>
           </thead>
           <tbody>
-            {isCheck.length > 0 ? (
+            {isCheck?.length > 0 ? (
               <tr>
                 <td colSpan={7}>
                   {' '}
@@ -221,7 +271,7 @@ function ListUserMovies() {
                         id={video.DOC_ID}
                         type='checkbox'
                         className='checkbox'
-                        checked={isCheck.includes(video.DOC_ID)}
+                        checked={isCheck?.includes(video.DOC_ID)}
                         onChange={handleCheckClick}
                       />
                     </label>

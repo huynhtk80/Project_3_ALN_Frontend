@@ -60,7 +60,7 @@ function InterObserver({
 
   if (imagePosition === 'right')
     return (
-      <section id={sectionId} className='h-fit my-10 sm:my-60'>
+      <section id={sectionId} className='h-fit my-10 sm:my-60 overflow-hidden'>
         {/* <div className="isVisible mx-auto bg-gray-600">
           {isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}
         </div> */}
@@ -87,7 +87,7 @@ function InterObserver({
     );
   return (
     <>
-      <section id={sectionId} className='h-fit my-10 sm:my-60'>
+      <section id={sectionId} className='h-fit my-10 sm:my-60 overflow-hidden'>
         {/* <div className="isVisible mx-auto bg-gray-600">
           {isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}
         </div> */}
