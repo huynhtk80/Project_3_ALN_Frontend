@@ -119,7 +119,7 @@ const AfricanCountryList: AfricanCountries = {
     Capital: 'Las Palmas de Gran Canaria and Santa Cruz de Tenerife',
     Currency: 'Euro',
     Flag: '🇮🇨',
-    futureConnections: null,
+    futureConnections: 0,
     PopulationSize: 2252465,
   },
 
@@ -412,7 +412,7 @@ const AfricanCountryList: AfricanCountries = {
     CountryAbbrv: 'NA',
     CountryName: 'Namibia',
     AreaCode: 264,
-    officialLanguage: null,
+    officialLanguage: 'Unknown',
     Capital: 'Windhoek',
     Currency: 'Namibian Dollar',
     Flag: '🇳🇦',
