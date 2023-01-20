@@ -2,7 +2,7 @@ import { deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { deleteFile, uploadFileStorage } from '../utils/FireStorageAPI';
+import { deleteFile, uploadFileStorage } from '../utils/fireStorageAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import DeleteModal from './DeleteModal';
 

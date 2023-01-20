@@ -10,7 +10,7 @@ export interface VideoParams {
   description: string;
   collection: string;
   approval?: string;
-  DOC_ID?: string;
+  DOC_ID: string;
   rejectMsg?: string;
 }
 
