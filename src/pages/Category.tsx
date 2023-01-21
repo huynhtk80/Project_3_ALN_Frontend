@@ -5,7 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/FireStoreAPI';
 
-function Podcasts() {
+function Category() {
   const { category } = useParams();
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
@@ -33,6 +33,7 @@ function Podcasts() {
     let collectionRef = collection(db, 'videos');
 
     let queryRef = query(collectionRef, where('collection', '==', category));
+    ``;
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
@@ -64,4 +65,4 @@ function Podcasts() {
   );
 }
 
-export default Podcasts;
+export default Category;
