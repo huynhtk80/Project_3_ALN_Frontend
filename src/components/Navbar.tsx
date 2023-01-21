@@ -11,15 +11,13 @@ import Switcher from './ThemeSwitcher';
 import LandingFooter from './LandingFooter';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
+import Footer from './Footer';
 
 const navigation = [
-  { name: 'Home', href: '/home' },
+  { name: 'Home Roots', href: '/home' },
   { name: 'Baobab Community', href: '/home/network' },
   { name: 'Documentaries', href: '/home/videos' },
-  { name: 'Movies', href: '/home/Movies' },
-  { name: 'Podcasts', href: '/home/Podcasts' },
-  { name: 'TV Series', href: '/home/TVSeries' },
-
+  { name: 'Categories', href: '/home/Category' },
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
@@ -193,7 +191,7 @@ export default function Navbar() {
       <div className='min-h-screen'>
         <Outlet />
       </div>
-      <LandingFooter />
+      <Footer />
     </div>
   );
 }
