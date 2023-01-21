@@ -11,6 +11,7 @@ import Switcher from './ThemeSwitcher';
 import LandingFooter from './LandingFooter';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
+import Footer from './Footer';
 
 const navigation = [
   { name: 'Home Roots', href: '/home' },
@@ -190,7 +191,7 @@ export default function Navbar() {
       <div className='min-h-screen'>
         <Outlet />
       </div>
-      <LandingFooter />
+      <Footer />
     </div>
   );
 }
