@@ -664,7 +664,7 @@ function AfricanMap() {
             </svg>
           </div>
 
-          <div id='capital'>
+          <div id='capital'className=''>
             <span>Capital City</span>
           </div>
           <div id='currency'>
@@ -675,7 +675,7 @@ function AfricanMap() {
           </div>
         </div>
 
-        <div className='footer'>
+        <div className='text-primary'>
           <p>
             AFRICA LIVE NETWORK*** Discovering African Countries on an
             individual level
