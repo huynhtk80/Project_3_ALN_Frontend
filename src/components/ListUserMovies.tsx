@@ -14,7 +14,7 @@ import {
 import { AuthContext } from '../providers/AuthProvider';
 
 import UploadedVidDetail from './UploadedVidDetail';
-import { VideoParams } from '../utils/FireStoreAPI';
+import { VideoParams } from '../utils/fireStoreAPI';
 
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
@@ -166,7 +166,9 @@ function ListUserMovies() {
             >
               <div className='card-body'>
                 <h2 className='card-title'>Reason for Rejection</h2>
-                <p>{videos.find((vid) => vid.DOC_ID === viddocId).rejectMsg}</p>
+                <p>
+                  {videos.find((vid) => vid.DOC_ID === viddocId)?.rejectMsg}
+                </p>
               </div>
             </div>
           </div>
