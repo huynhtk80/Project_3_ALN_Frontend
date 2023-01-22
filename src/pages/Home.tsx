@@ -7,7 +7,7 @@ import AfricanMap from '../components/AfricanMap';
 function Home() {
   return (
     <>
-      <div className='bg-white dark:bg-gray-800 '>
+      {/* <div className='bg-base-100 '>
         <div className='carousel w-full'>
           <div id='slide1' className='carousel-item relative w-full'>
             <img src='https://placeimg.com/800/200/arch' className='w-full' />
@@ -58,7 +58,7 @@ function Home() {
           </div>
           //* TODO: Add Top Videos / Eventually to be Recommended Videos*//
         </div>
-      </div>
+      </div> */}
       <AfricanMap />
     </>
   );

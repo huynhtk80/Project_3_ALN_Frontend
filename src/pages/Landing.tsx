@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
+import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import InterObserver from '../components/InterObserver';
 import LandingFooter from '../components/LandingFooter';
@@ -44,7 +45,7 @@ function Landing() {
         message={message2}
         imagePosition='right'
       />
-      <LandingFooter />
+      <Footer />
     </div>
   );
 }
