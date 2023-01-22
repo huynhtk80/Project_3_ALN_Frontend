@@ -1,3 +1,6 @@
+import { ImgHTMLAttributes } from 'react';
+import { URL } from 'url';
+
 interface AfricanCountries {
   [key: number]: {
     GeoLocation: string;
@@ -7,7 +10,7 @@ interface AfricanCountries {
     officialLanguage: string;
     Capital: string;
     Currency: string;
-    Flag: url;
+    Flag: ImgHTMLAttributes;
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
