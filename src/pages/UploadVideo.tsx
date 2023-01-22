@@ -4,7 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { addDoc, collection, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import ReactPlayer from 'react-player';
-import { uploadFileStorage } from '../utils/FireStorageAPI';
+import { uploadFileStorage } from '../utils/fireStorageAPI';
 import ListUserMovies from '../components/ListUserMovies';
 import SelectAndUpFile from '../components/SelectAndUpFile';
 import { addMovie } from '../utils/FireStoreAPI';

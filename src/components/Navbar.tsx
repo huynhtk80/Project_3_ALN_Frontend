@@ -11,15 +11,13 @@ import Switcher from './ThemeSwitcher';
 import LandingFooter from './LandingFooter';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
+import Footer from './Footer';
 
 const navigation = [
   { name: 'Home Roots', href: '/home' },
   { name: 'Baobab Community', href: '/home/network' },
   { name: 'Documentaries', href: '/home/videos' },
-  { name: 'Movies', href: '/home/Movies' },
-  { name: 'Podcasts', href: '/home/Podcasts' },
-  { name: 'TV Series', href: '/home/TVSeries' },
-
+  { name: 'Categories', href: '/home/Category' },
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
 ];
@@ -36,14 +34,14 @@ export default function Navbar() {
   const logout = authContext.logout;
 
   return (
-    <div className='bg-white dark:bg-slate-900 '>
-      <Disclosure as='nav' className='bg-slate-900'>
+    <div className='bg-base-100 '>
+      <Disclosure as='nav' className='bg-base-100'>
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
               <div className='relative flex h-16 items-center justify-between'>
                 <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
-                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-100 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='sr-only'>Open main menu</span>
                     {open ? (
                       <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -77,8 +75,8 @@ export default function Navbar() {
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
                             (isActive
-                              ? 'bg-gray-700 text-white'
-                              : 'text-primaryText hover:bg-gray-700 hover:text-white')
+                              ? 'bg-secondary text-white'
+                              : 'text-base-content hover:bg-gray-700 hover:text-white')
                           }
                         >
                           {item.name}
@@ -193,7 +191,7 @@ export default function Navbar() {
       <div className='min-h-screen'>
         <Outlet />
       </div>
-      <LandingFooter />
+      <Footer />
     </div>
   );
 }

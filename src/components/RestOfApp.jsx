@@ -14,6 +14,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { LoginForm } from './LoginForm';
 import UploadVideo from '../pages/UploadVideo';
 import Signin from '../pages/Signin';
+import Category from '../pages/Category';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -30,6 +31,7 @@ export const RestOfApp = () => {
           <Route path='Profile' element={<Profile />} />
           <Route path='network' element={<Network />} />
           <Route path='videos' element={<Videos />} />
+          <Route path='Category/:Documentaries' element={<Category />} />
           <Route path='uploadvideo' element={<UploadVideo />} />
           <Route path='settings' element={<Settings />} />
           <Route path='logout' element={<Logout />} />

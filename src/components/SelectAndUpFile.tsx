@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { uploadFileStorage } from '../utils/FireStorageAPI';
+import { uploadFileStorage } from '../utils/fireStorageAPI';
 import { addMovie } from '../utils/FireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import UploadedVidDetail from './UploadedVidDetail';
