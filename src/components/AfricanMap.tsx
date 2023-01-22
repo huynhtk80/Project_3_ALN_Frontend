@@ -2,9 +2,7 @@ import { useState } from 'react';
 import AfricanCountryList from './AfricanCountryList';
 
 function AfricanMap() {
-  const [countryName, setCountryName] = useState(
-    'Discover Each Countries Individuality & Opportunities By Clicking On The Map Below'
-  );
+  const [countryName, setCountryName] = useState('');
   const [capital, setCapital] = useState('');
   const [currency, setCurrency] = useState('');
   const [flag, setFlag] = useState('');
@@ -40,17 +38,20 @@ function AfricanMap() {
   return (
     <>
       <h1 className='text-2xl text-base-content text-center m-5' id='name'>
-        ***AFRICA LIVE NETWORK*** Discovering African Countries on an individual
-        level
+        ***AFRICA LIVE NETWORK*** <br />
+        Discovering African Countries on an individual level <br />
+        Discover Each Countries Individuality & Opportunities By Clicking On The
+        Map Below
       </h1>
       <div
-        className='p-5 fixed'
+        className='p-5'
         style={{
           marginLeft: '2%',
           marginTop: '5%',
         }}
+        s
       >
-        <div className='stats stats-horizontal lg:stats-vertical shadow bg-opacity-10 bg-primary glass'>
+        <div className='float-right stats stats-horizontal lg:stats-vertical m-10 shadow bg-opacity-10 bg-primary glass'>
           <div className='stat'>
             <div className='stat-title'>Country</div>
             <div className='stat-value '>{countryName}</div>
@@ -58,7 +59,7 @@ function AfricanMap() {
 
           <div className='stat'>
             <div className='stat-title'>Flag</div>
-            <div className='stat-value text-9xl'>{flag}</div>
+            <div className='mx-auto stat-value scale-150'>{flag}</div>
           </div>
 
           <div className='stat'>
@@ -88,8 +89,8 @@ function AfricanMap() {
           <span>Official Language : {officialLanguage}</span>
         </div> */}
       </div>
-      <div className='flex basis-3 place-content-center bg-base-100 text-base-content mx-auto p-5'>
-        <div className='container m-10'>
+      <div className='flex cursor-pointer place-contents-end bg-base-100 text-base-content p-5 -mt-80 -mb-60 -ml-80'>
+        <div className='container -scale-50 rotate-180 '>
           <div className='map' onClick={(e) => handleClick(e.target)}>
             <svg
               version='1.1'
