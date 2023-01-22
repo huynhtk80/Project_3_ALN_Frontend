@@ -61,7 +61,7 @@ function Home() {
           </div>
         </div>
       }
-      <import AfricanMap />
+      <AfricanMap />
     </>
   );
 }
