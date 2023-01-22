@@ -9,6 +9,7 @@ function AfricanMap() {
   const [currency, setCurrency] = useState('');
   const [flag, setFlag] = useState('');
   const [officialLanguage, setLanguage] = useState('');
+  const [Quadrent, setQuadrent] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
     const cName = target.id;
@@ -31,6 +32,7 @@ function AfricanMap() {
           setCurrency(AfricanCountryList[key].Currency);
           setFlag(AfricanCountryList[key].Flag);
           setLanguage(AfricanCountryList[key].officialLanguage);
+          setQuadrent(AfricanCountryList[key].Quadrent);
         }
       }
     }
@@ -63,7 +65,13 @@ function AfricanMap() {
             <div className='stat-title'>Capital</div>
             <div className='stat-value'>{capital}</div>
           </div>
+
+          <div className='stat'>
+            <div className='stat-title'>Quadrent</div>
+            <div className='stat-value'>{Quadrent}</div>
+          </div>
         </div>
+
         {/* <h1 className='text-4xl' id='name'>
           {countryName}
         </h1>
