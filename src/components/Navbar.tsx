@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 // import "./Navbar.css";
@@ -33,9 +33,25 @@ export default function Navbar() {
   const user = authContext.user;
   const logout = authContext.logout;
 
+  const [top, setTop] = useState(true);
+
+  // detect whether user has scrolled the page down by 10px
+  useEffect(() => {
+    const scrollHandler = () => {
+      window.pageYOffset > 10 ? setTop(false) : setTop(true);
+    };
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, [top]);
+
   return (
     <div className='bg-base-100 '>
-      <Disclosure as='nav' className='bg-base-100'>
+      <Disclosure
+        as='nav'
+        className={`navbar bg-base-100 fixed w-full z-30 md:bg-opacity-80 transition duration-300 ease-in-out ${
+          !top && 'bg-base-100 backdrop-blur-sm shadow-lg text-base-content'
+        }`}
+      >
         {({ open }) => (
           <>
             <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
