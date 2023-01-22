@@ -5,6 +5,10 @@ function AfricanMap() {
   const [countryName, setCountryName] = useState(
     'Discover Each Countries Individuality & Opportunities By Clicking On The Map Below'
   );
+  const [capital, setCapital] = useState('');
+  const [currency, setCurrency] = useState('');
+  const [flag, setFlag] = useState('');
+  const [officialLanguage, setLanguage] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
     const cName = target.id;
@@ -23,16 +27,61 @@ function AfricanMap() {
         if (AfricanCountryList[key].CountryAbbrv === cName.toUpperCase()) {
           console.log(AfricanCountryList[key]);
           setCountryName(AfricanCountryList[key].CountryName);
+          setCapital(AfricanCountryList[key].Capital);
+          setCurrency(AfricanCountryList[key].Currency);
+          setFlag(AfricanCountryList[key].Flag);
+          setLanguage(AfricanCountryList[key].officialLanguage);
         }
       }
     }
   };
   return (
     <>
-      <div className='bg-slate-900'>
-        <h1 id='name'>{countryName}</h1>
+      <h1 className='text-2xl text-base-content text-center m-5' id='name'>
+        ***AFRICA LIVE NETWORK*** Discovering African Countries on an individual
+        level
+      </h1>
+      <div
+        className='p-5 fixed'
+        style={{
+          marginLeft: '2%',
+          marginTop: '5%',
+        }}
+      >
+        <div className='stats stats-horizontal lg:stats-vertical shadow bg-opacity-10 bg-primary glass'>
+          <div className='stat'>
+            <div className='stat-title'>Country</div>
+            <div className='stat-value '>{countryName}</div>
+          </div>
 
-        <div className='container'>
+          <div className='stat'>
+            <div className='stat-title'>Flag</div>
+            <div className='stat-value text-9xl'>{flag}</div>
+          </div>
+
+          <div className='stat'>
+            <div className='stat-title'>Capital</div>
+            <div className='stat-value'>{capital}</div>
+          </div>
+        </div>
+        {/* <h1 className='text-4xl' id='name'>
+          {countryName}
+        </h1>
+        <div id='flag' className='text-base-content'>
+          <span className='text-9xl'>{flag}</span>
+        </div>
+        <div id='capital' className='text-base-content'>
+          <span>Capital City : {capital}</span>
+        </div>
+        <div id='currency' className='text-base-content'>
+          <span>Currency : {currency} </span>
+        </div>
+        <div id='language' className='text-base-content'>
+          <span>Official Language : {officialLanguage}</span>
+        </div> */}
+      </div>
+      <div className='flex basis-3 place-content-center bg-base-100 text-base-content mx-auto p-5'>
+        <div className='container m-10'>
           <div className='map' onClick={(e) => handleClick(e.target)}>
             <svg
               version='1.1'
@@ -663,23 +712,6 @@ function AfricanMap() {
               </g>
             </svg>
           </div>
-
-          <div id='capital'className=''>
-            <span>Capital City</span>
-          </div>
-          <div id='currency'>
-            <span>Currency</span>
-          </div>
-          <div id='flag'>
-            <span>Flag</span>
-          </div>
-        </div>
-
-        <div className='text-primary'>
-          <p>
-            AFRICA LIVE NETWORK*** Discovering African Countries on an
-            individual level
-          </p>
         </div>
       </div>
     </>
