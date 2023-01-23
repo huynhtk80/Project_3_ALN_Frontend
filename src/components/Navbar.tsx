@@ -45,12 +45,11 @@ export default function Navbar() {
   }, [top]);
 
   return (
-    <div className='bg-base-100 '>
+    <div className=''>
       <Disclosure
         as='nav'
-        className={`navbar bg-base-100 fixed w-full z-30 md:bg-opacity-80 transition duration-300 ease-in-out ${
-          !top && 'bg-base-100 backdrop-blur-sm shadow-lg text-base-content'
-        }`}
+        className={`navbar bg-secondary fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out 
+        ${!top && 'bg-primary backdrop-blur-sm shadow-lg text-base-content'}`}
       >
         {({ open }) => (
           <>
