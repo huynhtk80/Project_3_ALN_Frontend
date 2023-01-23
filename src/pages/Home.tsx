@@ -9,7 +9,7 @@ function Home() {
     <>
       {
         <div className='bg-base-100 '>
-          <div className='carousel w-full'>
+          <div className='carousel w-full pt-20'>
             <div id='slide1' className='carousel-item relative w-full'>
               <img src='https://placeimg.com/800/200/arch' className='w-full' />
               <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>

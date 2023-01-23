@@ -22,7 +22,7 @@ function VideoThumbCard({
 }: AppProps) {
   console.log(title, activeIndex, index);
   return (
-    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
+    <div className='max-w-sm rounded text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg'>
       <div className='flex justify-center'>
         <ReactPlayer
           controls
@@ -37,7 +37,7 @@ function VideoThumbCard({
       </div>
       <div className='px-6 py-4'>
         <div className='font-bold text-xl mb-2'>{title}</div>
-        <p className='text-gray-700 text-base'>{description}</p>
+        <p className='text-base-content text-base'>{description}</p>
       </div>
     </div>
   );

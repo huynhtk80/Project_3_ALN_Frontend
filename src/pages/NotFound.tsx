@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function NotFound() {
-  return <div>404: Page Not Found</div>;
+  return (
+    <div className='text-4xl text-error text-center pt-40 border border-primary'>
+      404: Page Not Found
+    </div>
+  );
 }
 
 export default NotFound;

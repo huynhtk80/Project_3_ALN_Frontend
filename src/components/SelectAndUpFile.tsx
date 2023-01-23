@@ -99,7 +99,7 @@ function SelectAndUpFile() {
 
   return (
     <>
-      <div className='text-center text-cyan-900 tracking-wide text-3xl'>
+      <div className='text-center pt-20 text-cyan-900 tracking-wide text-3xl'>
         UploadVideo
       </div>
 

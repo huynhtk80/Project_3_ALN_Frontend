@@ -11,7 +11,7 @@ export const LoginForm = () => {
   return (
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='w-full max-w-md space-y-8 shadow-xl p-6 bg-slate-100'>
+        <div className='w-full max-w-md space-y-8 mt-40 shadow-xl p-6 bg-slate-100'>
           <div>
             <img
               className='mx-auto h-12 w-auto'
@@ -88,8 +88,7 @@ export const LoginForm = () => {
             <div>
               <button
                 type='submit'
-                className='group relative flex w-full justify-center rounded-md border border-transparent bg-blue-500 py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                
+                className='group relative flex w-full justify-center rounded-md border border-transparent bg-secondary py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
                 onClick={(e) => {
                   e.preventDefault();
                   loginFn(email, password);
