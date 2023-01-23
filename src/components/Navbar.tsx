@@ -1,7 +1,7 @@
 import { Fragment, useContext, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-// import "./Navbar.css";
+import './Navbar.css';
 import { Outlet } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 import ALN_LOGO_3_47 from '../assets/ALN_LOGO-3-47.png';
@@ -49,7 +49,7 @@ export default function Navbar() {
       <Disclosure
         as='nav'
         className={`navbar bg-secondary fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out 
-        ${!top && 'bg-primary backdrop-blur-sm shadow-lg text-base-content'}`}
+        ${!top && 'backdrop-blur-sm shadow-lg text-base-content'}`}
       >
         {({ open }) => (
           <>
@@ -90,7 +90,7 @@ export default function Navbar() {
                           className={({ isActive }) =>
                             ' px-3 py-2 rounded-md text-sm font-medium ' +
                             (isActive
-                              ? 'bg-secondary text-white'
+                              ? 'bg-primary text-white'
                               : 'text-base-content hover:bg-gray-700 hover:text-white')
                           }
                         >
