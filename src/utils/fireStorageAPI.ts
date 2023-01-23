@@ -11,7 +11,7 @@ import { updateDoc } from 'firebase/firestore';
 export const uploadFileStorage = async (
   store: any,
   file: File,
-  location: 'video' | 'image' | 'audio' | 'thumbnail',
+  location: 'video' | 'image' | 'audio' | 'thumbnail' | 'trailer',
   setProgress?: React.Dispatch<React.SetStateAction<number>>
 ): Promise<{ downloadURL: string; docId: string }> => {
   return new Promise((resolve, reject) => {
@@ -40,7 +40,7 @@ export const uploadFileStorage = async (
 
 export const deleteFile = async (
   store: any,
-  location: 'video' | 'image' | 'audio' | 'thumbnail',
+  location: 'video' | 'image' | 'audio' | 'thumbnail' | 'trailer',
   FileId: string
 ) => {
   const fileRef = ref(store, `${location}/${FileId}`);
