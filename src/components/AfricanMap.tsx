@@ -51,7 +51,7 @@ function AfricanMap() {
         }}
         s
       >
-        <div className='float-right stats stats-horizontal lg:stats-vertical m-10 shadow bg-opacity-10 bg-primary glass'>
+        <div className='float-right stats stats-horizontal lg:stats-vertical m-10 shadow bg-opacity-10 bg-secondary glass'>
           <div className='stat'>
             <div className='stat-title'>Country</div>
             <div className='stat-value '>{countryName}</div>

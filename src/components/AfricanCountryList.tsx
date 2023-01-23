@@ -674,7 +674,7 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Jamestown',
     Currency: 'Saint Helena pound & pound sterling',
-    Flag: <img src='https://flagsapi.com/SH/flat/64.png'></img>,
+    Flag: <img src='https://flagsapi.com/GB/flat/64.png'></img>,
     futureConnections: 2294,
     PopulationSize: 6135,
   },
