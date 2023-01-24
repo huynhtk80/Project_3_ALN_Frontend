@@ -13,12 +13,13 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
+import VideoDetails from './VideoDetails';
 
-interface AppProps {
+interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   docID: string;
 }
-function UploadedVidDetail({ setShowModal, docID }: AppProps) {
+function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -56,7 +57,7 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   const [trailerFile, setTrailerFile] = useState<File>();
   const [trailerBlob, setTrailerBlob] = useState('');
   const [progress, setProgress] = useState(0);
-
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const isSaved = () => {
@@ -410,13 +411,22 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                 Delete
               </button>
               <div>
-                <button
-                  className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                  type='button'
-                  onClick={() => setShowModal(false)}
-                >
-                  Close
-                </button>
+                <div>
+                  <button
+                    className='btn'
+                    type='button'
+                    onClick={() => setShowPreviewModal(true)}
+                  >
+                    Preview
+                  </button>
+                  <button
+                    className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                    type='button'
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -429,6 +439,9 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
           setShowModal={setShowDeleteModal}
           deleteFunction={deleteVideo}
         />
+      )}
+      {showPreviewModal && (
+        <VideoDetails setShowModal={setShowPreviewModal} docId={docID} />
       )}
     </>
   );
