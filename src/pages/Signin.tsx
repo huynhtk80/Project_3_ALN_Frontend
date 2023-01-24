@@ -10,6 +10,7 @@ export default function userInfo() {
   const store = fbContext.store;
 
   const [about, setAbout] = useState('');
+  const [firstName, setFirstName]= useState("");
 
   const onChangeHandle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setAbout(e.target.value);
@@ -21,7 +22,7 @@ export default function userInfo() {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
     await setDoc(docRef, {
-      about,
+      about, firstName
     });
   };
 
@@ -178,6 +179,7 @@ export default function userInfo() {
                         id='first-name'
                         autoComplete='given-name'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
 
