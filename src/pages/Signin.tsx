@@ -9,21 +9,26 @@ export default function userInfo() {
   const db = fbContext.db;
   const store = fbContext.store;
 
-  const [about, setAbout] = useState('');
-  const [firstName, setFirstName]= useState("");
+  const [userProfile, setUserProfile] = useState({
+    about: '',
+    firstName: '',
+    lastName: '',
+  });
 
-  const onChangeHandle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setAbout(e.target.value);
+  const onChangeHandle = (e: any) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUserProfile({ ...userProfile, [name]: value });
   };
 
+  console.log(userProfile);
   const onClickSaveHandle = async (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    await setDoc(docRef, {
-      about, firstName
-    });
+    await setDoc(docRef, userProfile);
   };
 
   return (
@@ -64,7 +69,7 @@ export default function userInfo() {
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                         placeholder='you@example.com'
                         defaultValue={''}
-                        onChange={(e) => setAbout(e.target.value)}
+                        onChange={onChangeHandle}
                       />
                     </div>
                     <p className='mt-2 text-sm text-gray-500'>
@@ -175,11 +180,11 @@ export default function userInfo() {
                       </label>
                       <input
                         type='text'
-                        name='first-name'
+                        name='firstName'
                         id='first-name'
                         autoComplete='given-name'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                        onChange={(e) => setFirstName(e.target.value)}
+                        onChange={onChangeHandle}
                       />
                     </div>
 
@@ -192,7 +197,8 @@ export default function userInfo() {
                       </label>
                       <input
                         type='text'
-                        name='last-name'
+                        name='lastName'
+                        onChange={onChangeHandle}
                         id='last-name'
                         autoComplete='family-name'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
@@ -208,7 +214,8 @@ export default function userInfo() {
                       </label>
                       <input
                         type='text'
-                        name='email-address'
+                        name='emailAddress'
+                        onChange={onChangeHandle}
                         id='email-address'
                         autoComplete='email'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
