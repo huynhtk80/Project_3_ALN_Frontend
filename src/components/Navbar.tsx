@@ -26,7 +26,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+export default function Navbar({ landing = false }: { landing?: boolean }) {
   const fbContext = useContext(FirebaseContext);
   const app = fbContext.app;
   const authContext = useContext(AuthContext);
@@ -48,7 +48,7 @@ export default function Navbar() {
     <div className=''>
       <Disclosure
         as='nav'
-        className={`navbar bg-secondary fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out 
+        className={`navbar bg-base-100 fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out 
         ${!top && 'backdrop-blur-sm shadow-lg text-base-content'}`}
       >
         {({ open }) => (
@@ -82,21 +82,22 @@ export default function Navbar() {
                   </div>
                   <div className='hidden sm:ml-6 sm:block'>
                     <div className='flex space-x-4'>
-                      {navigation.map((item) => (
-                        <NavLink
-                          end
-                          key={item.name}
-                          to={item.href}
-                          className={({ isActive }) =>
-                            ' px-3 py-2 rounded-md text-sm font-medium ' +
-                            (isActive
-                              ? 'bg-primary text-white'
-                              : 'text-base-content hover:bg-gray-700 hover:text-white')
-                          }
-                        >
-                          {item.name}
-                        </NavLink>
-                      ))}
+                      {!landing &&
+                        navigation.map((item) => (
+                          <NavLink
+                            end
+                            key={item.name}
+                            to={item.href}
+                            className={({ isActive }) =>
+                              ' px-3 py-2 rounded-md text-sm font-medium ' +
+                              (isActive
+                                ? 'bg-primary text-white'
+                                : 'text-base-content hover:bg-gray-700 hover:text-white')
+                            }
+                          >
+                            {item.name}
+                          </NavLink>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -203,10 +204,14 @@ export default function Navbar() {
           </>
         )}
       </Disclosure>
-      <div className='min-h-screen'>
-        <Outlet />
-      </div>
-      <Footer />
+      {!landing && (
+        <>
+          <div className='min-h-screen'>
+            <Outlet />
+          </div>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
