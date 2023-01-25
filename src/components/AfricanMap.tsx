@@ -49,7 +49,6 @@ function AfricanMap() {
           marginLeft: '2%',
           marginTop: '5%',
         }}
-        s
       >
         <div className='float-right stats stats-horizontal lg:stats-vertical m-10 shadow bg-opacity-10 bg-secondary glass'>
           <div className='stat'>
