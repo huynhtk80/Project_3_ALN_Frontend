@@ -3,7 +3,7 @@ import { URL } from 'url';
 
 interface AfricanCountries {
   [key: number]: {
-    Quadrent: string;
+    Quadrant: string;
     CountryAbbrv: string;
     CountryName: string;
     AreaCode: number;
@@ -27,7 +27,7 @@ interface AfricanCountries {
 const AfricanCountryList: AfricanCountries = {
   //North Africa__(1-8)_________________________________________________________________________________________________________________________
   1: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'DZ',
     CountryName: 'Algeria',
     AreaCode: 213,
@@ -40,7 +40,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   2: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'EG',
     CountryName: 'Egypt',
     AreaCode: 20,
@@ -53,7 +53,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   3: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'LY',
     CountryName: 'Libya',
     AreaCode: 218,
@@ -66,7 +66,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   4: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'MA',
     CountryName: 'Morocco',
     AreaCode: 212,
@@ -79,7 +79,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   5: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'TN',
     CountryName: 'Tunisia',
     AreaCode: 216,
@@ -92,7 +92,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   6: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'SD',
     CountryName: 'Sudan',
     AreaCode: 249,
@@ -105,7 +105,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   7: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'EH',
     CountryName: 'Western Sahara',
     AreaCode: 212,
@@ -118,7 +118,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   8: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'ES-CN',
     CountryName: 'Canary Islands',
     AreaCode: 928 || 828 || 922 || 822,
@@ -132,7 +132,7 @@ const AfricanCountryList: AfricanCountries = {
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
   9: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'BI',
     CountryName: 'Burundi',
     AreaCode: 257,
@@ -145,7 +145,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   10: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'KM',
     CountryName: 'Comoros',
     AreaCode: 269,
@@ -158,7 +158,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   11: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'DJ',
     CountryName: 'Djibouti',
     AreaCode: 253,
@@ -171,7 +171,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   12: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ER',
     CountryName: 'Eritrea',
     AreaCode: 291,
@@ -184,7 +184,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   13: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ET',
     CountryName: 'Ethiopia',
     AreaCode: 251,
@@ -197,7 +197,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   14: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'KE',
     CountryName: 'Kenya',
     AreaCode: 254,
@@ -210,7 +210,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   15: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MG',
     CountryName: 'Madagascar',
     AreaCode: 261,
@@ -223,7 +223,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   16: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MW',
     CountryName: 'Malawi',
     AreaCode: 265,
@@ -236,7 +236,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   17: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MU',
     CountryName: 'Mauritius',
     AreaCode: 230,
@@ -249,7 +249,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   18: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MZ',
     CountryName: 'Mozambique',
     AreaCode: 258,
@@ -262,7 +262,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   19: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'RW',
     CountryName: 'Rwanda',
     AreaCode: 250,
@@ -275,7 +275,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   20: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SC',
     CountryName: 'Seychelles',
     AreaCode: 248,
@@ -288,7 +288,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   21: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SO',
     CountryName: 'Somalia',
     AreaCode: 252,
@@ -301,7 +301,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   22: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SS',
     CountryName: 'South Sudan',
     AreaCode: 211,
@@ -314,7 +314,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   23: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'TZ',
     CountryName: 'Tanzania',
     AreaCode: 255,
@@ -327,7 +327,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   24: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'UG',
     CountryName: 'Uganda',
     AreaCode: 256,
@@ -340,7 +340,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   25: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ZM',
     CountryName: 'Zambia',
     AreaCode: 260,
@@ -353,7 +353,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   26: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ZW',
     CountryName: 'Zimbabwe',
     AreaCode: 263,
@@ -366,7 +366,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   27: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'RE',
     CountryName: 'Réunion Island',
     AreaCode: 262,
@@ -379,7 +379,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   28: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'YT',
     CountryName: 'Mayotte',
     AreaCode: 262,
@@ -393,7 +393,7 @@ const AfricanCountryList: AfricanCountries = {
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
   29: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'BW',
     CountryName: 'Botswana',
     AreaCode: 267,
@@ -406,7 +406,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   30: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'LS',
     CountryName: 'Lesotho',
     AreaCode: 266,
@@ -419,7 +419,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   31: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'NA',
     CountryName: 'Namibia',
     AreaCode: 264,
@@ -432,7 +432,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   32: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'ZA',
     CountryName: 'South Africa',
     AreaCode: 27,
@@ -445,7 +445,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   33: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'SZ',
     CountryName: 'Eswatini',
     AreaCode: 268,
@@ -459,7 +459,7 @@ const AfricanCountryList: AfricanCountries = {
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
   34: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'BJ',
     CountryName: 'Benin',
     AreaCode: 229,
@@ -472,7 +472,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   35: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'BF',
     CountryName: 'Burkina Faso',
     AreaCode: 226,
@@ -485,7 +485,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   36: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'CV',
     CountryName: 'Cabo Verde',
     AreaCode: 238,
@@ -498,7 +498,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   37: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'CI',
     CountryName: "Cote D'Ivoire",
     AreaCode: 225,
@@ -511,7 +511,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   38: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GH',
     CountryName: 'Ghana',
     AreaCode: 233,
@@ -524,7 +524,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   39: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GM',
     CountryName: 'Gambia',
     AreaCode: 220,
@@ -537,7 +537,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   40: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GN',
     CountryName: 'Guinea',
     AreaCode: 224,
@@ -550,7 +550,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   41: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GW',
     CountryName: 'Guinea-Bissau',
     AreaCode: 245,
@@ -563,7 +563,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   42: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'LR',
     CountryName: 'Liberia',
     AreaCode: 231,
@@ -576,7 +576,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   43: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'ML',
     CountryName: 'Mali',
     AreaCode: 223,
@@ -589,7 +589,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   44: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'MR',
     CountryName: 'Mauritania',
     AreaCode: 222,
@@ -602,7 +602,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   45: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'NE',
     CountryName: 'Niger',
     AreaCode: 227,
@@ -615,7 +615,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   46: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'NG',
     CountryName: 'Nigeria',
     AreaCode: 234,
@@ -628,7 +628,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   47: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SN',
     CountryName: 'Senegal',
     AreaCode: 221,
@@ -641,7 +641,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   48: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SL',
     CountryName: 'Sierra Leone',
     AreaCode: 232,
@@ -654,7 +654,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   49: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'TG',
     CountryName: 'Togo',
     AreaCode: 228,
@@ -667,7 +667,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   50: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SH',
     CountryName: 'Saint Helena, Ascension and Tristan da Cunha',
     AreaCode: 290,
@@ -681,7 +681,7 @@ const AfricanCountryList: AfricanCountries = {
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
   51: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'AO',
     CountryName: 'Angola',
     AreaCode: 244,
@@ -694,7 +694,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   52: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CM',
     CountryName: 'Cameroon',
     AreaCode: 237,
@@ -707,7 +707,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   53: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CF',
     CountryName: 'Central African Republic',
     AreaCode: 236,
@@ -720,7 +720,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   54: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'TD',
     CountryName: 'Chad',
     AreaCode: 235,
@@ -733,7 +733,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   55: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CD',
     CountryName: 'Democratic Republic of the Congo',
     AreaCode: 243,
@@ -746,7 +746,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   56: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CG',
     CountryName: 'Republic of the Congo',
     AreaCode: 242,
@@ -759,7 +759,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   57: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'GQ',
     CountryName: 'Equatorial Guinea',
     AreaCode: 240,
@@ -772,7 +772,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   58: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'GA',
     CountryName: 'Gabon',
     AreaCode: 241,
@@ -785,7 +785,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   59: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'ST',
     CountryName: 'Sao Tome And Principe',
     AreaCode: 239,

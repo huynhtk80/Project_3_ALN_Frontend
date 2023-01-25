@@ -7,7 +7,7 @@ function AfricanMap() {
   const [currency, setCurrency] = useState('');
   const [flag, setFlag] = useState('');
   const [officialLanguage, setLanguage] = useState('');
-  const [Quadrent, setQuadrent] = useState('');
+  const [Quadrant, setQuadrant] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
     const cName = target.id;
@@ -30,7 +30,7 @@ function AfricanMap() {
           setCurrency(AfricanCountryList[key].Currency);
           setFlag(AfricanCountryList[key].Flag);
           setLanguage(AfricanCountryList[key].officialLanguage);
-          setQuadrent(AfricanCountryList[key].Quadrent);
+          setQuadrant(AfricanCountryList[key].Quadrant);
         }
       }
     }
@@ -68,8 +68,8 @@ function AfricanMap() {
           </div>
 
           <div className='stat'>
-            <div className='stat-title'>Quadrent</div>
-            <div className='stat-value'>{Quadrent}</div>
+            <div className='stat-title'>Quadrant</div>
+            <div className='stat-value'>{Quadrant}</div>
           </div>
         </div>
 
