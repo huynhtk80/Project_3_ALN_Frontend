@@ -12,6 +12,10 @@ export interface VideoParams {
   approval?: string;
   DOC_ID: string;
   rejectMsg?: string;
+  trailer?: string;
+  trailerFileId?: string;
+  trailerThumb?: string;
+  trailerThumbFileId?: string;
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {

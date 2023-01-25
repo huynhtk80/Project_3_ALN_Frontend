@@ -13,16 +13,18 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
+import VideoDetails from './VideoDetails';
 
-interface AppProps {
+interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   docID: string;
 }
-function UploadedVidDetail({ setShowModal, docID }: AppProps) {
+function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
+
   const [videoDetailOnLoad, setVideoDetailOnload] = useState({
     userId: '',
     title: '',
@@ -44,11 +46,18 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
     description: '',
     collection: '',
     DOC_ID: '',
+    trailer: '',
+    trailerFileId: '',
+    trailerThumb: '',
+    trailerThumbFileId: '',
   });
   const [newThumbnail, setNewThumbnail] = useState<File>();
   const [newThumbnailUrl, setNewThumbnailUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-
+  const [trailerFile, setTrailerFile] = useState<File>();
+  const [trailerBlob, setTrailerBlob] = useState('');
+  const [progress, setProgress] = useState(0);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const isSaved = () => {
@@ -100,6 +109,62 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
     setNewThumbnail(newCustomThumb);
   };
 
+  const onChangeUploadTrailer = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (!e.target.files) {
+      alert('no file selected');
+      return;
+    }
+
+    setSaving(true);
+    let file = e.target.files[0];
+    setTrailerFile(file);
+    const url = URL.createObjectURL(file);
+    setTrailerBlob(url);
+
+    try {
+      const { imageUrl, thumbnailFile } = await getThumbnailForVideo(
+        url,
+        file.name
+      );
+
+      const { downloadURL: tempUrl, docId: videoFileId } =
+        await uploadFileStorage(store, file, 'trailer', setProgress);
+      console.log(progress);
+
+      const { downloadURL: tempThumbUrl, docId: thumbFileId } =
+        await uploadFileStorage(store, thumbnailFile, 'trailer');
+
+      if (videoDetails.thumbnailFileId !== undefined) {
+        if (videoDetails.trailerFileId)
+          deleteFile(store, 'trailer', videoDetails.trailerFileId);
+        if (videoDetails.trailerThumbFileId)
+          deleteFile(store, 'trailer', videoDetails.trailerThumbFileId);
+      }
+
+      setVideoDetails({
+        ...videoDetails,
+        trailer: tempUrl,
+        trailerFileId: videoFileId,
+        trailerThumb: tempThumbUrl,
+        trailerThumbFileId: thumbFileId,
+      });
+
+      const docRef = doc(db, 'videos', docID);
+      await updateDoc(docRef, {
+        ...videoDetails,
+        trailer: tempUrl,
+        trailerFileId: videoFileId,
+        trailerThumb: tempThumbUrl,
+        trailerThumbFileId: thumbFileId,
+      });
+      setSaving(false);
+    } catch (e: any) {
+      console.log(e.message);
+    }
+  };
+
   const onClickThumb = async () => {
     const { imageUrl, thumbnailFile } = await getThumbnailForVideo(
       videoDetails.url,
@@ -140,14 +205,12 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
   const onClickSave = async () => {
     const docRef = doc(db, 'videos', docID);
     await updateDoc(docRef, videoDetails);
-    // setShowModal(false);
   };
 
   const onBlurHandle = async () => {
     setSaving(true);
     const docRef = doc(db, 'videos', docID);
     await updateDoc(docRef, videoDetails);
-    // setShowModal(false);
     setSaving(false);
   };
 
@@ -280,15 +343,62 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                   </div>
                 </div>
               </div>
-              <div className='form-control w-full max-w-xs'>
-                <label className='label'>
-                  <span className='label-text'>Video</span>
+              <div className='form-control w-full max-w-xs flex flex-col'>
+                <div>
+                  <label className='label'>
+                    <span className='label-text'>Video</span>
+                  </label>
+                  <video
+                    src={videoDetails.url}
+                    controls
+                    poster={videoDetails.thumbnail}
+                  ></video>
+                </div>
+
+                <label className='label mt-3'>
+                  <span className='label-text'>Trailer</span>
                 </label>
-                <video
-                  src={videoDetails.url}
-                  controls
-                  poster={videoDetails.thumbnail}
-                ></video>
+                {videoDetails.trailer === undefined ? (
+                  <div className='card w-[80%] h-44 bg-base-100 shadow-xl image-full mt-1'>
+                    <div className='border-2 m-2 rounded-xl flex justify-center items-center'>
+                      <p>Trailer</p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {console.log(videoDetails.trailer)}
+
+                    <div className='card w-[80%] h-fit bg-base-100 shadow-xl image-full mt-1'>
+                      <div className=' card-body border-2 p-0 rounded-xl flex justify-center items-center m-2'>
+                        <video
+                          className=' rounded-xl'
+                          controls
+                          src={videoDetails.trailer}
+                          poster={videoDetails.trailerThumb}
+                        ></video>
+                      </div>
+                    </div>
+                  </>
+                )}
+                <div>
+                  <label className='label'>
+                    <span className='label-text'>Upload Trailer</span>
+                  </label>
+                  <input
+                    type='file'
+                    accept='video/*'
+                    className='file-input file-input-bordered w-full max-w-xs'
+                    onChange={onChangeUploadTrailer}
+                  />
+                  {saving && (
+                    <div
+                      className='radial-progress'
+                      style={{ '--value': `${progress}` }}
+                    >
+                      {Math.floor(progress)}%
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             {/*footer*/}
@@ -301,13 +411,22 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
                 Delete
               </button>
               <div>
-                <button
-                  className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                  type='button'
-                  onClick={() => setShowModal(false)}
-                >
-                  Close
-                </button>
+                <div>
+                  <button
+                    className='btn'
+                    type='button'
+                    onClick={() => setShowPreviewModal(true)}
+                  >
+                    Preview
+                  </button>
+                  <button
+                    className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                    type='button'
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -320,6 +439,9 @@ function UploadedVidDetail({ setShowModal, docID }: AppProps) {
           setShowModal={setShowDeleteModal}
           deleteFunction={deleteVideo}
         />
+      )}
+      {showPreviewModal && (
+        <VideoDetails setShowModal={setShowPreviewModal} docId={docID} />
       )}
     </>
   );

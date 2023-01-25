@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import InterObserver from '../components/InterObserver';
 import LandingFooter from '../components/LandingFooter';
+import MovieHeader from '../components/MovieHeader';
+import Navbar from '../components/Navbar';
 
 function Landing() {
   const [count, setCount] = useState(0);
@@ -21,11 +23,13 @@ function Landing() {
   const message2 = ` Watch your favorite shows and movies on African Network Live. Stream live TV, movies and more from your favorite networks and premiums channels. It’s all on African Network Live.`;
   return (
     <div className='bg-base-100'>
-      <HeroSection />
-      <hr
+      <Navbar landing={true} />
+      <MovieHeader />
+      {/* <HeroSection /> */}
+      {/* <hr
         id='LearnMore'
         className='w-4/5 h-0.5 border-0 rounded mx-auto bg-slate-500'
-      ></hr>
+      ></hr> */}
 
       <InterObserver
         image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/film2.jpg'

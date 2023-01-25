@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadFileStorage } from '../utils/fireStorageAPI';
-import { addMovie } from '../utils/FireStoreAPI';
+import { addMovie } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import UploadedVidDetail from './UploadedVidDetail';
 
@@ -81,6 +81,7 @@ function SelectAndUpFile() {
           thumbnailFileId: thumbFileId,
           description: '',
           collection: '',
+          DOC_ID: '',
         },
         db
       );
