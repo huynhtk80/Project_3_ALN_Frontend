@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import VideoPlayer from '../components/videoPlayer';
 import { videoArray } from '../utils/mockDb';
 import AfricanMap from '../components/AfricanMap';
+import SearchDropdown from '../components/SearchBar';
 
 function Home() {
   return (
@@ -60,6 +61,7 @@ function Home() {
         </div> */}
       <div className=' p-20'>
         <AfricanMap />
+        <SearchDropdown />
       </div>
     </>
   );
