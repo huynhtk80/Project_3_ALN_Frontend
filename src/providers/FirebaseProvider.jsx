@@ -1,8 +1,8 @@
 import React from 'react';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getStorage } from 'firebase/storage';
-import { getFirestore } from 'firebase/firestore';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { connectStorageEmulator, getStorage } from 'firebase/storage';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAqPeb96DfaW9VM1tQK68Y3rqwCDTfyNZo',
@@ -18,6 +18,11 @@ const auth = getAuth(app);
 const store = getStorage(app);
 const db = getFirestore(app);
 
+if (false) {
+  connectAuthEmulator(auth, 'http://localhost:9099');
+  connectFirestoreEmulator(db, 'localhost', 8080);
+  connectStorageEmulator(store, 'localhost', 9199);
+}
 export const FirebaseContext = React.createContext();
 
 export const FirebaseProvider = (props) => {

@@ -19,9 +19,11 @@ function MovieHeader() {
       </div>
       <div className='hero-overlay bg-slate-800  bg-opacity-60 z-[2]'></div>
       <div className='hero-content text-center text-white z-[3]'>
-        <div className='max-w-md'>
-          <h1 className='mb-5 text-5xl font-bold'>CONNECT WITH AFRICA</h1>
-          <p className='mb-5'>
+        <div className='max-w-lg'>
+          <h1 className='mb-5 text-5xl md:text-6xl font-bold'>
+            CONNECT WITH AFRICA
+          </h1>
+          <p className='mb-5 md:text-xl'>
             A gateway to a global market with africans
             <br /> telling their authentic stories
           </p>
