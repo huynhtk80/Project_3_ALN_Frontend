@@ -14,8 +14,8 @@ interface AfricanCountries {
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
-    ColonizationHistory: string;
-    WikiLink: URL;
+    // ColonizationHistory: string;
+    // WikiLink: URL;
   };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
@@ -39,8 +39,13 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/DZ/flat/64.png'></img>,
     futureConnections: 27280000,
     PopulationSize: 44903225,
+<<<<<<< HEAD
     ColonizationHistory: 'France (1830 to 1962)',
     WikiLink: 'https://en.wikipedia.org/wiki/Algeria',
+=======
+    // ColonizationHistory: 'France (1830 to 1962)',
+    // WikiLink: href = https://en.wikipedia.org/wiki/Algeria,
+>>>>>>> 534efca1ebca3e8910b63f5f5d11102eb0f7488d
   },
 
   2: {
@@ -54,8 +59,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/EG/flat/64.png'></img>,
     futureConnections: 75660000,
     PopulationSize: 102880000,
-    ColonizationHistory: 'France: (1798 to 1801), Britain: (1882 to 1922)',
-    WikiLink: '',
+    // ColonizationHistory: 'France: (1798 to 1801), Britain: (1882 to 1922)',
+    // WikiLink: href = 'https://en.wikipedia.org/wiki/Egypt',
   },
 
   3: {
@@ -69,8 +74,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/LY/flat/64.png'></img>,
     futureConnections: 3470000,
     PopulationSize: 6812341,
-    ColonizationHistory: '',
-    WikiLink: '',
+    // ColonizationHistory: '',
+    // WikiLink: href ="https://en.wikipedia.org/wiki/Libya",
   },
 
   4: {
