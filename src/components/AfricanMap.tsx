@@ -45,13 +45,13 @@ function AfricanMap() {
         >
           AFRICA LIVE NETWORK
         </h1>
-        <h2 className='text-xs lg:text-2xl text-base-content text-center m-5'>
+        <h2 className='text-xs content-center lg:text-2xl text-base-content text-center m-5'>
           Discover Each Countries Individuality & Opportunities By Clicking On
           The Map Below
         </h2>
       </div>
       <div className='grid row-span-2 lg:'>
-        <div className='order-2'>
+        <div className='order-2 border-solid rounded-md border-primary shadow-lg p-5'>
           <h1 className='font-bold lg:text-4xl' id='name'>
             {countryName}
           </h1>
