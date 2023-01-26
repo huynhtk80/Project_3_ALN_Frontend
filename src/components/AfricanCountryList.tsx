@@ -3,7 +3,7 @@ import { URL } from 'url';
 
 interface AfricanCountries {
   [key: number]: {
-    Quadrent: string;
+    Quadrant: string;
     CountryAbbrv: string;
     CountryName: string;
     AreaCode: number;
@@ -14,6 +14,8 @@ interface AfricanCountries {
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
+    ColonizationHistory: string;
+    WikiLink: URL;
   };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
@@ -27,7 +29,7 @@ interface AfricanCountries {
 const AfricanCountryList: AfricanCountries = {
   //North Africa__(1-8)_________________________________________________________________________________________________________________________
   1: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'DZ',
     CountryName: 'Algeria',
     AreaCode: 213,
@@ -37,10 +39,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/DZ/flat/64.png'></img>,
     futureConnections: 27280000,
     PopulationSize: 44903225,
+    ColonizationHistory: 'France (1830 to 1962)',
+    WikiLink: '',
   },
 
   2: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'EG',
     CountryName: 'Egypt',
     AreaCode: 20,
@@ -50,10 +54,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/EG/flat/64.png'></img>,
     futureConnections: 75660000,
     PopulationSize: 102880000,
+    ColonizationHistory: 'France: (1798 to 1801), Britain: (1882 to 1922)',
+    WikiLink: '',
   },
 
   3: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'LY',
     CountryName: 'Libya',
     AreaCode: 218,
@@ -63,10 +69,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/LY/flat/64.png'></img>,
     futureConnections: 3470000,
     PopulationSize: 6812341,
+    ColonizationHistory: '',
+    WikiLink: '',
   },
 
   4: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'MA',
     CountryName: 'Morocco',
     AreaCode: 212,
@@ -76,10 +84,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MA/flat/64.png'></img>,
     futureConnections: 31590000,
     PopulationSize: 36400000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   5: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'TN',
     CountryName: 'Tunisia',
     AreaCode: 216,
@@ -89,10 +99,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/TN/flat/64.png'></img>,
     futureConnections: 8000000,
     PopulationSize: 12356117,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   6: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'SD',
     CountryName: 'Sudan',
     AreaCode: 249,
@@ -102,10 +114,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SD/flat/64.png'></img>,
     futureConnections: 14030000,
     PopulationSize: 46874204,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   7: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'EH',
     CountryName: 'Western Sahara',
     AreaCode: 212,
@@ -115,10 +129,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/EH/flat/64.png'></img>,
     futureConnections: 379300,
     PopulationSize: 619000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   8: {
-    Quadrent: 'North',
+    Quadrant: 'North',
     CountryAbbrv: 'ES-CN',
     CountryName: 'Canary Islands',
     AreaCode: 928 || 828 || 922 || 822,
@@ -128,11 +144,13 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/IC/flat/64.png'></img>,
     futureConnections: 0,
     PopulationSize: 2252465,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
   9: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'BI',
     CountryName: 'Burundi',
     AreaCode: 257,
@@ -142,10 +160,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/BI/flat/64.png'></img>,
     futureConnections: 1820000,
     PopulationSize: 12889576,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   10: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'KM',
     CountryName: 'Comoros',
     AreaCode: 269,
@@ -155,10 +175,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/KM/flat/64.png'></img>,
     futureConnections: 76100000,
     PopulationSize: 836774,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   11: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'DJ',
     CountryName: 'Djibouti',
     AreaCode: 253,
@@ -168,10 +190,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/DJ/flat/64.png'></img>,
     futureConnections: 595400,
     PopulationSize: 1120849,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   12: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ER',
     CountryName: 'Eritrea',
     AreaCode: 291,
@@ -181,10 +205,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ER/flat/64.png'></img>,
     futureConnections: 290500,
     PopulationSize: 3630000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   13: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ET',
     CountryName: 'Ethiopia',
     AreaCode: 251,
@@ -194,10 +220,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ET/flat/64.png'></img>,
     futureConnections: 29830000,
     PopulationSize: 123000000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   14: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'KE',
     CountryName: 'Kenya',
     AreaCode: 254,
@@ -207,10 +235,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/KE/flat/64.png'></img>,
     futureConnections: 23350000,
     PopulationSize: 54027487,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   15: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MG',
     CountryName: 'Madagascar',
     AreaCode: 261,
@@ -220,10 +250,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MG/flat/64.png'></img>,
     futureConnections: 6430000,
     PopulationSize: 29611714,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   16: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MW',
     CountryName: 'Malawi',
     AreaCode: 265,
@@ -233,10 +265,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MW/flat/64.png'></img>,
     futureConnections: 4030000,
     PopulationSize: 20405317,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   17: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MU',
     CountryName: 'Mauritius',
     AreaCode: 230,
@@ -246,10 +280,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MU/flat/64.png'></img>,
     futureConnections: 826900,
     PopulationSize: 1262523,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   18: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'MZ',
     CountryName: 'Mozambique',
     AreaCode: 258,
@@ -259,10 +295,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MZ/flat/64.png'></img>,
     futureConnections: 7540000,
     PopulationSize: 32969518,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   19: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'RW',
     CountryName: 'Rwanda',
     AreaCode: 250,
@@ -272,10 +310,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/RW/flat/64.png'></img>,
     futureConnections: 3540000,
     PopulationSize: 13776698,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   20: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SC',
     CountryName: 'Seychelles',
     AreaCode: 248,
@@ -285,10 +325,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SC/flat/64.png'></img>,
     futureConnections: 78300,
     PopulationSize: 107341,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   21: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SO',
     CountryName: 'Somalia',
     AreaCode: 252,
@@ -298,10 +340,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SO/flat/64.png'></img>,
     futureConnections: 2270000,
     PopulationSize: 17597511,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   22: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'SS',
     CountryName: 'South Sudan',
     AreaCode: 211,
@@ -311,10 +355,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SS/flat/64.png'></img>,
     futureConnections: 1250000,
     PopulationSize: 10913164,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   23: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'TZ',
     CountryName: 'Tanzania',
     AreaCode: 255,
@@ -324,10 +370,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/TZ/flat/64.png'></img>,
     futureConnections: 15600000,
     PopulationSize: 65497748,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   24: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'UG',
     CountryName: 'Uganda',
     AreaCode: 256,
@@ -337,10 +385,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/UG/flat/64.png'></img>,
     futureConnections: 13920000,
     PopulationSize: 47249585,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   25: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ZM',
     CountryName: 'Zambia',
     AreaCode: 260,
@@ -350,10 +400,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ZM/flat/64.png'></img>,
     futureConnections: 5470000,
     PopulationSize: 20017675,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   26: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'ZW',
     CountryName: 'Zimbabwe',
     AreaCode: 263,
@@ -363,10 +415,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ZW/flat/64.png'></img>,
     futureConnections: 4650000,
     PopulationSize: 15100000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   27: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'RE',
     CountryName: 'Réunion Island',
     AreaCode: 262,
@@ -376,10 +430,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/RE/flat/64.png'></img>,
     futureConnections: 373500,
     PopulationSize: 874400,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   28: {
-    Quadrent: 'East',
+    Quadrant: 'East',
     CountryAbbrv: 'YT',
     CountryName: 'Mayotte',
     AreaCode: 262,
@@ -389,11 +445,13 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/YT/flat/64.png'></img>,
     futureConnections: 65700,
     PopulationSize: 282900,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
   29: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'BW',
     CountryName: 'Botswana',
     AreaCode: 267,
@@ -403,10 +461,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/BW/flat/64.png'></img>,
     futureConnections: 1480000,
     PopulationSize: 2630296,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   30: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'LS',
     CountryName: 'Lesotho',
     AreaCode: 266,
@@ -416,10 +476,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/LS/flat/64.png'></img>,
     futureConnections: 1130000,
     PopulationSize: 2305825,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   31: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'NA',
     CountryName: 'Namibia',
     AreaCode: 264,
@@ -429,10 +491,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/NA/flat/64.png'></img>,
     futureConnections: 1330000,
     PopulationSize: 2567012,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   32: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'ZA',
     CountryName: 'South Africa',
     AreaCode: 27,
@@ -442,10 +506,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ZA/flat/64.png'></img>,
     futureConnections: 41190000,
     PopulationSize: 60600000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   33: {
-    Quadrent: 'South',
+    Quadrant: 'South',
     CountryAbbrv: 'SZ',
     CountryName: 'Eswatini',
     AreaCode: 268,
@@ -455,11 +521,13 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SZ/flat/64.png'></img>,
     futureConnections: 553900,
     PopulationSize: 1180000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
   34: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'BJ',
     CountryName: 'Benin',
     AreaCode: 229,
@@ -469,10 +537,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/BJ/flat/64.png'></img>,
     futureConnections: 3660000,
     PopulationSize: 13712828,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   35: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'BF',
     CountryName: 'Burkina Faso',
     AreaCode: 226,
@@ -482,10 +552,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/BF/flat/64.png'></img>,
     futureConnections: 5950000,
     PopulationSize: 22673762,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   36: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'CV',
     CountryName: 'Cabo Verde',
     AreaCode: 238,
@@ -495,10 +567,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CV/flat/64.png'></img>,
     futureConnections: 349800,
     PopulationSize: 593149,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   37: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'CI',
     CountryName: "Cote D'Ivoire",
     AreaCode: 225,
@@ -508,10 +582,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CI/flat/64.png'></img>,
     futureConnections: 9940000,
     PopulationSize: 27720000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   38: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GH',
     CountryName: 'Ghana',
     AreaCode: 233,
@@ -521,10 +597,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GH/flat/64.png'></img>,
     futureConnections: 16990000,
     PopulationSize: 33475870,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   39: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GM',
     CountryName: 'Gambia',
     AreaCode: 220,
@@ -534,10 +612,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GM/flat/64.png'></img>,
     futureConnections: 1290000,
     PopulationSize: 2705992,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   40: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GN',
     CountryName: 'Guinea',
     AreaCode: 224,
@@ -547,10 +627,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GN/flat/64.png'></img>,
     futureConnections: 3150000,
     PopulationSize: 13859341,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   41: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'GW',
     CountryName: 'Guinea-Bissau',
     AreaCode: 245,
@@ -560,10 +642,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GW/flat/64.png'></img>,
     futureConnections: 571000,
     PopulationSize: 2110000,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   42: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'LR',
     CountryName: 'Liberia',
     AreaCode: 231,
@@ -573,10 +657,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/LR/flat/64.png'></img>,
     futureConnections: 1150000,
     PopulationSize: 5302681,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   43: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'ML',
     CountryName: 'Mali',
     AreaCode: 223,
@@ -586,10 +672,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ML/flat/64.png'></img>,
     futureConnections: 6330000,
     PopulationSize: 22593590,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   44: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'MR',
     CountryName: 'Mauritania',
     AreaCode: 222,
@@ -599,10 +687,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/MR/flat/64.png'></img>,
     futureConnections: 1730000,
     PopulationSize: 4736139,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   45: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'NE',
     CountryName: 'Niger',
     AreaCode: 227,
@@ -612,10 +702,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/NE/flat/64.png'></img>,
     futureConnections: 3720000,
     PopulationSize: 26207977,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   46: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'NG',
     CountryName: 'Nigeria',
     AreaCode: 234,
@@ -625,10 +717,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/NG/flat/64.png'></img>,
     futureConnections: 109200000,
     PopulationSize: 218541212,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   47: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SN',
     CountryName: 'Senegal',
     AreaCode: 221,
@@ -638,10 +732,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SN/flat/64.png'></img>,
     futureConnections: 8010000,
     PopulationSize: 17316449,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   48: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SL',
     CountryName: 'Sierra Leone',
     AreaCode: 232,
@@ -651,10 +747,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/SL/flat/64.png'></img>,
     futureConnections: 2670000,
     PopulationSize: 8605718,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   49: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'TG',
     CountryName: 'Togo',
     AreaCode: 228,
@@ -664,10 +762,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/TG/flat/64.png'></img>,
     futureConnections: 2230000,
     PopulationSize: 8848699,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   50: {
-    Quadrent: 'West',
+    Quadrant: 'West',
     CountryAbbrv: 'SH',
     CountryName: 'Saint Helena, Ascension and Tristan da Cunha',
     AreaCode: 290,
@@ -677,11 +777,13 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GB/flat/64.png'></img>,
     futureConnections: 2294,
     PopulationSize: 6135,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
   51: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'AO',
     CountryName: 'Angola',
     AreaCode: 244,
@@ -691,10 +793,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/AO/flat/64.png'></img>,
     futureConnections: 12410000,
     PopulationSize: 35588987,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   52: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CM',
     CountryName: 'Cameroon',
     AreaCode: 237,
@@ -704,10 +808,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CM/flat/64.png'></img>,
     futureConnections: 10050000,
     PopulationSize: 27914536,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   53: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CF',
     CountryName: 'Central African Republic',
     AreaCode: 236,
@@ -717,10 +823,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CF/flat/64.png'></img>,
     futureConnections: 355100,
     PopulationSize: 5579144,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   54: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'TD',
     CountryName: 'Chad',
     AreaCode: 235,
@@ -730,10 +838,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/TD/flat/64.png'></img>,
     futureConnections: 3260000,
     PopulationSize: 17723315,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   55: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CD',
     CountryName: 'Democratic Republic of the Congo',
     AreaCode: 243,
@@ -743,10 +853,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CD/flat/64.png'></img>,
     futureConnections: 16500000,
     PopulationSize: 99010212,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   56: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'CG',
     CountryName: 'Republic of the Congo',
     AreaCode: 242,
@@ -756,10 +868,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/CG/flat/64.png'></img>,
     futureConnections: 1450000,
     PopulationSize: 5884363,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   57: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'GQ',
     CountryName: 'Equatorial Guinea',
     AreaCode: 240,
@@ -769,10 +883,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GQ/flat/64.png'></img>,
     futureConnections: 386500,
     PopulationSize: 1530098,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   58: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'GA',
     CountryName: 'Gabon',
     AreaCode: 241,
@@ -782,10 +898,12 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/GA/flat/64.png'></img>,
     futureConnections: 1430000,
     PopulationSize: 2388992,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 
   59: {
-    Quadrent: 'Central',
+    Quadrant: 'Central',
     CountryAbbrv: 'ST',
     CountryName: 'Sao Tome And Principe',
     AreaCode: 239,
@@ -795,6 +913,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/ST/flat/64.png'></img>,
     futureConnections: 72200,
     PopulationSize: 227380,
+    ColonizationHistory: '',
+    WikiLink: `href =""`,
   },
 };
 
