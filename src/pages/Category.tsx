@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/FireStoreAPI';
+import VideoThumbCard from '../components/VideoThumbCard';
 
 function Category() {
   const { category } = useParams();
