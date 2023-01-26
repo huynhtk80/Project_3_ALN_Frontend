@@ -40,7 +40,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 27280000,
     PopulationSize: 44903225,
     ColonizationHistory: 'France (1830 to 1962)',
-    WikiLink: href = https://en.wikipedia.org/wiki/Algeria,
+    WikiLink: '',
   },
 
   2: {
@@ -55,7 +55,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 75660000,
     PopulationSize: 102880000,
     ColonizationHistory: 'France: (1798 to 1801), Britain: (1882 to 1922)',
-    WikiLink: href = 'https://en.wikipedia.org/wiki/Egypt',
+    WikiLink: '',
   },
 
   3: {
@@ -70,7 +70,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3470000,
     PopulationSize: 6812341,
     ColonizationHistory: '',
-    WikiLink: href ="https://en.wikipedia.org/wiki/Libya",
+    WikiLink: '',
   },
 
   4: {
