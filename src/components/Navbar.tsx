@@ -12,6 +12,7 @@ import LandingFooter from './LandingFooter';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import Footer from './Footer';
+import SearchDropdown from './SearchBar';
 
 const navigation = [
   { name: 'Home Roots', href: '/home' },
@@ -93,6 +94,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                             {item.name}
                           </a>
                         ))}
+                        <SearchDropdown />
                       </div>
                     </div>
                   </div>

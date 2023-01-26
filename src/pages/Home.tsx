@@ -61,7 +61,6 @@ function Home() {
         </div> */}
       <div className=' p-20'>
         <AfricanMap />
-        <SearchDropdown />
       </div>
     </>
   );

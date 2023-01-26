@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const SearchDropdown = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [options, setOptions] = useState(['algeria', 'egypt', 'Niger']);
-  console.log(options);
-
-  const countries = ['algeria', 'egypt', 'Niger'];
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
+  };
 
-    // Use the searchValue to filter the options
-    const filteredOptions = countries.filter((option) =>
-      option.includes(e.target.value)
-    );
-    setOptions(filteredOptions);
+  const onClickSearch = () => {
+    navigate({
+      pathname: '/home/result',
+      search: `?query=${searchValue}`,
+    });
   };
 
   return (
@@ -25,11 +24,7 @@ const SearchDropdown = () => {
         value={searchValue}
         onChange={handleChange}
       />
-      <ul>
-        {options.map((option) => (
-          <li key={option}>{option}</li>
-        ))}
-      </ul>
+      <button onClick={onClickSearch}>Search Here</button>
     </div>
   );
 };
