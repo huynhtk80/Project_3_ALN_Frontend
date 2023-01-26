@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AfricanCountryList from './AfricanCountryList';
+import PopupCard from '../utils/PopupModal';
 
 function AfricanMap() {
   const [countryName, setCountryName] = useState('');
@@ -37,59 +38,37 @@ function AfricanMap() {
   };
   return (
     <>
-      <h1 className='text-2xl text-base-content text-center m-5' id='name'>
-        ***AFRICA LIVE NETWORK*** <br />
-        Discovering African Countries on an individual level <br />
-        Discover Each Countries Individuality & Opportunities By Clicking On The
-        Map Below
-      </h1>
-      <div
-        className='p-5'
-        style={{
-          marginLeft: '2%',
-          marginTop: '5%',
-        }}
-      >
-        <div className='float-right stats stats-horizontal lg:stats-vertical m-10 shadow bg-opacity-10 bg-secondary glass'>
-          <div className='stat'>
-            <div className='stat-title'>Country</div>
-            <div className='stat-value '>{countryName}</div>
-          </div>
-
-          <div className='stat'>
-            <div className='stat-title'>Flag</div>
-            <div className='mx-auto stat-value scale-150'>{flag}</div>
-          </div>
-
-          <div className='stat'>
-            <div className='stat-title'>Capital</div>
-            <div className='stat-value'>{capital}</div>
-          </div>
-
-          <div className='stat'>
-            <div className='stat-title'>Quadrant</div>
-            <div className='stat-value'>{Quadrant}</div>
-          </div>
-        </div>
-
-        {/* <h1 className='text-4xl' id='name'>
-          {countryName}
+      <div>
+        <h1
+          className='text-xs lg:text-2xl text-base-content text-center m-5'
+          id='name'
+        >
+          AFRICA LIVE NETWORK
         </h1>
-        <div id='flag' className='text-base-content'>
-          <span className='text-9xl'>{flag}</span>
-        </div>
-        <div id='capital' className='text-base-content'>
-          <span>Capital City : {capital}</span>
-        </div>
-        <div id='currency' className='text-base-content'>
-          <span>Currency : {currency} </span>
-        </div>
-        <div id='language' className='text-base-content'>
-          <span>Official Language : {officialLanguage}</span>
-        </div> */}
+        <h2 className='text-xs lg:text-2xl text-base-content text-center m-5'>
+          Discover Each Countries Individuality & Opportunities By Clicking On
+          The Map Below
+        </h2>
       </div>
-      <div className='flex cursor-pointer place-contents-end bg-base-100 text-base-content p-5 -mt-80 -mb-60 -ml-80'>
-        <div className='container -scale-50 rotate-180 '>
+      <div className='grid row-span-2 lg:'>
+        <div className='order-2'>
+          <h1 className='font-bold lg:text-4xl' id='name'>
+            {countryName}
+          </h1>
+          <div id='flag' className='text-base-content float-right p-5'>
+            <span className='text-9xl'>{flag}</span>
+          </div>
+          <div id='capital' className='text-base-content'>
+            <span>Capital City : {capital}</span>
+          </div>
+          <div id='currency' className='text-base-content'>
+            <span>Currency : {currency} </span>
+          </div>
+          <div id='language' className='text-base-content'>
+            <span>Official Language : {officialLanguage}</span>
+          </div>
+        </div>
+        <div className='cursor-pointer bg-base-100 text-base-content p-5'>
           <div className='map' onClick={(e) => handleClick(e.target)}>
             <svg
               version='1.1'
