@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player';
 import { uploadFileStorage } from '../utils/fireStorageAPI';
 import ListUserMovies from '../components/ListUserMovies';
 import SelectAndUpFile from '../components/SelectAndUpFile';
-import { addMovie } from '../utils/FireStoreAPI';
+import { addMovie } from '../utils/fireStoreAPI';
 import UploadedVidDetail from '../components/UploadedVidDetail';
 import AdminApproveC from '../components/AdminApproveC';
 

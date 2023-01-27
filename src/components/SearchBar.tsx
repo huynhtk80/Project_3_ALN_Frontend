@@ -9,23 +9,26 @@ const SearchDropdown = () => {
     setSearchValue(e.target.value);
   };
 
-  const onClickSearch = () => {
-    navigate({
-      pathname: '/home/result',
-      search: `?query=${searchValue}`,
-    });
+  const onClickSearch = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      navigate({
+        pathname: '/home/result',
+        search: `?query=${searchValue}`,
+      });
+    }
   };
 
   return (
     <div>
       <div className='mx-auto max-w-md'>
-        <form action='' className='relative mx-auto w-max'>
+        <form className='relative mx-auto w-max'>
           <input
-            type='search'
             className='peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-500 focus:pl-16 focus:pr-4'
             placeholder='Search...'
             value={searchValue}
             onChange={handleChange}
+            onKeyDown={onClickSearch}
           />
           <svg
             xmlns='http://www.w3.org/2000/svg'

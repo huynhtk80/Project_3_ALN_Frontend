@@ -18,7 +18,7 @@ function SearchResults() {
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   let [searchParams, setSearchParams] = useSearchParams();
-  const [videos, setVideos] = useState<VideoParams>();
+  const [videos, setVideos] = useState<VideoParams[]>();
   const [activeIndex, setActiveIndex] = useState();
 
   const searchQuery = searchParams.get('query');
@@ -27,11 +27,8 @@ function SearchResults() {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef = query(
-      collectionRef,
-      where('title', '>=', searchQuery),
-      where('title', '<=', searchQuery + '\uf8ff')
-    );
+    let queryRef = query(collectionRef, where('approval', '==', 'approved'));
+
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
@@ -44,9 +41,29 @@ function SearchResults() {
               DOC_ID: doc.id,
             } as VideoParams)
         );
-        setVideos(videoData);
+        if (searchQuery) {
+          console.log(videoData);
+          console.log(searchQuery.toUpperCase());
+          console.log(
+            videoData.filter((video) => {
+              return video.titleUpper?.includes(searchQuery?.toUpperCase());
+            })
+          );
+        }
+
+        setVideos(
+          videoData.filter((video) => {
+            if (video.titleUpper?.includes(searchQuery?.toUpperCase()))
+              return true;
+
+            if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
+              return true;
+            return false;
+          })
+        );
       }
     });
+
     return unsubscribe;
   }, [user, searchParams]);
 
@@ -54,8 +71,8 @@ function SearchResults() {
 
   return (
     <div className='p-20'>
-      <h1>Search Results for: {query}</h1>
-      <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content bg-base-100'>
+      <h1>Search Results for: {searchQuery}</h1>
+      <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content'>
         {videos &&
           videos.map((vid, index) => {
             console.log(vid);
