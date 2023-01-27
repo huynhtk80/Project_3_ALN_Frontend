@@ -12,6 +12,8 @@ emulator-storage
 dist
 dist-ssr
 *.local
+firebase-export-*
+.env.*
 
 # Editor directories and files
 .vscode/*
