@@ -61,11 +61,22 @@ function SelectAndUpFile() {
         videoFile.name
       );
 
-      const { downloadURL: tempUrl, docId: videoFileId } =
-        await uploadFileStorage(store, videoFile, 'video', setProgress);
+      const tempUrl = await uploadFileStorage(
+        store,
+        user.uid,
+        videoFile,
+        'video',
+        undefined,
+        setProgress
+      );
 
-      const { downloadURL: tempThumbUrl, docId: thumbFileId } =
-        await uploadFileStorage(store, thumbnailFile, 'thumbnail');
+      const tempThumbUrl = await uploadFileStorage(
+        store,
+        user.uid,
+        thumbnailFile,
+        'video',
+        'thumbnail'
+      );
 
       setDownloadURL(tempUrl);
 
@@ -76,9 +87,7 @@ function SelectAndUpFile() {
             videoFile.name.substring(0, videoFile.name.lastIndexOf('.')) ||
             videoFile.name,
           url: tempUrl,
-          videoFileId: videoFileId,
           thumbnail: tempThumbUrl,
-          thumbnailFileId: thumbFileId,
           description: '',
           collection: '',
           DOC_ID: '',

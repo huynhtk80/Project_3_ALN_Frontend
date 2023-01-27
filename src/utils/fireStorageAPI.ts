@@ -1,22 +1,29 @@
 import {
   deleteObject,
+  FirebaseStorage,
   getDownloadURL,
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
-import { FirebaseProvider } from '../providers/FirebaseProvider';
 import { v4 as uuidv4 } from 'uuid';
-import { updateDoc } from 'firebase/firestore';
 
 export const uploadFileStorage = async (
   store: any,
+  uId: string,
   file: File,
-  location: 'video' | 'image' | 'audio' | 'thumbnail' | 'trailer',
+  location: 'video' | 'user' | 'audio',
+  collection?: 'profile' | 'thumbnail' | 'trailer',
   setProgress?: React.Dispatch<React.SetStateAction<number>>
-): Promise<{ downloadURL: string; docId: string }> => {
+): Promise<string> => {
   return new Promise((resolve, reject) => {
     const docId = uuidv4();
-    const FileRef = ref(store, `${location}/${docId}`);
+    let collectionString = '';
+    if (!collection) {
+      collectionString = docId;
+    } else {
+      collectionString = `${collection}/${docId}`;
+    }
+    const FileRef = ref(store, `${uId}/${location}/${collectionString}`);
     console.log(FileRef);
     const uploadTask = uploadBytesResumable(FileRef, file);
     uploadTask.on(
@@ -31,19 +38,43 @@ export const uploadFileStorage = async (
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          resolve({ downloadURL, docId });
+          resolve(downloadURL);
         });
       }
     );
   });
 };
 
-export const deleteFile = async (
-  store: any,
-  location: 'video' | 'image' | 'audio' | 'thumbnail' | 'trailer',
-  FileId: string
-) => {
-  const fileRef = ref(store, `${location}/${FileId}`);
+//should beable to remove this function
+// export const deleteFile = async (
+//   store: any,
+//   uId: string,
+//   FileId: string,
+//   location: 'video' | 'user' | 'audio',
+//   collection?: 'profile' | 'thumbnail' | 'trailer'
+// ) => {
+//   let collectionString = '';
+
+//   if (!collection) {
+//     collectionString = FileId;
+//   } else {
+//     collectionString = `${collection}/${FileId}`;
+//   }
+
+//   const fileRef = ref(store, `${uId}/${location}/${collectionString}`);
+
+//   // Delete the file
+//   deleteObject(fileRef)
+//     .then(() => {
+//       console.log('File deleted successfully');
+//     })
+//     .catch((error) => {
+//       console.log(error.message);
+//     });
+// };
+
+export const deleteFileURL = async (store: FirebaseStorage, url: string) => {
+  const fileRef = ref(store, url);
 
   // Delete the file
   deleteObject(fileRef)

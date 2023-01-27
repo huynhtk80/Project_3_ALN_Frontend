@@ -8,8 +8,8 @@ import {
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { deleteFile, uploadFileStorage } from '../utils/fireStorageAPI';
-import { VideoParams } from '../utils/fireStoreAPI';
+import { deleteFileURL, uploadFileStorage } from '../utils/fireStorageAPI';
+import { updateMovie, VideoParams } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
@@ -25,31 +25,16 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const db = fbContext.db;
   const store = fbContext.store;
 
-  const [videoDetailOnLoad, setVideoDetailOnload] = useState({
+  const [videoDetails, setVideoDetails] = useState<VideoParams>({
     userId: '',
     title: '',
     url: '',
-    videoFileId: '',
     thumbnail: '',
-    thumbnailFileId: '',
-    description: '',
-    collection: '',
-    DOC_ID: '',
-  });
-  const [videoDetails, setVideoDetails] = useState({
-    userId: '',
-    title: '',
-    url: '',
-    videoFileId: '',
-    thumbnail: '',
-    thumbnailFileId: '',
     description: '',
     collection: '',
     DOC_ID: '',
     trailer: '',
-    trailerFileId: '',
     trailerThumb: '',
-    trailerThumbFileId: '',
   });
   const [newThumbnail, setNewThumbnail] = useState<File>();
   const [newThumbnailUrl, setNewThumbnailUrl] = useState<string | null>(null);
@@ -60,17 +45,6 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const isSaved = () => {
-    if (videoDetails.title !== videoDetailOnLoad.title) return false;
-    if (videoDetails.thumbnail !== videoDetailOnLoad.thumbnail) return false;
-    if (videoDetails.thumbnailFileId !== videoDetailOnLoad.thumbnailFileId)
-      return false;
-    if (videoDetails.description !== videoDetailOnLoad.description)
-      return false;
-    if (videoDetails.collection !== videoDetailOnLoad.collection) return false;
-    return true;
-  };
-
   useEffect(() => {
     console.log('loading information from doc', docID);
 
@@ -78,13 +52,11 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data());
         const videoData = {
           ...docSnap.data(),
           DOC_ID: docSnap.id,
         } as VideoParams;
         setVideoDetails(videoData);
-        setVideoDetailOnload(videoData);
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
@@ -129,35 +101,38 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
         file.name
       );
 
-      const { downloadURL: tempUrl, docId: videoFileId } =
-        await uploadFileStorage(store, file, 'trailer', setProgress);
+      const tempUrl = await uploadFileStorage(
+        store,
+        user.uid,
+        file,
+        'video',
+        'trailer',
+        setProgress
+      );
       console.log(progress);
 
-      const { downloadURL: tempThumbUrl, docId: thumbFileId } =
-        await uploadFileStorage(store, thumbnailFile, 'trailer');
+      const tempThumbUrl = await uploadFileStorage(
+        store,
+        user.uid,
+        thumbnailFile,
+        'video',
+        'trailer'
+      );
 
-      if (videoDetails.thumbnailFileId !== undefined) {
-        if (videoDetails.trailerFileId)
-          deleteFile(store, 'trailer', videoDetails.trailerFileId);
-        if (videoDetails.trailerThumbFileId)
-          deleteFile(store, 'trailer', videoDetails.trailerThumbFileId);
-      }
+      if (videoDetails.trailer) deleteFileURL(store, videoDetails.trailer);
+      if (videoDetails.trailerThumb)
+        deleteFileURL(store, videoDetails.trailerThumb);
 
       setVideoDetails({
         ...videoDetails,
         trailer: tempUrl,
-        trailerFileId: videoFileId,
         trailerThumb: tempThumbUrl,
-        trailerThumbFileId: thumbFileId,
       });
 
-      const docRef = doc(db, 'videos', docID);
-      await updateDoc(docRef, {
+      await updateMovie(db, docID, {
         ...videoDetails,
         trailer: tempUrl,
-        trailerFileId: videoFileId,
         trailerThumb: tempThumbUrl,
-        trailerThumbFileId: thumbFileId,
       });
       setSaving(false);
     } catch (e: any) {
@@ -183,34 +158,28 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
       return;
     }
     setSaving(true);
-    await deleteFile(store, 'thumbnail', videoDetails.thumbnailFileId);
-    const { downloadURL, docId: thumbId } = await uploadFileStorage(
+    await deleteFileURL(store, videoDetails.thumbnail);
+    const downloadURL = await uploadFileStorage(
       store,
+      user.uid,
       newThumbnail,
+      'video',
       'thumbnail'
     );
     setVideoDetails({
       ...videoDetails,
       thumbnail: downloadURL,
-      thumbnailFileId: thumbId,
     });
     const docRef = doc(db, 'videos', docID);
     await updateDoc(docRef, {
       thumbnail: downloadURL,
-      thumbnailFileId: thumbId,
     });
     setSaving(false);
   };
 
-  const onClickSave = async () => {
-    const docRef = doc(db, 'videos', docID);
-    await updateDoc(docRef, videoDetails);
-  };
-
   const onBlurHandle = async () => {
     setSaving(true);
-    const docRef = doc(db, 'videos', docID);
-    await updateDoc(docRef, videoDetails);
+    await updateMovie(db, docID, videoDetails);
     setSaving(false);
   };
 
@@ -220,8 +189,12 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
 
   const deleteVideo = async () => {
     const docRef = doc(db, 'videos', docID);
-    await deleteFile(store, 'thumbnail', videoDetails.thumbnailFileId);
-    await deleteFile(store, 'video', videoDetails.videoFileId);
+    if (videoDetails.thumbnail)
+      await deleteFileURL(store, videoDetails.thumbnail);
+    if (videoDetails.url) await deleteFileURL(store, videoDetails.url);
+    if (videoDetails.trailer) await deleteFileURL(store, videoDetails.trailer);
+    if (videoDetails.trailerThumb)
+      await deleteFileURL(store, videoDetails.trailerThumb);
     await deleteDoc(docRef);
     setShowModal(false);
   };
@@ -241,7 +214,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                 {saving && <span>{'  '} Saving..</span>}
               </div>
               <div className='float-right'>
-                <ApprovalStatus video={videoDetails} isSaved={isSaved()} />
+                <ApprovalStatus video={videoDetails} />
               </div>
 
               {/* <button
@@ -366,8 +339,6 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   </div>
                 ) : (
                   <>
-                    {console.log(videoDetails.trailer)}
-
                     <div className='card w-[80%] h-fit bg-base-100 shadow-xl image-full mt-1'>
                       <div className=' card-body border-2 p-0 rounded-xl flex justify-center items-center m-2'>
                         <video

@@ -26,9 +26,7 @@ function ListUserMovies() {
       userId: '',
       title: '',
       url: '',
-      videoFileId: '',
       thumbnail: '',
-      thumbnailFileId: '',
       description: '',
       collection: '',
       DOC_ID: '',
@@ -42,8 +40,6 @@ function ListUserMovies() {
   const [isCheck, setIsCheck] = useState<string[]>([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
-
-  console.log(isCheck);
 
   useEffect(() => {
     if (!user) return;
@@ -207,7 +203,7 @@ function ListUserMovies() {
                     </button>
                   </th>
                   <th>
-                    <ApprovalStatus video={video} isSaved={true} />
+                    <ApprovalStatus video={video} />
                   </th>
                 </tr>
               );
