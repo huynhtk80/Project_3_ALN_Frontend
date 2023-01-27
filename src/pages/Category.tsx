@@ -60,7 +60,7 @@ function Category() {
   }, [user]);
 
   return (
-    <div>
+    <div className='p-20'>
       <h1>
         Coming Soon - Africa Live Network Under Construction - Beta Testing Site
       </h1>
