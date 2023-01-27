@@ -18,7 +18,7 @@ const auth = getAuth(app);
 const store = getStorage(app);
 const db = getFirestore(app);
 
-if (false) {
+if (import.meta.env.VITE_EMU_STATE === 'true') {
   connectAuthEmulator(auth, 'http://localhost:9099');
   connectFirestoreEmulator(db, 'localhost', 8080);
   connectStorageEmulator(store, 'localhost', 9199);

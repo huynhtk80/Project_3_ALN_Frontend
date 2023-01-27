@@ -39,12 +39,6 @@ function AfricanMap() {
   return (
     <>
       <div>
-        <h1
-          className='text-xs lg:text-2xl text-base-content text-center m-5'
-          id='name'
-        >
-          AFRICA LIVE NETWORK
-        </h1>
         <h2 className='text-xs content-center lg:text-2xl text-base-content text-center m-5'>
           Discover Each Countries Individuality & Opportunities By Clicking On
           The Map Below
@@ -68,7 +62,7 @@ function AfricanMap() {
             <span>Official Language : {officialLanguage}</span>
           </div>
         </div>
-        <div className='cursor-pointer bg-base-100 text-base-content p-5'>
+        <div className='cursor-pointer text-base-content p-5'>
           <div className='map' onClick={(e) => handleClick(e.target)}>
             <svg
               version='1.1'
