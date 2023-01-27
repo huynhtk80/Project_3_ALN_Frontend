@@ -20,6 +20,7 @@ function SearchResults() {
   let [searchParams, setSearchParams] = useSearchParams();
   const [videos, setVideos] = useState<VideoParams>();
   const [activeIndex, setActiveIndex] = useState();
+  const [desResultsvideos, setDesResultsVideos] = useState<VideoParams>();
 
   const searchQuery = searchParams.get('query');
 
@@ -29,8 +30,14 @@ function SearchResults() {
 
     let queryRef = query(
       collectionRef,
-      where('title', '>=', searchQuery),
-      where('title', '<=', searchQuery + '\uf8ff')
+      where('titleUpper', '>=', searchQuery?.toUpperCase()),
+      where('titleUpper', '<=', searchQuery?.toUpperCase() + '\uf8ff')
+    );
+
+    let queryRef2 = query(
+      collectionRef,
+      where('descriptionUpper', '>=', searchQuery?.toUpperCase()),
+      where('descriptionUpper', '<=', searchQuery?.toUpperCase() + '\uf8ff')
     );
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
@@ -47,7 +54,28 @@ function SearchResults() {
         setVideos(videoData);
       }
     });
-    return unsubscribe;
+
+    const unsubscribe2 = onSnapshot(queryRef2, (querySnap) => {
+      if (querySnap.empty) {
+        console.log('No docs found');
+        setDesResultsVideos([]);
+      } else {
+        let videoData = querySnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as VideoParams)
+        );
+        setDesResultsVideos(videoData);
+        console.log(videoData);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+      unsubscribe2();
+    };
   }, [user, searchParams]);
 
   function onClickHandle(event) {}
