@@ -33,8 +33,14 @@ function Category() {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef = query(collectionRef, where('collection', '==', category));
-    ``;
+    let queryRef;
+
+    if (!category) {
+      queryRef = query(collectionRef);
+    } else {
+      queryRef = query(collectionRef, where('collection', '==', category));
+    }
+
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');

@@ -32,6 +32,7 @@ export const RestOfApp = () => {
           <Route path='Profile' element={<Profile />} />
           <Route path='network' element={<Network />} />
           <Route path='videos' element={<Videos />} />
+          <Route path='Category' element={<Category />} />
           <Route path='Category/:category' element={<Category />} />
           <Route path='uploadvideo' element={<UploadVideo />} />
           <Route path='settings' element={<Settings />} />
