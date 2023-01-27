@@ -38,7 +38,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
     <div className='bg-gradient-to-br from-primary to-secondary'>
       <Disclosure
         as='nav'
-        className='bg-base-200 text-base-content bg-opacity-90 fixed w-full z-10'
+        className='bg-base-200 text-base-content bg-opacity-90 fixed w-full z-10 px-2'
       >
         {({ open }) => (
           <>
@@ -54,7 +54,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
               </Disclosure.Button>
 
               <div className='flex flex-1 items-center sm:items-stretch justify-start cursor-pointer'>
-                <div className='flex flex-shrink-0 items-center'>
+                <div className='flex flex-shrink-0 items-center p-2'>
                   <img
                     onClick={() => (window.location.href = '/')}
                     className='block h-8 w-auto'
