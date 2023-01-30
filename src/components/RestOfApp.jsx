@@ -17,6 +17,7 @@ import Signin from '../pages/Signin';
 import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
 
+
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
   const app = fbContext.app;
