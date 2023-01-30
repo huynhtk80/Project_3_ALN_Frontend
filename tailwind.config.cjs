@@ -11,15 +11,15 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: '#f1a104',
-          secondary: '#00743f',
-          accent: '#70ced0',
-          neutral: '#25b396',
-          'base-100': '#ffff',
-          info: '#ffff',
+          primary: '#f3f4f6',
+          secondary: '#374151',
+          accent: '#115e59',
+          neutral: '#737373',
+          'base-100': '#9ca3af',
+          info: '#38bdf8',
           success: '#16a34a',
-          warning: '#F8DA63',
-          error: '#E23D32',
+          warning: '#eab308',
+          error: '#dc2626',
         },
       },
       {

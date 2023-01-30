@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SearchDropdown = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [showInput, setShowInput] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,34 +21,50 @@ const SearchDropdown = () => {
     }
   };
 
+  const handleGoButtonClick = () => {
+    navigate({
+      pathname: '/home/result',
+      search: `?query=${searchValue}`,
+    });
+  };
+
   return (
-    <div>
-      <div className='mx-auto max-w-md'>
-        <form className='relative mx-auto w-max'>
-          <input
-            className='peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-500 focus:pl-16 focus:pr-4'
-            placeholder='Search...'
-            value={searchValue}
-            onChange={handleChange}
-            onKeyDown={onClickSearch}
-          />
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-gray-500'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            stroke-width='2'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-            />
-          </svg>
-        </form>
+    <AnimatePresence>
+      {showInput && (
+        <motion.div
+          className='fixed top-0 left-0 w-full h-full'
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+        >
+          <div className='fixed top-0 left-0 w-full h-full bg-gray-300 opacity-75'></div>
+          <div className='bg-white rounded-lg px-4 py-5 overflow-hidden shadow-xl transform transition-all absolute top-0 left-0'>
+            <div className='flex items-center'>
+              <input
+                type='text'
+                value={searchValue}
+                onChange={handleChange}
+                onKeyDown={onClickSearch}
+                className='w-full h-10 pl-2 text-lg'
+                placeholder='Search'
+              />
+              <button
+                className='ml-2 h-10 px-2 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-l'
+                onClick={handleGoButtonClick}
+              >
+                Go
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+      <div
+        className='flex items-center justify-center cursor-pointer h-6 w-6 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:shadow-outline'
+        onClick={() => setShowInput(!showInput)}
+      >
+        <i className='fas fa-search text-gray-500'></i>
       </div>
-    </div>
+    </AnimatePresence>
   );
 };
 
