@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import HeroImage from '../assets/HeroImageTemp.jpg';
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 import Switcher from './ThemeSwitcher';
+import headerVideo from '../assets/LandingHeader.mp4';
 
 function HeroSection() {
   return (
@@ -15,28 +16,16 @@ function HeroSection() {
           height: '500px',
         }}
       >
-        <div className=' bg-base-100 fixed w-full top-0 flex flex-1 z-10 p-2 items-center justify-between sm:items-stretch bg-opacity-80'>
-          <div className='flex flex-shrink-0 items-center'>
-            <Link to='/home'>
-              <img
-                className='h-8 w-auto lg:block'
-                src={ALN_LOGO_3_43}
-                alt='African Network Live'
-              />
-            </Link>
-          </div>
-          <div className='flex space-x-4'>
-            <div className='h-6 w-6 m-1'>
-              <Switcher />
-            </div>
-            <Link
-              to='/home/loginform'
-              className='px-3 py-2 bg-primary rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-            >
-              Login
-            </Link>
-          </div>
-        </div>
+        <video
+          className='z-1 absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover'
+          autoPlay
+          muted
+          loop
+          id='myVideo'
+        >
+          <source src={headerVideo} type='video/mp4' />
+        </video>
+        <div className='absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 bg-slate-700  bg-opacity-60'></div>
       </div>
 
       <div className='container mx-auto px-6 md:px-12 xl:px-32'>

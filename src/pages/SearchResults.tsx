@@ -85,6 +85,7 @@ function SearchResults() {
                 index={index}
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
+                docId={vid.DOC_ID}
               />
             );
           })}

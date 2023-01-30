@@ -1,9 +1,9 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { VideoParams } from '../utils/FireStoreAPI';
+import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from '../components/VideoThumbCard';
 
 function Category() {
@@ -16,9 +16,7 @@ function Category() {
       userId: '',
       title: '',
       url: '',
-      videoFileId: '',
       thumbnail: '',
-      thumbnailFileId: '',
       description: '',
       collection: '',
       DOC_ID: '',
@@ -26,6 +24,8 @@ function Category() {
       rejectMsg: '',
     },
   ]);
+
+  const [activeIndex, setActiveIndex] = useState(null);
 
   console.log(category);
 
@@ -57,17 +57,33 @@ function Category() {
       }
     });
     return unsubscribe;
-  }, [user]);
+  }, [user, category]);
 
   return (
     <div className='p-20'>
-      <h1>
-        Coming Soon - Africa Live Network Under Construction - Beta Testing Site
-      </h1>
-      <p>{category}</p>
-      {videos?.map((vid) => {
-        return <video controls poster={vid.thumbnail} src={vid.url}></video>;
-      })}
+      <div className='flex flex-row justify-center gap-5'>
+        {['Film', 'Short Film', 'Documentary', 'Series'].map((cat) => (
+          <Link to={`/home/Category/${cat}`}>
+            <button className='btn btn-primary'>{cat}</button>
+          </Link>
+        ))}
+      </div>
+      <h1 className=' text-2xl underline m-4 '>{category}</h1>
+      <div className='flex flex-row flex-wrap gap-4'>
+        {videos?.map((vid, index) => {
+          return (
+            <VideoThumbCard
+              url={vid.url}
+              title={vid.title}
+              description={vid.description}
+              setActiveIndex={setActiveIndex}
+              index={index}
+              activeIndex={activeIndex}
+              docId={vid.DOC_ID}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
