@@ -16,7 +16,7 @@ export interface VideoParams {
   DOC_ID: string;
   rejectMsg?: string;
   trailer?: string;
-
+  country?: string[];
   trailerThumb?: string;
 }
 
