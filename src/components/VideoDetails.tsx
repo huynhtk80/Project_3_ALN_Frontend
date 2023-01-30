@@ -1,6 +1,7 @@
 import { doc, onSnapshot } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
-import headImage from '../assets/TempMov.avif';
+import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
+
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
@@ -65,10 +66,12 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
               {videoDetails?.title}
             </h1>
             <div>
-              <button className='mr-2 bg-secondary rounded-sm w-fit px-4 py-0.5'>
-                Play
+              <button className='mr-2 h-4 rounded-sm w-fit px-4 py-0.5'>
+                <div className=' h-12'>
+                  <img className=' object-cover w-full h-full' src={playLogo} />
+                </div>
               </button>
-              <button className='mr-2 bg-secondary rounded-sm w-fit px-4 py-0.5'>
+              <button className='mr-2  bg-secondary rounded-sm w-fit px-4 py-0.5 items-center'>
                 +
               </button>
             </div>

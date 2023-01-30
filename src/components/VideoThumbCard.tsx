@@ -41,7 +41,10 @@ function VideoThumbCard({
         />
       </div>
       <div className='px-6 py-4'>
-        <div className='font-bold text-xl mb-2' onClick={() => setIsOpen(true)}>
+        <div
+          className='font-bold text-xl mb-2 cursor-pointer'
+          onClick={() => setIsOpen(true)}
+        >
           {title}
         </div>
         <p className='text-base-content text-base'>{description}</p>
