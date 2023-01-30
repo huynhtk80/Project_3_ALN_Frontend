@@ -8,12 +8,14 @@ import {
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { countryList } from '../utils/countyOptions';
 import { deleteFileURL, uploadFileStorage } from '../utils/fireStorageAPI';
 import { updateMovie, VideoParams } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
 import VideoDetails from './VideoDetails';
+import Select from 'react-select';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,6 +37,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     DOC_ID: '',
     trailer: '',
     trailerThumb: '',
+    country: [],
   });
   const [newThumbnail, setNewThumbnail] = useState<File>();
   const [newThumbnailUrl, setNewThumbnailUrl] = useState<string | null>(null);
@@ -69,6 +72,12 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setVideoDetails({ ...videoDetails, [name]: value });
+  };
+
+  const onChangeCountry = async (e) => {
+    console.log(e);
+    setVideoDetails({ ...videoDetails, country: e });
+    console.log(videoDetails);
   };
 
   // const onClickCancel = () => {};
@@ -199,6 +208,10 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setShowModal(false);
   };
 
+  const countryOptions = countryList.map((country) => {
+    return { value: country, label: country };
+  });
+
   return (
     <>
       <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
@@ -270,6 +283,27 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   <option>Short Film</option>
                   <option>Series</option>
                 </select>
+                <label className='label'>
+                  <span className='label-text'>Content Origin</span>
+                </label>
+                <Select
+                  isMulti
+                  name='country'
+                  options={countryOptions}
+                  value={videoDetails.country}
+                  onChange={(e) => onChangeCountry(e)}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 5,
+                    colors: {
+                      ...theme.colors,
+                      primary25: 'grey',
+                      primary: 'base-content',
+                      neutral0: 'white',
+                    },
+                  })}
+                />
+
                 <div className='flex flex-row gap-2'>
                   <div className=' w-1/3 '>
                     <label className='label'>
