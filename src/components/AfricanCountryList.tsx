@@ -14,8 +14,6 @@ interface AfricanCountries {
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
-    ColonizationHistory: string;
-    WikiLink: URL;
   };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
