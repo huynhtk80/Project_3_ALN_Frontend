@@ -35,7 +35,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
   const logout = authContext.logout;
 
   return (
-    <div className='bg-gradient-to-br from-primary to-secondary'>
+    <div className='bg-gradient-to-br from-base-100 to-base-300'>
       <Disclosure
         as='nav'
         className='bg-base-200 text-base-content bg-opacity-90 fixed w-full z-10 px-2'

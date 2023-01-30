@@ -25,7 +25,7 @@ function Landing() {
     <div className='bg-base-100'>
       <Navbar landing={true} />
       <MovieHeader />
-      {/* <HeroSection /> */}
+      <HeroSection />
       {/* <hr
         id='LearnMore'
         className='w-4/5 h-0.5 border-0 rounded mx-auto bg-slate-500'
