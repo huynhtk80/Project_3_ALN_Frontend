@@ -13,6 +13,17 @@ export default function userInfo() {
     about: '',
     firstName: '',
     lastName: '',
+    emailAddress: '',
+    country: '',
+    streetAddress: '',
+    city: '',
+    stateProvince: '',
+    zipPostal: '',
+    interests: '',
+    photo: '',
+    coverPhoto: '',
+    introVideo: '',
+
   });
 
   const onChangeHandle = (e: any) => {
@@ -131,6 +142,7 @@ export default function userInfo() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
+                              onChange={onChangeHandle}
                             />
                           </label>
                           <p className='pl-1'>or drag and drop</p>
@@ -202,6 +214,7 @@ export default function userInfo() {
                         id='last-name'
                         autoComplete='family-name'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                      
                       />
                     </div>
 
@@ -232,6 +245,7 @@ export default function userInfo() {
                       <select
                         id='country'
                         name='country'
+                        onChange={onChangeHandle}
                         autoComplete='country-name'
                         className='mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                       >
@@ -507,6 +521,7 @@ export default function userInfo() {
                       <input
                         type='text'
                         name='street-address'
+                        onChange={onChangeHandle}
                         id='street-address'
                         autoComplete='street-address'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
@@ -523,6 +538,7 @@ export default function userInfo() {
                       <input
                         type='text'
                         name='city'
+                        onChange={onChangeHandle}
                         id='city'
                         autoComplete='address-level2'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
@@ -539,6 +555,7 @@ export default function userInfo() {
                       <input
                         type='text'
                         name='region'
+                        onChange={onChangeHandle}
                         id='region'
                         autoComplete='address-level1'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
@@ -556,6 +573,7 @@ export default function userInfo() {
                         type='text'
                         name='postal-code'
                         id='postal-code'
+                        onChange={onChangeHandle}
                         autoComplete='postal-code'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                       />
@@ -600,6 +618,7 @@ export default function userInfo() {
                         <input
                           id='travel'
                           name='travel-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -614,6 +633,7 @@ export default function userInfo() {
                         <input
                           id='music'
                           name='music-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -628,6 +648,7 @@ export default function userInfo() {
                         <input
                           id='current-events'
                           name='current-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -642,6 +663,7 @@ export default function userInfo() {
                         <input
                           id='investment'
                           name='investment-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -656,6 +678,7 @@ export default function userInfo() {
                         <input
                           id='fullLength'
                           name='fullLength-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -670,6 +693,7 @@ export default function userInfo() {
                         <input
                           id='documentaries'
                           name='documentaries-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -684,6 +708,7 @@ export default function userInfo() {
                         <input
                           id='short-films'
                           name='short-films-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -698,6 +723,7 @@ export default function userInfo() {
                         <input
                           id='networking'
                           name='networking-interests'
+                          onChange={onChangeHandle}
                           type='radio'
                           className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
                         />
@@ -706,7 +732,23 @@ export default function userInfo() {
                           className='ml-3 block text-sm font-medium text-gray-700'
                         >
                           Networking
+                          
                         </label>
+                        </div>
+                      <div className='flex items-center'>
+                        <input
+                          id='podcasts'
+                          name='podcasts-interests'
+                          onChange={onChangeHandle}
+                          type='radio'
+                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                        />
+                        <label
+                          htmlFor='podcasts'
+                          className='ml-3 block text-sm font-medium text-gray-700'
+                        >
+                          Podcasts
+                          </label>
                       </div>
                     </div>
                   </fieldset>
@@ -714,7 +756,7 @@ export default function userInfo() {
                 <div className='bg-gray-50 px-4 py-3 text-right sm:px-6'>
                   <button
                     className='inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                    onClick={onClickSaveHandle}
+                  
                   >
                     Save Me
                   </button>
