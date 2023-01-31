@@ -2,15 +2,15 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
-export const LoginForm = () => {
+export const CreateAccount= () => {
   const authContext = useContext(AuthContext);
   const loginFn = authContext.login;
   const logoutFn = authContext.logout;
   const user = authContext.user;
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
-
+  const navigate = useNavigate();
+  
   return (
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
@@ -22,7 +22,7 @@ export const LoginForm = () => {
               alt='ALN'
             />
             <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-              Sign in to your account
+              Create your account
             </h2>
           </div>
           <form className='mt-8 space-y-6' action='#' method='POST'>
@@ -62,31 +62,7 @@ export const LoginForm = () => {
               </div>
             </div>
 
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center'>
-                <input
-                  id='remember-me'
-                  name='remember-me'
-                  type='checkbox'
-                  className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-                />
-                <label
-                  htmlFor='remember-me'
-                  className='ml-2 block text-sm text-gray-900'
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className='text-sm'>
-                <a
-                  href='#'
-                  className='font-medium text-indigo-600 hover:text-indigo-500'
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
+           
 
             <div>
               <button
@@ -95,11 +71,12 @@ export const LoginForm = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   loginFn(email, password);
-                  navigate('/home', { replace: true });
+                  navigate('/home/Signin', { replace: true });
+            
                 }}
               >
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
-                Sign in
+                Create Account
               </button>
             </div>
           </form>
@@ -108,3 +85,5 @@ export const LoginForm = () => {
     </>
   );
 };
+
+export default CreateAccount

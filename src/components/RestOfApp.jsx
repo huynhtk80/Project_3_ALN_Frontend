@@ -16,7 +16,7 @@ import UploadVideo from '../pages/UploadVideo';
 import Signin from '../pages/Signin';
 import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
-
+import CreateAccount from './CreateAccount';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -40,8 +40,10 @@ export const RestOfApp = () => {
           <Route path='logout' element={<Logout />} />
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
+          <Route path='CreateAccount' element={<CreateAccount />} />
           <Route path='*' element={<NotFound />} />
           <Route path='result' element={<SearchResults />} />
+         
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
