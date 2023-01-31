@@ -37,12 +37,6 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/DZ/flat/64.png'></img>,
     futureConnections: 27280000,
     PopulationSize: 44903225,
-    ColonizationHistory: 'France (1830 to 1962)',
-    WikiLink: 'https://en.wikipedia.org/wiki/Algeria',
-    // ColonizationHistory: 'France (1830 to 1962)',
-    // WikiLink: href = https://en.wikipedia.org/wiki/Algeria,
-    //ColonizationHistory: 'France (1830 to 1962)',
-    //WikiLink: 'https://en.wikipedia.org/wiki/Algeria',
   },
 
   2: {
