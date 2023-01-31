@@ -15,7 +15,7 @@ import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
 import VideoDetails from './VideoDetails';
-import Select from 'react-select';
+import Multiselect from 'multiselect-react-dropdown';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -47,6 +47,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const [progress, setProgress] = useState(0);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  console.log('viddet country', videoDetails.country);
 
   useEffect(() => {
     console.log('loading information from doc', docID);
@@ -72,12 +73,6 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setVideoDetails({ ...videoDetails, [name]: value });
-  };
-
-  const onChangeCountry = async (e) => {
-    console.log(e);
-    setVideoDetails({ ...videoDetails, country: e });
-    console.log(videoDetails);
   };
 
   // const onClickCancel = () => {};
@@ -212,6 +207,40 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     return { value: country, label: country };
   });
 
+  const onChangeCountry = async (e) => {
+    console.log(e);
+    // setVideoDetails({ ...videoDetails, country: e });
+
+    setSaving(true);
+    await updateMovie(db, docID, { country: e });
+    setSaving(false);
+    // console.log(videoDetails);
+  };
+
+  const onSelect = async (selectedList, selectedItem) => {
+    console.log('onselect', selectedList);
+    console.log(selectedItem);
+    setSaving(true);
+    await updateMovie(db, docID, { country: selectedList });
+    setSaving(false);
+  };
+
+  const onRemove = async (selectedList, selectedItem) => {
+    console.log('onremove', selectedList);
+    console.log(selectedItem);
+    setSaving(true);
+    await updateMovie(db, docID, { country: selectedList });
+    setSaving(false);
+  };
+
+  const countryValue = async (e) => {
+    const value = videoDetails.country?.map((c) => {
+      return { value: c, label: c };
+    });
+    console.log(value);
+    return value;
+  };
+
   return (
     <>
       <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
@@ -286,22 +315,22 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                 <label className='label'>
                   <span className='label-text'>Content Origin</span>
                 </label>
-                <Select
-                  isMulti
-                  name='country'
-                  options={countryOptions}
-                  value={videoDetails.country}
-                  onChange={(e) => onChangeCountry(e)}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 5,
-                    colors: {
-                      ...theme.colors,
-                      primary25: 'grey',
-                      primary: 'base-content',
-                      neutral0: 'white',
+                <Multiselect
+                  isObject={false}
+                  options={countryList} // Options to display in the dropdown
+                  selectedValues={videoDetails.country} // Preselected value to persist in dropdown
+                  onSelect={onSelect} // Function will trigger on select event
+                  onRemove={onRemove} // Function will trigger on remove event
+                  displayValue='name' // Property name to display in the dropdown options
+                  style={{
+                    optionContainer: {
+                      background: 'hsl(var(--b1) / var(--tw-bg-opacity))',
                     },
-                  })}
+                    searchBox: {
+                      borderColor: 'hsl(var(--bc) / .2)',
+                      borderRadius: 'var(--rounded-btn, 0.5rem)',
+                    },
+                  }}
                 />
 
                 <div className='flex flex-row gap-2'>
