@@ -23,7 +23,6 @@ export default function userInfo() {
     photo: '',
     coverPhoto: '',
     introVideo: '',
-
   });
 
   const onChangeHandle = (e: any) => {
@@ -34,12 +33,10 @@ export default function userInfo() {
   };
 
   console.log(userProfile);
-  const onClickSaveHandle = async (
-    e: any
-  ) => {
+  const onClickSaveHandle = async (e: any) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    await setDoc(docRef, userProfile);
+    await updateDoc(docRef, userProfile);
   };
 
   return (
@@ -214,7 +211,6 @@ export default function userInfo() {
                         id='last-name'
                         autoComplete='family-name'
                         className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                      
                       />
                     </div>
 
@@ -732,9 +728,8 @@ export default function userInfo() {
                           className='ml-3 block text-sm font-medium text-gray-700'
                         >
                           Networking
-                          
                         </label>
-                        </div>
+                      </div>
                       <div className='flex items-center'>
                         <input
                           id='podcasts'
@@ -748,7 +743,7 @@ export default function userInfo() {
                           className='ml-3 block text-sm font-medium text-gray-700'
                         >
                           Podcasts
-                          </label>
+                        </label>
                       </div>
                     </div>
                   </fieldset>

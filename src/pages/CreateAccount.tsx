@@ -1,16 +1,27 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-export const CreateAccount= () => {
+export const CreateAccount = () => {
   const authContext = useContext(AuthContext);
   const loginFn = authContext.login;
   const logoutFn = authContext.logout;
+  const createUser = authContext.createUser;
   const user = authContext.user;
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
+  const [passwordV, setpasswordV] = useState('');
+
   const navigate = useNavigate();
-  
+
+  // if (user) {
+  //   navigate('/home/', { replace: true });
+  //   return <h1>Already Logged In Redirecting</h1>;
+  // }
+  if (user) {
+    return <Navigate to='/home/' replace />;
+  }
+
   return (
     <>
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
@@ -59,25 +70,48 @@ export const CreateAccount= () => {
                   onChange={(e) => setpassword(e.target.value)}
                   placeholder='**********'
                 />
+                <label htmlFor='password' className='sr-only'>
+                  Password
+                </label>
+                <input
+                  id='passwordV'
+                  name='passwordV'
+                  type='password'
+                  autoComplete='current-password'
+                  required
+                  className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+                  value={password}
+                  onChange={(e) => setpasswordV(e.target.value)}
+                  placeholder='**********'
+                />
               </div>
             </div>
-
-           
 
             <div>
               <button
                 type='submit'
                 className='group relative flex w-full justify-center rounded-md border border-transparent bg-secondary py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                onClick={(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
-                  loginFn(email, password);
-                  navigate('/home/Signin', { replace: true });
-            
+                  try {
+                    const isCreated = await createUser(email, password);
+                    if (isCreated) navigate('/home/Signin', { replace: true });
+                  } catch (e) {
+                    console.log(e);
+                  }
                 }}
               >
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Create Account
               </button>
+              <div className='text-sm'>
+                <Link
+                  to='/home/loginform'
+                  className='font-medium text-indigo-600 hover:text-indigo-500'
+                >
+                  Already Have an account?
+                </Link>
+              </div>
             </div>
           </form>
         </div>
@@ -86,4 +120,4 @@ export const CreateAccount= () => {
   );
 };
 
-export default CreateAccount
+export default CreateAccount;

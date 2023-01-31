@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const authContext = useContext(AuthContext);
@@ -101,6 +101,14 @@ export const LoginForm = () => {
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Sign in
               </button>
+              <div className='text-sm'>
+                <Link
+                  to='/home/CreateAccount'
+                  className='font-medium text-indigo-600 hover:text-indigo-500'
+                >
+                  Register for an account?
+                </Link>
+              </div>
             </div>
           </form>
         </div>

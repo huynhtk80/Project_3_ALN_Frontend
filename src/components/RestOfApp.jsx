@@ -16,7 +16,8 @@ import UploadVideo from '../pages/UploadVideo';
 import Signin from '../pages/Signin';
 import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
-import CreateAccount from './CreateAccount';
+import CreateAccount from '../pages/CreateAccount';
+import ProtectedRoutes from '../providers/ProtectedRoutes';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -28,22 +29,77 @@ export const RestOfApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing />} />
+
         <Route path='/home' element={<Navbar />}>
-          <Route index element={<Home />} />
-          <Route path='Profile' element={<Profile />} />
-          <Route path='network' element={<Network />} />
-          <Route path='videos' element={<Videos />} />
-          <Route path='Category' element={<Category />} />
-          <Route path='Category/:category' element={<Category />} />
-          <Route path='uploadvideo' element={<UploadVideo />} />
-          <Route path='settings' element={<Settings />} />
+          <Route
+            index
+            element={
+              <ProtectedRoutes>
+                <Home />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='network'
+            element={
+              <ProtectedRoutes>
+                <Network />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='videos'
+            element={
+              <ProtectedRoutes>
+                <Videos />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='Category'
+            element={
+              <ProtectedRoutes>
+                <Category />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='Category/:category'
+            element={
+              <ProtectedRoutes>
+                <Category />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='uploadvideo'
+            element={
+              <ProtectedRoutes>
+                <UploadVideo />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='settings'
+            element={
+              <ProtectedRoutes>
+                <Settings />
+              </ProtectedRoutes>
+            }
+          />
           <Route path='logout' element={<Logout />} />
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
           <Route path='*' element={<NotFound />} />
-          <Route path='result' element={<SearchResults />} />
-         
+          <Route
+            path='result'
+            element={
+              <ProtectedRoutes>
+                <SearchResults />
+              </ProtectedRoutes>
+            }
+          />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
