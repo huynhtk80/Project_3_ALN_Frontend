@@ -13,15 +13,15 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='w-full max-w-md space-y-8 mt-40 shadow-xl p-6 bg-slate-100'>
+      <div className='flex min-h-full items-center justify-center  py-12 px-4 sm:px-6 lg:px-8'>
+        <div className='w-full max-w-md space-y-8 mt-40 shadow-xl p-6 bg-primary rounded-lg'>
           <div>
             <img
               className='mx-auto h-12 w-auto'
               src='/src/assets/ALN_LOGO-3-45.png'
               alt='ALN'
             />
-            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
+            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-primary-content'>
               Sign in to your account
             </h2>
           </div>
@@ -72,17 +72,14 @@ export const LoginForm = () => {
                 />
                 <label
                   htmlFor='remember-me'
-                  className='ml-2 block text-sm text-gray-900'
+                  className='ml-2 block text-sm text-primary-content'
                 >
                   Remember me
                 </label>
               </div>
 
               <div className='text-sm'>
-                <a
-                  href='#'
-                  className='font-medium text-indigo-600 hover:text-indigo-500'
-                >
+                <a href='#' className='font-medium text-primary-content'>
                   Forgot your password?
                 </a>
               </div>
@@ -91,7 +88,7 @@ export const LoginForm = () => {
             <div>
               <button
                 type='submit'
-                className='group relative flex w-full justify-center rounded-md border border-transparent bg-secondary py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                className='group relative flex w-full justify-center rounded-md border border-transparent bg-primary-content py-2 px-4 text-sm font-medium text-primary'
                 onClick={(e) => {
                   e.preventDefault();
                   loginFn(email, password);
@@ -104,7 +101,7 @@ export const LoginForm = () => {
               <div className='text-sm'>
                 <Link
                   to='/home/CreateAccount'
-                  className='font-medium text-indigo-600 hover:text-indigo-500'
+                  className='font-medium text-primary-content'
                 >
                   Register for an account?
                 </Link>

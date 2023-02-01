@@ -29,12 +29,12 @@ const SearchDropdown = () => {
   };
 
   return (
-    <div className='flex justify-center form-control opacity-70 shadow-md'>
+    <div className='flex justify-center form-control shadow-md'>
       <div className='input-group'>
         <input
           type='text'
           placeholder='Search…'
-          className='input input-primary text-base-content placeholder-base-content'
+          className='input input-primary text-base-content placeholder-base-content opacity-50'
           onChange={handleChange}
           onKeyDown={onClickSearch}
         />
