@@ -38,8 +38,10 @@ export const AuthProvider = (props) => {
       let userCred = await signInWithEmailAndPassword(auth, email, password);
       if (userCred) {
         console.log('Logged in!!', userCred.user);
+        return true
       } else {
         console.log('Login failed!!');
+        return false
       }
     } catch (ex) {
       console.log('AUTH FAILURE', ex.message);

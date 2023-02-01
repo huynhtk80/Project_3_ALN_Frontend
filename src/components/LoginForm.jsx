@@ -8,8 +8,83 @@ export const LoginForm = () => {
   const logoutFn = authContext.logout;
   const user = authContext.user;
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setpassword] = useState('');
+  const [email, setEmail] = useState(null);
+  const [password, setpassword] = useState(null);
+  const [validationMsg, setValidationMsg] = useState({
+    email:"",
+    password: ""})
+  const [errorState, setErrorState] = useState({
+    email: false,
+    password: false,
+
+  })
+  const [authError, setAuthError] = useState(false)
+
+  console.log("error", errorState)
+
+  const validateFields =()=>{
+    const validation = {
+      email:"",
+      password: ""}
+   const errors = {
+      email: false,
+      password: false,
+  
+    }
+
+    let isValid = true;
+
+    if(!email){
+      console.log("we got a email error")
+      validation.email= "Email is required"
+      errors.email = true
+      isValid =false;
+    }
+
+    if (email && !/\S+@\S+.\S+/.test(email)){
+      // console.log("we got a email error")
+      validation.email= "Email format needs to be example@email.com"
+      errors.email = true
+      isValid =false;
+    }
+
+    if(!password ){
+      console.log("we got a password error")
+      validation.password= "Password is required"
+      errors.password = true
+      isValid =false;
+    }
+
+    if(password && password.length <6){
+      console.log(password.length)
+      console.log("we got a password error")
+      validation.password= "Password is needs to be 6 charaters"
+      errors.password = true
+      isValid =false;
+    }
+
+    setErrorState(errors)
+    setValidationMsg(validation)
+
+    return isValid;
+
+
+  }
+
+  const onClickSave=async(e) => {
+    e.preventDefault();
+    setAuthError(false)
+    const valid = validateFields();
+    if(valid){
+    const isLoggedin = await loginFn(email, password);
+    if (isLoggedin){
+    console.log("it's working!")  
+    navigate('/home', { replace: true });
+    }else {
+      setAuthError(true)
+    }
+    }
+  }
 
   return (
     <>
@@ -43,6 +118,7 @@ export const LoginForm = () => {
                   placeholder='email@example.com'
                   className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
+                {errorState.email && <p className='text-red-800'>{validationMsg.email}</p>}
               </div>
               <div>
                 <label htmlFor='password' className='sr-only'>
@@ -59,6 +135,7 @@ export const LoginForm = () => {
                   onChange={(e) => setpassword(e.target.value)}
                   placeholder='**********'
                 />
+                {errorState.password && <p className='text-red-800'>{validationMsg.password}</p>}
               </div>
             </div>
 
@@ -89,15 +166,14 @@ export const LoginForm = () => {
               <button
                 type='submit'
                 className='group relative flex w-full justify-center rounded-md border border-transparent bg-primary-content py-2 px-4 text-sm font-medium text-primary'
-                onClick={(e) => {
-                  e.preventDefault();
-                  loginFn(email, password);
-                  navigate('/home', { replace: true });
-                }}
+                    onClick= {onClickSave}
+               
+              
               >
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Sign in
               </button>
+              {authError && <p className='text-red-800'>Credentials not matching</p>}
               <div className='text-sm'>
                 <Link
                   to='/home/CreateAccount'
