@@ -18,6 +18,7 @@ import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
 import CreateAccount from '../pages/CreateAccount';
 import ProtectedRoutes from '../providers/ProtectedRoutes';
+import AdminOnly from '../pages/AdminOnly';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -84,6 +85,14 @@ export const RestOfApp = () => {
             element={
               <ProtectedRoutes>
                 <Settings />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='admin'
+            element={
+              <ProtectedRoutes>
+                <AdminOnly />
               </ProtectedRoutes>
             }
           />
