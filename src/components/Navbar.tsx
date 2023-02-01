@@ -65,13 +65,13 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                 <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
                   <img
                     onClick={() => (window.location.href = '/')}
-                    className='h-8 w-auto hidden lg:block'
+                    className='h-8 w-auto hidden lg:block transition ease-in-out duration-300 hover:scale-x-125 hover:pl-1'
                     src={ALN_LOGO_3_47}
                     alt='ALN LOGO'
                   />
                   <img
                     onClick={() => (window.location.href = '/')}
-                    className='block h-8 w-auto lg:hidden'
+                    className='block h-8 w-auto lg:hidden transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
                     src={ALN_LOGO_3_48}
                     alt='ALN LOGO'
                   />

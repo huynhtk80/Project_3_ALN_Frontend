@@ -39,7 +39,7 @@ const SearchDropdown = () => {
           onKeyDown={onClickSearch}
         />
         <button
-          className='btn btn-circle btn-primary bg-neutral'
+          className='btn btn-circle btn-primary bg-primary'
           onClick={handleGoButtonClick}
         >
           <svg
