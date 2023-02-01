@@ -1,10 +1,10 @@
 import { Fragment, useContext, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import './Navbar.css';
 import { Outlet } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 import ALN_LOGO_3_47 from '../assets/ALN_LOGO-3-47.png';
+import ALN_LOGO_3_48 from '../assets/ALN_LOGO-3-48_sm.png';
 import AvatarTemp from '../assets/avatar-temp.png';
 import { LoginForm } from './LoginForm';
 import Switcher from './ThemeSwitcher';
@@ -34,15 +34,19 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
   const user = authContext.user;
   const logout = authContext.logout;
 
+  const [isOpen, setOpen] = useState(false);
+
+  const toggle = () => setOpen(!isOpen);
+
   return (
-    <div className='bg-gradient-to-br from-base-100 to-base-300'>
+    <div className=' '>
       <Disclosure
         as='nav'
-        className='bg-base-200 text-base-content bg-opacity-90 fixed w-full z-10 px-2'
+        className='fixed flex-row justify-start bg-base-100 text-base-content bg-opacity-90 w-full z-10 px-2 shadow-md'
       >
-        {({ open }) => (
+        {({ open, onToggle }) => (
           <>
-            <div className='relative flex h-16 items-center justify-between text-base-content'>
+            <div className='relative flex h-16 items-center justify-between text-base-content '>
               {/* Mobile menu button*/}
 
               {user && (
@@ -56,22 +60,29 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                 </Disclosure.Button>
               )}
 
-              <div className='flex flex-1 items-center sm:items-stretch justify-start cursor-pointer'>
-                <div className='flex flex-shrink-0 items-center p-2'>
+              <div className='flex flex-1 items-center sm:items-stretch justify-start'>
+                <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
                   <img
                     onClick={() => (window.location.href = '/')}
-                    className='block h-8 w-auto'
+                    className='h-8 w-auto hidden lg:block'
                     src={ALN_LOGO_3_47}
+                    alt='ALN LOGO'
+                  />
+                  <img
+                    onClick={() => (window.location.href = '/')}
+                    className='block h-8 w-auto lg:hidden'
+                    src={ALN_LOGO_3_48}
                     alt='ALN LOGO'
                   />
                 </div>
               </div>
+              <div className='items-center place-content-center mr-28 lg:mx-auto'>
+                <SearchDropdown />
+              </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                 <button type='button' className=''>
                   <span className='sr-only'>View notifications</span>
-                  <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-                    <SearchDropdown />
-                  </div>
+                  <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'></div>
                 </button>
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
