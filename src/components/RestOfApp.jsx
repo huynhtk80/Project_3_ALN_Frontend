@@ -18,13 +18,15 @@ import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
 import CreateAccount from '../pages/CreateAccount';
 import ProtectedRoutes from '../providers/ProtectedRoutes';
+import AdminOnly from '../pages/AdminOnly';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
   const app = fbContext.app;
   const authContext = useContext(AuthContext);
   const user = authContext.user;
-
+  const userRoles = authContext.userRoles;
+  console.log('roles', userRoles);
   return (
     <BrowserRouter>
       <Routes>
@@ -34,7 +36,7 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Home />
               </ProtectedRoutes>
             }
@@ -42,7 +44,7 @@ export const RestOfApp = () => {
           <Route
             path='network'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Network />
               </ProtectedRoutes>
             }
@@ -50,7 +52,7 @@ export const RestOfApp = () => {
           <Route
             path='videos'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Videos />
               </ProtectedRoutes>
             }
@@ -58,7 +60,7 @@ export const RestOfApp = () => {
           <Route
             path='Category'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Category />
               </ProtectedRoutes>
             }
@@ -66,7 +68,7 @@ export const RestOfApp = () => {
           <Route
             path='Category/:category'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Category />
               </ProtectedRoutes>
             }
@@ -74,7 +76,7 @@ export const RestOfApp = () => {
           <Route
             path='uploadvideo'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <UploadVideo />
               </ProtectedRoutes>
             }
@@ -82,8 +84,16 @@ export const RestOfApp = () => {
           <Route
             path='settings'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <Settings />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='admin'
+            element={
+              <ProtectedRoutes isAllowed={!!user && userRoles.admin}>
+                <AdminOnly />
               </ProtectedRoutes>
             }
           />
@@ -95,7 +105,7 @@ export const RestOfApp = () => {
           <Route
             path='result'
             element={
-              <ProtectedRoutes>
+              <ProtectedRoutes isAllowed={!!user}>
                 <SearchResults />
               </ProtectedRoutes>
             }

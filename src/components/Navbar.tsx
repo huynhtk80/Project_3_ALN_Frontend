@@ -21,6 +21,7 @@ const navigation = [
   { name: 'Categories', href: '/home/Category' },
   { name: 'Login', href: '/home/LoginForm' },
   { name: 'Upload Video', href: '/home/uploadvideo' },
+  { name: 'Admin', href: '/home/admin' },
 ];
 
 function classNames(...classes: string[]) {

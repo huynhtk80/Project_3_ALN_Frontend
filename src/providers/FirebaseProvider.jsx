@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAqPeb96DfaW9VM1tQK68Y3rqwCDTfyNZo',
@@ -17,18 +18,20 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getStorage(app);
 const db = getFirestore(app);
+const functions = getFunctions(app);
 
 if (import.meta.env.VITE_EMU_STATE === 'true') {
   connectAuthEmulator(auth, 'http://localhost:9099');
   connectFirestoreEmulator(db, 'localhost', 8080);
   connectStorageEmulator(store, 'localhost', 9199);
+  connectFunctionsEmulator(functions, 'localhost', 5001);
 }
 export const FirebaseContext = React.createContext();
 
 export const FirebaseProvider = (props) => {
   const { children } = props;
 
-  const theValues = { app, auth, db, store };
+  const theValues = { app, auth, db, store, functions };
   return (
     <FirebaseContext.Provider value={theValues}>
       {children}

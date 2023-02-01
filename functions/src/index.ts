@@ -1,9 +1,36 @@
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
+const app = admin.initializeApp();
+const auth = getAuth(app);
+
+exports.addAdminRole = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add other admins' };
+  }
+  return auth
+    .getUserByEmail(data.email)
+    .then((user) => {
+      return auth.setCustomUserClaims(user.uid, {
+        admin: true,
+      });
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.email} has been made an admin.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
+// Start writing functions
+// https://firebase.google.com/docs/functions/typescript
+
 // export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
+//   functions.logger.info('Hello logs!', { structuredData: true });
+//   response.send('Hello from Firebase!');
 // });
