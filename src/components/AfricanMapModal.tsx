@@ -48,16 +48,19 @@ const AfricanMapModal = () => {
               </div>
             </div>
 
-            <p>Choose a Category for an Immersive Experience</p>
+            <p>Immersive Experience Categories:</p>
             <ul>
               <li>
-                <a href='#'>Link 1</a>
+                <a href='#'>Films</a>
               </li>
               <li>
-                <a href='#'>Link 2</a>
+                <a href='#'>Shorts</a>
               </li>
               <li>
-                <a href='#'>Link 3</a>
+                <a href='#'>Documentaries</a>
+              </li>
+              <li>
+                <a href='#'>Series</a>
               </li>
             </ul>
             <button onClick={() => setShowModal(false)}>Less Info</button>
