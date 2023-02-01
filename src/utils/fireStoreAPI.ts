@@ -36,14 +36,14 @@ export const addMovie = async (videoDoc: VideoParams, db: any) => {
 export const updateMovie = async (
   db: any,
   docID: string,
-  videoDoc: VideoParams
+  videoDoc: Partial<VideoParams>
 ) => {
   const updateUpper = videoDoc;
 
-  if ('title' in videoDoc) {
+  if (updateUpper.title) {
     updateUpper.titleUpper = updateUpper.title.toUpperCase();
   }
-  if ('description' in videoDoc) {
+  if (updateUpper.description) {
     updateUpper.descriptionUpper = updateUpper.description.toUpperCase();
   }
 

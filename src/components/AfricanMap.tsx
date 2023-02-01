@@ -4,11 +4,14 @@ import PopupCard from '../utils/PopupModal';
 
 function AfricanMap() {
   const [countryName, setCountryName] = useState('');
-  const [capital, setCapital] = useState('');
-  const [currency, setCurrency] = useState('');
   const [flag, setFlag] = useState('');
-  const [officialLanguage, setLanguage] = useState('');
+  const [PopulationSize, setPopulationSize] = useState('');
   const [Quadrant, setQuadrant] = useState('');
+  const [capital, setCapital] = useState('');
+  const [officialLanguage, setLanguage] = useState('');
+  const [currency, setCurrency] = useState('');
+  const [ColonizationHistory, setColonizationHistory] = useState('');
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
     const cName = target.id;
@@ -27,11 +30,13 @@ function AfricanMap() {
         if (AfricanCountryList[key].CountryAbbrv === cName.toUpperCase()) {
           console.log(AfricanCountryList[key]);
           setCountryName(AfricanCountryList[key].CountryName);
-          setCapital(AfricanCountryList[key].Capital);
-          setCurrency(AfricanCountryList[key].Currency);
           setFlag(AfricanCountryList[key].Flag);
-          setLanguage(AfricanCountryList[key].officialLanguage);
+          setPopulationSize(AfricanCountryList[key].PopulationSize);
           setQuadrant(AfricanCountryList[key].Quadrant);
+          setCapital(AfricanCountryList[key].Capital);
+          setLanguage(AfricanCountryList[key].officialLanguage);
+          setCurrency(AfricanCountryList[key].Currency);
+          // setColonizationHistory(ColonizationHistory[key].ColonizationHistory);
         }
       }
     }
@@ -52,16 +57,27 @@ function AfricanMap() {
           <div id='flag' className='text-base-content float-right p-5'>
             <span className='text-9xl'>{flag}</span>
           </div>
+          <div id='PopulationSize' className='text-base-content'>
+            <span>Population Size in 2022: {PopulationSize}</span>
+          </div>
+          <div id='Quadrent' className='text-base-content'>
+            <span>Region : {Quadrant}</span>
+          </div>
+
           <div id='capital' className='text-base-content'>
             <span>Capital City : {capital}</span>
-          </div>
-          <div id='currency' className='text-base-content'>
-            <span>Currency : {currency} </span>
           </div>
           <div id='language' className='text-base-content'>
             <span>Official Language : {officialLanguage}</span>
           </div>
+          <div id='currency' className='text-base-content'>
+            <span>Currency : {currency} </span>
+          </div>
+          <div id='ColonizationHistory' className='text-base-content'>
+            <span>Colonization History : {ColonizationHistory}</span>
+          </div>
         </div>
+
         <div className='cursor-pointer text-base-content p-5'>
           <div className='map' onClick={(e) => handleClick(e.target)}>
             <svg

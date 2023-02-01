@@ -1,5 +1,4 @@
 import { ImgHTMLAttributes } from 'react';
-import { URL } from 'url';
 
 interface AfricanCountries {
   [key: number]: {
@@ -14,6 +13,8 @@ interface AfricanCountries {
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
+    ColonizationHistory: string;
+    //WikiLink:  URL;
   };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
@@ -37,12 +38,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/DZ/flat/64.png'></img>,
     futureConnections: 27280000,
     PopulationSize: 44903225,
-    ColonizationHistory: 'France (1830 to 1962)',
-    WikiLink: 'https://en.wikipedia.org/wiki/Algeria',
-    // ColonizationHistory: 'France (1830 to 1962)',
-    // WikiLink: href = https://en.wikipedia.org/wiki/Algeria,
-    //ColonizationHistory: 'France (1830 to 1962)',
-    //WikiLink: 'https://en.wikipedia.org/wiki/Algeria',
+    ColonizationHistory: '',
+    //WikiLink:  `href =""`,
   },
 
   2: {
@@ -56,6 +53,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/EG/flat/64.png'></img>,
     futureConnections: 75660000,
     PopulationSize: 102880000,
+    ColonizationHistory: '',
+    //WikiLink:  `href =""`,
   },
 
   3: {
@@ -69,6 +68,8 @@ const AfricanCountryList: AfricanCountries = {
     Flag: <img src='https://flagsapi.com/LY/flat/64.png'></img>,
     futureConnections: 3470000,
     PopulationSize: 6812341,
+    ColonizationHistory: '',
+    //WikiLink:  `href =""`,
   },
 
   4: {
@@ -83,7 +84,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 31590000,
     PopulationSize: 36400000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   5: {
@@ -98,7 +99,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 8000000,
     PopulationSize: 12356117,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   6: {
@@ -113,7 +114,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 14030000,
     PopulationSize: 46874204,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   7: {
@@ -128,7 +129,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 379300,
     PopulationSize: 619000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   8: {
@@ -143,7 +144,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 0,
     PopulationSize: 2252465,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
@@ -159,7 +160,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1820000,
     PopulationSize: 12889576,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   10: {
@@ -174,7 +175,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 76100000,
     PopulationSize: 836774,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   11: {
@@ -189,7 +190,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 595400,
     PopulationSize: 1120849,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   12: {
@@ -204,7 +205,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 290500,
     PopulationSize: 3630000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   13: {
@@ -219,7 +220,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 29830000,
     PopulationSize: 123000000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   14: {
@@ -234,7 +235,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 23350000,
     PopulationSize: 54027487,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   15: {
@@ -249,7 +250,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 6430000,
     PopulationSize: 29611714,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   16: {
@@ -264,7 +265,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 4030000,
     PopulationSize: 20405317,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   17: {
@@ -279,7 +280,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 826900,
     PopulationSize: 1262523,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   18: {
@@ -294,7 +295,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 7540000,
     PopulationSize: 32969518,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   19: {
@@ -309,7 +310,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3540000,
     PopulationSize: 13776698,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   20: {
@@ -324,7 +325,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 78300,
     PopulationSize: 107341,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   21: {
@@ -339,7 +340,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 2270000,
     PopulationSize: 17597511,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   22: {
@@ -354,7 +355,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1250000,
     PopulationSize: 10913164,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   23: {
@@ -369,7 +370,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 15600000,
     PopulationSize: 65497748,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   24: {
@@ -384,7 +385,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 13920000,
     PopulationSize: 47249585,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   25: {
@@ -399,7 +400,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 5470000,
     PopulationSize: 20017675,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   26: {
@@ -414,7 +415,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 4650000,
     PopulationSize: 15100000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   27: {
@@ -429,7 +430,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 373500,
     PopulationSize: 874400,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   28: {
@@ -444,7 +445,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 65700,
     PopulationSize: 282900,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
@@ -460,7 +461,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1480000,
     PopulationSize: 2630296,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   30: {
@@ -475,7 +476,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1130000,
     PopulationSize: 2305825,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   31: {
@@ -490,7 +491,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1330000,
     PopulationSize: 2567012,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   32: {
@@ -505,7 +506,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 41190000,
     PopulationSize: 60600000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   33: {
@@ -520,7 +521,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 553900,
     PopulationSize: 1180000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
@@ -536,7 +537,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3660000,
     PopulationSize: 13712828,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   35: {
@@ -551,7 +552,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 5950000,
     PopulationSize: 22673762,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   36: {
@@ -566,7 +567,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 349800,
     PopulationSize: 593149,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   37: {
@@ -581,7 +582,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 9940000,
     PopulationSize: 27720000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   38: {
@@ -596,7 +597,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 16990000,
     PopulationSize: 33475870,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   39: {
@@ -611,7 +612,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1290000,
     PopulationSize: 2705992,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   40: {
@@ -626,7 +627,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3150000,
     PopulationSize: 13859341,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   41: {
@@ -641,7 +642,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 571000,
     PopulationSize: 2110000,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   42: {
@@ -656,7 +657,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1150000,
     PopulationSize: 5302681,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   43: {
@@ -671,7 +672,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 6330000,
     PopulationSize: 22593590,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   44: {
@@ -686,7 +687,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1730000,
     PopulationSize: 4736139,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   45: {
@@ -701,7 +702,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3720000,
     PopulationSize: 26207977,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   46: {
@@ -716,7 +717,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 109200000,
     PopulationSize: 218541212,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   47: {
@@ -731,7 +732,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 8010000,
     PopulationSize: 17316449,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   48: {
@@ -746,7 +747,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 2670000,
     PopulationSize: 8605718,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   49: {
@@ -761,7 +762,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 2230000,
     PopulationSize: 8848699,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   50: {
@@ -776,7 +777,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 2294,
     PopulationSize: 6135,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
@@ -792,7 +793,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 12410000,
     PopulationSize: 35588987,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   52: {
@@ -807,7 +808,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 10050000,
     PopulationSize: 27914536,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   53: {
@@ -822,7 +823,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 355100,
     PopulationSize: 5579144,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   54: {
@@ -837,7 +838,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 3260000,
     PopulationSize: 17723315,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   55: {
@@ -852,7 +853,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 16500000,
     PopulationSize: 99010212,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   56: {
@@ -867,7 +868,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1450000,
     PopulationSize: 5884363,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   57: {
@@ -882,7 +883,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 386500,
     PopulationSize: 1530098,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   58: {
@@ -897,7 +898,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 1430000,
     PopulationSize: 2388992,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 
   59: {
@@ -912,7 +913,7 @@ const AfricanCountryList: AfricanCountries = {
     futureConnections: 72200,
     PopulationSize: 227380,
     ColonizationHistory: '',
-    WikiLink: `href =""`,
+    //WikiLink:  `href =""`,
   },
 };
 
