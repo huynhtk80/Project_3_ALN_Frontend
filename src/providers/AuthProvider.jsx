@@ -4,6 +4,7 @@ import {
   signOut,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  getIdTokenResult,
 } from 'firebase/auth';
 import { FirebaseContext } from './FirebaseProvider';
 import { doc, setDoc } from '@firebase/firestore';
@@ -17,10 +18,16 @@ export const AuthProvider = (props) => {
   const auth = fbContext.auth;
   const db = fbContext.db;
   const [user, setUser] = useState(null);
+  const [userRoles, setUserRole] = useState(null);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (authUser) => {
+    const unsub = onAuthStateChanged(auth, async (authUser) => {
       console.log('onAuthStateChanged() - new User!!', authUser);
+      if (authUser) {
+        const tokenresult = await getIdTokenResult(authUser);
+        setUserRole({ admin: tokenresult.claims.admin });
+      }
+
       setUser(authUser);
     });
     return unsub;
@@ -67,7 +74,7 @@ export const AuthProvider = (props) => {
     await signOut(auth);
   };
 
-  const theValues = { user, login, logout, createUser };
+  const theValues = { user, userRoles, login, logout, createUser };
 
   return (
     <AuthContext.Provider value={theValues}>{children}</AuthContext.Provider>
