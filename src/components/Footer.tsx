@@ -8,8 +8,6 @@ function Footer() {
       <footer className='footer p-10 bg-base-200 text-base-content'>
         <div>
           <span className='footer-title'>Services</span>
-          <a className='link link-hover'>Branding</a>
-          <a className='link link-hover'>Design</a>
           <a className='link link-hover'>Marketing</a>
           <a className='link link-hover'>Advertisement</a>
         </div>
@@ -45,23 +43,8 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <footer className='footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300'>
-        <div className='items-center grid-flow-col'>
-          <div className='mb-6 md:mb-0'>
-            <Link to='/' className='flex items-center'>
-              <img
-                src={ALN_LOGO_3_43}
-                className='h-8 mr-3'
-                alt='FlowBite Logo'
-              />
-            </Link>
-          </div>
-
-          <p>
-            Africa Live Network <br />© 2023 ALN. All Rights Reserved.
-          </p>
-        </div>
-        <div className='md:place-self-center md:justify-self-end'>
+      <footer className='footer footer-center px-10 py-4 border-t bg-base-200 text-base-content border-base-300'>
+        <div className='md:place-self-center md:justify-self-center'>
           <div className='grid grid-flow-col gap-4'>
             <a href='#'>
               <svg
@@ -101,6 +84,17 @@ function Footer() {
               </svg>
             </a>
           </div>
+        </div>
+        <div className='items-center grid-flow-col'>
+          <div className='mb-6 md:mb-0'>
+            <Link to='/' className='flex items-center'>
+              <img src={ALN_LOGO_3_43} className='h-8 mr-3' alt='ALN Logo' />
+            </Link>
+          </div>
+
+          <p className='-mt-5'>
+            Africa Live Network <br />© 2023 ALN. All Rights Reserved.
+          </p>
         </div>
       </footer>
     </>

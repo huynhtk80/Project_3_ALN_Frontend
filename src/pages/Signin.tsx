@@ -40,15 +40,15 @@ export default function userInfo() {
   };
 
   return (
-    <>
+    <div className='px-2 pt-20 mx-auto'>
       <div>
         <div className='md:grid md:grid-cols-3 md:gap-6'>
           <div className='md:col-span-1'>
             <div className='px-4 sm:px-0'>
-              <h3 className='text-lg font-medium leading-6 text-gray-900'>
+              <h3 className='text-lg font-medium leading-6 text-base-content'>
                 Profile
               </h3>
-              <p className='mt-1 text-sm text-gray-600'>
+              <p className='mt-1 text-sm text-base-content'>
                 This information will be displayed publicly so be careful what
                 you share.
               </p>
@@ -57,7 +57,7 @@ export default function userInfo() {
           <div className='mt-5 md:col-span-2 md:mt-0'>
             <form action='#' method='POST'>
               <div className='shadow sm:overflow-hidden sm:rounded-md'>
-                <div className='space-y-6 bg-white px-4 py-5 sm:p-6'>
+                <div className='space-y-6 bg-primary-focus rounded-lg px-4 py-5 sm:p-6'>
                   <div className='grid grid-cols-3 gap-6'>
                     <div className='col-span-3 sm:col-span-2'></div>
                   </div>
@@ -65,7 +65,7 @@ export default function userInfo() {
                   <div>
                     <label
                       htmlFor='about'
-                      className='block text-sm font-medium text-gray-700'
+                      className='block text-sm font-medium text-base-content'
                     >
                       About
                     </label>
@@ -74,48 +74,45 @@ export default function userInfo() {
                         id='about'
                         name='about'
                         rows={3}
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                        placeholder='you@example.com'
+                        className='mt-1 block w-full rounded-md border-accent placeholder-primary-content bg-slate-300 shadow-sm focus:border-neutral focus:ring-neutral sm:text-sm'
+                        placeholder=' you@example.com'
                         defaultValue={''}
                         onChange={onChangeHandle}
                       />
                     </div>
-                    <p className='mt-2 text-sm text-gray-500'>
+                    <p className='mt-2 text-sm text-base-content'>
                       Brief description for your profile. URLs are hyperlinked.
                     </p>
                   </div>
 
                   <div>
-                    <label className='block text-sm font-medium text-gray-700'>
+                    <label className='block text-sm font-medium text-base-content'>
                       Photo
                     </label>
-                    <div className='mt-1 flex items-center'>
-                      <span className='inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100'>
+                    <div className='avatar mt-1'>
+                      <span className='inline-block h-12 w-12 overflow-hidden rounded-full bg-primary'>
                         <svg
-                          className='h-full w-full text-gray-300'
+                          className='h-full w-full text-base-content'
                           fill='currentColor'
                           viewBox='0 0 24 24'
                         >
                           <path d='M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z' />
                         </svg>
                       </span>
-                      <button
-                        type='button'
-                        className='ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                      >
+                      <button type='button' className='btn btn-sm mt-2 ml-2'>
                         Change
                       </button>
                     </div>
                   </div>
 
                   <div>
-                    <label className='block text-sm font-medium text-gray-700'>
+                    <label className='block text-sm font-medium text-base-content'>
                       Cover photo
                     </label>
                     <div className='mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6'>
                       <div className='space-y-1 text-center'>
                         <svg
-                          className='mx-auto h-12 w-12 text-gray-400'
+                          className='mx-auto h-12 w-12 text-base-content'
                           stroke='currentColor'
                           fill='none'
                           viewBox='0 0 48 48'
@@ -128,11 +125,8 @@ export default function userInfo() {
                             strokeLinejoin='round'
                           />
                         </svg>
-                        <div className='flex text-sm text-gray-600'>
-                          <label
-                            htmlFor='file-upload'
-                            className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500'
-                          >
+                        <div className='flex text-sm text-base-content'>
+                          <label htmlFor='file-upload' className='badge'>
                             <span>Upload a file</span>
                             <input
                               id='file-upload'
@@ -144,7 +138,7 @@ export default function userInfo() {
                           </label>
                           <p className='pl-1'>or drag and drop</p>
                         </div>
-                        <p className='text-xs text-gray-500'>
+                        <p className='text-xs text-base-content'>
                           PNG, JPG, GIF up to 10MB
                         </p>
                       </div>
@@ -167,10 +161,10 @@ export default function userInfo() {
         <div className='md:grid md:grid-cols-3 md:gap-6'>
           <div className='md:col-span-1'>
             <div className='px-4 sm:px-0'>
-              <h3 className='text-lg font-medium leading-6 text-gray-900'>
+              <h3 className='text-lg font-medium leading-6 text-base-content'>
                 Personal Information
               </h3>
-              <p className='mt-1 text-sm text-gray-600'>
+              <p className='mt-1 text-sm text-base-content'>
                 Use a permanent address where you can receive mail.
               </p>
             </div>
@@ -178,12 +172,12 @@ export default function userInfo() {
           <div className='mt-5 md:col-span-2 md:mt-0'>
             <form action='#' method='POST'>
               <div className='overflow-hidden shadow sm:rounded-md'>
-                <div className='bg-white px-4 py-5 sm:p-6'>
+                <div className='bg-primary-focus rounded-lg px-4 py-5 sm:p-6'>
                   <div className='grid grid-cols-6 gap-6'>
                     <div className='col-span-6 sm:col-span-3'>
                       <label
                         htmlFor='first-name'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         First name
                       </label>
@@ -192,7 +186,7 @@ export default function userInfo() {
                         name='firstName'
                         id='first-name'
                         autoComplete='given-name'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                         onChange={onChangeHandle}
                       />
                     </div>
@@ -200,7 +194,7 @@ export default function userInfo() {
                     <div className='col-span-6 sm:col-span-3'>
                       <label
                         htmlFor='last-name'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         Last name
                       </label>
@@ -210,14 +204,14 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='last-name'
                         autoComplete='family-name'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
 
                     <div className='col-span-6 sm:col-span-4'>
                       <label
                         htmlFor='email-address'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         Email address
                       </label>
@@ -227,14 +221,14 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='email-address'
                         autoComplete='email'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
 
-                    <div className='col-span-6 sm:col-span-3'>
+                    <div className='col-span-3'>
                       <label
                         htmlFor='country'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         Country
                       </label>
@@ -243,7 +237,7 @@ export default function userInfo() {
                         name='country'
                         onChange={onChangeHandle}
                         autoComplete='country-name'
-                        className='mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+                        className='mt-1 block w-full border border-gray-300 bg-slate-300 text-secondary rounded-lg py-2 px-3 shadow-sm'
                       >
                         <option>Choose</option>
                         <option>Afghanistan AF</option>
@@ -510,7 +504,7 @@ export default function userInfo() {
                     <div className='col-span-6'>
                       <label
                         htmlFor='street-address'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         Street address
                       </label>
@@ -520,14 +514,14 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='street-address'
                         autoComplete='street-address'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
 
                     <div className='col-span-6 sm:col-span-6 lg:col-span-2'>
                       <label
                         htmlFor='city'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         City
                       </label>
@@ -537,14 +531,14 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='city'
                         autoComplete='address-level2'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
 
                     <div className='col-span-6 sm:col-span-3 lg:col-span-2'>
                       <label
                         htmlFor='region'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         State / Province
                       </label>
@@ -554,14 +548,14 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='region'
                         autoComplete='address-level1'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
 
                     <div className='col-span-6 sm:col-span-3 lg:col-span-2'>
                       <label
                         htmlFor='postal-code'
-                        className='block text-sm font-medium text-gray-700'
+                        className='block text-sm font-medium text-base-content'
                       >
                         ZIP / Postal code
                       </label>
@@ -571,7 +565,7 @@ export default function userInfo() {
                         id='postal-code'
                         onChange={onChangeHandle}
                         autoComplete='postal-code'
-                        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
                     </div>
                   </div>
@@ -592,10 +586,10 @@ export default function userInfo() {
         <div className='md:grid md:grid-cols-3 md:gap-6'>
           <div className='md:col-span-1'>
             <div className='px-4 sm:px-0'>
-              <h3 className='text-lg font-medium leading-6 text-gray-900'>
+              <h3 className='text-lg font-medium leading-6 text-base-content'>
                 Interests
               </h3>
-              <p className='mt-1 text-sm text-gray-600'>
+              <p className='mt-1 text-sm text-base-content'>
                 Decide which topics interest you.
               </p>
             </div>
@@ -603,24 +597,26 @@ export default function userInfo() {
           <div className='mt-5 md:col-span-2 md:mt-0'>
             <form>
               <div className='overflow-hidden shadow sm:rounded-md'>
-                <div className='space-y-6 bg-white px-4 py-5 sm:p-6'>
+                <div className='space-y-6 bg-primary-focus rounded-lg px-4 py-5 sm:p-6'>
                   <fieldset>
-                    <legend className='contents text-base font-medium text-gray-900'>
+                    <legend className='contents text-base font-medium text-base-content'>
                       Interests
                     </legend>
-                    <p className='text-sm text-gray-500'>Choose your top 3</p>
+                    <p className='text-sm text-base-content'>
+                      Choose your top 3
+                    </p>
                     <div className='mt-4 space-y-4'>
                       <div className='flex items-center'>
                         <input
                           id='travel'
                           name='travel-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='travel'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Travel
                         </label>
@@ -630,12 +626,12 @@ export default function userInfo() {
                           id='music'
                           name='music-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='music'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Music
                         </label>
@@ -645,12 +641,12 @@ export default function userInfo() {
                           id='current-events'
                           name='current-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='current-events'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Current Events
                         </label>
@@ -660,12 +656,12 @@ export default function userInfo() {
                           id='investment'
                           name='investment-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='investment'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Investment Opportunities
                         </label>
@@ -675,12 +671,12 @@ export default function userInfo() {
                           id='fullLength'
                           name='fullLength-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='fullLength'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Full-Length Movies
                         </label>
@@ -690,12 +686,12 @@ export default function userInfo() {
                           id='documentaries'
                           name='documentaries-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='documentaries'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Documentaries
                         </label>
@@ -705,12 +701,12 @@ export default function userInfo() {
                           id='short-films'
                           name='short-films-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='short-films'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Short Films
                         </label>
@@ -720,12 +716,12 @@ export default function userInfo() {
                           id='networking'
                           name='networking-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='networking'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Networking
                         </label>
@@ -735,12 +731,12 @@ export default function userInfo() {
                           id='podcasts'
                           name='podcasts-interests'
                           onChange={onChangeHandle}
-                          type='radio'
-                          className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                          type='checkbox'
+                          className='checkbox checkbox-secondary checkbox-sm'
                         />
                         <label
                           htmlFor='podcasts'
-                          className='ml-3 block text-sm font-medium text-gray-700'
+                          className='ml-3 block text-sm font-medium text-base-content'
                         >
                           Podcasts
                         </label>
@@ -748,12 +744,12 @@ export default function userInfo() {
                     </div>
                   </fieldset>
                 </div>
-                <div className='bg-gray-50 px-4 py-3 text-right sm:px-6'>
+                <div className=' px-4 py-3 text-right sm:px-6'>
                   <button
-                    className='inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                    className='block btn btn-sm lg:btn-md lg:btn-wide lg:-ml-3'
                     onClick={(e) => onClickSaveHandle(e)}
                   >
-                    Save Me
+                    Save
                   </button>
                 </div>
               </div>
@@ -761,6 +757,6 @@ export default function userInfo() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
