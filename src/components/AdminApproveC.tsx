@@ -143,7 +143,7 @@ function AdminApproveC() {
 
   return (
     <>
-      <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
+      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
         Content to be Approved
       </div>
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PopupCard from '../utils/PopupModal';
 import AfricanMapModal from './AfricanMapModal';
 
 function AfricanMap() {

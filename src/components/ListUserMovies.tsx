@@ -105,8 +105,8 @@ function ListUserMovies() {
 
   return (
     <>
-      <div className='text-center text-cyan-900 tracking-wide text-3xl mt-6'>
-        ListUserMovies
+      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-4'>
+        List User Movies
       </div>
 
       <div className='overflow-x-auto w-full'>
