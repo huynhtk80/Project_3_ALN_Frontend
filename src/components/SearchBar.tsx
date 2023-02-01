@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
+import './Searchbar.css';
 
 const SearchDropdown = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -29,42 +29,36 @@ const SearchDropdown = () => {
   };
 
   return (
-    <AnimatePresence>
-      {showInput && (
-        <motion.div
-          className='fixed top-0 left-0 w-full h-full'
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+    <div className='flex justify-center form-control opacity-70 shadow-md'>
+      <div className='input-group'>
+        <input
+          type='text'
+          placeholder='Search…'
+          className='input input-primary text-base-content placeholder-base-content'
+          onChange={handleChange}
+          onKeyDown={onClickSearch}
+        />
+        <button
+          className='btn btn-circle btn-primary bg-neutral'
+          onClick={handleGoButtonClick}
         >
-          <div className='fixed top-0 left-0 w-full h-full bg-gray-300 opacity-75'></div>
-          <div className='bg-white rounded-lg px-4 py-5 overflow-hidden shadow-xl transform transition-all absolute top-0 left-0'>
-            <div className='flex items-center'>
-              <input
-                type='text'
-                value={searchValue}
-                onChange={handleChange}
-                onKeyDown={onClickSearch}
-                className='w-full h-10 pl-2 text-lg'
-                placeholder='Search'
-              />
-              <button
-                className='ml-2 h-10 px-2 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-l'
-                onClick={handleGoButtonClick}
-              >
-                Go
-              </button>
-            </div>
-          </div>
-        </motion.div>
-      )}
-      <div
-        className='flex items-center justify-center cursor-pointer h-6 w-6 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:shadow-outline'
-        onClick={() => setShowInput(!showInput)}
-      >
-        <i className='fas fa-search text-gray-500'></i>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+            />
+          </svg>
+        </button>
       </div>
-    </AnimatePresence>
+    </div>
   );
 };
 
