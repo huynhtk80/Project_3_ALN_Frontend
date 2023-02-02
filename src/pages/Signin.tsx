@@ -2,6 +2,7 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { photoCrop } from '../utils/photoCrop';
 
 export default function userInfo() {
   const fbContext = useContext(FirebaseContext);
@@ -24,6 +25,21 @@ export default function userInfo() {
     coverPhoto: '',
     introVideo: '',
   });
+  const [avatarURL, setAvatarURL] = useState(null);
+
+  const onChangeAvatar = async (e) => {
+    let file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    const { imageUrl, imageFile } = await photoCrop(
+      url,
+      `avatar_${user.uid}`,
+      300,
+      300,
+      'crop'
+    );
+    console.log('the avatar cropped', imageUrl);
+    setAvatarURL(imageUrl);
+  };
 
   const onChangeHandle = (e: any) => {
     const name = e.target.name;
@@ -89,19 +105,37 @@ export default function userInfo() {
                     <label className='block text-sm font-medium text-base-content'>
                       Photo
                     </label>
+
                     <div className='avatar mt-1'>
-                      <span className='inline-block h-12 w-12 overflow-hidden rounded-full bg-primary'>
-                        <svg
-                          className='h-full w-full text-base-content'
-                          fill='currentColor'
-                          viewBox='0 0 24 24'
-                        >
-                          <path d='M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z' />
-                        </svg>
-                      </span>
-                      <button type='button' className='btn btn-sm mt-2 ml-2'>
-                        Change
-                      </button>
+                      {avatarURL ? (
+                        <div className=' avatar'>
+                          <div className=' w-14 rounded-full'>
+                            <img src={avatarURL}></img>
+                          </div>
+                        </div>
+                      ) : (
+                        <span className='inline-block h-12 w-12 overflow-hidden rounded-full bg-primary'>
+                          <svg
+                            className='h-full w-full text-base-content'
+                            fill='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path d='M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z' />
+                          </svg>
+                        </span>
+                      )}
+
+                      <label htmlFor='avatarUpload' className='btn mx-3'>
+                        <span>Change</span>
+                        <input
+                          id='avatarUpload'
+                          name='avatar'
+                          type='file'
+                          accept='image/*'
+                          className='sr-only'
+                          onChange={onChangeAvatar}
+                        />
+                      </label>
                     </div>
                   </div>
 
