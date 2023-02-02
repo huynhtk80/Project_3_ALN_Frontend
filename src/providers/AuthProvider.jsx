@@ -25,7 +25,7 @@ export const AuthProvider = (props) => {
       console.log('onAuthStateChanged() - new User!!', authUser);
       if (authUser) {
         const tokenresult = await getIdTokenResult(authUser);
-        setUserRole({ admin: tokenresult.claims.admin });
+        setUserRole(tokenresult.claims);
       }
 
       setUser(authUser);
@@ -38,10 +38,10 @@ export const AuthProvider = (props) => {
       let userCred = await signInWithEmailAndPassword(auth, email, password);
       if (userCred) {
         console.log('Logged in!!', userCred.user);
-        return true
+        return true;
       } else {
         console.log('Login failed!!');
-        return false
+        return false;
       }
     } catch (ex) {
       console.log('AUTH FAILURE', ex.message);
