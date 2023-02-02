@@ -15,12 +15,12 @@ import Footer from './Footer';
 import SearchDropdown from './SearchBar';
 
 const navigation = [
-  { name: 'Home Roots', href: '/home' },
-  { name: 'Baobab Community', href: '/home/network' },
-  { name: 'Documentaries', href: '/home/videos' },
-  { name: 'Categories', href: '/home/Category' },
-  { name: 'Upload Video', href: '/home/uploadvideo' },
-  { name: 'Admin', href: '/home/admin' },
+  { name: 'Home Roots ➤', href: '/home' },
+  { name: 'Baobab Community ➤', href: '/home/network' },
+  { name: 'Documentaries ➤', href: '/home/videos' },
+  { name: 'Categories ➤', href: '/home/Category' },
+  { name: 'Upload Video ➤', href: '/home/uploadvideo' },
+  { name: 'Admin ➤', href: '/home/admin' },
 ];
 
 function classNames(...classes: string[]) {
@@ -42,7 +42,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
     <div className=' '>
       <Disclosure
         as='nav'
-        className='fixed flex-row justify-start bg-base-100 text-base-content bg-opacity-90 w-full z-10 px-2 shadow-md'
+        className='fixed flex-row justify-start bg-base-300 text-base-content bg-opacity-90 w-full z-50 px-2 shadow-md glass'
       >
         {({ open, onToggle }) => (
           <>
@@ -50,12 +50,18 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
               {/* Mobile menu button*/}
 
               {user && (
-                <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+                <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
-                    <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
+                    <XMarkIcon
+                      className='block h-6 w-6 transition hover:rotate-180'
+                      aria-hidden='true'
+                    />
                   ) : (
-                    <Bars3Icon className='block h-6 w-6' aria-hidden='true' />
+                    <Bars3Icon
+                      className='block h-6 w-6 transition hover:rotate-90'
+                      aria-hidden='true'
+                    />
                   )}
                 </Disclosure.Button>
               )}
@@ -64,7 +70,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                 <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
                   <img
                     onClick={() => (window.location.href = '/')}
-                    className='h-8 w-auto drop-shadow-md hidden lg:block transition ease-in-out duration-300 hover:scale-x-125'
+                    className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-x-125'
                     src={ALN_LOGO_3_47}
                     alt='ALN LOGO'
                   />
@@ -105,7 +111,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                         <img
                           className='h-8 w-8 rounded-full'
                           src={AvatarTemp}
-                          alt=''
+                          alt='avatar'
                         />
                       </Menu.Button>
                     </div>
@@ -180,7 +186,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                         className={classNames(
                           item.current
                             ? 'bg-gray-900 text-base-content'
-                            : 'text-base-content hover:bwhite',
+                            : 'text-base-content transition ease-in-out duration-500 hover:text-white hover:scale-110',
                           'block px-3 py-2 rounded-md text-base font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
