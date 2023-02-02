@@ -27,6 +27,28 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     });
 });
 
+exports.addCreatorRole = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add creators' };
+  }
+  return auth
+    .getUserByEmail(data.email)
+    .then((user) => {
+      return auth.setCustomUserClaims(user.uid, {
+        creator: true,
+      });
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.email} has been made an creator.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
