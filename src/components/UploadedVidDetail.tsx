@@ -225,7 +225,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     // console.log(videoDetails);
   };
 
-  const onSelect = async (selectedList, selectedItem) => {
+  const onSelect = async (selectedList: string[], selectedItem: string) => {
     console.log('onselect', selectedList);
     console.log(selectedItem);
     setSaving(true);
@@ -233,7 +233,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setSaving(false);
   };
 
-  const onRemove = async (selectedList, selectedItem) => {
+  const onRemove = async (selectedList: string[], selectedItem: string) => {
     console.log('onremove', selectedList);
     console.log(selectedItem);
     setSaving(true);

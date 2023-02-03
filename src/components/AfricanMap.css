@@ -45,8 +45,8 @@ Biscay BLUE (Dark Navy Blue) = HEX: #192e5b  /  rgb(25, 46, 91)
 #flag,
 .map {
   display: inline-grid;
-  padding: 10px;
-  margin: 10px;
+  /* padding: 10px; */
+  /* margin: 10px; */
   border: solid 2px;
   animation: fade-in 3.5s forwards;
 }

@@ -20,7 +20,7 @@ function SelectAndUpFile() {
   const [downloadURL, setDownloadURL] = useState('');
   const [progress, setProgress] = useState<number>(0);
   const [loading, setLoading] = useState(false);
-  const inputFileRef = useRef(null);
+  const inputFileRef = useRef<HTMLInputElement | null>(null);
 
   const [videoDoc, setVideoDoc] = useState({
     title: '',

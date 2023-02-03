@@ -33,9 +33,10 @@ function AfricanMap() {
           <svg
             version='1.1'
             viewBox='0 0 1000 1000'
-            fill='#00743f'
+            fill='#008e4d'
             strokeWidth='0.60'
             stroke='black'
+            className='max-h-screen mx-auto mb-10'
           >
             <g transform='matrix(1.59433, 0, 0, 1.59433, -1721.78, -693.262)'>
               <path

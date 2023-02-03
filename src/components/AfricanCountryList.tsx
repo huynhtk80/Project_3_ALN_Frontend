@@ -9,7 +9,7 @@ interface AfricanCountries {
     officialLanguage: string;
     Capital: string;
     Currency: string;
-    Flag: ImgHTMLAttributes;
+    Flag: any;
     //  futureConnections  =  "Internet users" All sourced from https://datareportal.com/ - search by country for the year 2022.
     futureConnections: Number;
     PopulationSize: Number;
