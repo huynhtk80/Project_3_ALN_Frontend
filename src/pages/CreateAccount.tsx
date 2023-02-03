@@ -11,8 +11,112 @@ export const CreateAccount = () => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [passwordV, setpasswordV] = useState('');
-
   const navigate = useNavigate();
+
+  const onClickSaveV= async(e) => {
+    e.preventDefault();
+    setAuthErrorV(false)
+    const valid = validateFields();
+    if(valid){
+    const isLoggedin = await loginFn(email, password);
+    if (isLoggedin){
+    console.log("it's working!")  
+    navigate('/home', { replace: true });
+    }else {
+      setAuthErrorV(true)
+    }
+    }
+  }
+  
+  const [validationMsgV, setValidationMsgV] = useState({
+    email:"",
+    password: "",
+    passwordV: ""
+  
+  })
+  
+    const [errorStateV, setErrorStateV] = useState({
+    email: false,
+    password: false,
+    passwordV: false,
+
+  })
+  const [authErrorV, setAuthErrorV] = useState(false)
+
+  console.log("error", errorStateV)
+
+  const validateFields =()=>{
+    const validationV = {
+      email:"",
+      password:"",
+      passwordV: ""}
+      
+    const errorsV = {
+      email: false,
+      password: false,
+      confirmPassword: false,
+  
+    }
+
+    let isValid= true;
+
+    if(!email){
+      console.log("we got a email error")
+      validationV.email= "Email is required"
+      errorsV.email = true
+      isValid =false;
+    }
+
+    if (email && !/\S+@\S+.\S+/.test(email)){
+      // console.log("we got a email error")
+      validationV.email= "Email format needs to be example@email.com"
+      errorsV.email = true
+      isValid =false;
+    }
+
+    if(!password ){
+      console.log("we got a password error")
+      validationV.password= "Password is required"
+      errorsV.password = true
+      isValid =false;
+    }
+
+    
+    if(!passwordV ){
+      console.log("we got a password error")
+      validationV.password= "Password is required"
+      errorsV.password = true
+      isValid =false;
+    }
+
+    if(!passwordV === !password ){
+      console.log("we got a password error")
+      validationV.password= "Password does not match"
+      errorsV.password = true
+      isValid =false;
+    }
+
+    if(password && password.length <6){
+      console.log(password.length)
+      console.log("we got a password error")
+      validationV.password= "Password is needs to be 6 charaters"
+      errorsV.password = true
+      isValid =false;
+    }
+
+    setErrorStateV(errorsV)
+    setValidationMsgV(validationV)
+
+    return isValid;
+
+    
+
+
+  }
+
+
+
+  
 
   // if (user) {
   //   navigate('/home/', { replace: true });
@@ -41,6 +145,7 @@ export const CreateAccount = () => {
             <div className='-space-y-px rounded-md shadow-sm'>
               <div>
                 <label htmlFor='email-address' className='sr-only'>
+              
                   Email address
                 </label>
                 <input
@@ -51,11 +156,13 @@ export const CreateAccount = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+
                   placeholder='email@example.com'
                   className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
               </div>
               <div>
+                <br></br>
                 <label htmlFor='password' className='sr-only'>
                   Password
                 </label>
@@ -68,8 +175,10 @@ export const CreateAccount = () => {
                   className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                   value={password}
                   onChange={(e) => setpassword(e.target.value)}
-                  placeholder='**********'
+                  placeholder='Password'
+                
                 />
+                <br></br>
                 <label htmlFor='password' className='sr-only'>
                   Password
                 </label>
@@ -82,7 +191,7 @@ export const CreateAccount = () => {
                   className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                   value={password}
                   onChange={(e) => setpasswordV(e.target.value)}
-                  placeholder='**********'
+                  placeholder='Confirm Password'
                 />
               </div>
             </div>
@@ -91,19 +200,12 @@ export const CreateAccount = () => {
               <button
                 type='submit'
                 className='group relative flex w-full justify-center rounded-md border border-transparent bg-secondary py-2 px-4 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                onClick={async (e) => {
-                  e.preventDefault();
-                  try {
-                    const isCreated = await createUser(email, password);
-                    if (isCreated) navigate('/home/Signin', { replace: true });
-                  } catch (e) {
-                    console.log(e);
-                  }
-                }}
+                onClick={onClickSaveV}
               >
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Create Account
               </button>
+              <br></br>
               <div className='text-sm'>
                 <Link
                   to='/home/loginform'
@@ -119,5 +221,7 @@ export const CreateAccount = () => {
     </>
   );
 };
+
+
 
 export default CreateAccount;
