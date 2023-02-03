@@ -9,12 +9,12 @@ function AfricanMap() {
 
     // country was clicked on
     if (cName) {
-      const countries = document.querySelectorAll('.land');
+      const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
         country.style.fill = '#008e4d';
       });
       const countrySelected = document.getElementById(cName);
-      countrySelected.style.fill = '#f1a104';
+      if (countrySelected) countrySelected.style.fill = '#f1a104';
     }
   };
   return (

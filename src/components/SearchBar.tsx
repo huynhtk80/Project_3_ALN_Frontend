@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import './Searchbar.css';
 
 const SearchDropdown = () => {
   const [searchValue, setSearchValue] = useState('');
   const [showInput, setShowInput] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setSearchValue(e.target.value);
   };
 
-  const onClickSearch = (e) => {
+  const onClickSearch = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       navigate({
@@ -29,25 +28,25 @@ const SearchDropdown = () => {
   };
 
   return (
-    <div className='flex justify-center shadow-md'>
+    <div className='flex justify-center rounded-md shadow-md'>
       <div className='input-group'>
         <input
           type='text'
           placeholder='Search ALN...'
-          className='input input-primary input-sm md:input-md md:w-56 lg:input-md lg:w-96 text-base-content placeholder-primary-content opacity-50'
+          className='input input-primary w-full input-sm md:input-md md:w-56  lg:w-96 text-base-content placeholder-primary-content opacity-50 transition-all duration-300'
           onChange={handleChange}
           onKeyDown={onClickSearch}
         />
         <button
-          className='btn btn-circle btn-sm btn-primary md:btn-md lg:btn-circle lg:btn-md bg-primary'
+          className='btn btn-circle btn-sm btn-primary md:btn-md  bg-primary transition-all duration-300'
           onClick={handleGoButtonClick}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6'
+            className='h-6 w-6 stroke-primary-content'
             fill='none'
             viewBox='0 0 24 24'
-            stroke='currentColor'
+            // stroke='currentColor'
           >
             <path
               strokeLinecap='round'

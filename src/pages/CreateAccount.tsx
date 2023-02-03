@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import ALN_LOGO_3_45 from '../assets/ALN_LOGO-3-45.png';
 
 export const CreateAccount = () => {
   const authContext = useContext(AuthContext);
@@ -133,7 +134,7 @@ export const CreateAccount = () => {
           <div>
             <img
               className='mx-auto h-12 w-auto'
-              src='/src/assets/ALN_LOGO-3-45.png'
+              src={ALN_LOGO_3_45}
               alt='ALN'
             />
             <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
