@@ -124,9 +124,11 @@ function SelectAndUpFile() {
           />
         </div>
         {/* <div className='divider lg:divider-horizontal'></div> */}
-        <div className='grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center'>
-          {videoBlob && <video width='500px' controls src={videoBlob} />}
-        </div>
+        {videoBlob && (
+          <div className='grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center'>
+            <video width='500px' controls src={videoBlob} />
+          </div>
+        )}
       </div>
       <div className='flex flex-row justify-center'>
         <button className='btn btn-primary' onClick={onSubmitHandle}>
