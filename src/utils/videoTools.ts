@@ -39,20 +39,10 @@ export async function getThumbnailForVideo(
   target_height = (canvas.width / vRatio) * zoom;
   y_of_video = (canvas.height - target_height) / 2;
   x_of_video = (canvas.width - target_width) / 2;
-  //resize to fit
-  // if (vRatio > cRatio) {
-  //   target_width = canvas.width;
-  //   target_height = canvas.width / vRatio;
-  //   y_of_video = (canvas.height - target_height) / 2;
-  // } else {
-  //   target_width = canvas.height * vRatio;
-  //   target_height = canvas.height;
-
-  //   x_of_video = (canvas.width - target_width) / 2;
-  // }
 
   // Draw the thumbnail
   const context = canvas.getContext('2d');
+
   context?.drawImage(
     video,
     x_of_video,

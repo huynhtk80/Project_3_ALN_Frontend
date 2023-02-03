@@ -14,20 +14,20 @@ import {
 import { AuthContext } from '../providers/AuthProvider';
 
 import UploadedVidDetail from './UploadedVidDetail';
-import { VideoParams } from '../utils/FireStoreAPI';
+import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 
 function AdminApproveC() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState<[VideoParams] | null>(null);
+  const [videos, setVideos] = useState<VideoParams[] | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [confirmModalShow, setConfirmModalShow] = useState(false);
   const [rejectId, setRejectId] = useState('');
   const [currentDocID, setCurrentDocID] = useState('');
   const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
+  const [isCheck, setIsCheck] = useState(['']);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
 
@@ -43,10 +43,13 @@ function AdminApproveC() {
         console.log('No docs found');
         setVideos(null);
       } else {
-        let videoData = querySnap.docs.map((doc) => ({
-          ...doc.data(),
-          DOC_ID: doc.id,
-        }));
+        let videoData = querySnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as VideoParams)
+        );
         setVideos(videoData);
       }
     });
@@ -60,7 +63,9 @@ function AdminApproveC() {
 
   const handleSelectAll = (e: any) => {
     setIsCheckAll(!isCheckAll);
-    setIsCheck(videos.map((video) => video.DOC_ID));
+
+    if (videos) setIsCheck(videos.map((video) => video.DOC_ID));
+
     if (isCheckAll) {
       setIsCheck([]);
     }
@@ -244,7 +249,10 @@ function AdminApproveC() {
                       details
                     </button>
                   </th>
-                  <th>{renderApprovalStatus(video.approval, video.DOC_ID)}</th>
+                  <th>
+                    {video.approval &&
+                      renderApprovalStatus(video.approval, video.DOC_ID)}
+                  </th>
                 </tr>
               );
             })}

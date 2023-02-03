@@ -44,7 +44,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
         as='nav'
         className='fixed flex-row justify-start bg-base-300 text-base-content bg-opacity-90 w-full z-50 px-2 shadow-md glass'
       >
-        {({ open, onToggle }) => (
+        {({ open }) => (
           <>
             <div className='relative flex h-16 items-center justify-between text-base-content '>
               {/* Mobile menu button*/}
@@ -183,13 +183,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                     <Link to={item.href}>
                       <Disclosure.Button
                         key={item.name}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-base-content'
-                            : 'text-base-content transition ease-in-out duration-500 hover:text-white hover:scale-110',
-                          'block px-3 py-2 rounded-md text-base font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
+                        className='text-base-content transition ease-in-out duration-500 hover:text-white hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'
                       >
                         {item.name}
                       </Disclosure.Button>

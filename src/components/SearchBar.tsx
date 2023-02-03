@@ -7,11 +7,11 @@ const SearchDropdown = () => {
   const [showInput, setShowInput] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setSearchValue(e.target.value);
   };
 
-  const onClickSearch = (e) => {
+  const onClickSearch = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       navigate({

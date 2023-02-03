@@ -31,7 +31,7 @@ const useElementOnScreen = (
   return [containerRef, isVisible];
 };
 
-function InterObserverChildren({ children }) {
+function InterObserverChildren({ children }: { children: React.ReactElement }) {
   const [containerRef, isVisible] = useElementOnScreen({
     root: null,
     rootMargin: '0px 0px 0px 0px',

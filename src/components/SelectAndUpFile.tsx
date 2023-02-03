@@ -20,7 +20,7 @@ function SelectAndUpFile() {
   const [downloadURL, setDownloadURL] = useState('');
   const [progress, setProgress] = useState<number>(0);
   const [loading, setLoading] = useState(false);
-  const inputFileRef = useRef(null);
+  const inputFileRef = useRef<HTMLInputElement | null>(null);
 
   const [videoDoc, setVideoDoc] = useState({
     title: '',
@@ -31,7 +31,7 @@ function SelectAndUpFile() {
 
   const resetFileInput = () => {
     if (!inputFileRef.current) return;
-
+    //@ts-ignore
     inputFileRef.current.value = null;
   };
 
@@ -124,9 +124,11 @@ function SelectAndUpFile() {
           />
         </div>
         {/* <div className='divider lg:divider-horizontal'></div> */}
-        <div className='grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center'>
-          {videoBlob && <video width='500px' controls src={videoBlob} />}
-        </div>
+        {videoBlob && (
+          <div className='grid flex-grow h-content card p-2 bg-base-300 rounded-box place-items-center'>
+            <video width='500px' controls src={videoBlob} />
+          </div>
+        )}
       </div>
       <div className='flex flex-row justify-center'>
         <button className='btn btn-primary' onClick={onSubmitHandle}>

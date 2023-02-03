@@ -59,7 +59,7 @@ function Home() {
             </div>
           </div>
         </div> */}
-      <div className=' p-20'>
+      <div className=' pt-20'>
         <AfricanMap />
       </div>
     </>
