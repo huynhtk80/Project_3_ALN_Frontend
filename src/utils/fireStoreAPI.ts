@@ -1,4 +1,10 @@
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from 'firebase/firestore';
 
 //to do remove unneeded fill ID's
 export interface VideoParams {
@@ -26,6 +32,7 @@ export const addMovie = async (videoDoc: VideoParams, db: any) => {
     const docref = await addDoc(collectionRef, {
       ...videoDoc,
       titleUpper: videoDoc.title.toUpperCase(),
+      createAt: serverTimestamp(),
     });
     return docref.id;
   } catch (ex: any) {
