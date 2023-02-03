@@ -57,7 +57,7 @@ export default function userInfo() {
         const userData = {
           ...docSnap.data(),
           DOC_ID: docSnap.id,
-        };
+        } as UserProfileProps;
         setUserProfile(userData);
       } else {
         // doc.data() will be undefined in this case
@@ -69,7 +69,7 @@ export default function userInfo() {
   }, [user]);
   ``;
 
-  const onChangeAvatar = async (e) => {
+  const onChangeAvatar = async (e: any) => {
     let file = e.target.files[0];
     const url = URL.createObjectURL(file);
     const { imageUrl, imageFile } = await photoCrop(
@@ -147,7 +147,7 @@ export default function userInfo() {
   const onClickSaveHandle = async (e: any) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    await updateDoc(docRef, userProfile);
+    await updateDoc(docRef, { ...userProfile });
   };
 
   return (

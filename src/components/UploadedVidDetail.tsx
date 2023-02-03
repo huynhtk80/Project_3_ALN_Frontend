@@ -71,7 +71,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     return unsubscribe;
   }, []);
 
-  const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = async (e: any) => {
     const { name, value } = e.target;
     setVideoDetails({ ...videoDetails, [name]: value });
   };
@@ -211,20 +211,6 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setShowModal(false);
   };
 
-  const countryOptions = countryList.map((country) => {
-    return { value: country, label: country };
-  });
-
-  const onChangeCountry = async (e) => {
-    console.log(e);
-    // setVideoDetails({ ...videoDetails, country: e });
-
-    setSaving(true);
-    await updateMovie(db, docID, { country: e });
-    setSaving(false);
-    // console.log(videoDetails);
-  };
-
   const onSelect = async (selectedList: string[], selectedItem: string) => {
     console.log('onselect', selectedList);
     console.log(selectedItem);
@@ -239,14 +225,6 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setSaving(true);
     await updateMovie(db, docID, { country: selectedList });
     setSaving(false);
-  };
-
-  const countryValue = async (e) => {
-    const value = videoDetails.country?.map((c) => {
-      return { value: c, label: c };
-    });
-    console.log(value);
-    return value;
   };
 
   return (
@@ -277,8 +255,8 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
               </button> */}
             </div>
             {/*body*/}
-            <div className='relative p-6 flex-auto flex flex-row justify-around gap-3'>
-              <div className='form-control w-full max-w-xs'>
+            <div className='relative p-6 flex-col flex sm:flex-row justify-around gap-3'>
+              <div className='form-control w-full max-w-sm'>
                 <label className='label'>
                   <span className='label-text'>Movie Title</span>
                 </label>
@@ -289,7 +267,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   value={videoDetails.title}
                   onChange={onChange}
                   onBlur={onBlurHandle}
-                  className='input input-bordered w-full max-w-xs'
+                  className='input input-bordered w-full'
                 />
                 <label className='label'>
                   <span className='label-text'>Description</span>
@@ -330,6 +308,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   onSelect={onSelect} // Function will trigger on select event
                   onRemove={onRemove} // Function will trigger on remove event
                   displayValue='name' // Property name to display in the dropdown options
+                  className='max-w-xs'
                   style={{
                     optionContainer: {
                       background: 'hsl(var(--b1) / var(--tw-bg-opacity))',
@@ -387,7 +366,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   </div>
                 </div>
               </div>
-              <div className='form-control w-full max-w-xs flex flex-col'>
+              <div className='form-control w-full max-w-sm flex flex-col'>
                 <div>
                   <label className='label'>
                     <span className='label-text'>Video</span>

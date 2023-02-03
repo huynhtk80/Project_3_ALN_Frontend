@@ -19,7 +19,7 @@ function SearchResults() {
   const db = fbContext.db;
   let [searchParams, setSearchParams] = useSearchParams();
   const [videos, setVideos] = useState<VideoParams[]>();
-  const [activeIndex, setActiveIndex] = useState();
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const searchQuery = searchParams.get('query');
 
@@ -30,6 +30,7 @@ function SearchResults() {
     let queryRef = query(collectionRef, where('approval', '==', 'approved'));
 
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
+      console.log('vid data', querySnap);
       if (querySnap.empty) {
         console.log('No docs found');
         setVideos([]);
@@ -41,33 +42,26 @@ function SearchResults() {
               DOC_ID: doc.id,
             } as VideoParams)
         );
+
         if (searchQuery) {
-          console.log(videoData);
-          console.log(searchQuery.toUpperCase());
-          console.log(
+          setVideos(
             videoData.filter((video) => {
-              return video.titleUpper?.includes(searchQuery?.toUpperCase());
+              if (video.titleUpper?.includes(searchQuery?.toUpperCase()))
+                return true;
+
+              if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
+                return true;
+              return false;
             })
           );
+        } else {
+          setVideos(videoData);
         }
-
-        setVideos(
-          videoData.filter((video) => {
-            if (video.titleUpper?.includes(searchQuery?.toUpperCase()))
-              return true;
-
-            if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
-              return true;
-            return false;
-          })
-        );
       }
     });
 
     return unsubscribe;
   }, [user, searchParams]);
-
-  function onClickHandle(event) {}
 
   return (
     <div className='p-20'>
@@ -90,10 +84,6 @@ function SearchResults() {
             );
           })}
       </div>
-      <button className='btn btn-primary' onClick={onClickHandle}>
-        {' '}
-        Button
-      </button>
     </div>
   );
 }

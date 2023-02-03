@@ -31,7 +31,7 @@ function SelectAndUpFile() {
 
   const resetFileInput = () => {
     if (!inputFileRef.current) return;
-
+    //@ts-ignore
     inputFileRef.current.value = null;
   };
 
