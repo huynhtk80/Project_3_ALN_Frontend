@@ -82,7 +82,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                   />
                 </div>
               </div>
-              <div className='items-center place-content-center mr-28 lg:mx-auto'>
+              <div className='items-center place-content-center mr-24 lg:mx-[10%]'>
                 {user && <SearchDropdown />}
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>

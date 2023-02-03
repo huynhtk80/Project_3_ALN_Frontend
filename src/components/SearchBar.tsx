@@ -29,17 +29,17 @@ const SearchDropdown = () => {
   };
 
   return (
-    <div className='flex justify-center form-control shadow-md'>
+    <div className='flex justify-center shadow-md'>
       <div className='input-group'>
         <input
           type='text'
-          placeholder='Search…'
-          className='input input-primary text-base-content placeholder-base-content opacity-50'
+          placeholder='Search ALN...'
+          className='input input-primary input-sm md:input-md md:w-56 lg:input-md lg:w-96 text-base-content placeholder-primary-content opacity-50'
           onChange={handleChange}
           onKeyDown={onClickSearch}
         />
         <button
-          className='btn btn-circle btn-primary bg-primary'
+          className='btn btn-circle btn-sm btn-primary md:btn-md lg:btn-circle lg:btn-md bg-primary'
           onClick={handleGoButtonClick}
         >
           <svg
