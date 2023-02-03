@@ -16,6 +16,7 @@ import ApprovalStatus from './ApprovalStatus';
 import DeleteModal from './DeleteModal';
 import VideoDetails from './VideoDetails';
 import Multiselect from 'multiselect-react-dropdown';
+import { photoCrop } from '../utils/photoCrop';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -77,12 +78,19 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
 
   // const onClickCancel = () => {};
 
-  const onChangeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const newCustomThumb = e.target.files[0];
     const url = URL.createObjectURL(newCustomThumb);
-    setNewThumbnailUrl(url);
-    setNewThumbnail(newCustomThumb);
+    const { imageUrl, imageFile } = await photoCrop(
+      url,
+      `cover_${user.uid}`,
+      640,
+      360,
+      'crop'
+    );
+    setNewThumbnailUrl(imageUrl);
+    setNewThumbnail(imageFile);
   };
 
   const onChangeUploadTrailer = async (

@@ -1,8 +1,10 @@
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
-import React, { useContext, useState } from 'react';
+import { doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { photoCrop } from '../utils/photoCrop';
+import { uploadFileStorage, deleteFileURL } from '../utils/fireStorageAPI';
+import { VideoParams } from '../utils/fireStoreAPI';
 
 export default function userInfo() {
   const fbContext = useContext(FirebaseContext);
@@ -27,6 +29,28 @@ export default function userInfo() {
   });
   const [avatarURL, setAvatarURL] = useState(null);
 
+  useEffect(() => {
+    if (!user) return;
+    console.log('loading information from doc', user.uid);
+
+    const docRef = doc(db, 'userInfo', user.uid);
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const userData = {
+          ...docSnap.data(),
+          DOC_ID: docSnap.id,
+        };
+        setUserProfile(userData);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!');
+      }
+    });
+
+    return unsubscribe;
+  }, [user]);
+
   const onChangeAvatar = async (e) => {
     let file = e.target.files[0];
     const url = URL.createObjectURL(file);
@@ -39,6 +63,45 @@ export default function userInfo() {
     );
     console.log('the avatar cropped', imageUrl);
     setAvatarURL(imageUrl);
+    if (userProfile.photo) {
+      deleteFileURL(store, userProfile.photo);
+    }
+    const downloadUrl = await uploadFileStorage(
+      store,
+      user.uid,
+      imageFile,
+      'user',
+      'profile'
+    );
+    setUserProfile({ ...userProfile, photo: downloadUrl });
+    const docRef = doc(db, 'userInfo', user.uid);
+    await updateDoc(docRef, { photo: downloadUrl });
+  };
+
+  const onChangeCover = async (e) => {
+    let file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    const { imageUrl, imageFile } = await photoCrop(
+      url,
+      `cover_${user.uid}`,
+      820,
+      360,
+      'crop'
+    );
+    console.log('the cover cropped', imageUrl);
+    if (userProfile.coverPhoto) {
+      deleteFileURL(store, userProfile.coverPhoto);
+    }
+    const downloadUrl = await uploadFileStorage(
+      store,
+      user.uid,
+      imageFile,
+      'user',
+      'profile'
+    );
+    setUserProfile({ ...userProfile, coverPhoto: downloadUrl });
+    const docRef = doc(db, 'userInfo', user.uid);
+    await updateDoc(docRef, { coverPhoto: downloadUrl });
   };
 
   const onChangeHandle = (e: any) => {
@@ -107,10 +170,10 @@ export default function userInfo() {
                     </label>
 
                     <div className='avatar mt-1'>
-                      {avatarURL ? (
+                      {userProfile.photo ? (
                         <div className=' avatar'>
                           <div className=' w-14 rounded-full'>
-                            <img src={avatarURL}></img>
+                            <img src={userProfile.photo}></img>
                           </div>
                         </div>
                       ) : (
@@ -143,10 +206,15 @@ export default function userInfo() {
                     <label className='block text-sm font-medium text-base-content'>
                       Cover photo
                     </label>
-                    <div className='mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6'>
-                      <div className='space-y-1 text-center'>
+                    <div className='relative mt-1 aspect-[2/1] sm:aspect-[3/1] md:aspect-[4/1] w-full rounded-md border-2 border-dashed border-red-300 overflow-hidden'>
+                      <img
+                        className=' absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 rounded-md z-0'
+                        src={userProfile.coverPhoto}
+                      />
+                      <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-[9] bg-slate-100 w-40 h-28 rounded-lg drop-shadow-md opacity-60'></div>
+                      <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-10'>
                         <svg
-                          className='mx-auto h-12 w-12 text-base-content'
+                          className='mx-auto h-12 w-12 text-base-content opacity-100'
                           stroke='currentColor'
                           fill='none'
                           viewBox='0 0 48 48'
@@ -167,10 +235,9 @@ export default function userInfo() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
-                              onChange={onChangeHandle}
+                              onChange={onChangeCover}
                             />
                           </label>
-                          <p className='pl-1'>or drag and drop</p>
                         </div>
                         <p className='text-xs text-base-content'>
                           PNG, JPG, GIF up to 10MB
