@@ -70,7 +70,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                 <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
                   <img
                     onClick={() => (window.location.href = '/')}
-                    className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-x-125'
+                    className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-110'
                     src={ALN_LOGO_3_47}
                     alt='ALN LOGO'
                   />
@@ -82,7 +82,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                   />
                 </div>
               </div>
-              <div className='items-center place-content-center mr-24 lg:mx-[10%]'>
+              <div className='items-center place-content-center mr-28 lg:mx-[10%]'>
                 {user && <SearchDropdown />}
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
