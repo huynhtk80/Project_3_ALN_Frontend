@@ -13,6 +13,7 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import Footer from './Footer';
 import SearchDropdown from './SearchBar';
+import { UserDBContext } from '../providers/UserDBProvider';
 
 const navigation = [
   { name: 'Home Roots ➤', href: '/home' },
@@ -33,6 +34,8 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
   const authContext = useContext(AuthContext);
   const user = authContext.user;
   const logout = authContext.logout;
+  const userDBContext = useContext(UserDBContext);
+  const userProfile = userDBContext?.userProfile;
 
   const [isOpen, setOpen] = useState(false);
 
@@ -48,71 +51,66 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
           <>
             <div className='relative flex h-16 items-center justify-between text-base-content '>
               {/* Mobile menu button*/}
+              <div className='flex flex-row'>
+                {user && (
+                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
+                    <span className='sr-only'>Open main menu</span>
+                    {open ? (
+                      <XMarkIcon
+                        className='block h-6 w-6 transition hover:rotate-180'
+                        aria-hidden='true'
+                      />
+                    ) : (
+                      <Bars3Icon
+                        className='block h-6 w-6 transition hover:rotate-90'
+                        aria-hidden='true'
+                      />
+                    )}
+                  </Disclosure.Button>
+                )}
 
-              {user && (
-                <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
-                  <span className='sr-only'>Open main menu</span>
-                  {open ? (
-                    <XMarkIcon
-                      className='block h-6 w-6 transition hover:rotate-180'
-                      aria-hidden='true'
+                <div className='flex flex-1 items-center sm:items-stretch justify-start'>
+                  <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
+                    <img
+                      onClick={() => (window.location.href = '/')}
+                      className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-110'
+                      src={ALN_LOGO_3_47}
+                      alt='ALN LOGO'
                     />
-                  ) : (
-                    <Bars3Icon
-                      className='block h-6 w-6 transition hover:rotate-90'
-                      aria-hidden='true'
+                    <img
+                      onClick={() => (window.location.href = '/')}
+                      className='block h-8 w-auto drop-shadow-md lg:hidden transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
+                      src={ALN_LOGO_3_48}
+                      alt='ALN LOGO'
                     />
-                  )}
-                </Disclosure.Button>
-              )}
-
-              <div className='flex flex-1 items-center sm:items-stretch justify-start'>
-                <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
-                  <img
-                    onClick={() => (window.location.href = '/')}
-                    className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-110'
-                    src={ALN_LOGO_3_47}
-                    alt='ALN LOGO'
-                  />
-                  <img
-                    onClick={() => (window.location.href = '/')}
-                    className='block h-8 w-auto drop-shadow-md lg:hidden transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
-                    src={ALN_LOGO_3_48}
-                    alt='ALN LOGO'
-                  />
+                  </div>
                 </div>
               </div>
-              <div className='items-center place-content-center mr-28 lg:mx-[10%]'>
-                {user && <SearchDropdown />}
-              </div>
-              <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-                <button type='button' className=''>
-                  <span className='sr-only'>View notifications</span>
-                  <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'></div>
-                </button>
-              </div>
-              <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-                {/* <button
-                  type='button'
-                  className='rounded-full bg-accent p-1 text-base-content hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
-                >
-                  <span className='sr-only'>View notifications</span>
-                  <BellIcon className='h-6 w-6' aria-hidden='true' />
-                </button> */}
-                <div className='mt-7 ml-2 mr-2'>
+              <div className='mx-1'>{user && <SearchDropdown />}</div>
+              {/* Right Menu and Switcher */}
+              <div className='flex flex-row'>
+                <div className=''>
                   <Switcher />
                 </div>
                 {/* Profile dropdown */}
                 {user ? (
-                  <Menu as='div' className='relative ml-3'>
+                  <Menu as='div' className='ml-1'>
                     <div>
-                      <Menu.Button className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                      <Menu.Button className='flex min-w-8 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                         <span className='sr-only'>Open user menu</span>
-                        <img
-                          className='h-8 w-8 rounded-full'
-                          src={AvatarTemp}
-                          alt='avatar'
-                        />
+                        {userProfile?.photo ? (
+                          <img
+                            className='h-8 w-8 rounded-full'
+                            src={userProfile.photo}
+                            alt='avatar'
+                          />
+                        ) : (
+                          <img
+                            className='h-8 w-8 rounded-full'
+                            src={AvatarTemp}
+                            alt='avatar'
+                          />
+                        )}
                       </Menu.Button>
                     </div>
                     <Transition
