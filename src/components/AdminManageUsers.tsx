@@ -16,13 +16,15 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
+import { UserProfileProps } from '../pages/Signin';
+import { httpsCallable } from 'firebase/functions';
 
-function AdminApproveC() {
+function AdminManageUsers() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
-  const db = fbContext.db;
+  const { functions, db } = fbContext;
 
-  const [videos, setVideos] = useState<VideoParams[] | null>(null);
+  const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [confirmModalShow, setConfirmModalShow] = useState(false);
   const [rejectId, setRejectId] = useState('');
@@ -36,22 +38,22 @@ function AdminApproveC() {
 
   useEffect(() => {
     if (!user) return;
-    let collectionRef = collection(db, 'videos');
+    let collectionRef = collection(db, 'userInfo');
 
-    let queryRef = query(collectionRef, where('approval', '==', 'pending'));
+    let queryRef = query(collectionRef);
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
-        setVideos(null);
+        setUsers(null);
       } else {
-        let videoData = querySnap.docs.map(
+        let userData = querySnap.docs.map(
           (doc) =>
             ({
               ...doc.data(),
               DOC_ID: doc.id,
-            } as VideoParams)
+            } as UserProfileProps)
         );
-        setVideos(videoData);
+        setUsers(userData);
       }
     });
     return unsubscribe;
@@ -62,10 +64,43 @@ function AdminApproveC() {
     setShowModal(true);
   };
 
+  const getRoles = httpsCallable(functions, 'getUsersRoles');
+
+  const onClickGetRoles = async () => {
+    if (!users) return;
+
+    const searchUsers = users.map((user) => {
+      return { uid: user.DOC_ID };
+    });
+
+    const result = await getRoles(searchUsers);
+    console.log('the roles', result);
+    const merged = mergeArrays(users, result.data);
+
+    console.log('the merged', merged);
+    setUsers(merged);
+  };
+
+  const mergeArrays = (
+    arr1: UserProfileProps[],
+    arr2: [{ DOC_ID: string; roles: { admin: boolean; creator?: boolean } }]
+  ) => {
+    let res = [];
+    res = arr1.map((obj) => {
+      const index = arr2.findIndex((el) => el['DOC_ID'] == obj['DOC_ID']);
+      const { roles } = index !== -1 ? arr2[index] : {};
+      return {
+        ...obj,
+        roles,
+      };
+    });
+    return res;
+  };
+
   const handleSelectAll = (e: any) => {
     setIsCheckAll(!isCheckAll);
 
-    if (videos) setIsCheck(videos.map((video) => video.DOC_ID));
+    if (users) setIsCheck(users.map((user) => user.DOC_ID));
 
     if (isCheckAll) {
       setIsCheck([]);
@@ -82,7 +117,7 @@ function AdminApproveC() {
 
   const onClickUpdateMulti = async () => {
     isCheck.map(async (id) => {
-      const docRef = doc(db, 'videos', id);
+      const docRef = doc(db, 'userInfo', id);
       if (select == 'Collections') {
         await updateDoc(docRef, {
           collection: category,
@@ -95,62 +130,10 @@ function AdminApproveC() {
     });
   };
 
-  const onClickApproveHandle = async (
-    videoId: string,
-    action: 'cancel' | 'submit' | 'approved' | 'reject'
-  ) => {
-    const docRef = doc(db, 'videos', videoId);
-    if (action === 'approved') {
-      await updateDoc(docRef, {
-        approval: 'approved',
-      });
-    } else if (action === 'reject') {
-      setConfirmModalShow(true);
-      setRejectId(videoId);
-    } else {
-      await updateDoc(docRef, {
-        approval: '',
-      });
-    }
-  };
-
-  const renderApprovalStatus = (approval: string, viddocId: string) => {
-    if (approval == 'pending') {
-      return (
-        <>
-          <button
-            className='btn btn-primary btn-sm'
-            onClick={() => onClickApproveHandle(viddocId, 'approved')}
-          >
-            Approve
-          </button>
-          <button
-            className='btn btn-primary btn-sm'
-            onClick={() => onClickApproveHandle(viddocId, 'reject')}
-          >
-            Reject
-          </button>
-        </>
-      );
-    } else if (approval === 'approved') {
-      return <p>Approved</p>;
-    } else {
-      return <></>;
-    }
-  };
-
-  const rejectWithMessage = async (inputMsg: string) => {
-    const docRef = doc(db, 'videos', rejectId);
-    await updateDoc(docRef, {
-      approval: 'reject',
-      rejectMsg: inputMsg,
-    });
-  };
-
   return (
     <>
       <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
-        Content to be Approved
+        User List
       </div>
 
       <div className='overflow-x-auto w-full'>
@@ -167,12 +150,11 @@ function AdminApproveC() {
                   />
                 </label>
               </th>
-              <th>Video</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Collection</th>
-              <th>Details</th>
-              <th>approval</th>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Doc ID</th>
+              <th>Roles</th>
             </tr>
           </thead>
           <tbody>
@@ -216,43 +198,35 @@ function AdminApproveC() {
                 </td>
               </tr>
             ) : null}
-            {videos?.map((video) => {
+            {users?.map((user) => {
               return (
-                <tr key={video.DOC_ID}>
+                <tr key={user.DOC_ID}>
                   <th>
                     <label>
                       <input
-                        id={video.DOC_ID}
+                        id={user.DOC_ID}
                         type='checkbox'
                         className='checkbox'
-                        checked={isCheck.includes(video.DOC_ID)}
+                        checked={isCheck.includes(user.DOC_ID)}
                         onChange={handleCheckClick}
                       />
                     </label>
                   </th>
                   <td>
                     <img
-                      className='max-h-36'
+                      className='max-h-16 avatar rounded-full'
                       height='100%'
-                      src={video.thumbnail}
+                      src={user.photo}
                     />
                   </td>
-                  <td>{video.title}</td>
+                  <td>{`${user.firstName} ${user.lastName}`}</td>
                   <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
-                    {video.description}
+                    {user.email}
                   </td>
-                  <td>{video.collection}</td>
+                  <td>{user.DOC_ID}</td>
                   <th>
-                    <button
-                      className='btn btn-ghost btn-xs'
-                      onClick={() => onClickHandle(video.DOC_ID)}
-                    >
-                      details
-                    </button>
-                  </th>
-                  <th>
-                    {video.approval &&
-                      renderApprovalStatus(video.approval, video.DOC_ID)}
+                    {user.roles?.admin && <p>Admin</p>}
+                    {user.roles?.creator && <p>Creator</p>}
                   </th>
                 </tr>
               );
@@ -262,30 +236,19 @@ function AdminApproveC() {
           <tfoot>
             <tr>
               <th></th>
-              <th>Video</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Collection</th>
-              <th>Details</th>
-              <th>Approval</th>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Doc ID</th>
+              <th>Roles</th>
             </tr>
           </tfoot>
         </table>
+
+        <button onClick={onClickGetRoles}>Get Roles</button>
       </div>
-      {showModal && (
-        <UploadedVidDetail setShowModal={setShowModal} docID={currentDocID} />
-      )}
-      {confirmModalShow && (
-        <ConfirmModalInputMsg
-          setShowModal={setConfirmModalShow}
-          modalFunction={rejectWithMessage}
-          headingMessage='Confirm Reject'
-          bodyMessage='Please provide information for rejection reason'
-          inputLabel='Rejection Reason'
-        />
-      )}
     </>
   );
 }
 
-export default AdminApproveC;
+export default AdminManageUsers;

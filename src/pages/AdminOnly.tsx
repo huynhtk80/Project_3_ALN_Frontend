@@ -1,5 +1,7 @@
 import { httpsCallable } from '@firebase/functions';
 import React, { useContext } from 'react';
+import AdminApproveC from '../components/AdminApproveC';
+import AdminManageUsers from '../components/AdminManageUsers';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 
@@ -40,6 +42,10 @@ function AdminOnly() {
       <button className='btn btn-primary' onClick={onClickHandleDelCreator}>
         delete me as a content creator
       </button>
+
+      <AdminApproveC />
+
+      <AdminManageUsers />
     </>
   );
 }

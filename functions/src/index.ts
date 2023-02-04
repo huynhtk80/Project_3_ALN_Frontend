@@ -10,6 +10,7 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
   // if (context.auth?.token.admin !== true) {
   //   return { error: 'only admins can add other admins' };
   // }
+  console.log('need to update this');
   return auth
     .getUserByEmail(data.email)
     .then((user) => {
@@ -53,6 +54,7 @@ exports.addCreatorRole = functions.https.onCall((data, context) => {
 
 exports.deleteCreatorRole = functions.https.onCall((data, context) => {
   // get user and add admin custom claim
+
   if (context.auth?.token.admin !== true) {
     return { error: 'only admins can add creators' };
   }
@@ -72,6 +74,39 @@ exports.deleteCreatorRole = functions.https.onCall((data, context) => {
     .catch((err) => {
       return err;
     });
+});
+
+exports.getUsersRoles = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+  console.log(data);
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins access this data' };
+  }
+  return (
+    auth
+      .getUsers(data)
+      .then((usersResults) => {
+        console.log(usersResults);
+        const results = usersResults.users.map((user) => {
+          return { DOC_ID: user.uid, roles: user.customClaims };
+        });
+
+        return results;
+        // {
+        //   data: usersResults.users.map((user) => {
+        //     return { DOC_ID: user.uid, roles: user.customClaims };
+        //   }),
+        // };
+      })
+      // .then(() => {
+      //   return {
+      //     message: `Success! ${data.email} is no longer creator.`,
+      //   };
+      // })
+      .catch((err) => {
+        return err;
+      })
+  );
 });
 
 // Start writing functions
