@@ -30,6 +30,14 @@ function VideoThumbCard({
     <div className='max-w-sm rounded text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg'>
       <div className='flex justify-center'>
         <ReactPlayer
+          config={{
+            file: {
+              attributes: {
+                controlsList: 'nodownload',
+                onContextMenu: (e) => e.preventDefault(),
+              },
+            },
+          }}
           controls
           id={index}
           height='215px'
