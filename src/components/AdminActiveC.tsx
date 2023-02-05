@@ -17,8 +17,9 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
+import { stringify } from 'uuid';
 
-function AdminApproveC() {
+function AdminActiveC() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -39,7 +40,11 @@ function AdminApproveC() {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef = query(collectionRef, where('approval', '==', 'pending'));
+    let queryRef = query(
+      collectionRef,
+      where('approval', '==', 'approved'),
+      orderBy('approvalDate', 'desc')
+    );
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
@@ -171,8 +176,7 @@ function AdminApproveC() {
               </th>
               <th>Video</th>
               <th>Title</th>
-              <th>Description</th>
-              <th>Collection</th>
+              <th>Approval Date</th>
               <th>Details</th>
               <th>approval</th>
             </tr>
@@ -240,10 +244,12 @@ function AdminApproveC() {
                     />
                   </td>
                   <td>{video.title}</td>
-                  <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
-                    {video.description}
+
+                  <td>
+                    {new Date(
+                      video?.approvalDate?.seconds * 1000
+                    ).toDateString()}
                   </td>
-                  <td>{video.collection}</td>
                   <th>
                     <button
                       className='btn btn-ghost btn-xs'
@@ -266,8 +272,7 @@ function AdminApproveC() {
               <th></th>
               <th>Video</th>
               <th>Title</th>
-              <th>Description</th>
-              <th>Collection</th>
+              <th>Approval Date</th>
               <th>Details</th>
               <th>Approval</th>
             </tr>
@@ -290,4 +295,4 @@ function AdminApproveC() {
   );
 }
 
-export default AdminApproveC;
+export default AdminActiveC;

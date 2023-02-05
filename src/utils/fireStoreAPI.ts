@@ -56,7 +56,7 @@ export const updateMovie = async (
 
   try {
     const docRef = doc(db, 'videos', docID);
-    await updateDoc(docRef, { ...updateUpper });
+    await updateDoc(docRef, { ...updateUpper, lastUpdated: serverTimestamp() });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
   }

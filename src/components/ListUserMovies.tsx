@@ -9,6 +9,7 @@ import {
   where,
   doc,
   updateDoc,
+  serverTimestamp,
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
@@ -98,6 +99,7 @@ function ListUserMovies() {
         if (videoDoc?.approval !== 'approved')
           await updateDoc(docRef, {
             approval: 'pending',
+            submitforApprovalDate: serverTimestamp(),
           });
       }
     });

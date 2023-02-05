@@ -1,6 +1,7 @@
 import { httpsCallable } from '@firebase/functions';
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import AdminActiveC from '../components/AdminActiveC';
 import AdminApproveC from '../components/AdminApproveC';
 import AdminDashBoard from '../components/AdminDashBoard';
 import AdminManageUsers from '../components/AdminManageUsers';
@@ -23,6 +24,8 @@ function AdminOnly() {
       return <AdminDashBoard />;
     } else if (tool === 'approvecontent') {
       return <AdminApproveC />;
+    } else if (tool === 'activeContent') {
+      return <AdminActiveC />;
     } else if (tool === 'manageusers') {
       return <AdminManageUsers />;
     } else {
@@ -36,10 +39,10 @@ function AdminOnly() {
         <Link to='/home/admin/approvecontent'>
           <button className='btn btn-primary mx-1'>Approve Content</button>
         </Link>
-        {/* <Link to='/home/admin/activeContent'>
+        <Link to='/home/admin/activeContent'>
           <button className='btn btn-primary mx-1'>Active Content</button>
         </Link>
-        <Link to='/home/admin/rejectedcontent'>
+        {/* <Link to='/home/admin/rejectedcontent'>
           <button className='btn btn-primary mx-1'>Rejected Content</button>
         </Link> */}
         <Link to='/home/admin/manageusers'>
