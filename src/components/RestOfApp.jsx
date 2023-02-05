@@ -97,6 +97,14 @@ export const RestOfApp = () => {
               </ProtectedRoutes>
             }
           />
+          <Route
+            path='admin/:tool'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <AdminOnly />
+              </ProtectedRoutes>
+            }
+          />
           <Route path='logout' element={<Logout />} />
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
