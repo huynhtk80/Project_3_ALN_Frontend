@@ -24,10 +24,15 @@ export const AuthProvider = (props) => {
     const unsub = onAuthStateChanged(auth, async (authUser) => {
       console.log('onAuthStateChanged() - new User!!', authUser);
       if (authUser) {
+        localStorage.setItem('storageId', authUser.uid);
         const tokenresult = await getIdTokenResult(authUser);
         setUserRole(tokenresult.claims);
+        localStorage.setItem('storageAdmin', tokenresult.claims.admin);
+        localStorage.setItem('storageCreator', tokenresult.claims.creator);
+      } else {
+        localStorage.removeItem('storageId');
+        localStorage.removeItem('storageAdmin');
       }
-
       setUser(authUser);
     });
     return unsub;

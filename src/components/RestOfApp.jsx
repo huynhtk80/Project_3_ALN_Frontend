@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from '../pages/Landing';
-import Profile from '../pages/Profile';
 import Home from '../pages/Home';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import Navbar from './Navbar';
