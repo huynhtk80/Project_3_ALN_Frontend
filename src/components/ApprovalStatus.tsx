@@ -42,6 +42,8 @@ function ApprovalStatus({ video }: Props) {
     );
   } else if (approval === 'approved') {
     return <p>Approved</p>;
+  } else if (approval === 'deleted') {
+    return <p>Admin Deleted</p>;
   } else if (approval === 'reject') {
     return (
       <>
