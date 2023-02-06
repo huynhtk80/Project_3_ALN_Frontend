@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Network() {
+function ThemeSample() {
   return (
     <>
       <h1 className='bg-slate-500 text-sm lg:text-2xl text-white text-center pt-20'>
@@ -470,4 +470,4 @@ function Network() {
   );
 }
 
-export default Network;
+export default ThemeSample;

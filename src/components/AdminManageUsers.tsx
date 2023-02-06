@@ -305,11 +305,6 @@ function AdminManageUsers() {
           </tfoot>
         </table>
       </div>
-      <div className='flex flex-row flex-wrap justify-center gap-2'>
-        {users?.map((user) => (
-          <UserCard user={user} />
-        ))}
-      </div>
     </>
   );
 }

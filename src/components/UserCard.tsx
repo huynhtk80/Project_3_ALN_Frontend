@@ -28,7 +28,11 @@ function UserCard({ user }: AppProps) {
       ></img>
       <div className='card-body'>
         <h2 className='card-title'>{`${user.firstName} ${user.lastName}`}</h2>
-        <p>{user?.about?.slice(0, 100) + '...'}</p>
+        <p>
+          {user?.about?.length > 100
+            ? user?.about?.slice(0, 100) + '...'
+            : user?.about}
+        </p>
         <div className='card-actions justify-end'>
           <button className='btn btn-primary'>Connect</button>
         </div>
