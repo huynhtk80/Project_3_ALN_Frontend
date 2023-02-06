@@ -91,7 +91,7 @@ export const RestOfApp = () => {
           <Route
             path='admin'
             element={
-              <ProtectedRoutes isAllowed={!!user}>
+              <ProtectedRoutes isAllowed={!!user && userRoles.admin}>
                 <AdminOnly />
               </ProtectedRoutes>
             }
@@ -99,7 +99,7 @@ export const RestOfApp = () => {
           <Route
             path='admin/:tool'
             element={
-              <ProtectedRoutes isAllowed={!!user}>
+              <ProtectedRoutes isAllowed={!!user && userRoles.admin}>
                 <AdminOnly />
               </ProtectedRoutes>
             }
