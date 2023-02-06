@@ -138,15 +138,15 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href='#'
+                            <Link
+                              to='/home/settings'
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-base-content'
                               )}
                             >
                               Settings
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
@@ -167,7 +167,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                   </Menu>
                 ) : (
                   <Link to='/home/loginform'>
-                    <button className='btn btn-sm lg:btn-md mb-1 btn-primary'>
+                    <button className='btn btn-sm ml-1 btn-primary'>
                       Login
                     </button>
                   </Link>
