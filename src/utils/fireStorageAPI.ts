@@ -34,7 +34,7 @@ export const uploadFileStorage = async (
         setProgress && setProgress(percentage);
       },
       (error) => {
-        console.log('UPLOAD IMAGE ERROR!', error);
+        console.log('UPLOAD ERROR!', error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
