@@ -5,6 +5,7 @@ import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
+import VideoComments from './VideoComments';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -84,7 +85,6 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
             <div className='basis-2/3 grow'>
               <h2>Testing</h2>
               <p>{videoDetails?.description}</p>
-
               <h2>Trailer</h2>
               <div className='mt-1 w-2/5 overflow-hidden'>
                 <video
@@ -92,6 +92,13 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
                   poster={videoDetails?.trailerThumb}
                 ></video>
               </div>
+
+              {videoDetails && (
+                <VideoComments
+                  videoId={videoDetails?.DOC_ID}
+                  comments={videoDetails?.comments}
+                />
+              )}
             </div>
             <div className=' basis-1/3 grow'>
               <h2>Category: {videoDetails?.collection}</h2>
