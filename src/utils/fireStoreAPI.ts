@@ -1,5 +1,6 @@
 import {
   addDoc,
+  arrayRemove,
   arrayUnion,
   collection,
   doc,
@@ -90,6 +91,34 @@ export const updateMovieComments = async (
         content,
         commentTime: Timestamp.now(),
       }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addLikedMovies = async (db: any, docID: string, uid: string) => {
+  console.log('try to add', docID);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      likedVideos: arrayUnion(docID),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const removeLikedMovies = async (
+  db: any,
+  docID: string,
+  uid: string
+) => {
+  console.log('try to remove', docID);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      likedVideos: arrayRemove(docID),
     });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
