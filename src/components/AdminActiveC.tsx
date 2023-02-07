@@ -140,7 +140,17 @@ function AdminActiveC() {
         </>
       );
     } else if (approval === 'approved') {
-      return <p>Approved</p>;
+      return (
+        <>
+          <p>Approved</p>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={() => onClickApproveHandle(viddocId, 'reject')}
+          >
+            Reject
+          </button>
+        </>
+      );
     } else {
       return <></>;
     }
