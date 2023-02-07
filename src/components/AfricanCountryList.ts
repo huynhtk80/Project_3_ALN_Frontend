@@ -1,7 +1,7 @@
 import { ImgHTMLAttributes } from 'react';
 
 interface AfricanCountries {
-  [key: number]: {
+  [key: string]: {
     Quadrant: string;
     CountryAbbrv: string;
     CountryName: string;
@@ -27,7 +27,7 @@ interface AfricanCountries {
 
 const AfricanCountryList: AfricanCountries = {
   //North Africa__(1-8)_________________________________________________________________________________________________________________________
-  1: {
+  DZ: {
     Quadrant: 'North',
     CountryAbbrv: 'DZ',
     CountryName: 'Algeria',
@@ -35,14 +35,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Algiers',
     Currency: 'Algerian dinar',
-    Flag: <img src='https://flagsapi.com/DZ/flat/64.png'></img>,
+    Flag: "https://flagsapi.com/DZ/flat/64.png",
     futureConnections: 27280000,
     PopulationSize: 44903225,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  2: {
+  EG: {
     Quadrant: 'North',
     CountryAbbrv: 'EG',
     CountryName: 'Egypt',
@@ -50,14 +50,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Cairo',
     Currency: 'Egyptian Pound',
-    Flag: <img src='https://flagsapi.com/EG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/EG/flat/64.png',
     futureConnections: 75660000,
     PopulationSize: 102880000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  3: {
+  LY: {
     Quadrant: 'North',
     CountryAbbrv: 'LY',
     CountryName: 'Libya',
@@ -65,14 +65,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Tripoli',
     Currency: 'Libyan dinar',
-    Flag: <img src='https://flagsapi.com/LY/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/LY/flat/64.png',
     futureConnections: 3470000,
     PopulationSize: 6812341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  4: {
+  MA: {
     Quadrant: 'North',
     CountryAbbrv: 'MA',
     CountryName: 'Morocco',
@@ -80,14 +80,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Rabat',
     Currency: 'Moroccan dirham',
-    Flag: <img src='https://flagsapi.com/MA/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MA/flat/64.png',
     futureConnections: 31590000,
     PopulationSize: 36400000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  5: {
+  TN: {
     Quadrant: 'North',
     CountryAbbrv: 'TN',
     CountryName: 'Tunisia',
@@ -95,14 +95,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Tunis',
     Currency: 'Tunisian dinar',
-    Flag: <img src='https://flagsapi.com/TN/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/TN/flat/64.png',
     futureConnections: 8000000,
     PopulationSize: 12356117,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  6: {
+  SD: {
     Quadrant: 'North',
     CountryAbbrv: 'SD',
     CountryName: 'Sudan',
@@ -110,14 +110,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Khartoum',
     Currency: 'Sudanese Pound',
-    Flag: <img src='https://flagsapi.com/SD/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SD/flat/64.png',
     futureConnections: 14030000,
     PopulationSize: 46874204,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  7: {
+  EH: {
     Quadrant: 'North',
     CountryAbbrv: 'EH',
     CountryName: 'Western Sahara',
@@ -125,22 +125,22 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Laayoune',
     Currency: 'Sahrawi peseta, Moroccan dirham',
-    Flag: <img src='https://flagsapi.com/EH/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/EH/flat/64.png',
     futureConnections: 379300,
     PopulationSize: 619000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  8: {
+  ES: {
     Quadrant: 'North',
     CountryAbbrv: 'ES-CN',
-    CountryName: 'Canary Islands',
+    CountryName: 'Spain / Canary Islands',
     AreaCode: 928 || 828 || 922 || 822,
     officialLanguage: 'Spanish',
     Capital: 'Las Palmas de Gran Canaria and Santa Cruz de Tenerife',
     Currency: 'Euro',
-    Flag: <img src='https://flagsapi.com/IC/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/IC/flat/64.png',
     futureConnections: 0,
     PopulationSize: 2252465,
     ColonizationHistory: '',
@@ -148,7 +148,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
-  9: {
+  BI: {
     Quadrant: 'East',
     CountryAbbrv: 'BI',
     CountryName: 'Burundi',
@@ -156,14 +156,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Kirundi',
     Capital: 'Bujumbura',
     Currency: 'Burundi franc',
-    Flag: <img src='https://flagsapi.com/BI/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/BI/flat/64.png',
     futureConnections: 1820000,
     PopulationSize: 12889576,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  10: {
+  KM: {
     Quadrant: 'East',
     CountryAbbrv: 'KM',
     CountryName: 'Comoros',
@@ -171,14 +171,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Moroni',
     Currency: 'Comorian franc',
-    Flag: <img src='https://flagsapi.com/KM/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/KM/flat/64.png',
     futureConnections: 76100000,
     PopulationSize: 836774,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  11: {
+  DJ: {
     Quadrant: 'East',
     CountryAbbrv: 'DJ',
     CountryName: 'Djibouti',
@@ -186,14 +186,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Djibouti (city)',
     Currency: 'Djiboutian franc',
-    Flag: <img src='https://flagsapi.com/DJ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/DJ/flat/64.png',
     futureConnections: 595400,
     PopulationSize: 1120849,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  12: {
+  ER: {
     Quadrant: 'East',
     CountryAbbrv: 'ER',
     CountryName: 'Eritrea',
@@ -201,14 +201,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Afar',
     Capital: 'Asmara',
     Currency: 'Eritrean nakfa',
-    Flag: <img src='https://flagsapi.com/ER/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ER/flat/64.png',
     futureConnections: 290500,
     PopulationSize: 3630000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  13: {
+  ET: {
     Quadrant: 'East',
     CountryAbbrv: 'ET',
     CountryName: 'Ethiopia',
@@ -216,14 +216,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Amharic',
     Capital: 'Addis Ababa',
     Currency: 'Ethiopian birr',
-    Flag: <img src='https://flagsapi.com/ET/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ET/flat/64.png',
     futureConnections: 29830000,
     PopulationSize: 123000000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  14: {
+  KE: {
     Quadrant: 'East',
     CountryAbbrv: 'KE',
     CountryName: 'Kenya',
@@ -231,14 +231,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Nairobi',
     Currency: 'Kenyan shilling',
-    Flag: <img src='https://flagsapi.com/KE/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/KE/flat/64.png',
     futureConnections: 23350000,
     PopulationSize: 54027487,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  15: {
+  MG: {
     Quadrant: 'East',
     CountryAbbrv: 'MG',
     CountryName: 'Madagascar',
@@ -246,14 +246,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Antananarivo',
     Currency: 'Malagasy ariary',
-    Flag: <img src='https://flagsapi.com/MG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MG/flat/64.png',
     futureConnections: 6430000,
     PopulationSize: 29611714,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  16: {
+  MW: {
     Quadrant: 'East',
     CountryAbbrv: 'MW',
     CountryName: 'Malawi',
@@ -261,14 +261,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Chichewa',
     Capital: 'Lilongwe',
     Currency: 'Malawian kwacha',
-    Flag: <img src='https://flagsapi.com/MW/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MW/flat/64.png',
     futureConnections: 4030000,
     PopulationSize: 20405317,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  17: {
+  MU: {
     Quadrant: 'East',
     CountryAbbrv: 'MU',
     CountryName: 'Mauritius',
@@ -276,14 +276,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Creole',
     Capital: 'Port Louis',
     Currency: 'Mauritian rupee',
-    Flag: <img src='https://flagsapi.com/MU/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MU/flat/64.png',
     futureConnections: 826900,
     PopulationSize: 1262523,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  18: {
+  MZ: {
     Quadrant: 'East',
     CountryAbbrv: 'MZ',
     CountryName: 'Mozambique',
@@ -291,14 +291,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Emakhuwa',
     Capital: 'Maputo',
     Currency: 'Mozambican metical',
-    Flag: <img src='https://flagsapi.com/MZ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MZ/flat/64.png',
     futureConnections: 7540000,
     PopulationSize: 32969518,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  19: {
+  RW: {
     Quadrant: 'East',
     CountryAbbrv: 'RW',
     CountryName: 'Rwanda',
@@ -306,14 +306,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Kinyarwanda',
     Capital: 'Kigali',
     Currency: 'Rwandan franc',
-    Flag: <img src='https://flagsapi.com/RW/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/RW/flat/64.png',
     futureConnections: 3540000,
     PopulationSize: 13776698,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  20: {
+  SC: {
     Quadrant: 'East',
     CountryAbbrv: 'SC',
     CountryName: 'Seychelles',
@@ -321,14 +321,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Creole',
     Capital: 'Victoria',
     Currency: 'Seychellois rupee',
-    Flag: <img src='https://flagsapi.com/SC/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SC/flat/64.png',
     futureConnections: 78300,
     PopulationSize: 107341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  21: {
+  SO: {
     Quadrant: 'East',
     CountryAbbrv: 'SO',
     CountryName: 'Somalia',
@@ -336,14 +336,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Somali',
     Capital: 'Mogadishu',
     Currency: 'Somali shilling',
-    Flag: <img src='https://flagsapi.com/SO/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SO/flat/64.png',
     futureConnections: 2270000,
     PopulationSize: 17597511,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  22: {
+  SS: {
     Quadrant: 'East',
     CountryAbbrv: 'SS',
     CountryName: 'South Sudan',
@@ -351,14 +351,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Juba',
     Currency: 'South Sudanese Pound',
-    Flag: <img src='https://flagsapi.com/SS/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SS/flat/64.png',
     futureConnections: 1250000,
     PopulationSize: 10913164,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  23: {
+  TZ: {
     Quadrant: 'East',
     CountryAbbrv: 'TZ',
     CountryName: 'Tanzania',
@@ -366,14 +366,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Kiswahili or Swahili',
     Capital: 'Dodoma',
     Currency: 'Tanzanian shilling',
-    Flag: <img src='https://flagsapi.com/TZ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/TZ/flat/64.png',
     futureConnections: 15600000,
     PopulationSize: 65497748,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  24: {
+  UG: {
     Quadrant: 'East',
     CountryAbbrv: 'UG',
     CountryName: 'Uganda',
@@ -381,14 +381,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Kampala',
     Currency: 'Ugandan shilling',
-    Flag: <img src='https://flagsapi.com/UG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/UG/flat/64.png',
     futureConnections: 13920000,
     PopulationSize: 47249585,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  25: {
+  ZM: {
     Quadrant: 'East',
     CountryAbbrv: 'ZM',
     CountryName: 'Zambia',
@@ -396,14 +396,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Lusaka',
     Currency: 'Zambian kwacha',
-    Flag: <img src='https://flagsapi.com/ZM/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ZM/flat/64.png',
     futureConnections: 5470000,
     PopulationSize: 20017675,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  26: {
+  ZW: {
     Quadrant: 'East',
     CountryAbbrv: 'ZW',
     CountryName: 'Zimbabwe',
@@ -411,14 +411,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Harare',
     Currency: 'United States Dollar',
-    Flag: <img src='https://flagsapi.com/ZW/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ZW/flat/64.png',
     futureConnections: 4650000,
     PopulationSize: 15100000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  27: {
+  RE: {
     Quadrant: 'East',
     CountryAbbrv: 'RE',
     CountryName: 'Réunion Island',
@@ -426,14 +426,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Saint-Denis',
     Currency: 'Euro',
-    Flag: <img src='https://flagsapi.com/RE/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/RE/flat/64.png',
     futureConnections: 373500,
     PopulationSize: 874400,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  28: {
+  YT: {
     Quadrant: 'East',
     CountryAbbrv: 'YT',
     CountryName: 'Mayotte',
@@ -441,7 +441,7 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Mamoudzou',
     Currency: 'Euro',
-    Flag: <img src='https://flagsapi.com/YT/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/YT/flat/64.png',
     futureConnections: 65700,
     PopulationSize: 282900,
     ColonizationHistory: '',
@@ -449,7 +449,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
-  29: {
+  BW: {
     Quadrant: 'South',
     CountryAbbrv: 'BW',
     CountryName: 'Botswana',
@@ -457,14 +457,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Setswana',
     Capital: 'Gaborone',
     Currency: 'Botswana pula',
-    Flag: <img src='https://flagsapi.com/BW/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/BW/flat/64.png',
     futureConnections: 1480000,
     PopulationSize: 2630296,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  30: {
+  LS: {
     Quadrant: 'South',
     CountryAbbrv: 'LS',
     CountryName: 'Lesotho',
@@ -472,14 +472,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Sesotho',
     Capital: 'Maseru',
     Currency: 'Lesotho loti',
-    Flag: <img src='https://flagsapi.com/LS/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/LS/flat/64.png',
     futureConnections: 1130000,
     PopulationSize: 2305825,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  31: {
+  NA: {
     Quadrant: 'South',
     CountryAbbrv: 'NA',
     CountryName: 'Namibia',
@@ -487,14 +487,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Unknown',
     Capital: 'Windhoek',
     Currency: 'Namibian Dollar',
-    Flag: <img src='https://flagsapi.com/NA/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/NA/flat/64.png',
     futureConnections: 1330000,
     PopulationSize: 2567012,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  32: {
+  ZA: {
     Quadrant: 'South',
     CountryAbbrv: 'ZA',
     CountryName: 'South Africa',
@@ -502,14 +502,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'IsiZulu',
     Capital: 'Pretoria / Cape Town',
     Currency: 'South African rand',
-    Flag: <img src='https://flagsapi.com/ZA/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ZA/flat/64.png',
     futureConnections: 41190000,
     PopulationSize: 60600000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  33: {
+  SZ: {
     Quadrant: 'South',
     CountryAbbrv: 'SZ',
     CountryName: 'Eswatini',
@@ -517,7 +517,7 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Mbabane',
     Currency: 'Swazi lilangeni',
-    Flag: <img src='https://flagsapi.com/SZ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SZ/flat/64.png',
     futureConnections: 553900,
     PopulationSize: 1180000,
     ColonizationHistory: '',
@@ -525,7 +525,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
-  34: {
+  BJ: {
     Quadrant: 'West',
     CountryAbbrv: 'BJ',
     CountryName: 'Benin',
@@ -533,14 +533,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Porto-Novo',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/BJ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/BJ/flat/64.png',
     futureConnections: 3660000,
     PopulationSize: 13712828,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  35: {
+  BF: {
     Quadrant: 'West',
     CountryAbbrv: 'BF',
     CountryName: 'Burkina Faso',
@@ -548,14 +548,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Ouagadougou',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/BF/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/BF/flat/64.png',
     futureConnections: 5950000,
     PopulationSize: 22673762,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  36: {
+  CV: {
     Quadrant: 'West',
     CountryAbbrv: 'CV',
     CountryName: 'Cabo Verde',
@@ -563,14 +563,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Portuguese',
     Capital: 'Praia',
     Currency: 'Cape Verdean escudo',
-    Flag: <img src='https://flagsapi.com/CV/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CV/flat/64.png',
     futureConnections: 349800,
     PopulationSize: 593149,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  37: {
+  CI: {
     Quadrant: 'West',
     CountryAbbrv: 'CI',
     CountryName: "Cote D'Ivoire",
@@ -578,14 +578,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Yamoussoukro',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/CI/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CI/flat/64.png',
     futureConnections: 9940000,
     PopulationSize: 27720000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  38: {
+  GH: {
     Quadrant: 'West',
     CountryAbbrv: 'GH',
     CountryName: 'Ghana',
@@ -593,14 +593,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Accra',
     Currency: 'Ghanaian cedi',
-    Flag: <img src='https://flagsapi.com/GH/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GH/flat/64.png',
     futureConnections: 16990000,
     PopulationSize: 33475870,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  39: {
+  GM: {
     Quadrant: 'West',
     CountryAbbrv: 'GM',
     CountryName: 'Gambia',
@@ -608,14 +608,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Banjul',
     Currency: 'Dalasi',
-    Flag: <img src='https://flagsapi.com/GM/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GM/flat/64.png',
     futureConnections: 1290000,
     PopulationSize: 2705992,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  40: {
+  GN: {
     Quadrant: 'West',
     CountryAbbrv: 'GN',
     CountryName: 'Guinea',
@@ -623,14 +623,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Conakry',
     Currency: 'Guinean franc',
-    Flag: <img src='https://flagsapi.com/GN/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GN/flat/64.png',
     futureConnections: 3150000,
     PopulationSize: 13859341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  41: {
+  GW: {
     Quadrant: 'West',
     CountryAbbrv: 'GW',
     CountryName: 'Guinea-Bissau',
@@ -638,14 +638,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Portuguese',
     Capital: 'Bissau',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/GW/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GW/flat/64.png',
     futureConnections: 571000,
     PopulationSize: 2110000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  42: {
+  LR: {
     Quadrant: 'West',
     CountryAbbrv: 'LR',
     CountryName: 'Liberia',
@@ -653,14 +653,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Monrovia',
     Currency: 'Liberian Dollar',
-    Flag: <img src='https://flagsapi.com/LR/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/LR/flat/64.png',
     futureConnections: 1150000,
     PopulationSize: 5302681,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  43: {
+  ML: {
     Quadrant: 'West',
     CountryAbbrv: 'ML',
     CountryName: 'Mali',
@@ -668,14 +668,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Bamako',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/ML/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ML/flat/64.png',
     futureConnections: 6330000,
     PopulationSize: 22593590,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  44: {
+  MR: {
     Quadrant: 'West',
     CountryAbbrv: 'MR',
     CountryName: 'Mauritania',
@@ -683,14 +683,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Arabic',
     Capital: 'Nouakchott',
     Currency: 'Mauritanian ouguiya',
-    Flag: <img src='https://flagsapi.com/MR/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/MR/flat/64.png',
     futureConnections: 1730000,
     PopulationSize: 4736139,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  45: {
+  NE: {
     Quadrant: 'West',
     CountryAbbrv: 'NE',
     CountryName: 'Niger',
@@ -698,14 +698,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Niamey',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/NE/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/NE/flat/64.png',
     futureConnections: 3720000,
     PopulationSize: 26207977,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  46: {
+  NG: {
     Quadrant: 'West',
     CountryAbbrv: 'NG',
     CountryName: 'Nigeria',
@@ -713,14 +713,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Abuja',
     Currency: 'Nigerian naira',
-    Flag: <img src='https://flagsapi.com/NG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/NG/flat/64.png',
     futureConnections: 109200000,
     PopulationSize: 218541212,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  47: {
+  SN: {
     Quadrant: 'West',
     CountryAbbrv: 'SN',
     CountryName: 'Senegal',
@@ -728,14 +728,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Dakar',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/SN/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SN/flat/64.png',
     futureConnections: 8010000,
     PopulationSize: 17316449,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  48: {
+  SL: {
     Quadrant: 'West',
     CountryAbbrv: 'SL',
     CountryName: 'Sierra Leone',
@@ -743,14 +743,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Freetown',
     Currency: 'Sierra Leonean leone',
-    Flag: <img src='https://flagsapi.com/SL/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/SL/flat/64.png',
     futureConnections: 2670000,
     PopulationSize: 8605718,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  49: {
+  TG: {
     Quadrant: 'West',
     CountryAbbrv: 'TG',
     CountryName: 'Togo',
@@ -758,14 +758,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Lomé',
     Currency: 'West African CFA franc',
-    Flag: <img src='https://flagsapi.com/TG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/TG/flat/64.png',
     futureConnections: 2230000,
     PopulationSize: 8848699,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  50: {
+  SH: {
     Quadrant: 'West',
     CountryAbbrv: 'SH',
     CountryName: 'Saint Helena, Ascension and Tristan da Cunha',
@@ -773,7 +773,7 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'English',
     Capital: 'Jamestown',
     Currency: 'Saint Helena pound & pound sterling',
-    Flag: <img src='https://flagsapi.com/GB/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GB/flat/64.png',
     futureConnections: 2294,
     PopulationSize: 6135,
     ColonizationHistory: '',
@@ -781,7 +781,7 @@ const AfricanCountryList: AfricanCountries = {
   },
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
-  51: {
+  AO: {
     Quadrant: 'Central',
     CountryAbbrv: 'AO',
     CountryName: 'Angola',
@@ -789,14 +789,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Portuguese',
     Capital: 'Luanda',
     Currency: 'Angolan kwanza',
-    Flag: <img src='https://flagsapi.com/AO/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/AO/flat/64.png',
     futureConnections: 12410000,
     PopulationSize: 35588987,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  52: {
+  CM: {
     Quadrant: 'Central',
     CountryAbbrv: 'CM',
     CountryName: 'Cameroon',
@@ -804,14 +804,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Major African languages',
     Capital: 'Yaoundé',
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/CM/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CM/flat/64.png',
     futureConnections: 10050000,
     PopulationSize: 27914536,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  53: {
+  CF: {
     Quadrant: 'Central',
     CountryAbbrv: 'CF',
     CountryName: 'Central African Republic',
@@ -819,14 +819,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Bangui',
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/CF/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CF/flat/64.png',
     futureConnections: 355100,
     PopulationSize: 5579144,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  54: {
+  TD: {
     Quadrant: 'Central',
     CountryAbbrv: 'TD',
     CountryName: 'Chad',
@@ -834,14 +834,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: "N'Djamena",
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/TD/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/TD/flat/64.png',
     futureConnections: 3260000,
     PopulationSize: 17723315,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  55: {
+  CD: {
     Quadrant: 'Central',
     CountryAbbrv: 'CD',
     CountryName: 'Democratic Republic of the Congo',
@@ -849,14 +849,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Kinshasa',
     Currency: 'Congolese franc',
-    Flag: <img src='https://flagsapi.com/CD/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CD/flat/64.png',
     futureConnections: 16500000,
     PopulationSize: 99010212,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  56: {
+  CG: {
     Quadrant: 'Central',
     CountryAbbrv: 'CG',
     CountryName: 'Republic of the Congo',
@@ -864,14 +864,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Brazzaville',
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/CG/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/CG/flat/64.png',
     futureConnections: 1450000,
     PopulationSize: 5884363,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  57: {
+  GQ: {
     Quadrant: 'Central',
     CountryAbbrv: 'GQ',
     CountryName: 'Equatorial Guinea',
@@ -879,14 +879,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Spanish',
     Capital: 'Malabo',
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/GQ/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GQ/flat/64.png',
     futureConnections: 386500,
     PopulationSize: 1530098,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  58: {
+  GA: {
     Quadrant: 'Central',
     CountryAbbrv: 'GA',
     CountryName: 'Gabon',
@@ -894,14 +894,14 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'French',
     Capital: 'Libreville',
     Currency: 'Central African CFA franc',
-    Flag: <img src='https://flagsapi.com/GA/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/GA/flat/64.png',
     futureConnections: 1430000,
     PopulationSize: 2388992,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
   },
 
-  59: {
+  ST: {
     Quadrant: 'Central',
     CountryAbbrv: 'ST',
     CountryName: 'Sao Tome And Principe',
@@ -909,7 +909,7 @@ const AfricanCountryList: AfricanCountries = {
     officialLanguage: 'Portuguese',
     Capital: 'São Tomé',
     Currency: 'Sao Tome and Principe dobra',
-    Flag: <img src='https://flagsapi.com/ST/flat/64.png'></img>,
+    Flag: 'https://flagsapi.com/ST/flat/64.png',
     futureConnections: 72200,
     PopulationSize: 227380,
     ColonizationHistory: '',

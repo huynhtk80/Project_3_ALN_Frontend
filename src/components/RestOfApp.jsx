@@ -35,9 +35,9 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-              <ProtectedRoutes isAllowed={!!user}>
+            //  <ProtectedRoutes isAllowed={!!user}>
                 <Home />
-              </ProtectedRoutes>
+           //   </ProtectedRoutes>
             }
           />
           <Route
