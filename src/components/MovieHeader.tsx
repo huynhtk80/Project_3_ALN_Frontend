@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
-
+import { VscUnmute, VscMute } from 'react-icons/vsc';
 import headerVideo from '../assets/LandingHeader.mp4';
+import drumVideo from '../assets/drumHeader.mp4';
 
 function MovieHeader() {
+  const videoPlayer = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const onClickMute = () => {
+    setIsMuted(!isMuted);
+  };
   return (
     <div className='hero min-h-screen'>
       <div className='absolute top-0 bottom-0 w-full h-full overflow-hidden'>
         <video
           className='z-1 absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover'
           autoPlay
-          muted
+          muted={isMuted}
           loop
           id='myVideo'
+          ref={videoPlayer}
         >
-          <source src={headerVideo} type='video/mp4' />
+          <source src={drumVideo} type='video/mp4' />
         </video>
       </div>
       <div className='hero-overlay bg-slate-800  bg-opacity-60 z-[2]'></div>
@@ -50,6 +58,12 @@ function MovieHeader() {
           <path d='M24 12c0-6.623-5.377-12-12-12s-12 5.377-12 12 5.377 12 12 12 12-5.377 12-12zm-1 0c0-6.071-4.929-11-11-11s-11 4.929-11 11 4.929 11 11 11 11-4.929 11-11zm-11.5 4.828l-3.763-4.608-.737.679 5 6.101 5-6.112-.753-.666-3.747 4.604v-11.826h-1v11.828z' />
         </svg>
       </a>
+      <div
+        className=' absolute bottom-10 right-10 text-white opacity-20 hover:opacity-90 z-50'
+        onClick={onClickMute}
+      >
+        {isMuted ? <VscMute size={'40px'} /> : <VscUnmute size={'40px'} />}
+      </div>
     </div>
   );
 }
