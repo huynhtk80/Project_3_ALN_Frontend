@@ -18,6 +18,7 @@ import SearchResults from '../pages/SearchResults';
 import CreateAccount from '../pages/CreateAccount';
 import ProtectedRoutes from '../providers/ProtectedRoutes';
 import AdminOnly from '../pages/AdminOnly';
+import Profile from '../pages/Profile';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -105,10 +106,10 @@ export const RestOfApp = () => {
             }
           />
           <Route path='logout' element={<Logout />} />
-          <Route path='Profile' element={<Profile />} />
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
+          <Route path='Profile' element={<Profile />} />
           <Route path='*' element={<NotFound />} />
           <Route
             path='result'
