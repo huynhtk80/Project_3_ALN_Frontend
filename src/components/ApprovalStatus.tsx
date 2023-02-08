@@ -1,4 +1,4 @@
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
@@ -19,6 +19,7 @@ function ApprovalStatus({ video }: Props) {
     if (action === 'submit') {
       await updateDoc(docRef, {
         approval: 'pending',
+        submitforApprovalDate: serverTimestamp(),
       });
     } else {
       await updateDoc(docRef, {
@@ -41,6 +42,8 @@ function ApprovalStatus({ video }: Props) {
     );
   } else if (approval === 'approved') {
     return <p>Approved</p>;
+  } else if (approval === 'deleted') {
+    return <p>Admin Deleted</p>;
   } else if (approval === 'reject') {
     return (
       <>

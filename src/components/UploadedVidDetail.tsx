@@ -3,6 +3,7 @@ import {
   doc,
   getDoc,
   onSnapshot,
+  serverTimestamp,
   updateDoc,
 } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
@@ -17,6 +18,7 @@ import DeleteModal from './DeleteModal';
 import VideoDetails from './VideoDetails';
 import Multiselect from 'multiselect-react-dropdown';
 import { photoCrop } from '../utils/photoCrop';
+import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,7 +26,7 @@ interface UploadVidDetailProps {
 }
 function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const fbContext = useContext(FirebaseContext);
-  const { user } = useContext(AuthContext);
+  const { user, userRoles } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
 
@@ -48,7 +50,10 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   const [progress, setProgress] = useState(0);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  console.log('viddet country', videoDetails.country);
+  const [isEditable, setIsEditable] = useState(true);
+  const [confirmModalShow, setConfirmModalShow] = useState(false);
+  const [rejectId, setRejectId] = useState('');
+  const [showAdminDeleteModal, setShowAdminDeleteModal] = useState(false);
 
   useEffect(() => {
     console.log('loading information from doc', docID);
@@ -62,6 +67,11 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
           DOC_ID: docSnap.id,
         } as VideoParams;
         setVideoDetails(videoData);
+        if (videoData.approval === 'pending' || 'approved' || 'deleted') {
+          setIsEditable(false);
+        } else {
+          setIsEditable(true);
+        }
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
@@ -199,6 +209,10 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setShowDeleteModal(true);
   };
 
+  const onClickAdminDeleteVideo = async () => {
+    setShowAdminDeleteModal(true);
+  };
+
   const deleteVideo = async () => {
     const docRef = doc(db, 'videos', docID);
     if (videoDetails.thumbnail)
@@ -208,6 +222,23 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     if (videoDetails.trailerThumb)
       await deleteFileURL(store, videoDetails.trailerThumb);
     await deleteDoc(docRef);
+    setShowModal(false);
+  };
+
+  const adminDeleteVideo = async () => {
+    const docRef = doc(db, 'videos', docID);
+    if (videoDetails.thumbnail)
+      await deleteFileURL(store, videoDetails.thumbnail);
+    if (videoDetails.url) await deleteFileURL(store, videoDetails.url);
+    if (videoDetails.trailer) await deleteFileURL(store, videoDetails.trailer);
+    if (videoDetails.trailerThumb)
+      await deleteFileURL(store, videoDetails.trailerThumb);
+    await updateDoc(docRef, {
+      title: `Deleted: ${videoDetails.title}`,
+      description:
+        'This content was deem inappropriate for this site by admin staff',
+      approval: 'deleted',
+    });
     setShowModal(false);
   };
 
@@ -225,6 +256,34 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
     setSaving(true);
     await updateMovie(db, docID, { country: selectedList });
     setSaving(false);
+  };
+
+  const onClickApproveHandle = async (
+    videoId: string,
+    action: 'cancel' | 'submit' | 'approved' | 'reject'
+  ) => {
+    const docRef = doc(db, 'videos', videoId);
+    if (action === 'approved') {
+      await updateDoc(docRef, {
+        approval: 'approved',
+        approvalDate: serverTimestamp(),
+      });
+    } else if (action === 'reject') {
+      setConfirmModalShow(true);
+      setRejectId(videoId);
+    } else {
+      await updateDoc(docRef, {
+        approval: '',
+      });
+    }
+  };
+
+  const rejectWithMessage = async (inputMsg: string) => {
+    const docRef = doc(db, 'videos', rejectId);
+    await updateDoc(docRef, {
+      approval: 'reject',
+      rejectMsg: inputMsg,
+    });
   };
 
   return (
@@ -268,6 +327,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   onChange={onChange}
                   onBlur={onBlurHandle}
                   className='input input-bordered w-full'
+                  disabled={!isEditable}
                 />
                 <label className='label'>
                   <span className='label-text'>Description</span>
@@ -279,6 +339,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   value={videoDetails.description}
                   onChange={onChange}
                   onBlur={onBlurHandle}
+                  disabled={!isEditable}
                 ></textarea>
                 <label className='label'>
                   <span className='label-text'>Categories</span>
@@ -424,22 +485,70 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
             </div>
             {/*footer*/}
             <div className='flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b'>
-              <button
-                className='btn btn-primary'
-                type='button'
-                onClick={onClickDeleteVideo}
-              >
-                Delete
-              </button>
+              <div>
+                <button
+                  className='btn btn-primary mr-2'
+                  type='button'
+                  onClick={onClickDeleteVideo}
+                  disabled={!isEditable}
+                >
+                  Delete
+                </button>
+                {userRoles?.admin && (
+                  <button
+                    className='btn btn-error'
+                    type='button'
+                    onClick={onClickAdminDeleteVideo}
+                    disabled={!isEditable && !userRoles.admin}
+                  >
+                    Admin Delete
+                  </button>
+                )}
+              </div>
               <div>
                 <div>
                   <button
-                    className='btn'
+                    className='btn mr-1'
                     type='button'
                     onClick={() => setShowPreviewModal(true)}
                   >
                     Preview
                   </button>
+                  {userRoles?.admin && videoDetails.approval === 'pending' && (
+                    <>
+                      <button
+                        className='btn btn-primary mr-1'
+                        type='button'
+                        onClick={() =>
+                          onClickApproveHandle(videoDetails.DOC_ID, 'approved')
+                        }
+                      >
+                        approve
+                      </button>
+                      <button
+                        className='btn btn-secondary mr-1'
+                        type='button'
+                        onClick={() =>
+                          onClickApproveHandle(videoDetails.DOC_ID, 'approved')
+                        }
+                      >
+                        reject
+                      </button>
+                    </>
+                  )}
+                  {userRoles?.admin && videoDetails.approval === 'approved' && (
+                    <>
+                      <button
+                        className='btn btn-secondary mr-1'
+                        type='button'
+                        onClick={() =>
+                          onClickApproveHandle(videoDetails.DOC_ID, 'reject')
+                        }
+                      >
+                        reject
+                      </button>
+                    </>
+                  )}
                   <button
                     className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                     type='button'
@@ -455,6 +564,12 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
       </div>
 
       <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
+      {showAdminDeleteModal && (
+        <DeleteModal
+          setShowModal={setShowAdminDeleteModal}
+          deleteFunction={adminDeleteVideo}
+        />
+      )}
       {showDeleteModal && (
         <DeleteModal
           setShowModal={setShowDeleteModal}
@@ -463,6 +578,15 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
       )}
       {showPreviewModal && (
         <VideoDetails setShowModal={setShowPreviewModal} docId={docID} />
+      )}
+      {confirmModalShow && (
+        <ConfirmModalInputMsg
+          setShowModal={setConfirmModalShow}
+          modalFunction={rejectWithMessage}
+          headingMessage='Confirm Reject'
+          bodyMessage='Please provide information for rejection reason'
+          inputLabel='Rejection Reason'
+        />
       )}
     </>
   );

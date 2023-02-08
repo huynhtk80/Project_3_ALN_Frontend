@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from '../pages/Landing';
-import Profile from '../pages/Profile';
 import Home from '../pages/Home';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import Navbar from './Navbar';
@@ -36,9 +35,9 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-              <ProtectedRoutes isAllowed={!!user}>
+            //  <ProtectedRoutes isAllowed={!!user}>
                 <Home />
-              </ProtectedRoutes>
+           //   </ProtectedRoutes>
             }
           />
           <Route
@@ -92,7 +91,15 @@ export const RestOfApp = () => {
           <Route
             path='admin'
             element={
-              <ProtectedRoutes isAllowed={!!user}>
+              <ProtectedRoutes isAllowed={!!user && userRoles.admin}>
+                <AdminOnly />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='admin/:tool'
+            element={
+              <ProtectedRoutes isAllowed={!!user && userRoles.admin}>
                 <AdminOnly />
               </ProtectedRoutes>
             }

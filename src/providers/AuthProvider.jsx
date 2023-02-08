@@ -19,6 +19,7 @@ export const AuthProvider = (props) => {
   const db = fbContext.db;
   const [user, setUser] = useState(null);
   const [userRoles, setUserRole] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (authUser) => {
@@ -27,8 +28,8 @@ export const AuthProvider = (props) => {
         const tokenresult = await getIdTokenResult(authUser);
         setUserRole(tokenresult.claims);
       }
-
       setUser(authUser);
+      setIsLoading(false);
     });
     return unsub;
   }, [auth]);
@@ -76,7 +77,7 @@ export const AuthProvider = (props) => {
     await signOut(auth);
   };
 
-  const theValues = { user, userRoles, login, logout, createUser };
+  const theValues = { user, userRoles, login, logout, createUser, isLoading };
 
   return (
     <AuthContext.Provider value={theValues}>{children}</AuthContext.Provider>

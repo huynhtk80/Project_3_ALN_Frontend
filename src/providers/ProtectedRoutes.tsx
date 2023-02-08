@@ -9,8 +9,11 @@ interface ProtectedRoutesProps {
 
 function ProtectedRoutes({ children, isAllowed }: ProtectedRoutesProps) {
   const authContext = useContext(AuthContext);
+  const { user, isLoading } = authContext;
 
-  const user = authContext.user;
+  if (isLoading) {
+    return <p>Loading</p>;
+  }
 
   if (!isAllowed) {
     return <Navigate to='/home/CreateAccount' replace />;

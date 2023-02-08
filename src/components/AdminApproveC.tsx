@@ -9,6 +9,7 @@ import {
   where,
   doc,
   updateDoc,
+  serverTimestamp,
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
@@ -103,6 +104,7 @@ function AdminApproveC() {
     if (action === 'approved') {
       await updateDoc(docRef, {
         approval: 'approved',
+        approvalDate: serverTimestamp(),
       });
     } else if (action === 'reject') {
       setConfirmModalShow(true);

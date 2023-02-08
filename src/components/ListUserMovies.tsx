@@ -9,6 +9,7 @@ import {
   where,
   doc,
   updateDoc,
+  serverTimestamp,
 } from 'firebase/firestore';
 
 import { AuthContext } from '../providers/AuthProvider';
@@ -95,9 +96,13 @@ function ListUserMovies() {
         });
       } else if (select === 'Submit for Approval') {
         const videoDoc = videos.find((vid) => vid.DOC_ID === id);
-        if (videoDoc?.approval !== 'approved')
+        if (
+          videoDoc?.approval !== 'approved' &&
+          videoDoc?.approval !== 'deleted'
+        )
           await updateDoc(docRef, {
             approval: 'pending',
+            submitforApprovalDate: serverTimestamp(),
           });
       }
     });

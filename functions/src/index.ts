@@ -29,6 +29,30 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     });
 });
 
+exports.deleteAdminRole = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add creators' };
+  }
+  return auth
+    .getUserByEmail(data.email)
+    .then((user) => {
+      if (!user.customClaims) return;
+      const updateClaims = user.customClaims;
+      delete updateClaims?.admin;
+      return auth.setCustomUserClaims(user.uid, updateClaims);
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.email} is no longer admin.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
 exports.addCreatorRole = functions.https.onCall((data, context) => {
   // get user and add admin custom claim
   if (context.auth?.token.admin !== true) {
@@ -69,6 +93,101 @@ exports.deleteCreatorRole = functions.https.onCall((data, context) => {
     .then(() => {
       return {
         message: `Success! ${data.email} is no longer creator.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
+exports.addAdminRoleById = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+  // if (context.auth?.token.admin !== true) {
+  //   return { error: 'only admins can add other admins' };
+  // }
+  console.log('need to update this');
+  return auth
+    .getUser(data.uid)
+    .then((user) => {
+      return auth.setCustomUserClaims(user.uid, {
+        ...user.customClaims,
+        admin: true,
+      });
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.uid} has been made an admin.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
+exports.deleteAdminRoleById = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add creators' };
+  }
+  return auth
+    .getUser(data.uid)
+    .then((user) => {
+      if (!user.customClaims) return;
+      const updateClaims = user.customClaims;
+      delete updateClaims?.admin;
+      return auth.setCustomUserClaims(user.uid, updateClaims);
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.uid} is no longer admin.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
+exports.addCreatorRoleById = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add creators' };
+  }
+  return auth
+    .getUser(data.uid)
+    .then((user) => {
+      return auth.setCustomUserClaims(user.uid, {
+        ...user.customClaims,
+        creator: true,
+      });
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.uid} has been made an creator.`,
+      };
+    })
+    .catch((err) => {
+      return err;
+    });
+});
+
+exports.deleteCreatorRoleById = functions.https.onCall((data, context) => {
+  // get user and add admin custom claim
+
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add creators' };
+  }
+  return auth
+    .getUser(data.uid)
+    .then((user) => {
+      if (!user.customClaims) return;
+      const updateClaims = user.customClaims;
+      delete updateClaims?.creator;
+      return auth.setCustomUserClaims(user.uid, updateClaims);
+    })
+    .then(() => {
+      return {
+        message: `Success! ${data.uid} is no longer creator.`,
       };
     })
     .catch((err) => {

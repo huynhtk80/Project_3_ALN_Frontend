@@ -1,8 +1,11 @@
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
   doc,
   serverTimestamp,
+  Timestamp,
   updateDoc,
 } from 'firebase/firestore';
 
@@ -56,7 +59,67 @@ export const updateMovie = async (
 
   try {
     const docRef = doc(db, 'videos', docID);
-    await updateDoc(docRef, { ...updateUpper });
+    await updateDoc(docRef, { ...updateUpper, lastUpdated: serverTimestamp() });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const updateMovieComments = async (
+  db: any,
+  docID: string,
+  uid: string,
+  avatar: string,
+  name: string,
+  content: string
+) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    if (!avatar) {
+      avatar = '';
+    }
+    if (!name) {
+      name = '';
+    }
+
+    await updateDoc(docRef, {
+      comments: arrayUnion({
+        uid,
+        avatar,
+        name,
+        content,
+        commentTime: Timestamp.now(),
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addLikedMovies = async (db: any, docID: string, uid: string) => {
+  console.log('try to add', docID);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      likedVideos: arrayUnion(docID),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const removeLikedMovies = async (
+  db: any,
+  docID: string,
+  uid: string
+) => {
+  console.log('try to remove', docID);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      likedVideos: arrayRemove(docID),
+    });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
   }

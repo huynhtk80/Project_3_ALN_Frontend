@@ -18,6 +18,8 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 import { UserProfileProps } from '../pages/Signin';
 import { httpsCallable } from 'firebase/functions';
+import { stringify } from 'uuid';
+import UserCard from './UserCard';
 
 function AdminManageUsers() {
   const fbContext = useContext(FirebaseContext);
@@ -34,7 +36,12 @@ function AdminManageUsers() {
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
 
-  console.log(isCheck);
+  //cloud functions
+  const getRoles = httpsCallable(functions, 'getUsersRoles');
+  const addAdmin = httpsCallable(functions, 'addAdminRoleById');
+  const delAdmin = httpsCallable(functions, 'deleteAdminRoleById');
+  const addCreator = httpsCallable(functions, 'addCreatorRoleById');
+  const deleteCreator = httpsCallable(functions, 'deleteCreatorRoleById');
 
   useEffect(() => {
     if (!user) return;
@@ -54,19 +61,13 @@ function AdminManageUsers() {
             } as UserProfileProps)
         );
         setUsers(userData);
+        getUserRoles(userData);
       }
     });
     return unsubscribe;
   }, [user]);
 
-  const onClickHandle = (DocId: string) => {
-    setCurrentDocID(DocId);
-    setShowModal(true);
-  };
-
-  const getRoles = httpsCallable(functions, 'getUsersRoles');
-
-  const onClickGetRoles = async () => {
+  const getUserRoles = async (users: UserProfileProps[]) => {
     if (!users) return;
 
     const searchUsers = users.map((user) => {
@@ -79,6 +80,31 @@ function AdminManageUsers() {
 
     console.log('the merged', merged);
     setUsers(merged);
+  };
+
+  const onClickHandle = (DocId: string) => {
+    setCurrentDocID(DocId);
+    setShowModal(true);
+  };
+
+  const onClickHandleAdmin = async (uid: string) => {
+    const result = await addAdmin({ uid: uid });
+    console.log(result);
+  };
+
+  const onClickHandleDelAdmin = async (uid: string) => {
+    const result = await delAdmin({ uid: uid });
+    console.log(result);
+  };
+
+  const onClickHandleCreator = async (uid: string) => {
+    const result = await addCreator({ uid: uid });
+    console.log(result);
+  };
+
+  const onClickHandleDelCreator = async (uid: string) => {
+    const result = await deleteCreator({ uid: uid });
+    console.log(result);
   };
 
   const mergeArrays = (
@@ -140,7 +166,7 @@ function AdminManageUsers() {
         <table className='table table-auto mx-auto'>
           <thead>
             <tr>
-              <th>
+              {/* <th>
                 <label>
                   <input
                     type='checkbox'
@@ -149,16 +175,17 @@ function AdminManageUsers() {
                     checked={isCheckAll}
                   />
                 </label>
-              </th>
+              </th> */}
               <th>Avatar</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Doc ID</th>
+              <th>User ID</th>
               <th>Roles</th>
+              <th>Modify Roles</th>
             </tr>
           </thead>
           <tbody>
-            {isCheck.length > 0 ? (
+            {/* {isCheck.length > 0 ? (
               <tr>
                 <td colSpan={7}>
                   {' '}
@@ -197,11 +224,11 @@ function AdminManageUsers() {
                   </button>
                 </td>
               </tr>
-            ) : null}
+            ) : null} */}
             {users?.map((user) => {
               return (
                 <tr key={user.DOC_ID}>
-                  <th>
+                  {/* <th>
                     <label>
                       <input
                         id={user.DOC_ID}
@@ -211,7 +238,7 @@ function AdminManageUsers() {
                         onChange={handleCheckClick}
                       />
                     </label>
-                  </th>
+                  </th> */}
                   <td>
                     <img
                       className='max-h-16 avatar rounded-full'
@@ -228,6 +255,38 @@ function AdminManageUsers() {
                     {user.roles?.admin && <p>Admin</p>}
                     {user.roles?.creator && <p>Creator</p>}
                   </th>
+                  <th>
+                    {user.roles?.admin ? (
+                      <button
+                        className='btn btn-warning btn-sm'
+                        onClick={() => onClickHandleDelAdmin(user.DOC_ID)}
+                      >
+                        Remove admin
+                      </button>
+                    ) : (
+                      <button
+                        className='btn btn-sucess btn-sm'
+                        onClick={() => onClickHandleAdmin(user.DOC_ID)}
+                      >
+                        set admin
+                      </button>
+                    )}
+                    {user.roles?.creator ? (
+                      <button
+                        className='btn btn-error btn-sm'
+                        onClick={() => onClickHandleDelCreator(user.DOC_ID)}
+                      >
+                        Remove creator
+                      </button>
+                    ) : (
+                      <button
+                        className='btn btn-primary btn-sm'
+                        onClick={() => onClickHandleCreator(user.DOC_ID)}
+                      >
+                        Set creator
+                      </button>
+                    )}
+                  </th>
                 </tr>
               );
             })}
@@ -235,17 +294,16 @@ function AdminManageUsers() {
 
           <tfoot>
             <tr>
-              <th></th>
+              {/* <th></th> */}
               <th>Avatar</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Doc ID</th>
+              <th>User ID</th>
               <th>Roles</th>
+              <th>Modify Roles</th>
             </tr>
           </tfoot>
         </table>
-
-        <button onClick={onClickGetRoles}>Get Roles</button>
       </div>
     </>
   );

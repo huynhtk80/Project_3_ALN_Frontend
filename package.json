@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
-    "emu": "firebase emulators:start --import emulator-storage --export-on-exit"
+    "emu": "firebase emulators:start --import emulator-storage --export-on-exit",
+    "kill-emu": "npx kill-port 4000 9000 8080 9099 5001 9199"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
@@ -23,6 +24,7 @@
     "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-player": "^2.11.0",
     "react-router-dom": "^6.4.5",
     "react-toggle-dark-mode": "^1.1.1",

@@ -4,6 +4,7 @@ import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
+import { getAnalytics, setUserProperties } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAqPeb96DfaW9VM1tQK68Y3rqwCDTfyNZo',
@@ -12,6 +13,7 @@ const firebaseConfig = {
   storageBucket: 'project3-aln.appspot.com',
   messagingSenderId: '262376267458',
   appId: '1:262376267458:web:28d298323a1e0e23b7255b',
+  measurementId: 'G-JJGCVBPQ50',
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,6 +21,7 @@ const auth = getAuth(app);
 const store = getStorage(app);
 const db = getFirestore(app);
 const functions = getFunctions(app);
+const analytics = getAnalytics(app);
 
 if (import.meta.env.VITE_EMU_STATE === 'true') {
   connectAuthEmulator(auth, 'http://localhost:9099');

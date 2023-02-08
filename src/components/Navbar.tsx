@@ -14,6 +14,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import Footer from './Footer';
 import SearchDropdown from './SearchBar';
 import { UserDBContext } from '../providers/UserDBProvider';
+import Chat from './Chat';
 
 const navigation = [
   { name: 'Home Roots ➤', href: '/home' },
@@ -42,166 +43,169 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
   const toggle = () => setOpen(!isOpen);
 
   return (
-    <div className=' '>
-      <Disclosure
-        as='nav'
-        className='fixed flex-row justify-start bg-base-300 text-base-content bg-opacity-90 w-full z-50 px-2 shadow-md glass'
-      >
-        {({ open }) => (
-          <>
-            <div className='relative flex h-16 items-center justify-between text-base-content '>
-              {/* Mobile menu button*/}
-              <div className='flex flex-row'>
-                {user && (
-                  <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
-                    <span className='sr-only'>Open main menu</span>
-                    {open ? (
-                      <XMarkIcon
-                        className='block h-6 w-6 transition hover:rotate-180'
-                        aria-hidden='true'
-                      />
-                    ) : (
-                      <Bars3Icon
-                        className='block h-6 w-6 transition hover:rotate-90'
-                        aria-hidden='true'
-                      />
-                    )}
-                  </Disclosure.Button>
-                )}
+    <>
+      <div className=' '>
+        <Disclosure
+          as='nav'
+          className='fixed flex-row justify-start bg-base-300 text-base-content bg-opacity-90 w-full z-50 px-2 shadow-md glass'
+        >
+          {({ open }) => (
+            <>
+              <div className='relative flex h-16 items-center justify-between text-base-content '>
+                {/* Mobile menu button*/}
+                <div className='flex flex-row'>
+                  {user && (
+                    <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
+                      <span className='sr-only'>Open main menu</span>
+                      {open ? (
+                        <XMarkIcon
+                          className='block h-6 w-6 transition hover:rotate-180'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        <Bars3Icon
+                          className='block h-6 w-6 transition hover:rotate-90'
+                          aria-hidden='true'
+                        />
+                      )}
+                    </Disclosure.Button>
+                  )}
 
-                <div className='flex flex-1 items-center sm:items-stretch justify-start'>
-                  <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
-                    <img
-                      onClick={() => (window.location.href = '/')}
-                      className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-110'
-                      src={ALN_LOGO_3_47}
-                      alt='ALN LOGO'
-                    />
-                    <img
-                      onClick={() => (window.location.href = '/')}
-                      className='block h-8 w-auto drop-shadow-md lg:hidden transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
-                      src={ALN_LOGO_3_48}
-                      alt='ALN LOGO'
-                    />
+                  <div className='flex flex-1 items-center sm:items-stretch justify-start'>
+                    <div className='flex flex-shrink-0 items-center p-2 cursor-pointer'>
+                      <img
+                        onClick={() => (window.location.href = '/')}
+                        className='h-8 w-auto drop-shadow-md drop-shadow-black hidden lg:block transition ease-in-out duration-300 hover:scale-110'
+                        src={ALN_LOGO_3_47}
+                        alt='ALN LOGO'
+                      />
+                      <img
+                        onClick={() => (window.location.href = '/')}
+                        className='block h-8 w-auto drop-shadow-md lg:hidden transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
+                        src={ALN_LOGO_3_48}
+                        alt='ALN LOGO'
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='mx-1'>{user && <SearchDropdown />}</div>
-              {/* Right Menu and Switcher */}
-              <div className='flex flex-row'>
-                <div className=''>
-                  <Switcher />
-                </div>
-                {/* Profile dropdown */}
-                {user ? (
-                  <Menu as='div' className='ml-1'>
-                    <div>
-                      <Menu.Button className='flex min-w-8 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
-                        <span className='sr-only'>Open user menu</span>
-                        {userProfile?.photo ? (
-                          <img
-                            className='h-8 w-8 rounded-full'
-                            src={userProfile.photo}
-                            alt='avatar'
-                          />
-                        ) : (
-                          <img
-                            className='h-8 w-8 rounded-full'
-                            src={AvatarTemp}
-                            alt='avatar'
-                          />
-                        )}
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter='transition ease-out duration-100'
-                      enterFrom='transform opacity-0 scale-95'
-                      enterTo='transform opacity-100 scale-100'
-                      leave='transition ease-in duration-75'
-                      leaveFrom='transform opacity-100 scale-100'
-                      leaveTo='transform opacity-0 scale-95'
-                    >
-                      <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href='#'
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm base-content'
-                              )}
-                            >
-                              Your Profile
-                            </a>
+                <div className='mx-1'>{user && <SearchDropdown />}</div>
+                {/* Right Menu and Switcher */}
+                <div className='flex flex-row'>
+                  <div className=''>
+                    <Switcher />
+                  </div>
+                  {/* Profile dropdown */}
+                  {user ? (
+                    <Menu as='div' className='ml-1'>
+                      <div>
+                        <Menu.Button className='flex min-w-8 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                          <span className='sr-only'>Open user menu</span>
+                          {userProfile?.photo ? (
+                            <img
+                              className='h-8 w-8 rounded-full'
+                              src={userProfile.photo}
+                              alt='avatar'
+                            />
+                          ) : (
+                            <img
+                              className='h-8 w-8 rounded-full'
+                              src={AvatarTemp}
+                              alt='avatar'
+                            />
                           )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href='#'
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-base-content'
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              onClick={logout}
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-base-content'
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
-                ) : (
-                  <Link to='/home/loginform'>
-                    <button className='btn btn-sm lg:btn-md mb-1 btn-primary'>
-                      Login
-                    </button>
-                  </Link>
-                )}
-              </div>
-            </div>
-            {user && (
-              <Disclosure.Panel className=''>
-                <div className='space-y-1 px-2 pt-2 pb-3'>
-                  {navigation.map((item) => (
-                    <Link to={item.href}>
-                      <Disclosure.Button
-                        key={item.name}
-                        className='text-base-content transition ease-in-out duration-500 hover:text-white hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'
+                        </Menu.Button>
+                      </div>
+                      <Transition
+                        as={Fragment}
+                        enter='transition ease-out duration-100'
+                        enterFrom='transform opacity-0 scale-95'
+                        enterTo='transform opacity-100 scale-100'
+                        leave='transition ease-in duration-75'
+                        leaveFrom='transform opacity-100 scale-100'
+                        leaveTo='transform opacity-0 scale-95'
                       >
-                        {item.name}
-                      </Disclosure.Button>
+                        <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                to='/home/signin'
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm base-content'
+                                )}
+                              >
+                                Your Profile
+                              </Link>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                to='/home/settings'
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-base-content'
+                                )}
+                              >
+                                Settings
+                              </Link>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                onClick={logout}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-base-content'
+                                )}
+                              >
+                                Sign out
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
+                  ) : (
+                    <Link to='/home/loginform'>
+                      <button className='btn btn-sm ml-1 btn-primary'>
+                        Login
+                      </button>
                     </Link>
-                  ))}
+                  )}
                 </div>
-              </Disclosure.Panel>
-            )}
+              </div>
+              {user && (
+                <Disclosure.Panel className=''>
+                  <div className='space-y-1 px-2 pt-2 pb-3'>
+                    {navigation.map((item) => (
+                      <Link to={item.href}>
+                        <Disclosure.Button
+                          key={item.name}
+                          className='text-base-content transition ease-in-out duration-500 hover:text-primary-content hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      </Link>
+                    ))}
+                  </div>
+                </Disclosure.Panel>
+              )}
+            </>
+          )}
+        </Disclosure>
+
+        {!landing && (
+          <>
+            <div className='min-h-screen'>
+              <Outlet />
+            </div>
+            <Footer />
           </>
         )}
-      </Disclosure>
-
-      {!landing && (
-        <>
-          <div className='min-h-screen'>
-            <Outlet />
-          </div>
-          <Footer />
-        </>
-      )}
-    </div>
+      </div>
+      <Chat />
+    </>
   );
 }
