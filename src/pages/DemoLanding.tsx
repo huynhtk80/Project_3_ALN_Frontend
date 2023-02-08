@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
@@ -9,8 +9,18 @@ import LandingFooter from '../components/LandingFooter';
 import MovieHeader from '../components/MovieHeader';
 import Navbar from '../components/Navbar';
 
-function Landing() {
-  const [count, setCount] = useState(0);
+function DemoLanding() {
+  useEffect(() => {
+    var iframe = document.getElementById('myFrame');
+    if (iframe)
+      var anchors = iframe.contentWindow.document.getElementsByTagName('a');
+    console.log(anchors);
+    for (var i = 0; i < anchors.length; i++) {
+      anchors[i].onclick = function () {
+        return false;
+      };
+    }
+  });
 
   const message = `A global media production company that’s housed in Harare, Zimbabwe and has since 2019 expanded its branches to the United States of America with the International Head quarters in Des Moines Iowa.
 
@@ -22,8 +32,12 @@ function Landing() {
 
   const message2 = ` Watch your favorite shows and movies on African Network Live. Stream live TV, movies and more from your favorite networks and premiums channels. It’s all on African Network Live.`;
   return (
-    <div className='bg-base-100'>
-      <Navbar landing={true} />
+    <div id='demoID' className='bg-base-100'>
+      <div className='flex flex-row justify-center items-center fixed top-0 w-full  z-[99] bg-white opacity-80'>
+        <h1 className=' text-red-500 text-4xl p-2'>Demo Only</h1>
+        <p className='text-black text-xl'> Clicks and animations don't work</p>
+      </div>
+      {/* <Navbar landing={true} /> */}
       <MovieHeader />
       {/* <HeroSection /> */}
       {/* <hr
@@ -54,4 +68,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default DemoLanding;

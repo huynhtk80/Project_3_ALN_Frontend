@@ -1,17 +1,46 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
 import { VscUnmute, VscMute } from 'react-icons/vsc';
 import headerVideo from '../assets/LandingHeader.mp4';
 import drumVideo from '../assets/drumHeader.mp4';
+import { user } from 'firebase-functions/v1/auth';
+import { collection, query, where, onSnapshot, doc } from 'firebase/firestore';
+import { VideoParams } from '../utils/fireStoreAPI';
+import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 function MovieHeader() {
+  const fbContext = useContext(FirebaseContext);
+  const { user } = useContext(AuthContext);
+  const db = fbContext.db;
+  const [videoHeader, setVideoHeader] = useState();
+
   const videoPlayer = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    if (!user) return;
+    let docRef = doc(db, 'assets', 'header');
+
+    const unsubscribe = onSnapshot(docRef, (querySnap) => {
+      if (querySnap.empty) {
+        console.log('No docs found');
+        setVideoHeader(null);
+      } else {
+        let videoData = querySnap.data();
+        setVideoHeader(videoData.downloadURL);
+      }
+    });
+    return unsubscribe;
+  }, [user]);
+
+  useEffect(() => {}, [videoHeader]);
 
   const onClickMute = () => {
     setIsMuted(!isMuted);
   };
+  if (!videoHeader) return null;
   return (
     <div className='hero min-h-screen'>
       <div className='absolute top-0 bottom-0 w-full h-full overflow-hidden'>
@@ -21,9 +50,10 @@ function MovieHeader() {
           muted={isMuted}
           loop
           id='myVideo'
+          key={videoHeader}
           ref={videoPlayer}
         >
-          <source src={drumVideo} type='video/mp4' />
+          <source src={videoHeader} type='video/mp4' />
         </video>
       </div>
       <div className='hero-overlay bg-slate-800  bg-opacity-60 z-[2]'></div>

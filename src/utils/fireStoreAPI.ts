@@ -5,6 +5,7 @@ import {
   collection,
   doc,
   serverTimestamp,
+  setDoc,
   Timestamp,
   updateDoc,
 } from 'firebase/firestore';
@@ -120,6 +121,24 @@ export const removeLikedMovies = async (
     await updateDoc(docRef, {
       likedVideos: arrayRemove(docID),
     });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addHeaderMovie = async (
+  db: any,
+  downloadURL: string,
+  title: string
+) => {
+  try {
+    let docRef = doc(db, 'assets', 'header');
+    await setDoc(docRef, {
+      downloadURL: downloadURL,
+      title: title,
+      createAt: serverTimestamp(),
+    });
+    return 'header';
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
   }

@@ -85,3 +85,33 @@ export const deleteFileURL = async (store: FirebaseStorage, url: string) => {
       console.log(error.message);
     });
 };
+
+export const uploadAdminStorage = async (
+  store: any,
+  file: File,
+  collection: 'header',
+  setProgress?: React.Dispatch<React.SetStateAction<number>>
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const docId = uuidv4();
+    const FileRef = ref(store, `assets/${collection}`);
+    console.log(FileRef);
+    const uploadTask = uploadBytesResumable(FileRef, file);
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const percentage =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress && setProgress(percentage);
+      },
+      (error) => {
+        console.log('UPLOAD ERROR!', error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          resolve(downloadURL);
+        });
+      }
+    );
+  });
+};
