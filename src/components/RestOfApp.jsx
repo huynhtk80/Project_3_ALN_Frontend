@@ -36,9 +36,9 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-            //  <ProtectedRoutes isAllowed={!!user}>
-                <Home />
-           //   </ProtectedRoutes>
+              //  <ProtectedRoutes isAllowed={!!user}>
+              <Home />
+              //   </ProtectedRoutes>
             }
           />
           <Route
@@ -67,6 +67,14 @@ export const RestOfApp = () => {
           />
           <Route
             path='Category/:category'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Category />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='Category/:category/:country'
             element={
               <ProtectedRoutes isAllowed={!!user}>
                 <Category />
