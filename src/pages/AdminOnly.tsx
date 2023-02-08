@@ -5,6 +5,7 @@ import AdminActiveC from '../components/AdminActiveC';
 import AdminApproveC from '../components/AdminApproveC';
 import AdminDashBoard from '../components/AdminDashBoard';
 import AdminManageUsers from '../components/AdminManageUsers';
+import AdminPageEditor from '../components/AdminPageEditor';
 import UserCard from '../components/UserCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
@@ -28,6 +29,8 @@ function AdminOnly() {
       return <AdminActiveC />;
     } else if (tool === 'manageusers') {
       return <AdminManageUsers />;
+    } else if (tool === 'pageeditor') {
+      return <AdminPageEditor />;
     } else {
       return <AdminDashBoard />;
     }
@@ -47,6 +50,9 @@ function AdminOnly() {
         </Link> */}
         <Link to='/home/admin/manageusers'>
           <button className='btn btn-primary mx-1'>Manage Users</button>
+        </Link>
+        <Link to='/home/admin/pageeditor'>
+          <button className='btn btn-primary mx-1'>Page Editor</button>
         </Link>
       </div>
       {renderAdmin()}
