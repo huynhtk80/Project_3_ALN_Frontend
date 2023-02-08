@@ -98,6 +98,7 @@ export const RestOfApp = () => {
             }
           />
           <Route path='logout' element={<Logout />} />
+          <Route path='Profile' element={<Profile />} />
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
