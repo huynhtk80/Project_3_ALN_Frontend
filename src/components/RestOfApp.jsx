@@ -76,6 +76,14 @@ export const RestOfApp = () => {
             }
           />
           <Route
+            path='Category/:category/:country'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Category />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
             path='uploadvideo'
             element={
               <ProtectedRoutes isAllowed={!!user}>
@@ -111,7 +119,14 @@ export const RestOfApp = () => {
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
-          <Route path='Profile' element={<Profile />} />
+          <Route
+            path='Profile'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
           <Route path='*' element={<NotFound />} />
           <Route
             path='result'
