@@ -20,7 +20,7 @@ function DemoLanding() {
         return false;
       };
     }
-  });
+  }, []);
 
   const message = `A global media production company that’s housed in Harare, Zimbabwe and has since 2019 expanded its branches to the United States of America with the International Head quarters in Des Moines Iowa.
 
