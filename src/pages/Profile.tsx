@@ -1,18 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { collection, getDocs, orderBy, query, doc, onSnapshot } from 'firebase/firestore';
+import { UserProfileProps } from './Signin';
 
-export default function Profile() {
+export default function profileData() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
+  const [profileData, setProfileData] = useState<UserProfileProps>();
+
+  useEffect(() => {
+    console.log( 'loading infomation from doc', user.uid);
+
+    const docRef = doc(db, 'userInfo', user.uid);
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+            
+            const userInfoData = {
+                ...docSnap.data(),
+                DOC_ID: docSnap.id,
+            } as UserProfileProps;
+            setProfileData(userInfoData);
+
+        } else {
+            console.log('No such document!')
+        }
+    });
+  })
+  
+  
 
   return (
     <>
       <div className='pt-16'>
         <main className='profile-page'>
           <section className='relative block h-500-px'>
+    
             <div
               className='absolute top-0 w-full h-full bg-center bg-cover'
               style={{
