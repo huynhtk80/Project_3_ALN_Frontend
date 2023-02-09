@@ -67,18 +67,18 @@ function AdminPageEditor() {
     }
   };
 
-  const initialContent = `<!DOCTYPE html>
-      <html>
-        <head>
-          <style>
-            ${styles}
-          </style>
-          <base target="_self">
-        </head>
-        <body >
-          <div id="page" class="page"></div>
-        </body>
-      </html>`;
+  // const initialContent = `<!DOCTYPE html>
+  //     <html>
+  //       <head>
+  //         <style>
+  //           ${styles}
+  //         </style>
+  //         <base target="_self">
+  //       </head>
+  //       <body >
+  //         <div id="page" class="page"></div>
+  //       </body>
+  //     </html>`;
 
   return (
     <>
@@ -105,13 +105,13 @@ function AdminPageEditor() {
             </div>
           )}
         </div>
-        <Frame
+        {/* <Frame
           id='myFrame'
           className=' w-full md:w-5/6 h-screen resize rounded-md shadow-lg mb-3'
           initialContent={initialContent}
         >
           <DemoLanding />
-        </Frame>
+        </Frame> */}
       </div>
     </>
   );
