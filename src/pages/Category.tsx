@@ -7,7 +7,8 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from '../components/VideoThumbCard';
 
 function Category() {
-  const { category } = useParams();
+  const { category, country } = useParams();
+  console.log(country);
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -53,6 +54,11 @@ function Category() {
               DOC_ID: doc.id,
             } as VideoParams)
         );
+        //Need to figure out JSfilter
+        // if (country) {
+
+        // }
+
         setVideos(videoData);
       }
     });

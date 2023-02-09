@@ -74,6 +74,14 @@ export const RestOfApp = () => {
             }
           />
           <Route
+            path='Category/:category/:country'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Category />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
             path='uploadvideo'
             element={
               <ProtectedRoutes isAllowed={!!user}>
