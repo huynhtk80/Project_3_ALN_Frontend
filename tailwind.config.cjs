@@ -6,7 +6,25 @@ module.exports = {
     require('@tailwindcss/typography', '@tailwindcss/forms'),
     require('daisyui'),
   ],
-  theme: {},
+  theme: {
+    extend: {
+      keyframes: {
+        fadein: {
+          '0%': { opacity: '1' },
+          '30%': { opacity: '1' },
+          '100%': { opacity: '0.6' },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+      },
+      animation: {
+        fadein: 'fadein 5s linear',
+        wiggle: 'wiggle 1s ease-in-out infinite',
+      },
+    },
+  },
   daisyui: {
     themes: [
       {

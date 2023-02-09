@@ -60,10 +60,10 @@ function MovieHeader() {
           ref={videoPlayer}
         >
           <source src={videoHeader} type='video/mp4' />
-          {/* <source src={drumVideo} type='video/mp4' /> */}
+          <source src={drumVideo} type='video/mp4' />
         </video>
       </div>
-      <div className='hero-overlay bg-slate-800  bg-opacity-60 z-[2]'></div>
+      <div className='hero-overlay bg-slate-800 animate-fadein opacity-60  z-[2]'></div>
       <div className='hero-content text-center text-white z-[3]'>
         <div className='max-w-lg'>
           <h1 className='mb-5 text-5xl md:text-6xl font-bold'>
