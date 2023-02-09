@@ -6,5 +6,8 @@ service cloud.firestore {
       		request.auth != null &&
           request.time < timestamp.date(2023, 2, 24);
     }
+    match /assets/{assets} {
+      allow read: if true
+    }
   }
 }

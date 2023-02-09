@@ -15,32 +15,38 @@ function MovieHeader() {
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const [videoHeader, setVideoHeader] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const videoPlayer = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [hasSound, sethasSound] = useState(true);
 
   useEffect(() => {
-    if (!user) return;
     let docRef = doc(db, 'assets', 'header');
-
-    const unsubscribe = onSnapshot(docRef, (querySnap) => {
-      if (querySnap.empty) {
-        console.log('No docs found');
-        setVideoHeader(null);
-      } else {
-        let videoData = querySnap.data();
-        setVideoHeader(videoData.downloadURL);
-      }
-    });
+    let unsubscribe;
+    try {
+      unsubscribe = onSnapshot(docRef, (querySnap) => {
+        if (querySnap.empty) {
+          console.log('No docs found');
+          setVideoHeader(drumVideo);
+        } else {
+          let videoData = querySnap.data();
+          setVideoHeader(videoData.downloadURL);
+        }
+      });
+      setIsLoading(false);
+    } catch (e) {
+      console.log(e);
+      setVideoHeader(drumVideo);
+    }
     return unsubscribe;
   }, [user]);
-
-  useEffect(() => {}, [videoHeader]);
 
   const onClickMute = () => {
     setIsMuted(!isMuted);
   };
-  if (!videoHeader) return null;
+
+  if (isLoading) return <p>Loading</p>;
   return (
     <div className='hero min-h-screen'>
       <div className='absolute top-0 bottom-0 w-full h-full overflow-hidden'>
@@ -50,10 +56,11 @@ function MovieHeader() {
           muted={isMuted}
           loop
           id='myVideo'
-          key={videoHeader}
+          key={videoHeader ? videoHeader : 1}
           ref={videoPlayer}
         >
           <source src={videoHeader} type='video/mp4' />
+          {/* <source src={drumVideo} type='video/mp4' /> */}
         </video>
       </div>
       <div className='hero-overlay bg-slate-800  bg-opacity-60 z-[2]'></div>
