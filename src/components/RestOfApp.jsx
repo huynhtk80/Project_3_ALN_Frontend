@@ -36,9 +36,9 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-            //  <ProtectedRoutes isAllowed={!!user}>
-                <Home />
-           //   </ProtectedRoutes>
+              //  <ProtectedRoutes isAllowed={!!user}>
+              <Home />
+              //   </ProtectedRoutes>
             }
           />
           <Route
@@ -109,7 +109,14 @@ export const RestOfApp = () => {
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
-          <Route path='Profile' element={<Profile />} />
+          <Route
+            path='Profile'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
           <Route path='*' element={<NotFound />} />
           <Route
             path='result'
