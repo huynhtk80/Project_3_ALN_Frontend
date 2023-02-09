@@ -40,7 +40,7 @@ const AfricanMapModal = (props) => {
             <span>Region : {Quadrant}</span>
           </div>
           <div id='PopulationSize' className='text-base-content'>
-            <span>Population Size : {PopulationSize.toString()}</span>
+            <span>Population Size : {PopulationSize.toLocaleString()}</span>
           </div>
           <div id='capital' className='text-base-content'>
             <span>Capital City : {Capital}</span>
