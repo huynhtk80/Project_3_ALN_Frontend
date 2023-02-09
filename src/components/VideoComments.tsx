@@ -1,29 +1,59 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
-import { updateMovie, updateMovieComments } from '../utils/fireStoreAPI';
+import {
+  addMovieComments,
+  updateMovie,
+  updateMovieComments,
+} from '../utils/fireStoreAPI';
 import tempAvatar from '../assets/avatar-temp.png';
+import { collection, doc, onSnapshot, query, where } from 'firebase/firestore';
 
 interface VideoCommentsProp {
   videoId: string;
-  comments: {
-    avatar: string;
-    name: string;
-    content: string;
-    commentTime: string;
-  }[];
 }
 
-function VideoComments({ videoId, comments }: VideoCommentsProp) {
+interface Comments {
+  avatar: string;
+  name: string;
+  content: string;
+  commentTime: string;
+  DOC_ID?: string;
+}
+
+function VideoComments({ videoId }: VideoCommentsProp) {
   const fbContext = useContext(FirebaseContext);
   const { user, userRoles } = useContext(AuthContext);
   const { userProfile } = useContext(UserDBContext);
   const db = fbContext.db;
+  const [vidComments, setVidComments] = useState<Comments[]>();
   const [currentComment, setCurrentComment] = useState('');
 
+  useEffect(() => {
+    let collectionRef = collection(db, 'comments');
+
+    let queryRef = query(collectionRef, where('vidId', '==', videoId));
+    const unsubscribe = onSnapshot(queryRef, (docSnap) => {
+      if (docSnap.empty) {
+        // doc.data() will be undefined in this case
+      } else {
+        const commentData = docSnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as Comments)
+        );
+        setVidComments(commentData);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
   const onClickHandleComment = async () => {
-    await updateMovieComments(
+    await addMovieComments(
       db,
       videoId,
       user.uid,
@@ -32,7 +62,6 @@ function VideoComments({ videoId, comments }: VideoCommentsProp) {
       currentComment
     );
   };
-  console.log('comments', comments);
 
   return (
     <>
@@ -41,7 +70,7 @@ function VideoComments({ videoId, comments }: VideoCommentsProp) {
           Comments
         </h3>
 
-        {comments?.map((comment) => {
+        {vidComments?.map((comment) => {
           let avatar = '';
           if (!comment.avatar || comment.avatar === '') {
             avatar = tempAvatar;

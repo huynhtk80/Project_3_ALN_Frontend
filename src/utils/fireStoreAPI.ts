@@ -66,7 +66,39 @@ export const updateMovie = async (
   }
 };
 
-export const updateMovieComments = async (
+// export const updateMovieComments = async (
+//   db: any,
+//   docID: string,
+//   uid: string,
+//   avatar: string,
+//   name: string,
+//   content: string
+// ) => {
+//   try {
+//     const docRef = doc(db, 'comments', docID);
+
+//     if (!avatar) {
+//       avatar = '';
+//     }
+//     if (!name) {
+//       name = '';
+//     }
+
+//     await updateDoc(docRef, {
+//       comments: arrayUnion({
+//         uid,
+//         avatar,
+//         name,
+//         content,
+//         commentTime: Timestamp.now(),
+//       }),
+//     });
+//   } catch (ex: any) {
+//     console.log('FIRESTORE ADD FAILURE!', ex.message);
+//   }
+// };
+
+export const addMovieComments = async (
   db: any,
   docID: string,
   uid: string,
@@ -75,7 +107,7 @@ export const updateMovieComments = async (
   content: string
 ) => {
   try {
-    const docRef = doc(db, 'videos', docID);
+    const collectionRef = collection(db, 'comments');
 
     if (!avatar) {
       avatar = '';
@@ -84,14 +116,14 @@ export const updateMovieComments = async (
       name = '';
     }
 
-    await updateDoc(docRef, {
-      comments: arrayUnion({
-        uid,
-        avatar,
-        name,
-        content,
-        commentTime: Timestamp.now(),
-      }),
+    await addDoc(collectionRef, {
+      uid,
+      avatar,
+      name,
+      content,
+      replies: [],
+      commentTime: serverTimestamp(),
+      vidId: docID,
     });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);

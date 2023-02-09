@@ -41,12 +41,14 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
           DOC_ID: docSnap.id,
         } as VideoParams;
         setVideoDetails(videoData);
-        if (userProfile?.likedVideos.includes(videoData?.DOC_ID)) {
-          console.log('true');
-          setIsLiked(true);
-        } else {
-          console.log('false');
-          setIsLiked(false);
+        if (userProfile?.likedVideos) {
+          if (userProfile?.likedVideos.includes(videoData?.DOC_ID)) {
+            console.log('true');
+            setIsLiked(true);
+          } else {
+            console.log('false');
+            setIsLiked(false);
+          }
         }
       } else {
         // doc.data() will be undefined in this case
@@ -61,13 +63,14 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
     console.log('ran this use effect');
     setLikedVideos(userProfile?.likedVideos);
     console.log('liked', userProfile?.likedVideos);
-    if (userProfile?.likedVideos.includes(videoDetails?.DOC_ID)) {
-      console.log('true');
-      setIsLiked(true);
-    } else {
-      console.log('false');
-      setIsLiked(false);
-    }
+    if (userProfile?.likedVideos)
+      if (userProfile?.likedVideos.includes(videoDetails?.DOC_ID)) {
+        console.log('true');
+        setIsLiked(true);
+      } else {
+        console.log('false');
+        setIsLiked(false);
+      }
   }, [userProfile]);
 
   const onClickPlay = () => {
@@ -91,7 +94,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
     <>
       <div className='fixed top-0 right-0 left-0 bottom-0 h-screen w-screen bg-black opacity-60 z-40'></div>
       <div className='fixed top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 max-h-[90%] w-full sm:w-[80%] max-w-4xl bg-base-100 flex flex-col rounded-md overflow-hidden z-50'>
-        <div className='relative min-h-[400px]  overflow-hidden border-b-2 border-base-content shrink-0'>
+        <div className='relative min-h-[250px]  overflow-hidden border-b-2 border-base-content shrink-0'>
           {/* <img
             className='absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 min-h-full min-w-full object-cover '
             src='https://picsum.photos/800/600'
@@ -152,12 +155,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
                 ></video>
               </div>
 
-              {videoDetails && (
-                <VideoComments
-                  videoId={videoDetails?.DOC_ID}
-                  comments={videoDetails?.comments}
-                />
-              )}
+              {videoDetails && <VideoComments videoId={videoDetails?.DOC_ID} />}
             </div>
             <div className=' basis-1/3 grow'>
               <h2>Category: {videoDetails?.collection}</h2>
