@@ -19,6 +19,7 @@ import CreateAccount from '../pages/CreateAccount';
 import ProtectedRoutes from '../providers/ProtectedRoutes';
 import AdminOnly from '../pages/AdminOnly';
 import Profile from '../pages/Profile';
+import ScrollToTop from './ScrollToTop';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -29,6 +30,7 @@ export const RestOfApp = () => {
   console.log('roles', userRoles);
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Landing />} />
 
@@ -36,9 +38,9 @@ export const RestOfApp = () => {
           <Route
             index
             element={
-            //  <ProtectedRoutes isAllowed={!!user}>
-                <Home />
-           //   </ProtectedRoutes>
+              //  <ProtectedRoutes isAllowed={!!user}>
+              <Home />
+              //   </ProtectedRoutes>
             }
           />
           <Route
