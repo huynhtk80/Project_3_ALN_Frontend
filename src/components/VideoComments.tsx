@@ -4,6 +4,7 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
 import {
   addMovieComments,
+  replyMovieComments,
   updateMovie,
   updateMovieComments,
 } from '../utils/fireStoreAPI';
@@ -66,6 +67,17 @@ function VideoComments({ videoId }: VideoCommentsProp) {
     );
   };
 
+  const onClickHandleReply = async (commentID) => {
+    await replyMovieComments(
+      db,
+      commentID,
+      user.uid,
+      userProfile.photo,
+      `${user.firstName} ${user.lastName}`,
+      currentComment
+    );
+  };
+
   return (
     <>
       <div className='antialiased mx-auto max-w-screen-sm'>
@@ -101,24 +113,26 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                     <p className='text-sm'>{comment.content}</p>
                     {comment.replies.length >= 0 ? (
                       <div className='mt-4 flex flex-col items-start'>
-                        <div className='flex'>
-                          <div className='flex-shrink-0 mr-3'>
-                            <img
-                              className='mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10'
-                              src={avatar}
-                              alt=''
-                            />
+                        {comment.replies.map((reply) => (
+                          <div className='flex'>
+                            <div className='flex-shrink-0 mr-3'>
+                              <img
+                                className='mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10'
+                                src={reply.avatar}
+                                alt=''
+                              />
+                            </div>
+                            <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed'>
+                              <strong>{reply.name}</strong>{' '}
+                              <span className='text-xs text-gray-400'>
+                                {new Date(
+                                  reply?.commentTime?.seconds * 1000
+                                ).toLocaleTimeString()}
+                              </span>
+                              <p className='text-sm'>{reply.content}</p>
+                            </div>
                           </div>
-                          <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed'>
-                            <strong>{comment.name}</strong>{' '}
-                            <span className='text-xs text-gray-400'>
-                              {new Date(
-                                comment?.commentTime?.seconds * 1000
-                              ).toLocaleTimeString()}
-                            </span>
-                            <p className='text-sm'>{comment.content}</p>
-                          </div>
-                        </div>
+                        ))}
                         {/* <div className='flex -space-x-2 mr-2'>
                           <img
                             className='rounded-full w-6 h-6 border border-white'
@@ -135,7 +149,17 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                           5 Replies
                         </div> */}
                         <div className='flex flex-row justify-end'>
-                          <button className='item-end'>Reply</button>
+                          <textarea
+                            className='textarea w-full mt-2'
+                            placeholder='reply'
+                            onChange={(e) => setCurrentComment(e.target.value)}
+                          ></textarea>
+                          <button
+                            className='item-end'
+                            onClick={() => onClickHandleReply(comment.DOC_ID)}
+                          >
+                            Reply
+                          </button>
                         </div>
                       </div>
                     ) : (

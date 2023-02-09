@@ -130,6 +130,38 @@ export const addMovieComments = async (
   }
 };
 
+export const replyMovieComments = async (
+  db: any,
+  commentID: string,
+  uid: string,
+  avatar: string,
+  name: string,
+  content: string
+) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    if (!avatar) {
+      avatar = '';
+    }
+    if (!name) {
+      name = '';
+    }
+
+    await updateDoc(docRef, {
+      replies: arrayUnion({
+        uid,
+        avatar,
+        name,
+        content,
+        commentTime: Timestamp.now(),
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
 export const addLikedMovies = async (db: any, docID: string, uid: string) => {
   console.log('try to add', docID);
   try {
