@@ -10,7 +10,7 @@ const AfricanMapModal = (props) => {
     Flag,
     PopulationSize,
     Capital,
-    officialLanguage,
+    OfficialLanguage: OfficialLanguage,
     Currency,
   } = AfricanCountryList[props.selectedCountry.toUpperCase()];
   return (
@@ -46,7 +46,7 @@ const AfricanMapModal = (props) => {
             <span>Capital City : {Capital}</span>
           </div>
           <div id='language' className='text-base-content'>
-            <span>Official Language : {officialLanguage}</span>
+            <span>Official Language : {OfficialLanguage}</span>
           </div>
           <div id='currency' className='text-base-content'>
             <span>Currency : {Currency} </span>
