@@ -121,6 +121,7 @@ export const LoginForm = () => {
                   <p className='text-red-800'>{validationMsg.email}</p>
                 )}
               </div>
+              <br/>
               <div>
                 <label htmlFor='password' className='sr-only'>
                   Password
@@ -174,9 +175,11 @@ export const LoginForm = () => {
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Sign in
               </button>
+              <br/>
               {authError && (
                 <p className='text-red-800'>Credentials not matching</p>
               )}
+            
               <div className='text-sm'>
                 <Link
                   to='/home/CreateAccount'
