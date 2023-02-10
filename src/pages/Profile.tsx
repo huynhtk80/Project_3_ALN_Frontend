@@ -1,7 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { collection, getDocs, orderBy, query, doc, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  doc,
+  onSnapshot,
+} from 'firebase/firestore';
 import { UserProfileProps } from './Signin';
 import { MdLocationOn } from 'react-icons/md';
 import { TfiVideoClapper } from 'react-icons/tfi';
@@ -15,26 +22,22 @@ export default function profileData() {
   const [profileData, setProfileData] = useState<UserProfileProps>();
 
   useEffect(() => {
-    console.log( 'loading infomation from doc', user.uid);
+    console.log('loading infomation from doc', user.uid);
 
     const docRef = doc(db, 'userInfo', user.uid);
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
-        if (docSnap.exists()) {
-            
-            const userInfoData = {
-                ...docSnap.data(),
-                DOC_ID: docSnap.id,
-            } as UserProfileProps;
-            setProfileData(userInfoData);
-
-        } else {
-            console.log('No such document!')
-        }
+      if (docSnap.exists()) {
+        const userInfoData = {
+          ...docSnap.data(),
+          DOC_ID: docSnap.id,
+        } as UserProfileProps;
+        setProfileData(userInfoData);
+      } else {
+        console.log('No such document!');
+      }
     });
-  })
-  
-  
+  });
 
   return (
     <>
@@ -118,9 +121,9 @@ export default function profileData() {
                         src='https://player.vimeo.com/video/591710704?h=3ff18ebd91'
                         width='320'
                         height=''
-                        frameborder='0'
+                        frameBorder='0'
                         allow='autoplay; fullscreen; picture-in-picture'
-                        allowfullscreen
+                        allowFullScreen
                       ></iframe>
                     </div>
                   </div>

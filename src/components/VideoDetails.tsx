@@ -24,7 +24,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
   const { user } = useContext(AuthContext);
   const { userProfile } = useContext(UserDBContext);
   const db = fbContext.db;
-  const videoPlayer = useRef(null);
+  const videoPlayer = useRef<HTMLVideoElement>(null);
   const [isLiked, setIsLiked] = useState(false);
   const [likedVideos, setLikedVideos] = useState([]);
 
@@ -83,10 +83,10 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
   const onClickLike = () => {
     if (!isLiked) {
       // const removedLike = likedVideos.filter((item) => item !== id);
-      addLikedMovies(db, videoDetails?.DOC_ID, user.uid);
+      if (videoDetails) addLikedMovies(db, videoDetails?.DOC_ID, user.uid);
     } else {
       // const addedLike = [...likedVideos, videoDetails?.DOC_ID];
-      removeLikedMovies(db, videoDetails?.DOC_ID, user.uid);
+      if (videoDetails) removeLikedMovies(db, videoDetails?.DOC_ID, user.uid);
     }
   };
 

@@ -14,7 +14,7 @@ import { UserDBContext } from '../providers/UserDBProvider';
 function AdminOnly() {
   const fbcontext = useContext(FirebaseContext);
   const acontext = useContext(AuthContext);
-  const { userProfile } = useContext(UserDBContext);
+  // const { userProfile } = useContext(UserDBContext);
   const { user } = acontext;
   const { functions } = fbcontext;
 

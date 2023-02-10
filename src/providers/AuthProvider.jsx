@@ -59,7 +59,7 @@ export const AuthProvider = (props) => {
       if (userCred) {
         console.log('UserCreated!!', userCred.user);
         const docRef = doc(db, 'userInfo', userCred.user.uid);
-        await setDoc(docRef, { email: userCred.user.email });
+        await setDoc(docRef, { emailAddress: userCred.user.email });
 
         return true;
       } else {

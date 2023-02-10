@@ -1,15 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import {
+  collection,
+  onSnapshot,
+  query,
+  Timestamp,
+  where,
+} from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import tempAvatar from '../assets/avatar-temp.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
-import {
-  addMovieComments,
-  replyMovieComments,
-  updateMovie,
-  updateMovieComments,
-} from '../utils/fireStoreAPI';
-import tempAvatar from '../assets/avatar-temp.png';
-import { collection, doc, onSnapshot, query, where } from 'firebase/firestore';
+import { addMovieComments, replyMovieComments } from '../utils/fireStoreAPI';
 
 interface VideoCommentsProp {
   videoId: string;
@@ -19,11 +20,11 @@ interface Comments {
   avatar: string;
   name: string;
   content: string;
-  commentTime: string;
+  commentTime: Timestamp;
   replies: [
-    { avatar: string; name: string; content: string; commentTime: string }
+    { avatar: string; name: string; content: string; commentTime: Timestamp }
   ];
-  DOC_ID?: string;
+  DOC_ID: string;
 }
 
 function VideoComments({ videoId }: VideoCommentsProp) {
@@ -67,7 +68,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
     );
   };
 
-  const onClickHandleReply = async (commentID) => {
+  const onClickHandleReply = async (commentID: string) => {
     await replyMovieComments(
       db,
       commentID,

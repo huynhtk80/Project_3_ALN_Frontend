@@ -1,4 +1,4 @@
-import {
+import firestore, {
   addDoc,
   arrayRemove,
   arrayUnion,
@@ -28,6 +28,7 @@ export interface VideoParams {
   trailer?: string;
   country?: string[];
   trailerThumb?: string;
+  approvalDate?: Timestamp;
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {
