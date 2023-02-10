@@ -190,6 +190,7 @@ export default function userInfo() {
                         placeholder='Tell us about yourself'
                         defaultValue={''}
                         onChange={onChangeHandle}
+                        value={userProfile.about}
                       />
                     </div>
                     <p className='mt-2 text-sm text-base-content'>
@@ -373,6 +374,7 @@ export default function userInfo() {
                         autoComplete='given-name'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                         onChange={onChangeHandle}
+                        value={userProfile.firstName}
                       />
                     </div>
 
@@ -390,6 +392,7 @@ export default function userInfo() {
                         id='last-name'
                         autoComplete='family-name'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        value={userProfile.lastName}
                       />
                     </div>
 
@@ -407,6 +410,7 @@ export default function userInfo() {
                         id='email-address'
                         autoComplete='email'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        value={userProfile.emailAddress}
                       />
                     </div>
 
@@ -422,6 +426,7 @@ export default function userInfo() {
                         name='country'
                         onChange={onChangeHandle}
                         autoComplete='country-name'
+                        value={userProfile.country}
                         className='mt-1 block w-full border border-gray-300 bg-slate-300 text-secondary rounded-lg py-2 px-3 shadow-sm'
                       >
                         <option>Choose</option>
@@ -445,6 +450,7 @@ export default function userInfo() {
                         id='street-address'
                         autoComplete='street-address'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        value={userProfile.streetAddress}
                       />
                     </div>
 
@@ -462,6 +468,7 @@ export default function userInfo() {
                         id='city'
                         autoComplete='address-level2'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        value={userProfile.city}
                       />
                     </div>
 
@@ -474,9 +481,10 @@ export default function userInfo() {
                       </label>
                       <input
                         type='text'
-                        name='region'
+                        name='stateProvince'
                         onChange={onChangeHandle}
-                        id='region'
+                        value={userProfile.stateProvince}
+                        id='stateProvince'
                         autoComplete='address-level1'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
                       />
@@ -493,6 +501,7 @@ export default function userInfo() {
                         type='text'
                         name='postal-code'
                         id='postal-code'
+                        value={userProfile.zipPostal}
                         onChange={onChangeHandle}
                         autoComplete='postal-code'
                         className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
