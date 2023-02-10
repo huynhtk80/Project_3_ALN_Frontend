@@ -167,21 +167,22 @@ export default function profileData() {
                         <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
                             {profileData?.about}
                         </p>
-                        <a href='#pablo' className='font-normal text-pink-500'>
+                        {/* <a href='#pablo' className='font-normal text-pink-500'>
                           Show more
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                     <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                       <div className='flex flex-wrap justify-center'>
                         <div className='w-full lg:w-9/12 px-4'>
+                            <h1>{profileData?.firstName}'s Videos</h1>
                           <Documentaries></Documentaries>
-                          <a
+                          {/* <a
                             href='#pablo'
                             className='font-normal text-pink-500'
                           >
                             Show more
-                          </a>
+                          </a> */}
                         </div>
                       </div>
                     </div>
