@@ -256,9 +256,10 @@ function AdminActiveC() {
                   <td>{video.title}</td>
 
                   <td>
-                    {new Date(
-                      video?.approvalDate?.seconds * 1000
-                    ).toDateString()}
+                    {video.approvalDate &&
+                      new Date(
+                        video?.approvalDate?.seconds * 1000
+                      ).toDateString()}
                   </td>
                   <th>
                     <button

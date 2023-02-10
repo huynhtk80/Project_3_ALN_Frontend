@@ -1,4 +1,4 @@
-import {
+import firestore, {
   addDoc,
   arrayRemove,
   arrayUnion,
@@ -28,6 +28,7 @@ export interface VideoParams {
   trailer?: string;
   country?: string[];
   trailerThumb?: string;
+  approvalDate?: Timestamp;
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {
@@ -124,6 +125,38 @@ export const addMovieComments = async (
       replies: [],
       commentTime: serverTimestamp(),
       vidId: docID,
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const replyMovieComments = async (
+  db: any,
+  commentID: string,
+  uid: string,
+  avatar: string,
+  name: string,
+  content: string
+) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    if (!avatar) {
+      avatar = '';
+    }
+    if (!name) {
+      name = '';
+    }
+
+    await updateDoc(docRef, {
+      replies: arrayUnion({
+        uid,
+        avatar,
+        name,
+        content,
+        commentTime: Timestamp.now(),
+      }),
     });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);

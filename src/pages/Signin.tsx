@@ -22,6 +22,7 @@ export interface UserProfileProps {
   coverPhoto: string;
   introVideo: string;
   DOC_ID: string;
+  roles?: { admin: boolean; creator?: boolean };
 }
 
 export default function userInfo() {

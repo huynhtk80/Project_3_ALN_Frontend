@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import AfricanCountryList from './AfricanCountryList';
 
-const AfricanMapModal = (props) => {
+interface AfricanMapModalProps {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCountry: string;
+}
+const AfricanMapModal = (props: AfricanMapModalProps) => {
   const setShowModal = props.setShowModal;
-  console.log(AfricanCountryList[props.selectedCountry.toUpperCase()]);
+  console.log(AfricanCountryList[props?.selectedCountry?.toUpperCase()]);
   const {
     CountryName,
     Quadrant,

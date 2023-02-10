@@ -34,7 +34,7 @@ function VideoThumbCard({
             file: {
               attributes: {
                 controlsList: 'nodownload',
-                onContextMenu: (e) => e.preventDefault(),
+                onContextMenu: (e: any) => e.preventDefault(),
               },
             },
           }}

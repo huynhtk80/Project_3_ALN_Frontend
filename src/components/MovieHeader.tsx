@@ -14,7 +14,7 @@ function MovieHeader() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videoHeader, setVideoHeader] = useState();
+  const [videoHeader, setVideoHeader] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
 
   const videoPlayer = useRef(null);
@@ -26,12 +26,12 @@ function MovieHeader() {
     let unsubscribe;
     try {
       unsubscribe = onSnapshot(docRef, (querySnap) => {
-        if (querySnap.empty) {
+        if (querySnap.exists()) {
           console.log('No docs found');
           setVideoHeader(drumVideo);
         } else {
           let videoData = querySnap.data();
-          setVideoHeader(videoData.downloadURL);
+          if (videoData) setVideoHeader(videoData.downloadURL);
         }
       });
       setIsLoading(false);

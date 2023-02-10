@@ -8,9 +8,8 @@ import { onSnapshot } from 'firebase/firestore';
 interface UserDBContextType {
   userProfile: UserProfileProps;
 }
-export const UserDBContext = React.createContext<UserDBContextType | null>(
-  null
-);
+//to do fix interface
+export const UserDBContext = React.createContext<any | null>(null);
 
 interface UserDBContextProps {
   children: React.ReactNode;

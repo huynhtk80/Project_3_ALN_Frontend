@@ -11,16 +11,16 @@ import Navbar from '../components/Navbar';
 
 function DemoLanding() {
   useEffect(() => {
-    var iframe = document.getElementById('myFrame');
-    if (iframe)
-      var anchors = iframe.contentWindow.document.getElementsByTagName('a');
-    console.log(anchors);
+    var iframe = document.getElementById('myFrame') as HTMLIFrameElement;
+    if (!iframe.contentWindow) return;
+    let anchors = iframe.contentWindow.document.getElementsByTagName('a');
+
     for (var i = 0; i < anchors.length; i++) {
       anchors[i].onclick = function () {
         return false;
       };
     }
-  });
+  }, []);
 
   const message = `A global media production company that’s housed in Harare, Zimbabwe and has since 2019 expanded its branches to the United States of America with the International Head quarters in Des Moines Iowa.
 
