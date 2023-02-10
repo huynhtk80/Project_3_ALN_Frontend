@@ -13,6 +13,7 @@ import { UserProfileProps } from './Signin';
 import { MdLocationOn } from 'react-icons/md';
 import { TfiVideoClapper } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
+import Documentaries from './Documentaries';
 
 export default function profileData() {
   const fbContext = useContext(FirebaseContext);
@@ -40,6 +41,8 @@ export default function profileData() {
     
     return unsubscribe;
    }, [user]);;
+
+   
 
   return (
     <>
@@ -172,9 +175,7 @@ export default function profileData() {
                     <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                       <div className='flex flex-wrap justify-center'>
                         <div className='w-full lg:w-9/12 px-4'>
-                          <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
-                            This is where the videos go
-                          </p>
+                          <Documentaries></Documentaries>
                           <a
                             href='#pablo'
                             className='font-normal text-pink-500'
