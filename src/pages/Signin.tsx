@@ -6,6 +6,8 @@ import { photoCrop } from '../utils/photoCrop';
 import { uploadFileStorage, deleteFileURL } from '../utils/fireStorageAPI';
 import { VideoParams } from '../utils/fireStoreAPI';
 import { countryList } from '../utils/countyOptions';
+import ImageUploader from '../components/ImageUploader';
+import VideoUploader from '../components/VideoUploader';
 
 export interface UserProfileProps {
   about: string;
@@ -241,95 +243,22 @@ export default function userInfo() {
                     <label className='block text-sm font-medium text-base-content'>
                       Cover photo
                     </label>
-                    <div className=' group relative mt-1 aspect-[2/1] sm:aspect-[3/1] md:aspect-[4/1] w-full rounded-md border-2 border-dashed border-neutral-content overflow-hidden'>
-                      <img
-                        className=' absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 rounded-md z-10'
-                        src={userProfile.coverPhoto}
-                      />
-                      <div className=' absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0 group-hover:z-[11] bg-slate-100 w-40 h-28 rounded-lg drop-shadow-md opacity-60'></div>
-                      <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0  group-hover:z-[11]'>
-                        <svg
-                          className='mx-auto h-12 w-12 text-base-content opacity-100'
-                          stroke='currentColor'
-                          fill='none'
-                          viewBox='0 0 48 48'
-                          aria-hidden='true'
-                        >
-                          <path
-                            d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02'
-                            strokeWidth={2}
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                        <div className='flex text-sm text-base-content'>
-                          <label
-                            htmlFor='file-upload'
-                            className='badge cursor-pointer text-center'
-                          >
-                            <span className='mx-auto'>Upload a file</span>
-                            <input
-                              id='file-upload'
-                              name='file-upload'
-                              type='file'
-                              className='sr-only'
-                              onChange={onChangeCover}
-                            />
-                          </label>
-                        </div>
-                        <p className='text-xs text-base-content'>
-                          PNG, JPG, GIF up to 10MB
-                        </p>
-                      </div>
-                    </div>
+                    <ImageUploader
+                      image={userProfile.coverPhoto}
+                      aspectHeight={1}
+                      aspectWidth={3}
+                      onChangeHandle={onChangeCover}
+                    />
                   </div>
 
                   <div>
                     <label className='block text-sm font-medium text-base-content'>
                       Profile Video
                     </label>
-                    <div className=' group relative mt-1 aspect-video w-full rounded-md border-2 border-dashed border-neutral-content overflow-hidden'>
-                      <video
-                        className=' absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 rounded-md z-10'
-                        src={userProfile.introVideo}
-                        controls
-                      />
-                      <div className=' absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0 group-hover:z-[11] bg-slate-100 w-40 h-28 rounded-lg drop-shadow-md opacity-60'></div>
-                      <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0  group-hover:z-[11]'>
-                        <svg
-                          className='mx-auto h-12 w-12 text-base-content opacity-100'
-                          stroke='currentColor'
-                          fill='none'
-                          viewBox='0 0 48 48'
-                          aria-hidden='true'
-                        >
-                          <path
-                            d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02'
-                            strokeWidth={2}
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                        <div className='flex text-sm text-base-content'>
-                          <label
-                            htmlFor='vidFileUpload'
-                            className='badge cursor-pointer text-center'
-                          >
-                            <span className='mx-auto'>Upload a file</span>
-                            <input
-                              id='vidFileUpload'
-                              name='vidFileUpload'
-                              type='file'
-                              className='sr-only'
-                              onChange={onChangeVideo}
-                            />
-                          </label>
-                        </div>
-                        <p className='text-xs text-base-content'>
-                          mp4,avi,etc up to 10MB
-                        </p>
-                      </div>
-                    </div>
+                    <VideoUploader
+                      video={userProfile.introVideo}
+                      onChangeHandle={onChangeVideo}
+                    />
                   </div>
                 </div>
               </div>
