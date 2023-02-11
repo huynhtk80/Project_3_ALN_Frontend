@@ -51,14 +51,14 @@ export const RestOfApp = () => {
               </ProtectedRoutes>
             }
           />
-          <Route
+          {/* <Route
             path='videos'
             element={
               <ProtectedRoutes isAllowed={!!user}>
                 <Videos />
               </ProtectedRoutes>
             }
-          />
+          /> */}
           <Route
             path='Category'
             element={

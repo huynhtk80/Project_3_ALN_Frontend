@@ -102,21 +102,25 @@ function AdminManageUsers() {
 
   const onClickHandleAdmin = async (uid: string) => {
     const result = await addAdmin({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleDelAdmin = async (uid: string) => {
     const result = await delAdmin({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleCreator = async (uid: string) => {
     const result = await addCreator({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleDelCreator = async (uid: string) => {
     const result = await deleteCreator({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 

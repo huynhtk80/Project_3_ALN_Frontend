@@ -55,7 +55,11 @@ function VideoThumbCard({
         >
           {title}
         </div>
-        <p className='text-base-content text-base'>{description}</p>
+        <p className='text-base-content text-base'>
+          {description.length > 100
+            ? description.slice(0, 100) + '...'
+            : description}
+        </p>
       </div>
       {isOpen && docId && (
         <VideoDetails setShowModal={setIsOpen} docId={docId} />

@@ -39,7 +39,6 @@ export const UserDBProvider = (props: UserDBContextProps) => {
 
   useEffect(() => {
     if (!user) return;
-    console.log('loading information from doc', user.uid);
 
     const docRef = doc(db, 'userInfo', user.uid);
 

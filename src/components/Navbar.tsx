@@ -201,8 +201,8 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
               {user && (
                 <Disclosure.Panel className=''>
                   <div className='space-y-1 px-2 pt-2 pb-3'>
-                    {navigation.map((item) => (
-                      <Link to={item.href}>
+                    {navigation.map((item, index) => (
+                      <Link key={index} to={item.href}>
                         <Disclosure.Button
                           key={item.name}
                           className='text-base-content transition ease-in-out duration-500 hover:text-primary-content hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'

@@ -17,6 +17,7 @@ function Videos() {
             console.log(index);
             return (
               <VideoThumbCard
+                key={index}
                 url={vid.url}
                 description={vid.description}
                 title={vid.title}
