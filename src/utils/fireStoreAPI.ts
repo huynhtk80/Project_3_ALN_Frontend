@@ -3,6 +3,7 @@ import firestore, {
   arrayRemove,
   arrayUnion,
   collection,
+  deleteDoc,
   doc,
   serverTimestamp,
   setDoc,
@@ -195,6 +196,16 @@ export const addMovieComments = async (
   }
 };
 
+export const deleteMovieComments = async (db: any, commentID: string) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    await deleteDoc(docRef);
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
 export const replyMovieComments = async (
   db: any,
   commentID: string,
@@ -221,6 +232,28 @@ export const replyMovieComments = async (
         content,
         commentTime: Timestamp.now(),
       }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteReplyMovieComments = async (
+  db: any,
+  commentID: string,
+  reply: {
+    uid: string;
+    avatar: string;
+    name: string;
+    content: string;
+    commentTime: Timestamp;
+  }
+) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    await updateDoc(docRef, {
+      replies: arrayRemove(reply),
     });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);

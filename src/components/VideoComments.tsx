@@ -10,19 +10,32 @@ import tempAvatar from '../assets/avatar-temp.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
-import { addMovieComments, replyMovieComments } from '../utils/fireStoreAPI';
+import {
+  addMovieComments,
+  deleteMovieComments,
+  deleteReplyMovieComments,
+  replyMovieComments,
+} from '../utils/fireStoreAPI';
+import VideoCommentReply from './VideoCommentReply';
 
 interface VideoCommentsProp {
   videoId: string;
 }
 
 interface Comments {
+  uid: string;
   avatar: string;
   name: string;
   content: string;
   commentTime: Timestamp;
   replies: [
-    { avatar: string; name: string; content: string; commentTime: Timestamp }
+    {
+      uid: string;
+      avatar: string;
+      name: string;
+      content: string;
+      commentTime: Timestamp;
+    }
   ];
   DOC_ID: string;
 }
@@ -66,17 +79,24 @@ function VideoComments({ videoId }: VideoCommentsProp) {
       `${user.firstName} ${user.lastName}`,
       currentComment
     );
+    setCurrentComment('');
   };
 
-  const onClickHandleReply = async (commentID: string) => {
-    await replyMovieComments(
-      db,
-      commentID,
-      user.uid,
-      userProfile.photo,
-      `${user.firstName} ${user.lastName}`,
-      currentComment
-    );
+  const onClickRemoveReply = async (
+    commentID: string,
+    reply: {
+      uid: string;
+      avatar: string;
+      name: string;
+      content: string;
+      commentTime: Timestamp;
+    }
+  ) => {
+    await deleteReplyMovieComments(db, commentID, reply);
+  };
+
+  const onClickRemoveComment = async (commentID: string) => {
+    await deleteMovieComments(db, commentID);
   };
 
   return (
@@ -95,7 +115,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
           }
           return (
             <>
-              <div className='space-y-4'>
+              <div className='space-y-4 mt-1'>
                 <div className='flex'>
                   <div className='flex-shrink-0 mr-3'>
                     <img
@@ -104,9 +124,21 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                       alt=''
                     />
                   </div>
-                  <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed'>
+                  <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed relative'>
+                    {comment.uid === user.uid && (
+                      <button
+                        className='absolute top-2 right-2 '
+                        onClick={() => onClickRemoveComment(comment.DOC_ID)}
+                      >
+                        x
+                      </button>
+                    )}
                     <strong>{comment.name}</strong>{' '}
                     <span className='text-xs text-gray-400'>
+                      {new Date(
+                        comment?.commentTime?.seconds * 1000
+                      ).toDateString()}
+                      {',  '}
                       {new Date(
                         comment?.commentTime?.seconds * 1000
                       ).toLocaleTimeString()}
@@ -123,14 +155,28 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                                 alt=''
                               />
                             </div>
-                            <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed'>
+                            <div className='relative flex-1 border rounded-lg px-4 py-2 sm:pl-6 sm:pr-10 sm:py-4 leading-relaxed group'>
                               <strong>{reply.name}</strong>{' '}
                               <span className='text-xs text-gray-400'>
+                                {new Date(
+                                  reply?.commentTime?.seconds * 1000
+                                ).toDateString()}
+                                {',  '}
                                 {new Date(
                                   reply?.commentTime?.seconds * 1000
                                 ).toLocaleTimeString()}
                               </span>
                               <p className='text-sm'>{reply.content}</p>
+                              {reply.uid === user.uid && (
+                                <button
+                                  className='absolute top-2 right-2 hidden group-hover:block'
+                                  onClick={() =>
+                                    onClickRemoveReply(comment.DOC_ID, reply)
+                                  }
+                                >
+                                  X
+                                </button>
+                              )}
                             </div>
                           </div>
                         ))}
@@ -149,7 +195,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                         <div className='text-sm text-gray-500 font-semibold'>
                           5 Replies
                         </div> */}
-                        <div className='flex flex-row justify-end'>
+                        {/* <div className='flex flex-row justify-end'>
                           <textarea
                             className='textarea w-full mt-2'
                             placeholder='reply'
@@ -161,7 +207,8 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                           >
                             Reply
                           </button>
-                        </div>
+                        </div> */}
+                        <VideoCommentReply commentId={comment.DOC_ID} />
                       </div>
                     ) : (
                       <button>Reply</button>
@@ -172,14 +219,16 @@ function VideoComments({ videoId }: VideoCommentsProp) {
             </>
           );
         })}
-        <textarea
-          className='textarea w-full mt-2'
-          placeholder='comment'
-          onChange={(e) => setCurrentComment(e.target.value)}
-        ></textarea>
-        <button className='btn btn-primary' onClick={onClickHandleComment}>
-          Submit
-        </button>
+        <div className='flex flex-row justify-center items-center w-full'>
+          <textarea
+            className='textarea textarea-bordered w-full mt-2'
+            placeholder='comment'
+            onChange={(e) => setCurrentComment(e.target.value)}
+          ></textarea>
+          <button className='btn btn-primary' onClick={onClickHandleComment}>
+            Submit
+          </button>
+        </div>
       </div>
     </>
   );
