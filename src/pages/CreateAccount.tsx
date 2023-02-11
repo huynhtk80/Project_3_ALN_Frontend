@@ -19,10 +19,10 @@ export const CreateAccount = () => {
     setAuthErrorV(false);
     const valid = validateFields();
     if (valid) {
-      const isLoggedin = await loginFn(email, password);
+      const isLoggedin = await createUser(email, password);
       if (isLoggedin) {
         console.log("it's working!");
-        navigate('/home', { replace: true });
+        navigate('/home/signin', { replace: true });
       } else {
         setAuthErrorV(true);
       }
@@ -87,7 +87,7 @@ export const CreateAccount = () => {
       isValid = false;
     }
 
-    if (!passwordV === !password) {
+    if (!(passwordV === password)) {
       console.log('we got a password error');
       validationV.password = 'Password does not match';
       errorsV.password = true;
@@ -176,7 +176,7 @@ export const CreateAccount = () => {
                   autoComplete='current-password'
                   required
                   className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
-                  value={password}
+                  value={passwordV}
                   onChange={(e) => setpasswordV(e.target.value)}
                   placeholder='Confirm Password'
                 />
