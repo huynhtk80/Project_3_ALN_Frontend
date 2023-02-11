@@ -27,7 +27,7 @@ export const RestOfApp = () => {
   const authContext = useContext(AuthContext);
   const user = authContext.user;
   const userRoles = authContext.userRoles;
-  console.log('roles', userRoles);
+  console.log('roles', userRoles, user);
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -120,7 +120,7 @@ export const RestOfApp = () => {
           <Route path='Signin' element={<Signin />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
           <Route
-            path='Profile'
+            path='profile'
             element={
               <ProtectedRoutes isAllowed={!!user}>
                 <Profile />
