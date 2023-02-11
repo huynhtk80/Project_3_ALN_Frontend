@@ -23,7 +23,10 @@ export const uploadFileStorage = async (
     } else {
       collectionString = `${collection}/${docId}`;
     }
-    const FileRef = ref(store, `${uId}/${location}/${collectionString}`);
+    const FileRef = ref(
+      store,
+      `userfiles/${uId}/${location}/${collectionString}`
+    );
     console.log(FileRef);
     const uploadTask = uploadBytesResumable(FileRef, file);
     uploadTask.on(
