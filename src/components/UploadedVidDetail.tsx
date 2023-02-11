@@ -21,6 +21,7 @@ import { photoCrop } from '../utils/photoCrop';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 import VideoCreditInput from './VideoCreditInput';
 import VideoTagsInput from './VideoTagsInput';
+import VideoUploader from './VideoUploader';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -309,6 +310,14 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   {videoDetails && videoDetails.title}
                 </h3>
                 {saving && <span>{'  '} Saving..</span>}
+                {/* {saving && (
+                  <div
+                    className='progress'
+                    style={{ '--value': `${progress}` }}
+                  >
+                    {Math.floor(progress)}%
+                  </div>
+                )} */}
               </div>
               <div className='float-right'>
                 <ApprovalStatus video={videoDetails} />
@@ -456,7 +465,12 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                 <label className='label mt-3'>
                   <span className='label-text'>Trailer</span>
                 </label>
-                {videoDetails.trailer === undefined ? (
+                <VideoUploader
+                  video={videoDetails.trailer}
+                  onChangeHandle={onChangeUploadTrailer}
+                  poster={videoDetails.trailerThumb}
+                />
+                {/* {videoDetails.trailer === undefined ? (
                   <div className='card w-[80%] h-44 bg-base-100 shadow-xl image-full mt-1'>
                     <div className='border-2 m-2 rounded-xl flex justify-center items-center'>
                       <p>Trailer</p>
@@ -486,15 +500,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                     className='file-input file-input-bordered w-full max-w-xs'
                     onChange={onChangeUploadTrailer}
                   />
-                  {saving && (
-                    <div
-                      className='radial-progress'
-                      style={{ '--value': `${progress}` }}
-                    >
-                      {Math.floor(progress)}%
-                    </div>
-                  )}
-                </div>
+                </div> */}
               </div>
             </div>
 

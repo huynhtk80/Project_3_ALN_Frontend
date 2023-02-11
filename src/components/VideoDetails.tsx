@@ -118,6 +118,20 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
             <h1 className=' font-bold text-2xl text-white break-all'>
               {videoDetails?.title}
             </h1>
+            <p className='text-white opacity-60 ml-2'>
+              {videoDetails?.country &&
+                videoDetails?.country.map((coun, index) => {
+                  if (videoDetails.country)
+                    if (index < videoDetails.country?.length - 1) {
+                      return (
+                        <span className='inline-block mr-1  '>{coun}, </span>
+                      );
+                    } else
+                      return (
+                        <span className='inline-block mr-1  '>{coun}</span>
+                      );
+                })}
+            </p>
             <div className='flex justify-start items-center h-12'>
               <button
                 className='mr-2 rounded-sm w-fit pl-4 '
@@ -142,25 +156,46 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
         </div>
 
         {/* body */}
-        <div className='m-4 max-h-[400px] overflow-y-scroll overscroll-contain'>
-          <div className='flex flex-row'>
+        <div className='m-4  overflow-y-scroll overscroll-contain'>
+          <div className='flex flex-col sm:flex-row'>
             <div className='basis-2/3 grow'>
-              <h2>Testing</h2>
-              <p>{videoDetails?.description}</p>
-              <h2>Trailer</h2>
-              <div className='mt-1 w-2/5 overflow-hidden'>
-                <video
-                  src={videoDetails?.trailer}
-                  poster={videoDetails?.trailerThumb}
-                ></video>
+              <div className='min-h-12'>
+                <h2>Description:</h2>
+                <p className='min-h-12'>{videoDetails?.description}</p>
+                <h2 className='font-bold'>Category: </h2>
+                {videoDetails?.collection}
+                <h2 className='font-bold mt-2'>Tags: </h2>
+                {videoDetails?.tags &&
+                  videoDetails?.tags?.map((tag, index) => {
+                    if (videoDetails.tags)
+                      if (index < videoDetails.tags?.length - 1) {
+                        return (
+                          <span className='inline-block mr-1  '>{tag}, </span>
+                        );
+                      } else
+                        return (
+                          <span className='inline-block mr-1  '>{tag}</span>
+                        );
+                  })}
               </div>
-
-              {videoDetails && <VideoComments videoId={videoDetails?.DOC_ID} />}
             </div>
             <div className=' basis-1/3 grow'>
-              <h2>Category: {videoDetails?.collection}</h2>
-              <h2>Genres:</h2>
+              <div>
+                <h2>Trailer</h2>
+                <div className='mt-1 max-w-lg overflow-hidden mx-auto'>
+                  <video
+                    src={videoDetails?.trailer}
+                    poster={videoDetails?.trailerThumb}
+                    controls
+                  ></video>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div>
+            <div className=' divider' />
+            {videoDetails && <VideoComments videoId={videoDetails?.DOC_ID} />}
           </div>
         </div>
         {/* actions */}
