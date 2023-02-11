@@ -16,9 +16,7 @@ export interface VideoParams {
   title: string;
   titleUpper?: string;
   url: string;
-
   thumbnail: string;
-
   description: string;
   descriptionUpper?: string;
   collection: string;
