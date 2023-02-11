@@ -19,6 +19,8 @@ import VideoDetails from './VideoDetails';
 import Multiselect from 'multiselect-react-dropdown';
 import { photoCrop } from '../utils/photoCrop';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
+import VideoCreditInput from './VideoCreditInput';
+import VideoTagsInput from './VideoTagsInput';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -67,7 +69,15 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
           DOC_ID: docSnap.id,
         } as VideoParams;
         setVideoDetails(videoData);
-        if (videoData.approval === 'pending' || 'approved' || 'deleted') {
+        console.log('vid', videoData);
+        console.log('vided', isEditable);
+        if (
+          (videoData.approval === 'pending' ||
+            videoData.approval === 'approved' ||
+            videoData.approval === 'deleted') &&
+          !userRoles.admin
+        ) {
+          console.log('we got here');
           setIsEditable(false);
         } else {
           setIsEditable(true);
@@ -289,7 +299,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   return (
     <>
       <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
-        <div className='fixed mx-auto w-4/5 max-w-4xl h-5/6 overflow-y-auto'>
+        <div className='fixed mx-auto w-full md:w-4/5 max-w-6xl h-5/6 overflow-y-auto'>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-base-100 outline-none focus:outline-none '>
             {/*header*/}
@@ -314,8 +324,9 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
               </button> */}
             </div>
             {/*body*/}
-            <div className='relative p-6 flex-col flex sm:flex-row justify-around gap-3'>
-              <div className='form-control w-full max-w-sm'>
+            <div className='relative p-6 flex-col flex md:flex-row justify-around gap-3'>
+              {/* leftside col */}
+              <div className='form-control w-full'>
                 <label className='label'>
                   <span className='label-text'>Movie Title</span>
                 </label>
@@ -426,8 +437,11 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                     />
                   </div>
                 </div>
+                <VideoCreditInput video={videoDetails} />
+                <VideoTagsInput video={videoDetails} />
               </div>
-              <div className='form-control w-full max-w-sm flex flex-col'>
+              {/* Rightside col */}
+              <div className='form-control w-full max-w-md flex flex-col'>
                 <div>
                   <label className='label'>
                     <span className='label-text'>Video</span>
@@ -483,6 +497,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                 </div>
               </div>
             </div>
+
             {/*footer*/}
             <div className='flex items-center justify-between p-6 border-t border-solid border-slate-200 rounded-b'>
               <div>

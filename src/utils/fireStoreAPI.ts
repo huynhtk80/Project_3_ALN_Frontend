@@ -29,6 +29,8 @@ export interface VideoParams {
   country?: string[];
   trailerThumb?: string;
   approvalDate?: Timestamp;
+  credits?: { role: string; name: string }[];
+  tags?: string[];
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {
@@ -62,6 +64,70 @@ export const updateMovie = async (
   try {
     const docRef = doc(db, 'videos', docID);
     await updateDoc(docRef, { ...updateUpper, lastUpdated: serverTimestamp() });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addMovieCast = async (
+  db: any,
+  docID: string,
+  role: string,
+  name: string
+) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      credits: arrayUnion({
+        role,
+        name,
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteMovieCast = async (
+  db: any,
+  docID: string,
+  role: string,
+  name: string
+) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+    console.log('at deletemovieC');
+    await updateDoc(docRef, {
+      credits: arrayRemove({
+        role,
+        name,
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addMovieTag = async (db: any, docID: string, tag: string) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      tags: arrayUnion(tag),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteMovieTag = async (db: any, docID: string, tag: string) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      tags: arrayRemove(tag),
+    });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
   }
