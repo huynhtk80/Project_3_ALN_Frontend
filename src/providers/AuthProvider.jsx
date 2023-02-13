@@ -61,14 +61,14 @@ export const AuthProvider = (props) => {
         const docRef = doc(db, 'userInfo', userCred.user.uid);
         await setDoc(docRef, { emailAddress: userCred.user.email });
 
-        return true;
+        return 'success';
       } else {
         console.log('CreateUser failed!!');
         return false;
       }
     } catch (ex) {
       console.log('AUTH FAILURE', ex.message);
-      return false;
+      return ex.message;
     }
   };
 
