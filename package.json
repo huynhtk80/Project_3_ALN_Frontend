@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build-dev": "tsc && vite build --mode development",
     "preview": "vite preview",
     "test": "jest",
     "emu": "firebase emulators:start --import emulator-storage --export-on-exit",
