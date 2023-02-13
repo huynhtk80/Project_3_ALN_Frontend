@@ -4,10 +4,10 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadAdminStorage } from '../utils/fireStorageAPI';
 import { addHeaderMovie } from '../utils/fireStoreAPI';
 import Frame from 'react-frame-component';
-import index from '../index.css';
+import styles from '../iframe.css?inline';
 import App from '../App';
 import { RestOfApp } from './RestOfApp';
-import styles from '../index.css?inline';
+// import styles from '../index.css?inline';
 import DemoLanding from '../pages/DemoLanding';
 
 function AdminPageEditor() {
@@ -30,6 +30,7 @@ function AdminPageEditor() {
     setVideoFile(file);
     const url = URL.createObjectURL(file);
     setVideoBlob(url);
+    //hello
   };
 
   const onSubmitHandle = async () => {

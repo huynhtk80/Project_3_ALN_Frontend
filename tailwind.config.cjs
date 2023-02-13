@@ -18,10 +18,15 @@ module.exports = {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
+        rotatein: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         fadein: 'fadein 5s linear',
         wiggle: 'wiggle 1s ease-in-out infinite',
+        rotatein: 'rotatein .3s linear',
       },
     },
   },

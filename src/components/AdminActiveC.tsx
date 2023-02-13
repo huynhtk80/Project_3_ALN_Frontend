@@ -42,8 +42,8 @@ function AdminActiveC() {
 
     let queryRef = query(
       collectionRef,
-      where('approval', '==', 'approved'),
-      orderBy('approvalDate', 'desc')
+      where('approval', '==', 'approved')
+      // orderBy('approvalDate', 'desc')
     );
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
@@ -256,9 +256,10 @@ function AdminActiveC() {
                   <td>{video.title}</td>
 
                   <td>
-                    {new Date(
-                      video?.approvalDate?.seconds * 1000
-                    ).toDateString()}
+                    {video.approvalDate &&
+                      new Date(
+                        video?.approvalDate?.seconds * 1000
+                      ).toDateString()}
                   </td>
                   <th>
                     <button

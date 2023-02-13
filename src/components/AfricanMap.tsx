@@ -3,7 +3,7 @@ import AfricanMapModal from './AfricanMapModal';
 
 function AfricanMap() {
   const [showModal, setShowModal] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState();
+  const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
     const cName = target.id;
@@ -15,7 +15,9 @@ function AfricanMap() {
       countries.forEach((country) => {
         country.style.fill = '#008e4d';
       });
-      const countrySelected = document.querySelectorAll('#' + cName);
+      const countrySelected = document.querySelectorAll<HTMLElement>(
+        '#' + cName
+      );
       console.log(countrySelected);
       countrySelected.forEach((area) => {
         if (area) area.style.fill = '#f1a104';

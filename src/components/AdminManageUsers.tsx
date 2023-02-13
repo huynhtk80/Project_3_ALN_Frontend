@@ -37,7 +37,19 @@ function AdminManageUsers() {
   const [category, setCategory] = useState('');
 
   //cloud functions
-  const getRoles = httpsCallable(functions, 'getUsersRoles');
+  interface RolesInterfaceRes {
+    DOC_ID: string;
+    roles: { admin: boolean; creator?: boolean };
+  }
+
+  interface RolesInterfaceReq {
+    uid: string;
+  }
+
+  const getRoles = httpsCallable<RolesInterfaceReq[], RolesInterfaceRes[]>(
+    functions,
+    'getUsersRoles'
+  );
   const addAdmin = httpsCallable(functions, 'addAdminRoleById');
   const delAdmin = httpsCallable(functions, 'deleteAdminRoleById');
   const addCreator = httpsCallable(functions, 'addCreatorRoleById');
@@ -79,6 +91,7 @@ function AdminManageUsers() {
     const merged = mergeArrays(users, result.data);
 
     console.log('the merged', merged);
+    if (!merged) return;
     setUsers(merged);
   };
 
@@ -89,31 +102,37 @@ function AdminManageUsers() {
 
   const onClickHandleAdmin = async (uid: string) => {
     const result = await addAdmin({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleDelAdmin = async (uid: string) => {
     const result = await delAdmin({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleCreator = async (uid: string) => {
     const result = await addCreator({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const onClickHandleDelCreator = async (uid: string) => {
     const result = await deleteCreator({ uid: uid });
+    if (users) getUserRoles(users);
     console.log(result);
   };
 
   const mergeArrays = (
     arr1: UserProfileProps[],
-    arr2: [{ DOC_ID: string; roles: { admin: boolean; creator?: boolean } }]
+    arr2: { DOC_ID: string; roles: { admin: boolean; creator?: boolean } }[]
   ) => {
     let res = [];
     res = arr1.map((obj) => {
       const index = arr2.findIndex((el) => el['DOC_ID'] == obj['DOC_ID']);
+
+      //@ts-ignore
       const { roles } = index !== -1 ? arr2[index] : {};
       return {
         ...obj,
@@ -248,7 +267,7 @@ function AdminManageUsers() {
                   </td>
                   <td>{`${user.firstName} ${user.lastName}`}</td>
                   <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
-                    {user.email}
+                    {user.emailAddress}
                   </td>
                   <td>{user.DOC_ID}</td>
                   <th>

@@ -1,23 +1,59 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  doc,
+  onSnapshot,
+} from 'firebase/firestore';
+import { UserProfileProps } from './Signin';
+import { MdLocationOn } from 'react-icons/md';
+import { TfiVideoClapper } from 'react-icons/tfi';
+import { CgOrganisation } from 'react-icons/cg';
+import Documentaries from './Documentaries';
 
-export default function Profile() {
+export default function profileData() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
+  const [profileData, setProfileData] = useState<UserProfileProps>();
+
+  useEffect(() => {
+    console.log('loading infomation from doc', user.uid);
+
+    const docRef = doc(db, 'userInfo', user.uid);
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const userInfoData = {
+          ...docSnap.data(),
+          DOC_ID: docSnap.id,
+        } as UserProfileProps;
+        setProfileData(userInfoData);
+      } else {
+        console.log('No such document!');
+      }
+    });
+    
+    return unsubscribe;
+   }, [user]);;
+
+   
 
   return (
     <>
       <div className='pt-16'>
         <main className='profile-page'>
-          <section className='relative block h-500-px'>
+          <section className='relative block h-[500px]'>
             <div
               className='absolute top-0 w-full h-full bg-center bg-cover'
               style={{
                 backgroundImage:
-                  'url("https://www.borgenmagazine.com/wp-content/uploads/2014/03/9683990709_c3b8b246ea_b_opt.jpg")',
+                  `url("${profileData?.coverPhoto}")`,
               }}
             >
               <span
@@ -47,14 +83,14 @@ export default function Profile() {
           </section>
           <section className='relative py-16 bg-blueGray-200'>
             <div className='container mx-auto px-4'>
-              <div className='relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
+              <div className='relative flex flex-col min-w-0 break-words slg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
                 <div className='px-6'>
-                  <div className='flex flex-wrap justify-center lg:flex-row'>
-                    <div className='lg:w-3/12 px-4 lg:order-1 flex justify-center lg:mr-96'>
+                  <div className='flex flex-wrap justify-center lg:flex-column'>
+                    <div className='lg:w-3/12 px-4 lg:flex justify-center lg:mr-96'>
                       <img
                         alt='...'
-                        src='https://static.wixstatic.com/media/abbd8f_4b1249582ec84028b486cfc3b2bb1c86~mv2_d_1972_2048_s_2.jpg/v1/fill/w_231,h_240,al_c,q_80,usm_0.66_1.00_0.01/abbd8f_4b1249582ec84028b486cfc3b2bb1c86~mv2_d_1972_2048_s_2.jpg'
-                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px'
+                        src= {profileData?.photo}
+                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]'
                       />
                     </div>
                     <div className='w-full mt-16 lg:w-4/12 px-4 lg:order-2 lg:mt-1 transition-all'>
@@ -85,14 +121,14 @@ export default function Profile() {
                         </div>
                       </div>
                     </div>
-                    <div className='mt-4 lg:order-3 lg:ml-[55%]'>
+                    <div className='mt-0 lg:.order-xxl-5 lg:ml-[0%]'>
                       <iframe
-                        src='https://player.vimeo.com/video/591710704?h=3ff18ebd91'
+                        src={profileData?.introVideo}
                         width='320'
                         height=''
-                        frameborder='0'
+                        frameBorder='0'
                         allow='autoplay; fullscreen; picture-in-picture'
-                        allowfullscreen
+                        allowFullScreen
                       ></iframe>
                     </div>
                   </div>
@@ -104,39 +140,49 @@ export default function Profile() {
 
                   <div className='text-center mt-8 lg:text-start lg:ml-5 transition-all'>
                     <h3 className='text-4xl font-semibold leading-normal text-blueGray-700 mb-2'>
-                      Chelsea Mansoff
+                    {profileData?.firstName + " " + profileData?.lastName}
                     </h3>
                     <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
-                      <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400' />
-                      Diamond Valley, Alberta, Canada
+                      {/* <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400' /> */}
+                      <MdLocationOn size={'20px'} className='inline mr-2' />
+                      {profileData?.country + ", " + profileData?.stateProvince + ", " + profileData?.city}
                     </div>
                     <div className='mb-2 text-blueGray-600 mt-2'>
-                      <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400' />
+                      {/* <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400' /> */}
+                      <TfiVideoClapper
+                        size={'20px'}
+                        className='inline py-auto mr-2'
+                      />
                       Content Creator
                     </div>
                     <div className='mb-2 text-blueGray-600'>
-                      <i className='fas fa-university mr-2 text-lg text-blueGray-400' />
-                      InceptionU
+                      {/* <i className='fas fa-university mr-2 text-lg text-blueGray-400' /> */}
+                      {/* <CgOrganisation size={'20px'} className='inline  mr-2' /> */}
+                      {profileData?.emailAddress}
                     </div>
                   </div>
                   <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                     <div className='flex flex-wrap justify-center'>
                       <div className='w-full lg:w-9/12 px-4'>
                         <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
-                          This is all about Chelsea
+                            {profileData?.about}
                         </p>
-                        <a href='#pablo' className='font-normal text-pink-500'>
+                        {/* <a href='#pablo' className='font-normal text-pink-500'>
                           Show more
-                        </a>
+                        </a> */}
                       </div>
                     </div>
-                    <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
-                      <div className="flex flex-wrap justify-center">
-                        <div className="w-full lg:w-9/12 px-4">
-                          <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                            This is where my video's go
-                          </p>
-                          <a href="#pablo" className="font-normal text-pink-500">Show more</a>
+                    <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
+                      <div className='flex flex-wrap justify-center'>
+                        <div className='w-full lg:w-9/12 px-4'>
+                            <h1>{profileData?.firstName}'s Videos</h1>
+                          <Documentaries></Documentaries>
+                          {/* <a
+                            href='#pablo'
+                            className='font-normal text-pink-500'
+                          >
+                            Show more
+                          </a> */}
                         </div>
                       </div>
                     </div>

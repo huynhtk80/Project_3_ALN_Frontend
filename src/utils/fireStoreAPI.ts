@@ -1,8 +1,9 @@
-import {
+import firestore, {
   addDoc,
   arrayRemove,
   arrayUnion,
   collection,
+  deleteDoc,
   doc,
   serverTimestamp,
   setDoc,
@@ -16,9 +17,7 @@ export interface VideoParams {
   title: string;
   titleUpper?: string;
   url: string;
-
   thumbnail: string;
-
   description: string;
   descriptionUpper?: string;
   collection: string;
@@ -28,6 +27,9 @@ export interface VideoParams {
   trailer?: string;
   country?: string[];
   trailerThumb?: string;
+  approvalDate?: Timestamp;
+  credits?: { role: string; name: string }[];
+  tags?: string[];
 }
 
 export const addMovie = async (videoDoc: VideoParams, db: any) => {
@@ -66,7 +68,103 @@ export const updateMovie = async (
   }
 };
 
-export const updateMovieComments = async (
+export const addMovieCast = async (
+  db: any,
+  docID: string,
+  role: string,
+  name: string
+) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      credits: arrayUnion({
+        role,
+        name,
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteMovieCast = async (
+  db: any,
+  docID: string,
+  role: string,
+  name: string
+) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+    console.log('at deletemovieC');
+    await updateDoc(docRef, {
+      credits: arrayRemove({
+        role,
+        name,
+      }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const addMovieTag = async (db: any, docID: string, tag: string) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      tags: arrayUnion(tag),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteMovieTag = async (db: any, docID: string, tag: string) => {
+  try {
+    const docRef = doc(db, 'videos', docID);
+
+    await updateDoc(docRef, {
+      tags: arrayRemove(tag),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+// export const updateMovieComments = async (
+//   db: any,
+//   docID: string,
+//   uid: string,
+//   avatar: string,
+//   name: string,
+//   content: string
+// ) => {
+//   try {
+//     const docRef = doc(db, 'comments', docID);
+
+//     if (!avatar) {
+//       avatar = '';
+//     }
+//     if (!name) {
+//       name = '';
+//     }
+
+//     await updateDoc(docRef, {
+//       comments: arrayUnion({
+//         uid,
+//         avatar,
+//         name,
+//         content,
+//         commentTime: Timestamp.now(),
+//       }),
+//     });
+//   } catch (ex: any) {
+//     console.log('FIRESTORE ADD FAILURE!', ex.message);
+//   }
+// };
+
+export const addMovieComments = async (
   db: any,
   docID: string,
   uid: string,
@@ -75,7 +173,49 @@ export const updateMovieComments = async (
   content: string
 ) => {
   try {
-    const docRef = doc(db, 'videos', docID);
+    const collectionRef = collection(db, 'comments');
+
+    if (!avatar) {
+      avatar = '';
+    }
+    if (!name) {
+      name = '';
+    }
+
+    await addDoc(collectionRef, {
+      uid,
+      avatar,
+      name,
+      content,
+      replies: [],
+      commentTime: serverTimestamp(),
+      vidId: docID,
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteMovieComments = async (db: any, commentID: string) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    await deleteDoc(docRef);
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const replyMovieComments = async (
+  db: any,
+  commentID: string,
+  uid: string,
+  avatar: string,
+  name: string,
+  content: string
+) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
 
     if (!avatar) {
       avatar = '';
@@ -85,13 +225,35 @@ export const updateMovieComments = async (
     }
 
     await updateDoc(docRef, {
-      comments: arrayUnion({
+      replies: arrayUnion({
         uid,
         avatar,
         name,
         content,
         commentTime: Timestamp.now(),
       }),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const deleteReplyMovieComments = async (
+  db: any,
+  commentID: string,
+  reply: {
+    uid: string;
+    avatar: string;
+    name: string;
+    content: string;
+    commentTime: Timestamp;
+  }
+) => {
+  try {
+    const docRef = doc(db, 'comments', commentID);
+
+    await updateDoc(docRef, {
+      replies: arrayRemove(reply),
     });
   } catch (ex: any) {
     console.log('FIRESTORE ADD FAILURE!', ex.message);

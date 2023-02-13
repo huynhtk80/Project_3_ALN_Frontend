@@ -8,9 +8,8 @@ import { onSnapshot } from 'firebase/firestore';
 interface UserDBContextType {
   userProfile: UserProfileProps;
 }
-export const UserDBContext = React.createContext<UserDBContextType | null>(
-  null
-);
+//to do fix interface
+export const UserDBContext = React.createContext<any | null>(null);
 
 interface UserDBContextProps {
   children: React.ReactNode;
@@ -40,7 +39,6 @@ export const UserDBProvider = (props: UserDBContextProps) => {
 
   useEffect(() => {
     if (!user) return;
-    console.log('loading information from doc', user.uid);
 
     const docRef = doc(db, 'userInfo', user.uid);
 
