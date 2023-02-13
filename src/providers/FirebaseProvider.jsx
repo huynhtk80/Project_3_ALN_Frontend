@@ -8,16 +8,17 @@ import { getAnalytics, setUserProperties } from 'firebase/analytics';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAqPeb96DfaW9VM1tQK68Y3rqwCDTfyNZo',
-  authDomain: 'project3-aln.firebaseapp.com',
-  projectId: 'project3-aln',
-  storageBucket: 'project3-aln.appspot.com',
-  messagingSenderId: '262376267458',
-  appId: '1:262376267458:web:28d298323a1e0e23b7255b',
-  measurementId: 'G-JJGCVBPQ50',
-  databaseURL: 'https://project3-aln-default-rtdb.firebaseio.com/',
+  apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASEURL,
 };
 
+console.log(import.meta.env.VITE_FIREBASE_PROJECT_ID);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getStorage(app);
