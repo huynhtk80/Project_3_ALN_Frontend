@@ -52,7 +52,7 @@ function VideoThumbCard({
           id={index}
           height='215px'
           url={url}
-          onReady={() => setActiveIndex(index)}
+          // onReady={() => setActiveIndex(index)}
           playing={activeIndex === index ? true : false}
           onPlay={() => {
             setActiveIndex(index);
