@@ -60,8 +60,8 @@ export default function profileData() {
                 className='w-full h-full absolute opacity-50 bg-black'
               />
             </div>
-            <div
-              className='top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px'
+            {/* <div
+              className='top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-[70px]'
               style={{ transform: 'translateZ(0px)' }}
             >
               <svg
@@ -78,18 +78,18 @@ export default function profileData() {
                   points='2560 0 2560 100 0 100'
                 />
               </svg>
-            </div>
+            </div> */}
           </section>
           <section className='relative py-16 bg-blueGray-200'>
-            <div className='container mx-auto px-4 justify-between items-center content-center'>
-              <div className='relative flex flex-col p-5 justify-between items-center content-center min-w-0 break-words slg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
-                <div className='px-5'>
-                  <div className='flex flex-wrap justify-center lg:flex-column'>
-                    <div className='lg:w-3/12 px-4 lg:flex justify-between content-center items-center lg:mr-96'>
+            <div className='container mx-auto px-4'>
+              <div className='relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
+                <div className='px-6'>
+                  <div className='flex flex-wrap justify-center lg:flex-row'>
+                    <div className='lg:w-3/12 px-4 lg:order-1 flex justify-center lg:mr-96'>
                       <img
                         alt='...'
                         src={profileData?.photo}
-                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-24 max-w-[150px] lg:max-w-[300px] md:max-w-[200px] md:-mt-32 items-center justify-center content-center'
+                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-24 max-w-[150px]  md:max-w-[200px] md:-mt-32 items-center justify-center content-center'
                       />
                     </div>
                     <div className='w-full mt-16 lg:w-4/12 px-4 lg:order-2 lg:mt-1 transition-all'>
@@ -120,8 +120,7 @@ export default function profileData() {
                         </div>
                       </div>
                     </div>
-
-                    <div className='mt-0 lg:.order-xxl-5 lg:ml-[0%]'>
+                    <div className='mt-4 lg:order-3 lg:ml-[55%]'>
                       <iframe
                         src={profileData?.introVideo}
                         width='320'
