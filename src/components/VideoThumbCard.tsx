@@ -64,7 +64,7 @@ function VideoThumbCard({
   };
 
   return (
-    <div className='relative max-w-sm rounded text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg group '>
+    <div className='relative max-w-sm text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg  group rounded-lg '>
       <div className='flex justify-center '>
         <ReactPlayer
           config={{

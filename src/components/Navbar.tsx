@@ -44,11 +44,10 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
 
   return (
     <>
-       
       <div className=' '>
         <Disclosure
           as='nav'
-          className='fixed flex-row justify-start bg-base-300 text-base-content bg-opacity-90 w-full z-50 px-2 shadow-md glass'
+          className='fixed flex-row justify-start bg-primary text-base-content bg-opacity-30 w-full z-50 px-2 shadow-md glass transition-all duration-500 ease-in-out'
         >
           {({ open }) => (
             <>
@@ -56,7 +55,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                 {/* Mobile menu button*/}
                 <div className='flex flex-row'>
                   {user && (
-                    <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none'>
+                    <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-base-content hover:bg-base-300 hover:text-white focus:outline-none transition-all duration-500 ease-in-out'>
                       <span className='sr-only'>Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -86,7 +85,6 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                         src={ALN_LOGO_3_48}
                         alt='ALN LOGO'
                       />
-                    
                     </div>
                   </div>
                 </div>
@@ -100,7 +98,6 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                   {user ? (
                     <Menu as='div' className='ml-1'>
                       <div>
-                     
                         <Menu.Button className='flex min-w-8 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                           <span className='sr-only'>Open user menu</span>
                           {userProfile?.photo ? (

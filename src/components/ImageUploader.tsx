@@ -26,7 +26,7 @@ function ImageUploader({
   return (
     <>
       <div
-        className={` group relative mt-1 aspect-[3/1] min-h-[7rem]  w-full rounded-md border-2 border-dashed border-neutral-content overflow-hidden`}
+        className={` group relative mt-1 aspect-[3/1] min-h-[7rem]  w-full rounded-md border-2 border-dashed overflow-hidden`}
       >
         <img
           className=' absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 rounded-md z-10'
@@ -35,7 +35,7 @@ function ImageUploader({
         <div className=' absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0 group-hover:z-[11] bg-slate-100 w-40 h-28 rounded-lg drop-shadow-md opacity-60'></div>
         <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0  group-hover:z-[11]'>
           <svg
-            className='mx-auto h-12 w-12 text-base-content opacity-100'
+            className='mx-auto h-12 w-12 text-black opacity-100'
             stroke='currentColor'
             fill='none'
             viewBox='0 0 48 48'
@@ -50,20 +50,21 @@ function ImageUploader({
           </svg>
           <div className='flex text-sm text-base-content'>
             <label
-              htmlFor='file-upload'
-              className='badge cursor-pointer text-center'
+              htmlFor='vidFileUpload'
+              className='badge cursor-pointer text-center items-center justify-center w-full rounded-md hover:bg-primary-focus hover:text-primary-content'
             >
               <span className='mx-auto'>Upload a file</span>
               <input
-                id='file-upload'
-                name='file-upload'
+                id='vidFileUpload'
+                name='vidFileUpload'
                 type='file'
+                accept='video/*'
                 className='sr-only'
                 onChange={onChangeHandle}
               />
             </label>
           </div>
-          <p className='text-xs text-base-content'>PNG, JPG, GIF up to 10MB</p>
+          <p className='text-xs text-black'>PNG, JPG, GIF upto 10MB</p>
         </div>
       </div>
     </>

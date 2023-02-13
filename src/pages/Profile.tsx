@@ -10,8 +10,7 @@ import {
   onSnapshot,
 } from 'firebase/firestore';
 import { UserProfileProps } from './Signin';
-import { MdLocationOn } from 'react-icons/md';
-import { TfiVideoClapper } from 'react-icons/tfi';
+import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
 import Documentaries from './Documentaries';
 import { Link } from 'react-router-dom';
@@ -122,7 +121,6 @@ export default function profileData() {
                       </div>
                     </div>
 
-                    
                     <div className='mt-0 lg:.order-xxl-5 lg:ml-[0%]'>
                       <iframe
                         src={profileData?.introVideo}
@@ -158,7 +156,7 @@ export default function profileData() {
                     </h3>
                     <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
                       {/* <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400' /> */}
-                      <MdLocationOn size={'20px'} className='inline mr-2' />
+                      <TfiLocationPin size={'20px'} className='inline mr-2' />
                       {profileData?.country +
                         ', ' +
                         profileData?.stateProvince +
@@ -174,12 +172,11 @@ export default function profileData() {
                       Content Creator
                     </div>
                     <div className='mb-2 text-blueGray-600'>
+                      <TfiEmail size={'20px'} className='inline mr-2' />
                       {/* <i className='fas fa-university mr-2 text-lg text-blueGray-400' /> */}
                       {/* <CgOrganisation size={'20px'} className='inline  mr-2' /> */}
                       {profileData?.emailAddress}
                     </div>
-
-                    
                   </div>
                   <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                     <div className='flex flex-wrap justify-center'>
@@ -197,9 +194,9 @@ export default function profileData() {
                     </div>
                     <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                       <div className='flex flex-wrap justify-center'>
-                        <div className='w-full lg:w-9/12 px-4'>
+                        <div className='w-full lg:w-9/12 px-4 text-xl font-semibold'>
                           <h1>{profileData?.firstName}'s Videos</h1>
-                          <Documentaries></Documentaries>
+                          <Documentaries />
                           {/* <a
                             href='#pablo'
                             className='font-normal text-pink-500'
@@ -210,14 +207,12 @@ export default function profileData() {
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
           </section>
         </main>
       </div>
-      
     </>
   );
 }
