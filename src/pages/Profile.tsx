@@ -14,6 +14,7 @@ import { MdLocationOn } from 'react-icons/md';
 import { TfiVideoClapper } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
 import Documentaries from './Documentaries';
+import { Link } from 'react-router-dom';
 
 export default function profileData() {
   const fbContext = useContext(FirebaseContext);
@@ -21,8 +22,10 @@ export default function profileData() {
   const db = fbContext.db;
   const store = fbContext.store;
   const [profileData, setProfileData] = useState<UserProfileProps>();
+  const [isCurrentUser, setIsCurrentUser] = useState(false);
 
   useEffect(() => {
+    setIsCurrentUser(user.uid === user.currentUser?.uid);
     console.log('loading infomation from doc', user.uid);
 
     const docRef = doc(db, 'userInfo', user.uid);
@@ -38,11 +41,9 @@ export default function profileData() {
         console.log('No such document!');
       }
     });
-    
-    return unsubscribe;
-   }, [user]);;
 
-   
+    return unsubscribe;
+  }, [user]);
 
   return (
     <>
@@ -52,8 +53,7 @@ export default function profileData() {
             <div
               className='absolute top-0 w-full h-full bg-center bg-cover'
               style={{
-                backgroundImage:
-                  `url("${profileData?.coverPhoto}")`,
+                backgroundImage: `url("${profileData?.coverPhoto}")`,
               }}
             >
               <span
@@ -82,15 +82,15 @@ export default function profileData() {
             </div>
           </section>
           <section className='relative py-16 bg-blueGray-200'>
-            <div className='container mx-auto px-4'>
-              <div className='relative flex flex-col min-w-0 break-words slg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
-                <div className='px-6'>
+            <div className='container mx-auto px-4 justify-between items-center content-center'>
+              <div className='relative flex flex-col p-5 justify-between items-center content-center min-w-0 break-words slg-white w-full mb-6 shadow-xl rounded-lg -mt-64'>
+                <div className='px-5'>
                   <div className='flex flex-wrap justify-center lg:flex-column'>
-                    <div className='lg:w-3/12 px-4 lg:flex justify-center lg:mr-96'>
+                    <div className='lg:w-3/12 px-4 lg:flex justify-between content-center items-center lg:mr-96'>
                       <img
                         alt='...'
-                        src= {profileData?.photo}
-                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]'
+                        src={profileData?.photo}
+                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-24 max-w-[150px] lg:max-w-[300px] md:max-w-[200px] md:-mt-32 items-center justify-center content-center'
                       />
                     </div>
                     <div className='w-full mt-16 lg:w-4/12 px-4 lg:order-2 lg:mt-1 transition-all'>
@@ -132,20 +132,36 @@ export default function profileData() {
                       ></iframe>
                     </div>
                   </div>
-                  <div className='flex flex-auto justify-center mt-4 lg:ml-5 lg:justify-start lg:mr-8 lg:-mt-20 transition-all'>
-                    <button className='btn btn-sm btn-primary-content hover:btn-primary-focus rounded-md'>
-                      Connect
-                    </button>
+                  <div className='flex justify-center lg:justify-start lg:content-center lg:items-start space-x-2'>
+                    {isCurrentUser ? (
+                      <div>
+                        <button className='btn btn-sm btn-primary-content hover:btn-primary-focus rounded-md'>
+                          Connect
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <Link to='/home/Signin'>
+                          <button className='btn btn-sm btn-primary-content ml-5 hover:btn-primary-focus rounded-md'>
+                            Edit Profile
+                          </button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
 
                   <div className='text-center mt-8 lg:text-start lg:ml-5 transition-all'>
                     <h3 className='text-4xl font-semibold leading-normal text-blueGray-700 mb-2'>
-                    {profileData?.firstName + " " + profileData?.lastName}
+                      {profileData?.firstName + ' ' + profileData?.lastName}
                     </h3>
                     <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
                       {/* <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400' /> */}
                       <MdLocationOn size={'20px'} className='inline mr-2' />
-                      {profileData?.country + ", " + profileData?.stateProvince + ", " + profileData?.city}
+                      {profileData?.country +
+                        ', ' +
+                        profileData?.stateProvince +
+                        ', ' +
+                        profileData?.city}
                     </div>
                     <div className='mb-2 text-blueGray-600 mt-2'>
                       {/* <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400' /> */}
@@ -164,8 +180,11 @@ export default function profileData() {
                   <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                     <div className='flex flex-wrap justify-center'>
                       <div className='w-full lg:w-9/12 px-4'>
+                        <h1 className='text-xl font-semibold text-primary-content mb-5'>
+                          About Me
+                        </h1>
                         <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
-                            {profileData?.about}
+                          {profileData?.about}
                         </p>
                         {/* <a href='#pablo' className='font-normal text-pink-500'>
                           Show more
@@ -175,7 +194,7 @@ export default function profileData() {
                     <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                       <div className='flex flex-wrap justify-center'>
                         <div className='w-full lg:w-9/12 px-4'>
-                            <h1>{profileData?.firstName}'s Videos</h1>
+                          <h1>{profileData?.firstName}'s Videos</h1>
                           <Documentaries></Documentaries>
                           {/* <a
                             href='#pablo'

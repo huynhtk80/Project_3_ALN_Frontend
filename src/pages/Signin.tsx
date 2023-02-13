@@ -1,5 +1,6 @@
 import { doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { photoCrop } from '../utils/photoCrop';
@@ -27,7 +28,8 @@ export interface UserProfileProps {
   roles?: { admin: boolean; creator?: boolean };
 }
 
-export default function userInfo() {
+export default function UserInfo() {
+  const navigate = useNavigate();
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -95,7 +97,10 @@ export default function userInfo() {
       'user',
       'profile'
     );
-    setUserProfile({ ...userProfile, photo: downloadUrl });
+    setUserProfile({
+      ...userProfile,
+      photo: downloadUrl,
+    });
     const docRef = doc(db, 'userInfo', user.uid);
     await updateDoc(docRef, { photo: downloadUrl });
   };
@@ -121,7 +126,10 @@ export default function userInfo() {
       'user',
       'profile'
     );
-    setUserProfile({ ...userProfile, coverPhoto: downloadUrl });
+    setUserProfile({
+      ...userProfile,
+      coverPhoto: downloadUrl,
+    });
     const docRef = doc(db, 'userInfo', user.uid);
     await updateDoc(docRef, { coverPhoto: downloadUrl });
   };
@@ -151,7 +159,8 @@ export default function userInfo() {
   const onClickSaveHandle = async (e: any) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    await updateDoc(docRef, { ...userProfile });
+    updateDoc(docRef, { ...userProfile });
+    navigate('/home/profile');
   };
 
   return (
@@ -189,7 +198,7 @@ export default function userInfo() {
                         id='about'
                         name='about'
                         rows={3}
-                        className='mt-1 block w-full rounded-md border-accent placeholder-primary-content bg-slate-300 shadow-sm focus:border-neutral focus:ring-neutral sm:text-sm'
+                        className='mt-1 p-2 block w-full rounded-md border-accent text-black bg-white shadow-sm focus:border-neutral focus:ring-neutral sm:text-sm'
                         placeholder='Tell us about yourself'
                         defaultValue={''}
                         onChange={onChangeHandle}
@@ -234,6 +243,7 @@ export default function userInfo() {
                           accept='image/*'
                           className='sr-only'
                           onChange={onChangeAvatar}
+                          defaultValue={''}
                         />
                       </label>
                     </div>
@@ -285,7 +295,7 @@ export default function userInfo() {
               </p>
             </div>
           </div>
-          <div className='mt-5 md:col-span-2 md:mt-0'>
+          <div className='mt-5 md:col-span-2 md:mt-0 text-black'>
             <form action='#' method='POST'>
               <div className='overflow-hidden shadow sm:rounded-md'>
                 <div className='bg-primary-focus rounded-lg px-4 py-5 sm:p-6'>
@@ -302,7 +312,7 @@ export default function userInfo() {
                         name='firstName'
                         id='first-name'
                         autoComplete='given-name'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                         onChange={onChangeHandle}
                         value={userProfile.firstName}
                       />
@@ -321,7 +331,7 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='last-name'
                         autoComplete='family-name'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                         value={userProfile.lastName}
                       />
                     </div>
@@ -339,7 +349,7 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='email-address'
                         autoComplete='email'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                         value={userProfile.emailAddress}
                       />
                     </div>
@@ -357,7 +367,7 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         autoComplete='country-name'
                         value={userProfile.country}
-                        className='mt-1 block w-full border border-gray-300 bg-slate-300 text-secondary rounded-lg py-2 px-3 shadow-sm'
+                        className='mt-1 block w-full border border-gray-300 bg-white text-black rounded-lg py-2 px-3 shadow-sm'
                       >
                         <option>Choose</option>
                         {countryList.map((country) => (
@@ -379,7 +389,7 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='street-address'
                         autoComplete='street-address'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                         value={userProfile.streetAddress}
                       />
                     </div>
@@ -397,7 +407,7 @@ export default function userInfo() {
                         onChange={onChangeHandle}
                         id='city'
                         autoComplete='address-level2'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                         value={userProfile.city}
                       />
                     </div>
@@ -416,7 +426,7 @@ export default function userInfo() {
                         value={userProfile.stateProvince}
                         id='stateProvince'
                         autoComplete='address-level1'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                       />
                     </div>
 
@@ -434,7 +444,7 @@ export default function userInfo() {
                         value={userProfile.zipPostal}
                         onChange={onChangeHandle}
                         autoComplete='postal-code'
-                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-slate-300'
+                        className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                       />
                     </div>
                   </div>
@@ -481,7 +491,7 @@ export default function userInfo() {
                           name='travel-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='travel'
@@ -496,7 +506,7 @@ export default function userInfo() {
                           name='music-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='music'
@@ -511,7 +521,7 @@ export default function userInfo() {
                           name='current-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='current-events'
@@ -526,7 +536,7 @@ export default function userInfo() {
                           name='investment-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='investment'
@@ -541,7 +551,7 @@ export default function userInfo() {
                           name='fullLength-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='fullLength'
@@ -556,7 +566,7 @@ export default function userInfo() {
                           name='documentaries-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='documentaries'
@@ -571,7 +581,7 @@ export default function userInfo() {
                           name='short-films-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='short-films'
@@ -586,7 +596,7 @@ export default function userInfo() {
                           name='networking-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='networking'
@@ -601,7 +611,7 @@ export default function userInfo() {
                           name='podcasts-interests'
                           onChange={onChangeHandle}
                           type='checkbox'
-                          className='checkbox checkbox-secondary checkbox-sm'
+                          className='checkbox checkbox-secondary bg-white checkbox-sm'
                         />
                         <label
                           htmlFor='podcasts'

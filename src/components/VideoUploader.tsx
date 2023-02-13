@@ -33,7 +33,7 @@ function VideoUploader({ video, poster, onChangeHandle }: ImageUploaderProps) {
         <div className=' absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0 group-hover:z-[11] bg-slate-100 w-40 h-28 rounded-lg drop-shadow-md opacity-60'></div>
         <div className='absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-center z-0  group-hover:z-[11]'>
           <svg
-            className='mx-auto h-12 w-12 text-base-content opacity-100'
+            className='mx-auto h-12 w-12 text-black opacity-100'
             stroke='currentColor'
             fill='none'
             viewBox='0 0 48 48'
@@ -49,7 +49,7 @@ function VideoUploader({ video, poster, onChangeHandle }: ImageUploaderProps) {
           <div className='flex text-sm text-base-content'>
             <label
               htmlFor='vidFileUpload'
-              className='badge cursor-pointer text-center'
+              className='badge cursor-pointer text-center items-center justify-center w-full rounded-md hover:bg-primary-focus hover:text-primary-content'
             >
               <span className='mx-auto'>Upload a file</span>
               <input
@@ -62,7 +62,7 @@ function VideoUploader({ video, poster, onChangeHandle }: ImageUploaderProps) {
               />
             </label>
           </div>
-          <p className='text-xs text-base-content'>mp4,avi,etc up to 10MB</p>
+          <p className='text-xs text-black'>mp4,avi,etc up to 10MB</p>
         </div>
       </div>
     </>
