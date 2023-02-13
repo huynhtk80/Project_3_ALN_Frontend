@@ -27,11 +27,11 @@ function MovieHeader() {
     try {
       unsubscribe = onSnapshot(docRef, (querySnap) => {
         if (querySnap.exists()) {
-          console.log('No docs found');
-          setVideoHeader(drumVideo);
-        } else {
           let videoData = querySnap.data();
           if (videoData) setVideoHeader(videoData.downloadURL);
+        } else {
+          console.log('No docs found');
+          setVideoHeader(drumVideo);
         }
       });
       setIsLoading(false);
