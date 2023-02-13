@@ -7,6 +7,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const firebase = useContext(FirebaseContext);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -14,9 +15,9 @@ const Chat = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await firebase.firestore().collection('messages').add({
+    await firebase.rtdb.collection('messages').add({
       text: newMessage,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: firebase.rtdb.FieldValue.serverTimestamp(),
     });
     setNewMessage('');
   };
@@ -25,7 +26,7 @@ const Chat = () => {
     <div
       className={`fixed bottom-0 right-0 ${
         isOpen ? 'w-72' : 'w-72 h-0 pb-10'
-      } bg-primary-focus text-base-content p-5 m-2 border border-primary rounded-lg shadow-lg bg-opacity-80 transition-all duration-300`}
+      } bg-primary-focus text-base-content p-5 m-2 border border-primary rounded-lg shadow-lg bg-opacity-80 transition-all duration-300 z-50`}
     >
       <header className=' flex flex-row justify-between'>
         <h2 className='text-md text-primary-content'>ALN Chat</h2>

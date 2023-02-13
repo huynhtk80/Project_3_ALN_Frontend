@@ -90,6 +90,7 @@ function Category() {
               index={index}
               activeIndex={activeIndex}
               docId={vid.DOC_ID}
+              posterImg={vid.thumbnail}
             />
           );
         })}

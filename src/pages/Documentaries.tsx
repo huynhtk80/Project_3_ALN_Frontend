@@ -8,22 +8,25 @@ function Videos() {
   return (
     <>
       <div className='pt-20'>
-        <h1 className='text-center m-5'>
+        {/* <h1 className='text-center m-5'>
           Africa Live Network - Under Construction - Beta Testing Site{' '}
-        </h1>
-        <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content bg-base-100'>
+        </h1> */}
+        <div className='flex flex-wrap justify-evenly gap-10 text-base-content bg-base-100'>
           {videoArray.map((vid, index) => {
             console.log(vid);
             console.log(index);
             return (
-              <VideoThumbCard
-                url={vid.url}
-                description={vid.description}
-                title={vid.title}
-                index={index}
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-              />
+              <div className='rounded-lg shadow-lg'>
+                <VideoThumbCard
+                  key={index}
+                  url={vid.url}
+                  description={vid.description}
+                  title={vid.title}
+                  index={index}
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                />
+              </div>
             );
           })}
         </div>

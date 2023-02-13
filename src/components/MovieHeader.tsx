@@ -14,7 +14,7 @@ function MovieHeader() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
-  const [videoHeader, setVideoHeader] = useState();
+  const [videoHeader, setVideoHeader] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
 
   const videoPlayer = useRef(null);
@@ -26,12 +26,12 @@ function MovieHeader() {
     let unsubscribe;
     try {
       unsubscribe = onSnapshot(docRef, (querySnap) => {
-        if (querySnap.empty) {
+        if (querySnap.exists()) {
+          let videoData = querySnap.data();
+          if (videoData) setVideoHeader(videoData.downloadURL);
+        } else {
           console.log('No docs found');
           setVideoHeader(drumVideo);
-        } else {
-          let videoData = querySnap.data();
-          setVideoHeader(videoData.downloadURL);
         }
       });
       setIsLoading(false);
@@ -64,9 +64,9 @@ function MovieHeader() {
         </video>
       </div>
       <div className='hero-overlay bg-slate-800 animate-fadein opacity-60  z-[2]'></div>
-      <div className='hero-content text-center text-white z-[3]'>
+      <div className='hero-content text-center text-white z-[3] text-opacity-80 hover:text-'>
         <div className='max-w-lg'>
-          <h1 className='mb-5 text-5xl md:text-6xl font-bold'>
+          <h1 className='mb-5 text-5xl md:text-6xl font-bold '>
             CONNECT WITH AFRICA
           </h1>
           <p className='mb-5 md:text-xl'>
@@ -74,7 +74,7 @@ function MovieHeader() {
             <br /> telling their authentic stories
           </p>
           <Link to='/home'>
-            <button className='btn btn-primary btn-lg group'>
+            <button className='btn btn-primary bg-primary btn-lg group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
               <img
                 className='h-10 px-2 -rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
                 src={playLogo}
@@ -82,8 +82,17 @@ function MovieHeader() {
               Get Started
             </button>
           </Link>
+          <br />
+          <br />
+          <a href='https://buy.stripe.com/4gw9Cb56D68ecTe000'>
+            <button className='btn btn-primary bg-primary btn-lg group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
+              Donate
+            </button>
+          </a>
+          <br />
         </div>
       </div>
+
       <a href='#LearnMore'>
         <svg
           viewBox='0 0 24 24'
