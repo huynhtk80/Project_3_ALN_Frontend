@@ -82,8 +82,19 @@ function MovieHeader() {
               Get Started
             </button>
           </Link>
+                        <br />
+                        <br />
+                        <a href="https://buy.stripe.com/4gw9Cb56D68ecTe000">
+                        <button className='btn btn-primary btn-lg group'>
+                          
+                            Donate</button>
+                            </a>
+                            <br />
+                        
+         
         </div>
       </div>
+    
       <a href='#LearnMore'>
         <svg
           viewBox='0 0 24 24'

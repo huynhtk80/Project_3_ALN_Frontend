@@ -15,12 +15,14 @@ import Footer from './Footer';
 import SearchDropdown from './SearchBar';
 import { UserDBContext } from '../providers/UserDBProvider';
 import Chat from './Chat';
+import Donate from '../pages/Donate';
 
 const navigation = [
   { name: 'Home Roots ➤', href: '/home' },
   { name: 'Baobab Community ➤', href: '/home/network' },
   { name: 'Categories ➤', href: '/home/Category' },
   { name: 'Upload Video ➤', href: '/home/uploadvideo' },
+  { name: 'Donate ➤', href: '/home/Donate' },
 ];
 
 function classNames(...classes: string[]) {
@@ -42,6 +44,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
 
   return (
     <>
+       
       <div className=' '>
         <Disclosure
           as='nav'
@@ -83,6 +86,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                         src={ALN_LOGO_3_48}
                         alt='ALN LOGO'
                       />
+                    
                     </div>
                   </div>
                 </div>
@@ -96,6 +100,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                   {user ? (
                     <Menu as='div' className='ml-1'>
                       <div>
+                     
                         <Menu.Button className='flex min-w-8 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                           <span className='sr-only'>Open user menu</span>
                           {userProfile?.photo ? (
