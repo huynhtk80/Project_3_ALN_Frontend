@@ -202,7 +202,6 @@ export default function UserInfo() {
                             rows={3}
                             className='mt-1 p-2 block w-full rounded-md border-accent text-black bg-white shadow-sm focus:border-neutral focus:ring-neutral sm:text-sm'
                             placeholder='Tell us about yourself'
-                            defaultValue={''}
                             onChange={onChangeHandle}
                             value={userProfile.about}
                           />
