@@ -121,6 +121,8 @@ export default function profileData() {
                         </div>
                       </div>
                     </div>
+
+                    
                     <div className='mt-0 lg:.order-xxl-5 lg:ml-[0%]'>
                       <iframe
                         src={profileData?.introVideo}
@@ -160,6 +162,8 @@ export default function profileData() {
                       {/* <CgOrganisation size={'20px'} className='inline  mr-2' /> */}
                       {profileData?.emailAddress}
                     </div>
+
+                    
                   </div>
                   <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                     <div className='flex flex-wrap justify-center'>
@@ -187,12 +191,14 @@ export default function profileData() {
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>
           </section>
         </main>
       </div>
+      
     </>
   );
 }
