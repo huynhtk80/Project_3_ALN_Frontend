@@ -4,7 +4,9 @@ import React from 'react';
 let stripePromise;
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(process.env.pk_test_51MaisELnXWX93vSNHSiNuOIr2iahknGPUn5f10sxgCr7nrXmCgHBbplR3HH1LQOzXVJDx6XvPNNEP9Gy1zlA2hFv00KcLbxofe);
+    stripePromise = loadStripe(
+      import.meta.env.VITE_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    );
   }
   return stripePromise;
 };
