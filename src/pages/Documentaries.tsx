@@ -25,6 +25,7 @@ function Videos() {
                   index={index}
                   activeIndex={activeIndex}
                   setActiveIndex={setActiveIndex}
+                  posterImg={''}
                 />
               </div>
             );

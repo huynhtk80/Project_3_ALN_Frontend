@@ -16,7 +16,7 @@ function VideoTagsInput({ video }: VideoTagsInputProps) {
   const db = fbContext.db;
   const [tag, setTag] = useState<string>();
 
-  const onClickHandle = async (e) => {
+  const onClickHandle = async (e: any) => {
     if (!tag) {
       return;
     }

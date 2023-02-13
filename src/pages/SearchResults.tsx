@@ -80,6 +80,7 @@ function SearchResults() {
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
                 docId={vid.DOC_ID}
+                posterImg={vid.thumbnail}
               />
             );
           })}

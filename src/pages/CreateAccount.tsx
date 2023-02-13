@@ -56,12 +56,14 @@ export const CreateAccount = () => {
       email: '',
       password: '',
       passwordV: '',
+      auth: '',
     };
 
     const errorsV = {
       email: false,
       password: false,
       passwordV: false,
+      auth: false,
     };
 
     let isValid = true;
