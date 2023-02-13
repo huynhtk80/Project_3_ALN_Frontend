@@ -15,8 +15,7 @@ interface ImageUploaderProps {
 
 function ImageUploader({
   image,
-  aspectHeight,
-  aspectWidth,
+
   onChangeHandle,
 }: ImageUploaderProps) {
   const fbContext = useContext(FirebaseContext);
@@ -27,7 +26,7 @@ function ImageUploader({
   return (
     <>
       <div
-        className={` group relative mt-1 aspect-[${aspectWidth}/${aspectHeight}]  w-full rounded-md border-2 border-dashed border-neutral-content overflow-hidden`}
+        className={` group relative mt-1 aspect-[3/1] min-h-[7rem]  w-full rounded-md border-2 border-dashed border-neutral-content overflow-hidden`}
       >
         <img
           className=' absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 rounded-md z-10'
