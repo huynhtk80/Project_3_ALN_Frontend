@@ -6,6 +6,9 @@ function AfricanMap() {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
+    // console.log('fix the zoom', document.body.style.zoom);
+    // document.body.style.zoom = 1;
+
     const cName = target.id;
     console.log(cName);
 

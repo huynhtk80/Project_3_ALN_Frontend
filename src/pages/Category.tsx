@@ -54,12 +54,16 @@ function Category() {
               DOC_ID: doc.id,
             } as VideoParams)
         );
+
         //Need to figure out JSfilter
-        // if (country) {
-
-        // }
-
-        setVideos(videoData);
+        if (country) {
+          const filterVids = videoData.filter((vid) =>
+            vid.country?.includes(country)
+          );
+          setVideos(filterVids);
+        } else {
+          setVideos(videoData);
+        }
       }
     });
     return unsubscribe;
