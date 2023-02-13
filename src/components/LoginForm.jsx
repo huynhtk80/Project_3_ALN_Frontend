@@ -118,10 +118,10 @@ export const LoginForm = () => {
                   className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
                 {errorState.email && (
-                  <p className='text-red-800'>{validationMsg.email}</p>
+                  <p className='text-red-600'>{validationMsg.email}</p>
                 )}
               </div>
-              <br/>
+              <br />
               <div>
                 <label htmlFor='password' className='sr-only'>
                   Password
@@ -138,7 +138,7 @@ export const LoginForm = () => {
                   placeholder='**********'
                 />
                 {errorState.password && (
-                  <p className='text-red-800'>{validationMsg.password}</p>
+                  <p className='text-red-600'>{validationMsg.password}</p>
                 )}
               </div>
             </div>
@@ -175,11 +175,11 @@ export const LoginForm = () => {
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Sign in
               </button>
-              <br/>
+              <br />
               {authError && (
                 <p className='text-red-800'>Credentials not matching</p>
               )}
-            
+
               <div className='text-sm'>
                 <Link
                   to='/home/CreateAccount'

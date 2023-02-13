@@ -1,4 +1,4 @@
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
 
@@ -12,6 +12,8 @@ import {
 import VideoComments from './VideoComments';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { UserDBContext } from '../providers/UserDBProvider';
+import { UserProfileProps } from '../pages/Signin';
+import { Link } from 'react-router-dom';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,13 +29,14 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
   const videoPlayer = useRef<HTMLVideoElement>(null);
   const [isLiked, setIsLiked] = useState(false);
   const [likedVideos, setLikedVideos] = useState([]);
+  const [creatorProfile, setCreatorProfile] = useState<UserProfileProps>();
 
   useEffect(() => {
     console.log('loading information from doc', docId);
 
-    const docRef = doc(db, 'videos', docId);
-
-    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+    const doFetch = async () => {
+      const docRef = doc(db, 'videos', docId);
+      const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         console.log('Document data:', docSnap.data());
         const videoData = {
@@ -50,13 +53,48 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
             setIsLiked(false);
           }
         }
+        const userDocRef = doc(db, 'userInfo', videoData.userId);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const creatorData = {
+            ...userDocSnap.data(),
+            DOC_ID: userDocSnap.id,
+          } as UserProfileProps;
+          setCreatorProfile(creatorData);
+        }
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
       }
-    });
+    };
+    doFetch();
+    // const unsubscribe = onSnapshot(docRef, (docSnap) => {
+    //   if (docSnap.exists()) {
+    //     console.log('Document data:', docSnap.data());
+    //     const videoData = {
+    //       ...docSnap.data(),
+    //       DOC_ID: docSnap.id,
+    //     } as VideoParams;
+    //     setVideoDetails(videoData);
+    //     if (userProfile?.likedVideos) {
+    //       if (userProfile?.likedVideos.includes(videoData?.DOC_ID)) {
+    //         console.log('true');
+    //         setIsLiked(true);
+    //       } else {
+    //         console.log('false');
+    //         setIsLiked(false);
+    //       }
+    //     }
+    //     const userdocRef = doc(db, 'userInfo', videoData.userId)
 
-    return unsubscribe;
+    //   } else {
+    //     // doc.data() will be undefined in this case
+    //     console.log('No such document!');
+    //   }
+    // });
+
+    // return unsubscribe;
   }, []);
 
   useEffect(() => {
@@ -157,7 +195,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
 
         {/* body */}
         <div className='m-4  overflow-y-scroll overscroll-contain'>
-          <div className='flex flex-col sm:flex-row'>
+          <div className='flex flex-col sm:flex-row gap-5'>
             <div className='basis-2/3 grow'>
               <div className='min-h-12'>
                 <h2>Description:</h2>
@@ -177,10 +215,56 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
                           <span className='inline-block mr-1  '>{tag}</span>
                         );
                   })}
+
+                <label className='label mt-3'>
+                  <span className='label-text'>Credits</span>
+                </label>
+                <div className='overflow-x-auto'>
+                  <table className='table table-compact w-full '>
+                    <thead>
+                      <tr>
+                        <td>Role</td>
+                        <td>Name</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {videoDetails?.credits?.map((vid) => (
+                        <>
+                          <tr>
+                            <th>{vid.role}</th>
+                            <th>{vid.name}</th>
+                          </tr>
+                        </>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div className=' basis-1/3 grow'>
               <div>
+                <div className='flex flex-row items-center mb-2'>
+                  {creatorProfile?.photo ? (
+                    <div className=' avatar'>
+                      <div className=' w-10 rounded-full'>
+                        <img src={creatorProfile.photo}></img>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className='inline-block h-12 w-12 overflow-hidden rounded-full bg-primary'>
+                      <svg
+                        className='h-full w-full text-base-content'
+                        fill='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path d='M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z' />
+                      </svg>
+                    </span>
+                  )}{' '}
+                  <Link to={'/home/profile'} className='ml-2 btn btn-primary'>
+                    {creatorProfile?.firstName + ' ' + creatorProfile?.lastName}
+                  </Link>
+                </div>
                 <h2>Trailer</h2>
                 <div className='mt-1 max-w-lg overflow-hidden mx-auto'>
                   <video

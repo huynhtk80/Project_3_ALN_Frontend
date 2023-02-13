@@ -16,33 +16,40 @@ export const CreateAccount = () => {
 
   const onClickSaveV = async (e: any) => {
     e.preventDefault();
-    setAuthErrorV(false);
+    setErrorState({ ...errorState, auth: false });
     const valid = validateFields();
     if (valid) {
       const isLoggedin = await createUser(email, password);
-      if (isLoggedin) {
+      if (isLoggedin === 'success') {
         console.log("it's working!");
         navigate('/home/signin', { replace: true });
       } else {
-        setAuthErrorV(true);
+        // setAuthErrorV(true);
+        setErrorState({ ...errorState, auth: true });
+        setValidationMsg({
+          ...validationMsg,
+          auth: isLoggedin,
+        });
       }
     }
   };
 
-  const [validationMsgV, setValidationMsgV] = useState({
+  const [validationMsg, setValidationMsg] = useState({
     email: '',
     password: '',
     passwordV: '',
+    auth: '',
   });
 
-  const [errorStateV, setErrorStateV] = useState({
+  const [errorState, setErrorState] = useState({
     email: false,
     password: false,
     passwordV: false,
+    auth: false,
   });
   const [authErrorV, setAuthErrorV] = useState(false);
 
-  console.log('error', errorStateV);
+  console.log('error', errorState);
 
   const validateFields = () => {
     const validationV = {
@@ -102,8 +109,8 @@ export const CreateAccount = () => {
       isValid = false;
     }
 
-    setErrorStateV(errorsV);
-    setValidationMsgV(validationV);
+    setErrorState(errorsV);
+    setValidationMsg(validationV);
 
     return isValid;
   };
@@ -148,6 +155,9 @@ export const CreateAccount = () => {
                   placeholder='email@example.com'
                   className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
+                {errorState.email && (
+                  <p className='text-red-600'>{validationMsg.email}</p>
+                )}
               </div>
               <div>
                 <br></br>
@@ -166,6 +176,9 @@ export const CreateAccount = () => {
                   placeholder='Password'
                 />
                 <br></br>
+                {errorState.password && (
+                  <p className='text-red-600'>{validationMsg.password}</p>
+                )}
                 <label htmlFor='password' className='sr-only'>
                   Password
                 </label>
@@ -180,6 +193,9 @@ export const CreateAccount = () => {
                   onChange={(e) => setpasswordV(e.target.value)}
                   placeholder='Confirm Password'
                 />
+                {errorState.passwordV && (
+                  <p className='text-red-600'>{validationMsg.password}</p>
+                )}
               </div>
             </div>
 
@@ -192,6 +208,9 @@ export const CreateAccount = () => {
                 <span className='absolute inset-y-0 left-0 flex items-center pl-3'></span>
                 Create Account
               </button>
+              {errorState.auth && (
+                <p className='text-red-600'>{validationMsg.auth}</p>
+              )}
               <br></br>
               <div className='text-sm'>
                 <Link

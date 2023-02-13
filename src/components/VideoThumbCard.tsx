@@ -3,6 +3,7 @@ import imgPlaceHolder from '../assets/card-top-temp.jpg';
 import VideoPlayer from './videoPlayer';
 import ReactPlayer from 'react-player';
 import VideoDetails from './VideoDetails';
+import playALNLogo from '../assets/ALN_LOGO-3-48_sm.png';
 
 interface AppProps {
   url: string;
@@ -12,6 +13,7 @@ interface AppProps {
   activeIndex: number | null;
   setActiveIndex?: any;
   docId?: string;
+  posterImg: string;
 }
 
 function VideoThumbCard({
@@ -22,13 +24,14 @@ function VideoThumbCard({
   activeIndex,
   setActiveIndex,
   docId,
+  posterImg,
 }: AppProps) {
   console.log(title, activeIndex, index);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className='max-w-sm rounded text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg'>
-      <div className='flex justify-center'>
+      <div className='flex justify-center group'>
         <ReactPlayer
           config={{
             file: {
@@ -39,9 +42,17 @@ function VideoThumbCard({
             },
           }}
           controls
+          light={posterImg}
+          playIcon={
+            <img
+              className='max-w-[35px] group-hover:animate-rotatein'
+              src={playALNLogo}
+            ></img>
+          }
           id={index}
           height='215px'
           url={url}
+          onReady={() => setActiveIndex(index)}
           playing={activeIndex === index ? true : false}
           onPlay={() => {
             setActiveIndex(index);

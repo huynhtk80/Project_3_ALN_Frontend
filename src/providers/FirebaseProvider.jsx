@@ -5,6 +5,7 @@ import { connectStorageEmulator, getStorage } from 'firebase/storage';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
 import { getAnalytics, setUserProperties } from 'firebase/analytics';
+import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAqPeb96DfaW9VM1tQK68Y3rqwCDTfyNZo',
@@ -14,12 +15,14 @@ const firebaseConfig = {
   messagingSenderId: '262376267458',
   appId: '1:262376267458:web:28d298323a1e0e23b7255b',
   measurementId: 'G-JJGCVBPQ50',
+  databaseURL: 'https://project3-aln-default-rtdb.firebaseio.com/',
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getStorage(app);
 const db = getFirestore(app);
+const rtdb = getDatabase(app);
 const functions = getFunctions(app);
 const analytics = getAnalytics(app);
 
@@ -34,7 +37,7 @@ export const FirebaseContext = React.createContext();
 export const FirebaseProvider = (props) => {
   const { children } = props;
 
-  const theValues = { app, auth, db, store, functions };
+  const theValues = { app, auth, db, rtdb, store, functions };
   return (
     <FirebaseContext.Provider value={theValues}>
       {children}
