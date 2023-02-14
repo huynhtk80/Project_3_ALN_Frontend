@@ -8,7 +8,7 @@ import SearchDropdown from '../components/SearchBar';
 function Home() {
   return (
     <>
-      <div className=' pt-20'>
+      <div className=' pt-20 pb-15 mx-5' style={{ overflow: 'hidden' }}>
         <AfricanMap />
       </div>
     </>
