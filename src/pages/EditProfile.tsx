@@ -20,7 +20,7 @@ export interface UserProfileProps {
   city: string;
   stateProvince: string;
   zipPostal: string;
-  interests: string;
+  interests: string[];
   photo: string;
   coverPhoto: string;
   introVideo: string;
@@ -34,6 +34,8 @@ export default function EditProfile() {
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
+
+  const [interests, setInterests] = useState([]);
 
   const [userProfile, setUserProfile] = useState<UserProfileProps>({
     about: '',
@@ -65,6 +67,7 @@ export default function EditProfile() {
           DOC_ID: docSnap.id,
         } as UserProfileProps;
         setUserProfile(userData);
+        setInterests(userData.interests);
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
@@ -159,8 +162,17 @@ export default function EditProfile() {
   const onClickSaveHandle = async (e: any) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    updateDoc(docRef, { ...userProfile });
+    updateDoc(docRef, { ...userProfile, interests });
     navigate('/home/profile');
+  };
+
+  const handleCheckboxChange = (event: any) => {
+    let newArray = [...interests, event.target.name];
+    if (interests.includes(event.target.name)) {
+      newArray = newArray.filter((int) => int !== event.target.name);
+    }
+    setInterests(newArray);
+    console.log('New ARRAY', newArray);
   };
 
   return (
@@ -487,141 +499,30 @@ export default function EditProfile() {
                           Choose your top 3
                         </p>
                         <div className='mt-4 space-y-4'>
-                          <div className='flex items-center'>
-                            <input
-                              id='travel'
-                              name='travel-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='travel'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Travel
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='music'
-                              name='music-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='music'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Music
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='current-events'
-                              name='current-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='current-events'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Current Events
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='investment'
-                              name='investment-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='investment'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Investment Opportunities
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='fullLength'
-                              name='fullLength-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='fullLength'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Full-Length Movies
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='documentaries'
-                              name='documentaries-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='documentaries'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Documentaries
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='short-films'
-                              name='short-films-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='short-films'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Short Films
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='networking'
-                              name='networking-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='networking'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Networking
-                            </label>
-                          </div>
-                          <div className='flex items-center'>
-                            <input
-                              id='podcasts'
-                              name='podcasts-interests'
-                              onChange={onChangeHandle}
-                              type='checkbox'
-                              className='checkbox checkbox-secondary bg-white checkbox-sm'
-                            />
-                            <label
-                              htmlFor='podcasts'
-                              className='ml-3 block text-sm font-medium text-base-content'
-                            >
-                              Podcasts
-                            </label>
-                          </div>
+                          {[
+                            'Travel',
+                            'Music',
+                            'Current Events',
+                            'Investments',
+                            'Networking',
+                          ].map((name) => (
+                            <div className='flex items-center'>
+                              <input
+                                id={name}
+                                name={name}
+                                onChange={handleCheckboxChange}
+                                type='checkbox'
+                                className='checkbox checkbox-secondary bg-white checkbox-sm'
+                                checked={interests?.includes(name)}
+                              />
+                              <label
+                                htmlFor={name}
+                                className='ml-3 block text-sm font-medium text-base-content'
+                              >
+                                {name}
+                              </label>
+                            </div>
+                          ))}
                         </div>
                       </fieldset>
                     </div>

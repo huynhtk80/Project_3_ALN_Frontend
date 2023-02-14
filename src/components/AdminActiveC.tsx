@@ -42,8 +42,8 @@ function AdminActiveC() {
 
     let queryRef = query(
       collectionRef,
-      where('approval', '==', 'approved')
-      // orderBy('approvalDate', 'desc')
+      where('approval', '==', 'approved'),
+      orderBy('approvalDate', 'desc')
     );
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {

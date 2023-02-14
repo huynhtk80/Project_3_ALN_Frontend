@@ -4,7 +4,7 @@ import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 
 function Footer() {
   return (
-    <>
+    <div>
       <footer className='footer grid-cols-3 gap-10 p-5 bg-base-200 text-base-content'>
         <div>
           <span className='footer-title'>Services</span>
@@ -97,7 +97,7 @@ function Footer() {
           </p>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 

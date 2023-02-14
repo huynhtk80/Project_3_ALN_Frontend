@@ -40,15 +40,10 @@ function VideoThumbCard({
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    console.log('ran this use effect');
-    // setLikedVideos(userProfile?.likedVideos);
-    // console.log('liked', userProfile?.likedVideos);
     if (userProfile?.likedVideos)
       if (userProfile?.likedVideos.includes(docId)) {
-        console.log('true');
         setIsLiked(true);
       } else {
-        console.log('false');
         setIsLiked(false);
       }
   }, [userProfile]);

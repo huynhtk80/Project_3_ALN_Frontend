@@ -1,6 +1,7 @@
 import {
   collection,
   onSnapshot,
+  orderBy,
   query,
   Timestamp,
   where,
@@ -51,7 +52,11 @@ function VideoComments({ videoId }: VideoCommentsProp) {
   useEffect(() => {
     let collectionRef = collection(db, 'comments');
 
-    let queryRef = query(collectionRef, where('vidId', '==', videoId));
+    let queryRef = query(
+      collectionRef,
+      where('vidId', '==', videoId),
+      orderBy('commentTime', 'asc')
+    );
     const unsubscribe = onSnapshot(queryRef, (docSnap) => {
       if (docSnap.empty) {
         // doc.data() will be undefined in this case
@@ -71,6 +76,8 @@ function VideoComments({ videoId }: VideoCommentsProp) {
   }, []);
 
   const onClickHandleComment = async () => {
+    if (!currentComment) return;
+
     await addMovieComments(
       db,
       videoId,
@@ -224,6 +231,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
             className='textarea textarea-bordered w-full mt-2'
             placeholder='comment'
             onChange={(e) => setCurrentComment(e.target.value)}
+            value={currentComment}
           ></textarea>
           <button className='btn btn-primary' onClick={onClickHandleComment}>
             Submit
