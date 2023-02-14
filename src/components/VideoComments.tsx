@@ -71,6 +71,8 @@ function VideoComments({ videoId }: VideoCommentsProp) {
   }, []);
 
   const onClickHandleComment = async () => {
+    if (!currentComment) return;
+
     await addMovieComments(
       db,
       videoId,
@@ -224,6 +226,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
             className='textarea textarea-bordered w-full mt-2'
             placeholder='comment'
             onChange={(e) => setCurrentComment(e.target.value)}
+            value={currentComment}
           ></textarea>
           <button className='btn btn-primary' onClick={onClickHandleComment}>
             Submit
