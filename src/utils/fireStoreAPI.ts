@@ -288,6 +288,38 @@ export const removeLikedMovies = async (
   }
 };
 
+export const addFollowingUser = async (
+  db: any,
+  followUserId: string,
+  uid: string
+) => {
+  console.log('try to add', followUserId);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      following: arrayUnion(followUserId),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
+export const removeFollowingUser = async (
+  db: any,
+  followUserId: string,
+  uid: string
+) => {
+  console.log('try to remove', followUserId);
+  try {
+    const docRef = doc(db, 'userInfo', uid);
+    await updateDoc(docRef, {
+      following: arrayRemove(followUserId),
+    });
+  } catch (ex: any) {
+    console.log('FIRESTORE ADD FAILURE!', ex.message);
+  }
+};
+
 export const addHeaderMovie = async (
   db: any,
   downloadURL: string,
