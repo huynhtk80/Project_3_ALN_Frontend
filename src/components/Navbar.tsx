@@ -222,10 +222,10 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
 
         {!landing && (
           <>
-            <div className='min-h-screen'>
+            <div className='min-h-screen flex flex-col justify-between'>
               <Outlet />
+              <Footer />
             </div>
-            <Footer />
           </>
         )}
       </div>
