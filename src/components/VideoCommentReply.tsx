@@ -16,6 +16,7 @@ function VideoCommentReply({ commentId }: VideoCommentReplyProps) {
   const [showInput, setShowInput] = useState(false);
 
   const onClickHandleReply = async (commentID: string) => {
+    if (!reply) return;
     await replyMovieComments(
       db,
       commentID,
