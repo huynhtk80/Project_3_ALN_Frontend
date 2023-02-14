@@ -26,7 +26,7 @@ export const CreateAccount = () => {
       const isLoggedin = await createUser(email, password, firstName, lastName);
       if (isLoggedin === 'success') {
         console.log("it's working!");
-        navigate('/home/signin', { replace: true });
+        navigate('/home/editprofile', { replace: true });
       } else {
         setAuthError(true);
         setAuthErrorMSG(isLoggedin);

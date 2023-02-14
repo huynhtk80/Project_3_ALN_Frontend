@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import UserCard from '../components/UserCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { UserProfileProps } from './Signin';
+import { UserProfileProps } from './EditProfile';
 
 function Network() {
   const fbContext = useContext(FirebaseContext);

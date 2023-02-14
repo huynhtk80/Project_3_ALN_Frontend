@@ -3,7 +3,7 @@ import imgPlaceHolder from '../assets/card-top-temp.jpg';
 import VideoPlayer from './videoPlayer';
 import ReactPlayer from 'react-player';
 import VideoDetails from './VideoDetails';
-import { UserProfileProps } from '../pages/Signin';
+import { UserProfileProps } from '../pages/EditProfile';
 
 import tempAvatar from '../assets/avatar-temp.png';
 import tempCover from '../assets/placeholder_cover.jpg';

@@ -12,7 +12,7 @@ import {
 import VideoComments from './VideoComments';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { UserDBContext } from '../providers/UserDBProvider';
-import { UserProfileProps } from '../pages/Signin';
+import { UserProfileProps } from '../pages/EditProfile';
 import { Link } from 'react-router-dom';
 
 interface UploadVidDetailProps {

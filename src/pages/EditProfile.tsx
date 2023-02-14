@@ -28,7 +28,7 @@ export interface UserProfileProps {
   roles?: { admin: boolean; creator?: boolean };
 }
 
-export default function UserInfo() {
+export default function EditProfile() {
   const navigate = useNavigate();
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
@@ -380,16 +380,16 @@ export default function UserInfo() {
 
                         <div className='col-span-6'>
                           <label
-                            htmlFor='street-address'
+                            htmlFor='streetAddress'
                             className='block text-sm font-medium text-base-content'
                           >
                             Street address
                           </label>
                           <input
                             type='text'
-                            name='street-address'
+                            name='streetAddress'
                             onChange={onChangeHandle}
-                            id='street-address'
+                            id='streetAddress'
                             autoComplete='street-address'
                             className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                             value={userProfile.streetAddress}
@@ -434,15 +434,15 @@ export default function UserInfo() {
 
                         <div className='col-span-6 sm:col-span-3 lg:col-span-2'>
                           <label
-                            htmlFor='postal-code'
+                            htmlFor='zipPostal'
                             className='block text-sm font-medium text-base-content'
                           >
                             ZIP / Postal code
                           </label>
                           <input
                             type='text'
-                            name='postal-code'
-                            id='postal-code'
+                            name='zipPostal'
+                            id='zipPostal'
                             value={userProfile.zipPostal}
                             onChange={onChangeHandle}
                             autoComplete='postal-code'

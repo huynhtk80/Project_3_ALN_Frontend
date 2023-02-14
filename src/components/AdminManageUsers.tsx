@@ -16,7 +16,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import UploadedVidDetail from './UploadedVidDetail';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
-import { UserProfileProps } from '../pages/Signin';
+import { UserProfileProps } from '../pages/EditProfile';
 import { httpsCallable } from 'firebase/functions';
 import { stringify } from 'uuid';
 import UserCard from './UserCard';

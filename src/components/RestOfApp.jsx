@@ -12,7 +12,7 @@ import NotFound from '../pages/NotFound';
 import { AuthContext } from '../providers/AuthProvider';
 import { LoginForm } from './LoginForm';
 import UploadVideo from '../pages/UploadVideo';
-import Signin from '../pages/Signin';
+import EditProfile from '../pages/EditProfile';
 import Category from '../pages/Category';
 import SearchResults from '../pages/SearchResults';
 import CreateAccount from '../pages/CreateAccount';
@@ -119,7 +119,7 @@ export const RestOfApp = () => {
           <Route path='logout' element={<Logout />} />
           <Route path='Donate' element={<Donate />} />
           <Route path='LoginForm' element={<LoginForm />} />
-          <Route path='Signin' element={<Signin />} />
+          <Route path='editprofile' element={<EditProfile />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
           <Route
             path='profile'

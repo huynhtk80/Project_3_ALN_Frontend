@@ -9,7 +9,7 @@ import {
   doc,
   onSnapshot,
 } from 'firebase/firestore';
-import { UserProfileProps } from './Signin';
+import { UserProfileProps } from './EditProfile';
 import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
 import Documentaries from './Documentaries';
@@ -140,7 +140,7 @@ export default function profileData() {
                       </div>
                     ) : (
                       <div>
-                        <Link to='/home/Signin'>
+                        <Link to='/home/editprofile'>
                           <button className='btn btn-sm btn-primary-content ml-5 hover:btn-primary-focus rounded-md'>
                             Edit Profile
                           </button>
