@@ -7,7 +7,7 @@ import {
   getIdTokenResult,
 } from 'firebase/auth';
 import { FirebaseContext } from './FirebaseProvider';
-import { doc, setDoc } from '@firebase/firestore';
+import { doc, serverTimestamp, setDoc } from '@firebase/firestore';
 
 export const AuthContext = React.createContext();
 
@@ -63,6 +63,7 @@ export const AuthProvider = (props) => {
           emailAddress: userCred.user.email,
           firstName,
           lastName,
+          createdAt: serverTimestamp(),
         });
 
         return 'success';
