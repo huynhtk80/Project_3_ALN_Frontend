@@ -94,18 +94,18 @@ function VideoThumbCard({
         />
       </div>
 
-      <div className=' absolute bottom-0 left-0 pl-2 pt-2 h-10 w-full bg-gradient-to-t from-black'>
+      <div className='p-2 w-full'>
         <div
-          className='font-bold text-xl mb-2 cursor-pointer text-slate-300'
+          className='font-bold text-lg mb-2 cursor-pointer text-base-content'
           onClick={() => setIsOpen(true)}
         >
           {title}
         </div>
-        {/* <p className='text-base-content text-base'>
+        <p className='text-base-content text-sm'>
           {description.length > 100
             ? description.slice(0, 100) + '...'
             : description}
-        </p> */}
+        </p>
       </div>
       <div className='absolute top-2 right-2'>
         <button className='mr-2 w-10 pl-2 ' onClick={onClickLike}>
