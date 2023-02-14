@@ -19,7 +19,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
   } = AfricanCountryList[props.selectedCountry.toUpperCase()];
   return (
     <div
-      className='modal-overlay'
+      className='modal-overlay z-50'
       style={{
         position: 'absolute',
         display: 'flex',
