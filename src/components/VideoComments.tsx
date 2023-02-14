@@ -1,6 +1,7 @@
 import {
   collection,
   onSnapshot,
+  orderBy,
   query,
   Timestamp,
   where,
@@ -51,7 +52,11 @@ function VideoComments({ videoId }: VideoCommentsProp) {
   useEffect(() => {
     let collectionRef = collection(db, 'comments');
 
-    let queryRef = query(collectionRef, where('vidId', '==', videoId));
+    let queryRef = query(
+      collectionRef,
+      where('vidId', '==', videoId),
+      orderBy('commentTime', 'asc')
+    );
     const unsubscribe = onSnapshot(queryRef, (docSnap) => {
       if (docSnap.empty) {
         // doc.data() will be undefined in this case
