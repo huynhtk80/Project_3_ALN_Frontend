@@ -86,7 +86,7 @@ function Network() {
       <div className='pt-20'>
         <div className='flex flex-row flex-wrap justify-center gap-2'>
           {users?.map((user) => (
-            <UserCard key={user.DOC_ID} user={user} />
+            <UserCard key={user.DOC_ID} userCardInfo={user} />
           ))}
         </div>
         {!allfound && (
