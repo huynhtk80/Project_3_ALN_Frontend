@@ -34,13 +34,12 @@ function AfricanMap() {
 
   return (
     <>
-      <div>
-        <h2 className='text-sm content-center lg:text-2xl text-base-content text-center m-5'>
-          Discover Each Countries Individuality & Opportunities By Clicking The
-          Map Below
-        </h2>
-      </div>
-      <div className='cursor-pointer text-base-content p-0'>
+      <h2 className='text-md content-center lg:text-2xl text-base-content text-center m-0 font-bold'>
+        Discover Each Countries Individuality & Opportunities By Clicking The
+        Map Below
+      </h2>
+
+      <div className='cursor-pointer text-base-content '>
         <div className='map' onClick={(e) => handleClick(e.target)}>
           <div>
             {showModal && (
@@ -55,7 +54,7 @@ function AfricanMap() {
             <TransformComponent>
               <svg
                 version='1.1'
-                viewBox='0 0 1000 1000'
+                viewBox='0 0 1200 1000'
                 fill='#008e4d'
                 strokeWidth='0.60'
                 stroke='black'

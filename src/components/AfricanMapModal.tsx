@@ -31,9 +31,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
       }}
     >
       <div className='modal-content bg-primary text-lg p-5 rounded-lg bg-opacity-80'>
-        <h2>Country</h2>
-
-        <div className='order-2 border-solid rounded-md border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5'>
+        <div className='order-2 border-solid rounded-md border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
           <h1 className='font-bold lg:text-4xl' id='name'>
             {CountryName}
           </h1>
@@ -41,19 +39,21 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             <img src={Flag} className='text-sm'></img>
           </div>
           <div id='Quadrent' className='text-base-content'>
-            <span>Region : {Quadrant}</span>
+            Region : <span className='font-bold'>{Quadrant}</span>
           </div>
           <div id='PopulationSize' className='text-base-content'>
-            <span>Population Size : {PopulationSize.toLocaleString()}</span>
+            Population Size :{' '}
+            <span className='font-bold'>{PopulationSize.toLocaleString()}</span>
           </div>
           <div id='capital' className='text-base-content'>
-            <span>Capital City : {Capital}</span>
+            Capital City : <span className='font-bold'>{Capital}</span>
           </div>
           <div id='language' className='text-base-content'>
-            <span>Official Language : {OfficialLanguage}</span>
+            Official Language :{' '}
+            <span className='font-bold'>{OfficialLanguage}</span>
           </div>
           <div id='currency' className='text-base-content'>
-            <span>Currency : {Currency} </span>
+            Currency : <span className='font-bold'>{Currency} </span>
           </div>
         </div>
 
