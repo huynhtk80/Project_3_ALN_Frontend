@@ -49,7 +49,7 @@ export const AuthProvider = (props) => {
     }
   };
 
-  const createUser = async (email, password) => {
+  const createUser = async (email, password, firstName, lastName) => {
     try {
       let userCred = await createUserWithEmailAndPassword(
         auth,
@@ -59,7 +59,11 @@ export const AuthProvider = (props) => {
       if (userCred) {
         console.log('UserCreated!!', userCred.user);
         const docRef = doc(db, 'userInfo', userCred.user.uid);
-        await setDoc(docRef, { emailAddress: userCred.user.email });
+        await setDoc(docRef, {
+          emailAddress: userCred.user.email,
+          firstName,
+          lastName,
+        });
 
         return 'success';
       } else {

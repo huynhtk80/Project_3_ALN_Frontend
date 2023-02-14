@@ -115,7 +115,7 @@ export const LoginForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder='email@example.com'
-                  className='relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+                  className='relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
                 {errorState.email && (
                   <p className='text-red-600'>{validationMsg.email}</p>
@@ -132,7 +132,7 @@ export const LoginForm = () => {
                   type='password'
                   autoComplete='current-password'
                   required
-                  className='relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+                  className='relative block w-full appearance-none  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                   value={password}
                   onChange={(e) => setpassword(e.target.value)}
                   placeholder='**********'
@@ -140,29 +140,6 @@ export const LoginForm = () => {
                 {errorState.password && (
                   <p className='text-red-600'>{validationMsg.password}</p>
                 )}
-              </div>
-            </div>
-
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center'>
-                <input
-                  id='remember-me'
-                  name='remember-me'
-                  type='checkbox'
-                  className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
-                />
-                <label
-                  htmlFor='remember-me'
-                  className='ml-2 block text-sm text-primary-content'
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className='text-sm'>
-                <a href='#' className='font-medium text-primary-content'>
-                  Forgot your password?
-                </a>
               </div>
             </div>
 
@@ -180,13 +157,38 @@ export const LoginForm = () => {
                 <p className='text-red-800'>Credentials not matching</p>
               )}
 
-              <div className='text-sm'>
-                <Link
-                  to='/home/CreateAccount'
-                  className='font-medium text-primary-content'
+              <div className='flex items-center justify-between hover:font-bold'>
+                {/* <div className='flex items-center'>
+                <input
+                  id='remember-me'
+                  name='remember-me'
+                  type='checkbox'
+                  className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                />
+                <label
+                  htmlFor='remember-me'
+                  className='ml-2 block text-sm text-primary-content'
                 >
-                  Register for an account?
-                </Link>
+                  Remember me
+                </label>
+              </div> */}
+                <div className='text-sm'>
+                  <Link
+                    to='/home/CreateAccount'
+                    className='font-medium text-primary-content hover:font-bold'
+                  >
+                    Register for an account?
+                  </Link>
+                </div>
+
+                <div className='text-sm'>
+                  <a
+                    href='#'
+                    className='font-medium text-primary-content hover:font-bold'
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
               </div>
             </div>
           </form>
