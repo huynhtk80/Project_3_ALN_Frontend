@@ -72,7 +72,7 @@ function Category() {
   return (
     <div className='p-20'>
       <div className='flex flex-row justify-center gap-5'>
-        {['Film', 'Short Film', 'Documentary', 'Series'].map((cat) => (
+        {['All', 'Film', 'Short Film', 'Documentary', 'Series'].map((cat) => (
           <Link to={`/home/Category/${cat}`}>
             <button className='btn btn-primary'>{cat}</button>
           </Link>

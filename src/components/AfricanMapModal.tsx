@@ -32,9 +32,13 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
     >
       <div className='modal-content bg-primary text-lg p-5 rounded-lg bg-opacity-80'>
         <div className='order-2 border-solid rounded-md border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
-          <h1 className='font-bold lg:text-4xl' id='name'>
+          <Link
+            to={'/Home/Category/All/' + CountryName}
+            className='font-bold lg:text-4xl'
+            id='name'
+          >
             {CountryName}
-          </h1>
+          </Link>
           <div id='flag' className='text-base-content float-right p-5'>
             <img src={Flag} className='text-sm'></img>
           </div>
