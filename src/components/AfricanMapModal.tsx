@@ -56,7 +56,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </div>
         </div>
 
-        <p>Immersive Experience</p>
+        <p>Explore Local:</p>
         <ul>
           <li>
             <a href='#'>Films</a>
@@ -69,6 +69,9 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </li>
           <li>
             <a href='#'>Series</a>
+          </li>
+          <li>
+            <a href='#'>Want to get involved?</a>
           </li>
         </ul>
         <button
