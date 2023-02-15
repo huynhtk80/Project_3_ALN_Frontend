@@ -26,6 +26,8 @@ export interface UserProfileProps {
   introVideo: string;
   DOC_ID: string;
   roles?: { admin: boolean; creator?: boolean };
+  isPublic: boolean;
+  requestCreator: 'requested' | 'approved' | null;
 }
 
 export default function EditProfile() {
