@@ -23,12 +23,16 @@ const responsive = {
     breakpoint: { max: 3000, min: 2000 },
     items: 6,
   },
-  desktopmd: {
-    breakpoint: { max: 2000, min: 1024 },
+  desktoplg: {
+    breakpoint: { max: 2000, min: 1200 },
     items: 5,
   },
+  desktopmd: {
+    breakpoint: { max: 1200, min: 900 },
+    items: 4,
+  },
   desktopsm: {
-    breakpoint: { max: 1024, min: 680 },
+    breakpoint: { max: 900, min: 680 },
     items: 3,
   },
   tablet: {

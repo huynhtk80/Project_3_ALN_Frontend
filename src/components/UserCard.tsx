@@ -1,21 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import imgPlaceHolder from '../assets/coverTemp.jpg';
-
-import VideoPlayer from './videoPlayer';
-import ReactPlayer from 'react-player';
-import VideoDetails from './VideoDetails';
+import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
 import { UserProfileProps } from '../pages/EditProfile';
 
+import { TfiVideoClapper } from 'react-icons/tfi';
 import tempAvatar from '../assets/avatar-temp.png';
-import tempCover from '../assets/placeholder_cover.jpg';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
-import {
-  addFollowingUser,
-  addLikedMovies,
-  removeFollowingUser,
-} from '../utils/fireStoreAPI';
+import { addFollowingUser, removeFollowingUser } from '../utils/fireStoreAPI';
 
 interface AppProps {
   userCardInfo: UserProfileProps;
@@ -60,10 +53,18 @@ function UserCard({ userCardInfo }: AppProps) {
           className='min-w-full object-cover'
         />
       </figure>
-      <img
-        src={userCardInfo.photo ? userCardInfo.photo : tempAvatar}
-        className='avatar rounded-full w-20 mx-auto -mt-14'
-      ></img>
+      {userCardInfo?.requestCreator === 'approved' && (
+        <img
+          className='absolute bottom-3 left-3 h-7  transition-all duration-500 bg-opacity-70 rounded-md'
+          src={playLogo}
+        />
+      )}
+      <div className='relative mx-auto -mt-14'>
+        <img
+          src={userCardInfo.photo ? userCardInfo.photo : tempAvatar}
+          className='avatar rounded-full w-20 '
+        ></img>
+      </div>
       <div className='card-body pt-0'>
         <h2 className='card-title text-lg'>{`${userCardInfo.firstName} ${userCardInfo.lastName}`}</h2>
         <p className='text-sm'>
