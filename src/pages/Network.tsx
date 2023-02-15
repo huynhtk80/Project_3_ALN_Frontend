@@ -8,6 +8,7 @@ import {
   startAfter,
 } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import UserCard from '../components/UserCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
@@ -20,6 +21,9 @@ function Network() {
   const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [lastDoc, setLastDoc] = useState<any>();
   const [allfound, setAllFound] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchQuery = searchParams.get('userName');
 
   useEffect(() => {
     if (!user) return;
@@ -91,7 +95,10 @@ function Network() {
         </div>
         {!allfound && (
           <div className='flex justify-center my-5'>
-            <button className='btn btn-primary' onClick={onClickLoad}>
+            <button
+              className='btn btn-primary bg-base-200 '
+              onClick={onClickLoad}
+            >
               Load more
             </button>
           </div>
