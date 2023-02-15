@@ -28,14 +28,14 @@ function ImageTyperSection() {
       <div className='hero-overlay bg-black opacity-20  z-[2]'></div>
       <div className='hero-content text-center text-white z-[3] text-opacity-80'>
         <div className='max-w-full'>
-          <h1 className='mb-5 text-5xl md:text-4xl font-bold '>
+          <h1 className='mb-5 text-3xl md:text-4xl font-bold '>
             <span></span>
             <div className='inline'>
               <Typewriter
                 options={{ loop: true }}
                 onInit={(typewriter) => {
                   typewriter
-                    .typeString('Create meaningful connections with, ')
+                    .typeString('Create meaningful connections with ')
                     .typeString(
                       '<span style="color: rgb(234 88 12)">US.</span>'
                     )
