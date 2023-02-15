@@ -21,7 +21,11 @@ import { httpsCallable } from 'firebase/functions';
 import { stringify } from 'uuid';
 import UserCard from './UserCard';
 
-function AdminManageCreators() {
+interface AdminManageCreatorsProps {
+  requestStatus: 'requested' | 'approved' | null;
+}
+
+function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const { functions, db } = fbContext;
@@ -61,7 +65,7 @@ function AdminManageCreators() {
 
     let queryRef = query(
       collectionRef,
-      where('requestCreator', '==', 'requested')
+      where('requestCreator', '==', requestStatus)
     );
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
@@ -76,54 +80,27 @@ function AdminManageCreators() {
             } as UserProfileProps)
         );
         setUsers(userData);
-        getUserRoles(userData);
       }
     });
     return unsubscribe;
   }, [user]);
 
-  const getUserRoles = async (users: UserProfileProps[]) => {
-    if (!users) return;
-
-    const searchUsers = users.map((user) => {
-      return { uid: user.DOC_ID };
-    });
-
-    const result = await getRoles(searchUsers);
-    console.log('the roles', result);
-    const merged = mergeArrays(users, result.data);
-
-    console.log('the merged', merged);
-    if (!merged) return;
-    setUsers(merged);
-  };
-
-  const onClickHandle = (DocId: string) => {
-    setCurrentDocID(DocId);
-    setShowModal(true);
-  };
-
-  const onClickHandleAdmin = async (uid: string) => {
-    const result = await addAdmin({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
-  };
-
-  const onClickHandleDelAdmin = async (uid: string) => {
-    const result = await delAdmin({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
-  };
-
   const onClickHandleCreator = async (uid: string) => {
     const result = await addCreator({ uid: uid });
-    if (users) getUserRoles(users);
+    const docRef = doc(db, 'userInfo', uid);
+
+    if (result.data?.message === 'success')
+      await updateDoc(docRef, { requestCreator: 'approved' });
+
     console.log(result);
   };
 
   const onClickHandleDelCreator = async (uid: string) => {
     const result = await deleteCreator({ uid: uid });
-    if (users) getUserRoles(users);
+    const docRef = doc(db, 'userInfo', uid);
+    if (result.data?.message === 'success')
+      await updateDoc(docRef, { requestCreator: null });
+
     console.log(result);
   };
 
@@ -181,7 +158,7 @@ function AdminManageCreators() {
   return (
     <>
       <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
-        User List
+        Content Creator {requestStatus?.toUpperCase()}
       </div>
 
       <div className='overflow-x-auto w-full'>
@@ -202,7 +179,7 @@ function AdminManageCreators() {
               <th>Name</th>
               <th>Email</th>
               <th>User ID</th>
-              <th>Roles</th>
+
               <th>Modify Roles</th>
             </tr>
           </thead>
@@ -274,26 +251,7 @@ function AdminManageCreators() {
                   </td>
                   <td>{user.DOC_ID}</td>
                   <th>
-                    {user.roles?.admin && <p>Admin</p>}
-                    {user.roles?.creator && <p>Creator</p>}
-                  </th>
-                  <th>
-                    {user.roles?.admin ? (
-                      <button
-                        className='btn btn-warning btn-sm'
-                        onClick={() => onClickHandleDelAdmin(user.DOC_ID)}
-                      >
-                        Remove admin
-                      </button>
-                    ) : (
-                      <button
-                        className='btn btn-sucess btn-sm'
-                        onClick={() => onClickHandleAdmin(user.DOC_ID)}
-                      >
-                        set admin
-                      </button>
-                    )}
-                    {user.roles?.creator ? (
+                    {user.requestCreator === 'approved' ? (
                       <button
                         className='btn btn-error btn-sm'
                         onClick={() => onClickHandleDelCreator(user.DOC_ID)}
@@ -321,7 +279,7 @@ function AdminManageCreators() {
               <th>Name</th>
               <th>Email</th>
               <th>User ID</th>
-              <th>Roles</th>
+
               <th>Modify Roles</th>
             </tr>
           </tfoot>

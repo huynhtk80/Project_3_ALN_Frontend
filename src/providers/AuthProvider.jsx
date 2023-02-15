@@ -7,7 +7,7 @@ import {
   getIdTokenResult,
 } from 'firebase/auth';
 import { FirebaseContext } from './FirebaseProvider';
-import { doc, serverTimestamp, setDoc } from '@firebase/firestore';
+import { doc, serverTimestamp, setDoc, updateDoc } from '@firebase/firestore';
 
 export const AuthContext = React.createContext();
 
@@ -25,8 +25,14 @@ export const AuthProvider = (props) => {
     const unsub = onAuthStateChanged(auth, async (authUser) => {
       console.log('onAuthStateChanged() - new User!!', authUser);
       if (authUser) {
+        console.log('authuser', authUser);
         const tokenresult = await getIdTokenResult(authUser);
         setUserRole(tokenresult.claims);
+
+        const docRef = doc(db, 'userInfo', authUser.uid);
+        await updateDoc(docRef, {
+          lastOnline: serverTimestamp(),
+        });
       }
       setUser(authUser);
       setIsLoading(false);

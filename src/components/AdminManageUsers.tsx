@@ -270,10 +270,7 @@ function AdminManageUsers() {
                     {user.emailAddress}
                   </td>
                   <td>{user.DOC_ID}</td>
-                  <th>
-                    {user.roles?.admin && <p>Admin</p>}
-                    {user.roles?.creator && <p>Creator</p>}
-                  </th>
+                  <th>{user.roles?.admin && <p>Admin</p>}</th>
                   <th>
                     {user.roles?.admin ? (
                       <button
@@ -288,21 +285,6 @@ function AdminManageUsers() {
                         onClick={() => onClickHandleAdmin(user.DOC_ID)}
                       >
                         set admin
-                      </button>
-                    )}
-                    {user.roles?.creator ? (
-                      <button
-                        className='btn btn-error btn-sm'
-                        onClick={() => onClickHandleDelCreator(user.DOC_ID)}
-                      >
-                        Remove creator
-                      </button>
-                    ) : (
-                      <button
-                        className='btn btn-primary btn-sm'
-                        onClick={() => onClickHandleCreator(user.DOC_ID)}
-                      >
-                        Set creator
                       </button>
                     )}
                   </th>

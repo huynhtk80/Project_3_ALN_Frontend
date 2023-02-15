@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import AdminActiveC from '../components/AdminActiveC';
 import AdminApproveC from '../components/AdminApproveC';
 import AdminDashBoard from '../components/AdminDashBoard';
+import AdminManageCreators from '../components/AdminManageCreators';
 import AdminManageUsers from '../components/AdminManageUsers';
 import AdminPageEditor from '../components/AdminPageEditor';
 import UserCard from '../components/UserCard';
@@ -31,6 +32,13 @@ function AdminOnly() {
       return <AdminManageUsers />;
     } else if (tool === 'pageeditor') {
       return <AdminPageEditor />;
+    } else if (tool === 'managecreators') {
+      return (
+        <>
+          <AdminManageCreators requestStatus={'requested'} />;
+          <AdminManageCreators requestStatus={'approved'} />;
+        </>
+      );
     } else {
       return <AdminDashBoard />;
     }
@@ -50,6 +58,9 @@ function AdminOnly() {
         </Link> */}
         <Link to='/home/admin/manageusers'>
           <button className='btn btn-primary mx-1'>Manage Users</button>
+        </Link>
+        <Link to='/home/admin/managecreators'>
+          <button className='btn btn-primary mx-1'>Manage creators</button>
         </Link>
         <Link to='/home/admin/pageeditor'>
           <button className='btn btn-primary mx-1'>Page Editor</button>

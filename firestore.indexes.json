@@ -1,20 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "videos",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "approval",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "approvalDate",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "comments",
       "queryScope": "COLLECTION",
       "fields": [
@@ -25,6 +11,34 @@
         {
           "fieldPath": "commentTime",
           "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "userInfo",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "requestCreator",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "videos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "approval",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "approvalDate",
+          "order": "DESCENDING"
         }
       ]
     }
