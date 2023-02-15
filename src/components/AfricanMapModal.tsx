@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AfricanCountryList from './AfricanCountryList';
+import { Link } from 'react-router-dom';
 
 interface AfricanMapModalProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -56,19 +57,26 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </div>
         </div>
 
-        <p>Immersive Experience</p>
+        <p>Explore Local:</p>
         <ul>
           <li>
-            <a href='#'>Films</a>
+            <Link to={'/Home/Category/Films/' + CountryName}>Film</Link>
           </li>
           <li>
-            <a href='#'>Shorts</a>
+            <Link to={'/Home/Category/Short%20Film/' + CountryName}>
+              Shorts
+            </Link>
           </li>
           <li>
-            <a href='#'>Documentaries</a>
+            <Link to={'/Home/Category/Documentary/' + CountryName}>
+              Documentaries
+            </Link>
           </li>
           <li>
-            <a href='#'>Series</a>
+            <Link to={'/Home/category/Series/' + CountryName}>Series</Link>
+          </li>
+          <li>
+            <a href='#'>Want to get involved?</a>
           </li>
         </ul>
         <button

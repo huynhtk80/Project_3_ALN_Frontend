@@ -15,6 +15,7 @@ interface AfricanCountries {
     PopulationSize: Number;
     ColonizationHistory: string;
     //WikiLink:  URL;
+    PlacesOfInterest: string;
   };
 }
 //<img src =  `${https://flagsapi.com/${AfricanCountryList.CountryAbbrv}/flat/64.png>}`</img>;
@@ -40,6 +41,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 44903225,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: '"Le Jardin dEssai du Hamma, Algerian Sahara, Tassili NAjjer National Park',
   },
 
   EG: {
@@ -55,6 +57,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 102880000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Ras Mohammed National Park, Nile River, Sharm El Luli',
   },
 
   LY: {
@@ -70,6 +73,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 6812341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Jebel Akhdar, Akakus Desert, Waw an Namus',
   },
 
   MA: {
@@ -85,6 +89,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 36400000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Jardin Majorelle, Merzouga Desert, Cascades dOuzoud',
   },
 
   TN: {
@@ -100,6 +105,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 12356117,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'The Crocodile Farm, Hammamet Beach, Djerba Explore, Sahara Desert',
   },
 
   SD: {
@@ -115,6 +121,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 46874204,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Meroe Pyramids, Naqa, Sanganeb National Park',
   },
 
   EH: {
@@ -130,6 +137,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 619000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Dakhlaquadevents, Protection of Prehistory Industries Association, ',
   },
 
   ES: {
@@ -145,6 +153,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2252465,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Loro Parque, Timanfaya National Park, Volcan El Teide',
   },
 
   //East Africa___(9-28)_______________________________________________________________________________________________________
@@ -161,6 +170,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 12889576,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Rusizi National Park, Reptaile Park/Parc des Reptiles, Karera Waterfalls',
   },
 
   KM: {
@@ -176,6 +186,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 836774,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Bouni Beach, Chomoni Beach, Mount Karthala',
   },
 
   DJ: {
@@ -191,6 +202,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 1120849,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Lake Assal, Khor Ambado Beach, Day Forest National Park',
   },
 
   ER: {
@@ -206,6 +218,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 3630000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Dahlak Archipelago National Park, Denkalya Desert, Qohaito, Metera',
   },
 
   ET: {
@@ -221,6 +234,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 123000000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Simien Mountains National Park, Omo National Park and River, Mount Entoto, Rock-Hewn Churches of Lalibela',
   },
 
   KE: {
@@ -236,6 +250,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 54027487,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Sheldrick Wildlife Trust, Giraffe Centre, Nairobi National Park, Karura Forest',
   },
 
   MG: {
@@ -251,6 +266,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 29611714,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Lokobe Nature Special Reserve, Avenue of the Baobabs, Lemurs Park, Isalo National Park',
   },
 
   MW: {
@@ -266,6 +282,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 20405317,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Mount Mulanje, Kuti Wildlife Reserve, Majete Wildlife Reserve',
   },
 
   MU: {
@@ -281,6 +298,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 1262523,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Ile aux Cerfs, Les 7 Cascades, Le Morne Brabant, SSR Botanic Gardens, Charmarel Waterfalls',
   },
 
   MZ: {
@@ -296,6 +314,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 32969518,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Praia do Tofo, Inhaca Island, Two Mile Reef, Maputo Elephant Reserve',
   },
 
   RW: {
@@ -311,6 +330,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 13776698,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Volcanoes National Park, Akagera National Park, Nyungwe National Park, Ibyiwacu Cultural Village',
   },
 
   SC: {
@@ -326,6 +346,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 107341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Anse Lazio, Anse Source DArgent, Anse Georgette',
   },
 
   SO: {
@@ -341,6 +362,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 17597511,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Laas Geel, Liido Beach Somalia, Jazeera Beach',
   },
 
   SS: {
@@ -356,6 +378,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 10913164,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'White Nile, Bandingilo National Park, Jebel Kujur',
   },
 
   TZ: {
@@ -371,6 +394,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 65497748,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Ngorongoro Crater, Mount Kilimanjaro, Cheetahs Rock, Seronera, Nungwi Beach',
   },
 
   UG: {
@@ -386,6 +410,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 47249585,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Bwindi Impenetrable Forest, Murchison Falls National Park, Kazinga Channel, Sipi Falls',
   },
 
   ZM: {
@@ -401,6 +426,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 20017675,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Devils Pool, Lower Zambezi National Park, Victoria Falls/ Mosi-oa-Tunya National Park',
   },
 
   ZW: {
@@ -416,6 +442,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 15100000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Victoria Falls/ Mosi-oa-Tunya National Park, Wild is Life, Hwange National Park',
   },
 
   RE: {
@@ -431,6 +458,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 874400,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Kelonia, Piton de Fournaise, Domaine Du Cafe Grille',
   },
 
   YT: {
@@ -446,6 +474,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 282900,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Plage de NGouja, Plage de Moya, Mont Choungui',
   },
 
   //South Africa_(29-33)___________________________________________________________________________________________________________________________
@@ -462,6 +491,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2630296,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Okavango Delta, Moremi Wildlife Reserve, Savute Reserve',
   },
 
   LS: {
@@ -477,6 +507,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2305825,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Katse Dam, Maluti Mountains, Maletsunyane Falls Semonkong',
   },
 
   NA: {
@@ -492,6 +523,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2567012,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Sossusvlei, Kolmanskop Ghost Town, Deadvlei, Okaukuejo Waterhole, Twyfelfontein',
   },
 
   ZA: {
@@ -507,12 +539,13 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 60600000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Table Mountain, Victoria & Alfred Waterfront, Kirstenbosch National Botanical Garden, Boulders Beach Penguin Colony',
   },
 
   SZ: {
     Quadrant: 'South',
     CountryAbbrv: 'SZ',
-    CountryName: 'Eswatini',
+    CountryName: 'Eswatini/aka: Swaziland',
     AreaCode: 268,
     OfficialLanguage: 'English',
     Capital: 'Mbabane',
@@ -522,6 +555,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 1180000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Swazi Cultural Village, Hlane Royal National Park, Mlilwane Wildlife Sanctuary',
   },
 
   //West Africa__(34-50)_______________________________________________________________________________________________________________________________
@@ -538,6 +572,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 13712828,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Babs Dock, La Porte Du Non Retour, Lac Nokoue, Pendjari National Park, Fidjrosse Beach, Obama Beach',
   },
 
   BF: {
@@ -553,6 +588,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 22673762,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Laongo Sculpture Symposium, Les Pics de Sindou, Reserve de Nazinga, Les Cascades de Banfora',
   },
 
   CV: {
@@ -568,6 +604,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 593149,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Praia de Santa Maria, Pedra Lume Salt Crater, Santa Monica Beach, Viveiro- Botanical Garden & Zoo di Terra',
   },
 
   CI: {
@@ -583,6 +620,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 27720000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Banco National Park, Jardin botanique de Bingerville, Dipi Crocodile Farm, Assagny National Park, Les Cascades de Man',
   },
 
   GH: {
@@ -598,6 +636,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 33475870,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Kakum National Park, Aburi Botanical Gardens, Wli Waterfalls, Bojo Beach, Labadi Pleasure Beach',
   },
 
   GM: {
@@ -613,6 +652,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2705992,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'River Gambia National Park, Katchikally Crocodile Pool, Fort James Island, Bijilo Forest Park, Kotu Beach',
   },
 
   GN: {
@@ -628,6 +668,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 13859341,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Iles de Los, Le Voile de la Mariee, Les Cascades De La Soumba,  Mount Nimba Strict Nature Reserve',
   },
 
   GW: {
@@ -643,6 +684,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2110000,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Fortaleza de Sao Jose da Amura, Mao De Timba',
   },
 
   LR: {
@@ -658,6 +700,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 5302681,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Kpatawee Waterfall, Ce Ce Beach, Lake Piso, Sapo National Park',
   },
 
   ML: {
@@ -673,6 +716,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 22593590,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Bandiagara Cliffs, Parc national du Mali Bamako, Zoo National du Mali, Niger River, Dandan Waterfalls',
   },
 
   MR: {
@@ -688,6 +732,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 4736139,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Port de Peche, Plage de Nouakohott, Ancient Ksour of Ouadane / Chinguetti / Tichitt and Oualata, Terjit Oasis Banc dArguin National Park, Mauritania Sahara, Monolith of Ben Amera',
   },
 
   NE: {
@@ -703,6 +748,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 26207977,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Grande Mosquee dAgadez, Koure Giraffe Reserve, Niger Sahara, Ferme Youyou,',
   },
 
   NG: {
@@ -718,6 +764,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 218541212,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Lekki Conservation Center, Olumo Rock, Jabi Lake, Usuma Dam, Zuma Rock',
   },
 
   SN: {
@@ -733,6 +780,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 17316449,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Reserve De Bandia, Djoudj Nantional Bird Sanctuary, Lagune de la Somone',
   },
 
   SL: {
@@ -748,6 +796,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 8605718,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Tacugama Chimpanzee Sanctuary, River Number Two Beach, Bureh Beach, Cotton Tree',
   },
 
   TG: {
@@ -763,6 +812,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 8848699,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Koutammakou, Mount Agou, Cascade de Yikpa, Cascade de Kpime, Lac Tago',
   },
 
   SH: {
@@ -778,6 +828,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 6135,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Jacobs Ladder, Green Mountain National Park, Comfortless Cove, Sandy Bay, Turks Cap, The Peaks',
   },
 
   //Central Africa__(51-59)________________________________________________________________________________________________________________________
@@ -794,6 +845,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 35588987,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Tundavala, Miradouro da Lua, Ilha do Mussulo, Sangano Beach, Kalandula Falls, Ship Cemetery',
   },
 
   CM: {
@@ -809,6 +861,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 27914536,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Chutes de la Lobe, Mount Cameroon, Mefou National Park, Ekom-Nkam Waterfalls',
   },
 
   CF: {
@@ -824,6 +877,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 5579144,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Dzanga-Sangha Reserve, Oubangui River, Les Chutes de Boali',
   },
 
   TD: {
@@ -839,6 +893,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 17723315,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Guelta dArchei, Zakouma National Park, Guelta De Bachikele, Arco de Aloba, Tibessti Mountains',
   },
 
   CD: {
@@ -854,6 +909,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 99010212,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Kahuzi-Biega National Park, Mount Nyiragongo, Lola ya Bonobo, Zongo Falls',
   },
 
   CG: {
@@ -869,6 +925,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 5884363,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Réserve Naturelle de Gorilles de Lésio-Louna-Léfini, Gorges of Diosso, Côte Sauvage',
   },
 
   GQ: {
@@ -884,6 +941,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 1530098,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'The Malabo National Park, Arena Blanca, Pico Basile',
   },
 
   GA: {
@@ -899,6 +957,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 2388992,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Point-Denis Beach, Reserve de la Lope, Ivindo National Park',
   },
 
   ST: {
@@ -914,6 +973,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 227380,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
+    PlacesOfInterest: 'Banana Beach, Praia Piscina, Pico Cão Grande',
   },
 };
 
