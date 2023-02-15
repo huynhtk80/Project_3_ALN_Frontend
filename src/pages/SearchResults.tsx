@@ -30,9 +30,8 @@ function SearchResults() {
     let queryRef = query(collectionRef, where('approval', '==', 'approved'));
 
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
-      console.log('vid data', querySnap);
       if (querySnap.empty) {
-        console.log('No docs found');
+        // console.log('No docs found');
         setVideos([]);
       } else {
         let videoData = querySnap.docs.map(
@@ -63,7 +62,7 @@ function SearchResults() {
                 const filter = video.tags.filter((tag) => {
                   return tag.toUpperCase().includes(searchQuery?.toUpperCase());
                 });
-                console.log('the filtered', filter);
+
                 if (filter.length > 0) return true;
               }
 
@@ -73,7 +72,7 @@ function SearchResults() {
                     .toUpperCase()
                     .includes(searchQuery?.toUpperCase());
                 });
-                console.log('the filtered', filter);
+
                 if (filter.length > 0) return true;
               }
 
@@ -83,7 +82,7 @@ function SearchResults() {
                     .toUpperCase()
                     .includes(searchQuery?.toUpperCase());
                 });
-                console.log('the filtered', filter);
+
                 if (filter.length > 0) return true;
               }
 
@@ -105,8 +104,6 @@ function SearchResults() {
       <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content'>
         {videos &&
           videos.map((vid, index) => {
-            console.log(vid);
-            console.log(index);
             return (
               <VideoThumbCard
                 url={vid.url}
@@ -117,6 +114,7 @@ function SearchResults() {
                 setActiveIndex={setActiveIndex}
                 docId={vid.DOC_ID}
                 posterImg={vid.thumbnail}
+                key={vid.DOC_ID}
               />
             );
           })}
