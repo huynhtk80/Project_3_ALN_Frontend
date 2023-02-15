@@ -26,11 +26,13 @@ export const UserDBProvider = (props: UserDBContextProps) => {
     city: '',
     stateProvince: '',
     zipPostal: '',
-    interests: '',
+    interests: [''],
     photo: '',
     coverPhoto: '',
     introVideo: '',
     DOC_ID: '',
+    isPublic: false,
+    requestCreator: null,
   });
 
   const fbContext = useContext(FirebaseContext);

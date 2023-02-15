@@ -1,4 +1,4 @@
-import firestore, {
+import {
   addDoc,
   arrayRemove,
   arrayUnion,
@@ -131,38 +131,6 @@ export const deleteMovieTag = async (db: any, docID: string, tag: string) => {
     console.log('FIRESTORE ADD FAILURE!', ex.message);
   }
 };
-
-// export const updateMovieComments = async (
-//   db: any,
-//   docID: string,
-//   uid: string,
-//   avatar: string,
-//   name: string,
-//   content: string
-// ) => {
-//   try {
-//     const docRef = doc(db, 'comments', docID);
-
-//     if (!avatar) {
-//       avatar = '';
-//     }
-//     if (!name) {
-//       name = '';
-//     }
-
-//     await updateDoc(docRef, {
-//       comments: arrayUnion({
-//         uid,
-//         avatar,
-//         name,
-//         content,
-//         commentTime: Timestamp.now(),
-//       }),
-//     });
-//   } catch (ex: any) {
-//     console.log('FIRESTORE ADD FAILURE!', ex.message);
-//   }
-// };
 
 export const addMovieComments = async (
   db: any,
