@@ -52,11 +52,36 @@ function SearchResults() {
               if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
                 return true;
 
+              if (
+                video.collection
+                  .toUpperCase()
+                  ?.includes(searchQuery?.toUpperCase())
+              )
+                return true;
+
               if (video.tags) {
                 const filter = video.tags.filter((tag) => {
-                  console.log('tag', tag);
-                  console.log('seach', searchQuery);
                   return tag.toUpperCase().includes(searchQuery?.toUpperCase());
+                });
+                console.log('the filtered', filter);
+                if (filter.length > 0) return true;
+              }
+
+              if (video.country) {
+                const filter = video.country.filter((count) => {
+                  return count
+                    .toUpperCase()
+                    .includes(searchQuery?.toUpperCase());
+                });
+                console.log('the filtered', filter);
+                if (filter.length > 0) return true;
+              }
+
+              if (video.credits) {
+                const filter = video.credits.filter((cred) => {
+                  return cred.name
+                    .toUpperCase()
+                    .includes(searchQuery?.toUpperCase());
                 });
                 console.log('the filtered', filter);
                 if (filter.length > 0) return true;
