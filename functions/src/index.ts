@@ -21,7 +21,7 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.email} has been made an admin.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -45,7 +45,7 @@ exports.deleteAdminRole = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.email} is no longer admin.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -68,7 +68,7 @@ exports.addCreatorRole = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.email} has been made an creator.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -92,7 +92,7 @@ exports.deleteCreatorRole = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.email} is no longer creator.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -116,7 +116,7 @@ exports.addAdminRoleById = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.uid} has been made an admin.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -140,7 +140,7 @@ exports.deleteAdminRoleById = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.uid} is no longer admin.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -163,7 +163,7 @@ exports.addCreatorRoleById = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.uid} has been made an creator.`,
+        message: 'success',
       };
     })
     .catch((err) => {
@@ -187,7 +187,7 @@ exports.deleteCreatorRoleById = functions.https.onCall((data, context) => {
     })
     .then(() => {
       return {
-        message: `Success! ${data.uid} is no longer creator.`,
+        message: 'success',
       };
     })
     .catch((err) => {
