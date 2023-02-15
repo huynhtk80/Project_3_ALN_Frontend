@@ -14,6 +14,8 @@ import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
 import Documentaries from './Documentaries';
 import { Link } from 'react-router-dom';
+import imgPlaceHolder from '../assets/coverTemp.jpg';
+import tempAvatar from '../assets/avatar-temp.png';
 
 export default function profileData() {
   const fbContext = useContext(FirebaseContext);
@@ -52,7 +54,11 @@ export default function profileData() {
             <div
               className='absolute top-0 w-full h-full bg-center bg-cover'
               style={{
-                backgroundImage: `url("${profileData?.coverPhoto}")`,
+                backgroundImage: `url("${
+                  profileData?.coverPhoto
+                    ? profileData.coverPhoto
+                    : imgPlaceHolder
+                }")`,
               }}
             >
               <span
@@ -88,7 +94,9 @@ export default function profileData() {
                     <div className='lg:w-3/12 px-4 lg:order-1 flex justify-center lg:mr-96'>
                       <img
                         alt='...'
-                        src={profileData?.photo}
+                        src={
+                          profileData?.photo ? profileData.photo : tempAvatar
+                        }
                         className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-24 max-w-[150px]  md:max-w-[200px] md:-mt-32 items-center justify-center content-center'
                       />
                     </div>

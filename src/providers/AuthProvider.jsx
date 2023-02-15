@@ -28,11 +28,14 @@ export const AuthProvider = (props) => {
         console.log('authuser', authUser);
         const tokenresult = await getIdTokenResult(authUser);
         setUserRole(tokenresult.claims);
-
-        const docRef = doc(db, 'userInfo', authUser.uid);
-        await updateDoc(docRef, {
-          lastOnline: serverTimestamp(),
-        });
+        try {
+          const docRef = doc(db, 'userInfo', authUser.uid);
+          await updateDoc(docRef, {
+            lastOnline: serverTimestamp(),
+          });
+        } catch (er) {
+          console.log(er);
+        }
       }
       setUser(authUser);
       setIsLoading(false);

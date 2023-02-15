@@ -67,7 +67,7 @@ function MovieHeader() {
       <div className='hero-content text-center text-white z-[3] text-opacity-80 hover:text-'>
         <div className='max-w-lg'>
           <h1 className='mb-5 text-5xl md:text-6xl font-bold '>
-            CONNECT WITH AFRICA
+            AFRICA LIVE NETWORK
           </h1>
           <p className='mb-5 md:text-xl'>
             A gateway to a global market with africans
