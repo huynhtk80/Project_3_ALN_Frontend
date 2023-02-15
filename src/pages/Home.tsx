@@ -9,8 +9,8 @@ function Home() {
   return (
     <>
       <div
-        className=' pt-20 pb-15 mx- 7 '
-        style={{ backgroundColor: '#162850', overflow: 'hidden' }}
+        className=' pt-20 pb-15 mx-7 '
+        style={{ backgroundColor: '#142445', overflow: 'hidden' }}
       >
         <AfricanMap />
       </div>

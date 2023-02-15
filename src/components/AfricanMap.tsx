@@ -51,7 +51,7 @@ function AfricanMap() {
             <TransformComponent>
               <svg
                 version='1.1'
-                viewBox='0 0 1200 1000'
+                viewBox='-15 0 1200 1000'
                 fill='#008e4d'
                 strokeWidth='0.60'
                 stroke='black'
