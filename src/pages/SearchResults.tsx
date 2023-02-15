@@ -30,9 +30,8 @@ function SearchResults() {
     let queryRef = query(collectionRef, where('approval', '==', 'approved'));
 
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
-      console.log('vid data', querySnap);
       if (querySnap.empty) {
-        console.log('No docs found');
+        // console.log('No docs found');
         setVideos([]);
       } else {
         let videoData = querySnap.docs.map(
@@ -52,13 +51,38 @@ function SearchResults() {
               if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
                 return true;
 
+              if (
+                video.collection
+                  .toUpperCase()
+                  ?.includes(searchQuery?.toUpperCase())
+              )
+                return true;
+
               if (video.tags) {
                 const filter = video.tags.filter((tag) => {
-                  console.log('tag', tag);
-                  console.log('seach', searchQuery);
                   return tag.toUpperCase().includes(searchQuery?.toUpperCase());
                 });
-                console.log('the filtered', filter);
+
+                if (filter.length > 0) return true;
+              }
+
+              if (video.country) {
+                const filter = video.country.filter((count) => {
+                  return count
+                    .toUpperCase()
+                    .includes(searchQuery?.toUpperCase());
+                });
+
+                if (filter.length > 0) return true;
+              }
+
+              if (video.credits) {
+                const filter = video.credits.filter((cred) => {
+                  return cred.name
+                    .toUpperCase()
+                    .includes(searchQuery?.toUpperCase());
+                });
+
                 if (filter.length > 0) return true;
               }
 
@@ -80,8 +104,6 @@ function SearchResults() {
       <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content'>
         {videos &&
           videos.map((vid, index) => {
-            console.log(vid);
-            console.log(index);
             return (
               <VideoThumbCard
                 url={vid.url}
@@ -92,6 +114,7 @@ function SearchResults() {
                 setActiveIndex={setActiveIndex}
                 docId={vid.DOC_ID}
                 posterImg={vid.thumbnail}
+                key={vid.DOC_ID}
               />
             );
           })}
