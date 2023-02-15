@@ -15,6 +15,7 @@ interface AfricanCountries {
     PopulationSize: Number;
     ColonizationHistory: string;
     //WikiLink:  URL;
+    //Places of interest Sourced through Trip Advisor, Top Nature & Parks
     PlacesOfInterest: string;
   };
 }
