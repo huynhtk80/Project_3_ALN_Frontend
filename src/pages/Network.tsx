@@ -10,6 +10,7 @@ import {
 import React, { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import UserCard from '../components/UserCard';
+import UserCarousel from '../components/UserCarousel';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
@@ -88,7 +89,10 @@ function Network() {
   return (
     <>
       <div className='pt-20'>
-        <div className='flex flex-row flex-wrap justify-center gap-2'>
+        <UserCarousel category='New Users' />
+        <UserCarousel category='New Content Creators' />
+        <UserCarousel category='Active Users' />
+        {/* <div className='flex flex-row flex-wrap justify-center gap-2'>
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />
           ))}
@@ -102,7 +106,7 @@ function Network() {
               Load more
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

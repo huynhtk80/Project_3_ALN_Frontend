@@ -29,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-frame-component": "^5.2.6",
     "react-icons": "^4.7.1",
+    "react-multi-carousel": "^2.8.2",
     "react-player": "^2.11.0",
     "react-router-dom": "^6.4.5",
     "react-toggle-dark-mode": "^1.1.1",
