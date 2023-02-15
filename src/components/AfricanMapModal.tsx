@@ -60,7 +60,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         <p>Explore Local:</p>
         <ul>
           <li>
-            <Link to={'/Home/Category/Films/' + CountryName}>Film</Link>
+            <Link to={'/Home/Category/Film/' + CountryName}>Film</Link>
           </li>
           <li>
             <Link to={'/Home/Category/Short%20Film/' + CountryName}>
