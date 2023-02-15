@@ -51,6 +51,17 @@ function SearchResults() {
 
               if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
                 return true;
+
+              if (video.tags) {
+                const filter = video.tags.filter((tag) => {
+                  console.log('tag', tag);
+                  console.log('seach', searchQuery);
+                  return tag.toUpperCase().includes(searchQuery?.toUpperCase());
+                });
+                console.log('the filtered', filter);
+                if (filter.length > 0) return true;
+              }
+
               return false;
             })
           );
