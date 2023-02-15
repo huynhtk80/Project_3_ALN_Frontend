@@ -6,7 +6,7 @@ function PricingTiers() {
       <div className='flex flex-col items-center my-5'>
         <h1 className='text-4xl mb-5'>Choose Your Plan</h1>
         <p className='mb-6'>Choose a plan that works best for you.</p>
-        <div className='flex flex-row justify-center items-center gap-4'>
+        <div className='flex flex-col  sm:flex-row justify-center items-center gap-4'>
           {[
             {
               plan: 'Beta Trial',

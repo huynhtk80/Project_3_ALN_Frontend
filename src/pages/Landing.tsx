@@ -9,6 +9,7 @@ import InterObserver from '../components/InterObserver';
 import LandingFooter from '../components/LandingFooter';
 import MovieHeader from '../components/MovieHeader';
 import Navbar from '../components/Navbar';
+import PricingTiers from '../components/PricingTiers';
 
 function Landing() {
   const [count, setCount] = useState(0);
@@ -51,6 +52,9 @@ function Landing() {
         message={message2}
         imagePosition='right'
       />
+      <div className='flex justify-center items-center'>
+        <PricingTiers />
+      </div>
       <Footer />
     </div>
   );
