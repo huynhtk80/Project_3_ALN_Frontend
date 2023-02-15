@@ -7,9 +7,6 @@ function AfricanMap() {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const handleClick = (target: any) => {
-    // console.log('fix the zoom', document.body.style.zoom);
-    // document.body.style.zoom = 1;
-
     const cName = target.id;
     console.log(cName);
 
@@ -34,7 +31,7 @@ function AfricanMap() {
 
   return (
     <>
-      <h2 className='text-md content-center lg:text-2xl text-base-content text-center m-0 font-bold'>
+      <h2 className='text-md content-center lg:text-2xl text-base-content text-center m-1 font-bold'>
         Discover Each Countries Individuality & Opportunities By Clicking The
         Map Below
       </h2>
