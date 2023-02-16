@@ -35,17 +35,17 @@ function AfricanMap() {
         Discover Each Countries Individuality & Opportunities By Clicking The
         Map Below
       </h2>
+      <div>
+        {showModal && (
+          <AfricanMapModal
+            setShowModal={setShowModal}
+            selectedCountry={selectedCountry}
+          />
+        )}
+      </div>
 
       <div className='cursor-pointer text-base-content '>
         <div className='map' onClick={(e) => handleClick(e.target)}>
-          <div>
-            {showModal && (
-              <AfricanMapModal
-                setShowModal={setShowModal}
-                selectedCountry={selectedCountry}
-              />
-            )}
-          </div>
           <div className='flex  justify-center items-center my-5 '>
             <div
               className='relative rounded-lg border border-base-content overflow-hidden'
