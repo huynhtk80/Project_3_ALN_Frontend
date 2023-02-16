@@ -1,17 +1,20 @@
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { user } from 'firebase-functions/v1/auth';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
-import VideoThumbCard from '../components/VideoThumbCard';
+import VideoThumbCard from './VideoThumbCard';
 
-function Category() {
-  const { category, country } = useParams();
-  console.log(country);
+interface VideoCardsSectionProps {
+  searchUserId: string;
+}
+
+function VideoCardsSection({ searchUserId }: VideoCardsSectionProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
+  const [activeIndex, setActiveIndex] = useState(null);
   const [videos, setVideos] = useState<VideoParams[]>([
     {
       userId: '',
@@ -26,22 +29,11 @@ function Category() {
     },
   ]);
 
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  console.log(category);
-
   useEffect(() => {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef;
-
-    if (!category || category === 'All') {
-      queryRef = query(collectionRef);
-    } else {
-      queryRef = query(collectionRef, where('collection', '==', category));
-    }
-
+    let queryRef = query(collectionRef, where('userId', '==', searchUserId));
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
@@ -54,32 +46,14 @@ function Category() {
               DOC_ID: doc.id,
             } as VideoParams)
         );
-
-        //Need to figure out JSfilter
-        if (country) {
-          const filterVids = videoData.filter((vid) =>
-            vid.country?.includes(country)
-          );
-          setVideos(filterVids);
-        } else {
-          setVideos(videoData);
-        }
+        setVideos(videoData);
       }
     });
     return unsubscribe;
-  }, [user, category]);
-
+  }, [user, searchUserId]);
   return (
-    <div className='pt-20 w-full'>
-      <div className='flex flex-row justify-center gap-5'>
-        {['All', 'Film', 'Short Film', 'Documentary', 'Series'].map((cat) => (
-          <Link to={`/home/Category/${cat}`}>
-            <button className='btn btn-primary'>{cat}</button>
-          </Link>
-        ))}
-      </div>
-      <h1 className=' text-2xl underline m-4 '>{category}</h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
+    <div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4'>
         {videos?.map((vid, index) => {
           return (
             <VideoThumbCard
@@ -99,4 +73,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default VideoCardsSection;

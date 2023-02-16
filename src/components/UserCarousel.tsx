@@ -13,6 +13,7 @@ import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import UserCard from './UserCard';
+import 'react-multi-carousel/lib/styles.css';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -75,6 +76,15 @@ function UserCarousel({ category }: UserCarouselProps) {
       queryRef = query(collectionRef, limit(10));
     }
 
+    const CustomRightArrow = ({ onClick, ...rest }) => {
+      const {
+        onMove,
+        carouselState: { currentSlide, deviceType },
+      } = rest;
+      // onMove means if dragging or swiping in progress.
+      return <button onClick={() => onClick()} />;
+    };
+
     const fetchData = async () => {
       const querySnap = await getDocs(queryRef);
       if (querySnap.empty) {
@@ -96,9 +106,17 @@ function UserCarousel({ category }: UserCarouselProps) {
   }, [user]);
   return (
     <>
-      <h1 className='text-xl mb-3'>{category}</h1>
+      <h1 className='text-xl mb-3 ml-3'>{category}</h1>
       {users && (
-        <Carousel responsive={responsive} infinite={false}>
+        <Carousel
+          responsive={responsive}
+          infinite={false}
+          keyBoardControl={true}
+          removeArrowOnDeviceType={['tablet', 'mobile']}
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+        >
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />
           ))}

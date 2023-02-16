@@ -137,7 +137,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to='/home/profile'
+                                to={`/home/profile/${user.uid}`}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-sm base-content'
@@ -229,7 +229,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
           </>
         )}
       </div>
-      <Chat />
+      {/* <Chat /> */}
     </>
   );
 }

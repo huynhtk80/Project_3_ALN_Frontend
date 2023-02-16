@@ -11,7 +11,7 @@ function Videos() {
         {/* <h1 className='text-center m-5'>
           Africa Live Network - Under Construction - Beta Testing Site{' '}
         </h1> */}
-        <div className='flex flex-wrap justify-evenly gap-10 text-base-content bg-base-100'>
+        <div className='flex flex-wrap justify-evenly gap-10 text-base-content bg-primary-focus p-10 rounded-lg'>
           {videoArray.map((vid, index) => {
             console.log(vid);
             console.log(index);

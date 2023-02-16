@@ -54,7 +54,7 @@ function Settings() {
   };
 
   return (
-    <div className='pt-20'>
+    <div className='pt-20 m-10'>
       <h1>Settings</h1>
 
       <div className='my-5'>
