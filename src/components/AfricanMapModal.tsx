@@ -32,13 +32,18 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
     >
       <div className='modal-content bg-primary text-lg p-5 rounded-lg bg-opacity-80'>
         <div className='order-2 border-solid rounded-md border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
-          <Link
-            to={'/Home/Category/All/' + CountryName}
-            className='font-bold lg:text-4xl'
-            id='name'
+          <button
+            className='btn btn-lg btn-primary text-primary-content  transition-all duration-300'
+            onClick={() => setShowModal(false)}
           >
-            {CountryName}
-          </Link>
+            <Link
+              to={'/Home/Category/All/' + CountryName}
+              className='font-bold lg:text-4xl'
+              id='name'
+            >
+              {CountryName}
+            </Link>
+          </button>
           <div id='flag' className='text-base-content float-right p-5'>
             <img src={Flag} className='text-sm'></img>
           </div>
@@ -62,33 +67,57 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         </div>
 
         <p>Explore Local:</p>
-        <ul className='text-base-content'>
+        <ul>
           <li>
-            <Link to={'/Home/Category/Film/' + CountryName}>Film</Link>
+            <button
+              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              onClick={() => setShowModal(false)}
+            >
+              <Link to={'/Home/Category/Film/' + CountryName}>Film</Link>
+            </button>
+
+            <button
+              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              onClick={() => setShowModal(false)}
+            >
+              <Link to={'/Home/Category/Short%20Film/' + CountryName}>
+                Shorts
+              </Link>
+            </button>
+
+            <button
+              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              onClick={() => setShowModal(false)}
+            >
+              <Link to={'/Home/Category/Documentary/' + CountryName}>
+                Documentaries
+              </Link>
+            </button>
           </li>
           <li>
-            <Link to={'/Home/Category/Short%20Film/' + CountryName}>
-              Shorts
-            </Link>
-          </li>
-          <li>
-            <Link to={'/Home/Category/Documentary/' + CountryName}>
-              Documentaries
-            </Link>
-          </li>
-          <li>
-            <Link to={'/Home/category/Series/' + CountryName}>Series</Link>
-          </li>
-          <li>
-            <a href='#'>Want to get involved?</a>
+            <button
+              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              onClick={() => setShowModal(false)}
+            >
+              <Link to={'/Home/category/Series/' + CountryName}>Series</Link>
+            </button>
+
+            <button
+              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              onClick={() => setShowModal(false)}
+            >
+              <a href='#'>Want to get involved?</a>
+            </button>
           </li>
         </ul>
-        <button
-          className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
-          onClick={() => setShowModal(false)}
-        >
-          Close
-        </button>
+        <div className='justify-end flex'>
+          <button
+            className='btn btn-md btn-secondary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );
