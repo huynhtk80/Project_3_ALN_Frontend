@@ -81,7 +81,7 @@ function AfricanMap() {
                         fill='#008e4d'
                         strokeWidth='0.60'
                         stroke='black'
-                        className='xl:h-[150vh] lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg '
+                        className=' lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg '
                       >
                         <g transform='matrix(1.59433, 0, 0, 1.59433, -1721.78, -693.262)'>
                           <path
