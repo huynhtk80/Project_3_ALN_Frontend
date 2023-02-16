@@ -36,7 +36,7 @@ function Category() {
 
     let queryRef;
 
-    if (!category) {
+    if (!category || category === 'All') {
       queryRef = query(collectionRef);
     } else {
       queryRef = query(collectionRef, where('collection', '==', category));
