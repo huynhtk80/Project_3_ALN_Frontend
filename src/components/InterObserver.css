@@ -19,6 +19,17 @@ Biscay BLUE (Dark Navy Blue) = HEX: #192e5b  /  rgb(25, 46, 91)
   transition: opacity 250ms ease-in, transform 1000ms ease;
 }
 
+.fade-in-o {
+  opacity: 0;
+  /* transform: translateX(50%); */
+  transition: opacity 1000ms ease-in, transform 1000ms ease;
+}
+
+.fade-in-o.appear {
+  opacity: 1;
+  /* transform: translateX(50%); */
+}
+
 .fade-in-l.appear {
   opacity: 1;
   transform: translateX(0);

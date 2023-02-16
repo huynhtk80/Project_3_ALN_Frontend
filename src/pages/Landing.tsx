@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
+import ImageSection from '../components/ImageSection';
 import ImageTyperSection from '../components/ImageTyperSection';
 import InterObserver from '../components/InterObserver';
+import InterObserverChildren from '../components/InterObserverChildren';
 import LandingFooter from '../components/LandingFooter';
 import LandingInfoSimple from '../components/LandingInfoSimple';
 import MovieHeader from '../components/MovieHeader';
@@ -53,10 +55,13 @@ function Landing() {
         message={message2}
         imagePosition='right'
       />
-      <LandingInfoSimple />
+      <ImageSection />
       <div className='flex justify-center items-center'>
         <PricingTiers />
       </div>
+      <InterObserverChildren>
+        <LandingInfoSimple />
+      </InterObserverChildren>
       <Footer />
     </div>
   );

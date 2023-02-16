@@ -42,7 +42,7 @@ function InterObserverChildren({ children }: { children: React.ReactElement }) {
     <>
       <section
         ref={containerRef}
-        className=' border-red-500 border-2 h-fit my-10 sm:my-40 fade-in-l mx-auto sm:mx-1 max-w-max basis-2/5 overflow-hidden'
+        className=' h-fit fade-in-o mx-auto sm:mx-1 max-w-max basis-2/5 overflow-hidden'
       >
         {children}
       </section>
