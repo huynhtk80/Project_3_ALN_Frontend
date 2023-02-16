@@ -7,6 +7,7 @@ import HeroSection from '../components/HeroSection';
 import ImageTyperSection from '../components/ImageTyperSection';
 import InterObserver from '../components/InterObserver';
 import LandingFooter from '../components/LandingFooter';
+import LandingInfoSimple from '../components/LandingInfoSimple';
 import MovieHeader from '../components/MovieHeader';
 import Navbar from '../components/Navbar';
 import PricingTiers from '../components/PricingTiers';
@@ -52,6 +53,7 @@ function Landing() {
         message={message2}
         imagePosition='right'
       />
+      <LandingInfoSimple />
       <div className='flex justify-center items-center'>
         <PricingTiers />
       </div>
