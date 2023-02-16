@@ -65,7 +65,7 @@ function MovieHeader() {
       </div>
       <div className='hero-overlay bg-slate-800 animate-fadein opacity-60  z-[2]'></div>
       <div className='hero-content text-center text-white z-[3] text-opacity-80 hover:text-'>
-        <div className='max-w-lg'>
+        <div className='max-w-2xl'>
           <h1 className='mb-5 text-5xl md:text-6xl font-bold '>
             AFRICA LIVE NETWORK
           </h1>
