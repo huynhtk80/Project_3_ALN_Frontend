@@ -229,7 +229,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
           </>
         )}
       </div>
-      <Chat />
+      {/* <Chat /> */}
     </>
   );
 }

@@ -43,7 +43,7 @@ function UserCard({ userCardInfo }: AppProps) {
   };
 
   return (
-    <div className='card h-72 bg-base-200 shadow-md mx-1 mb-5'>
+    <div className='card h-72 bg-base-200 shadow-md mx-2 mb-5'>
       <figure className='shrink-0 h-24'>
         <img
           src={
@@ -55,7 +55,7 @@ function UserCard({ userCardInfo }: AppProps) {
       </figure>
       {userCardInfo?.requestCreator === 'approved' && (
         <img
-          className='absolute bottom-3 left-3 h-7  transition-all duration-500 bg-opacity-70 rounded-md'
+          className='absolute bottom-3 left-3 h-7  transition-all duration-500 bg-opacity-70 rounded-sm'
           src={playLogo}
         />
       )}

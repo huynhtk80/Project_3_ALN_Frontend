@@ -88,7 +88,7 @@ function Network() {
 
   return (
     <>
-      <div className='pt-20'>
+      <div className='pt-20 m-8'>
         <UserCarousel category='New Users' />
         <UserCarousel category='New Content Creators' />
         <UserCarousel category='Active Users' />
