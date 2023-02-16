@@ -129,6 +129,14 @@ export const RestOfApp = () => {
               </ProtectedRoutes>
             }
           />
+          <Route
+            path='profile/:profileId'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
           <Route path='*' element={<NotFound />} />
           <Route
             path='result'

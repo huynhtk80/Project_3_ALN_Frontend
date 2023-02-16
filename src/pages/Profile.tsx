@@ -13,11 +13,13 @@ import { UserProfileProps } from './EditProfile';
 import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
 import { CgOrganisation } from 'react-icons/cg';
 import Documentaries from './Documentaries';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import imgPlaceHolder from '../assets/coverTemp.jpg';
 import tempAvatar from '../assets/avatar-temp.png';
+import VideoCardsSection from '../components/VideoCardsSection';
 
 export default function profileData() {
+  const { profileId } = useParams();
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -26,10 +28,18 @@ export default function profileData() {
   const [isCurrentUser, setIsCurrentUser] = useState(false);
 
   useEffect(() => {
-    setIsCurrentUser(user.uid === user.currentUser?.uid);
-    console.log('loading infomation from doc', user.uid);
+    let searchId = '';
+    if (!profileId) {
+      searchId = user.uid;
+    } else {
+      searchId = profileId;
+    }
 
-    const docRef = doc(db, 'userInfo', user.uid);
+    setIsCurrentUser(user.uid === searchId);
+
+    console.log('loading infomation from doc', searchId);
+
+    const docRef = doc(db, 'userInfo', searchId);
 
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
@@ -44,7 +54,7 @@ export default function profileData() {
     });
 
     return unsubscribe;
-  }, [user]);
+  }, [user, profileId]);
 
   return (
     <>
@@ -140,7 +150,7 @@ export default function profileData() {
                     </div>
                   </div>
                   <div className='flex justify-center lg:justify-start lg:content-center lg:items-start space-x-2'>
-                    {isCurrentUser ? (
+                    {!isCurrentUser ? (
                       <div>
                         <button className='btn btn-sm btn-primary-content hover:btn-primary-focus rounded-md'>
                           Connect
@@ -201,9 +211,13 @@ export default function profileData() {
                     </div>
                     <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
                       <div className='flex flex-wrap justify-center bg-'>
-                        <div className='w-full lg:w-9/12 px-4 text-xl font-semibold text-primary-focus'>
+                        <div className='w-full px-4 text-xl font-semibold text-primary-focus'>
                           <h1>{profileData?.firstName}'s Videos</h1>
-                          <Documentaries />
+                          {profileData && (
+                            <VideoCardsSection
+                              searchUserId={profileData?.DOC_ID}
+                            />
+                          )}
                           {/* <a
                             href='#pablo'
                             className='font-normal text-pink-500'
