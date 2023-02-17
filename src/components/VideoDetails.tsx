@@ -287,6 +287,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
         <div className='flex flex-row'></div>
       </div>
     </>,
+    //@ts-ignore
     document.getElementById('portal')
   );
 }

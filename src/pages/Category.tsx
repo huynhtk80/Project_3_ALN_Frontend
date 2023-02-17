@@ -70,9 +70,8 @@ function Category() {
         ))}
       </div>
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
-      {console.log('profile interse', userProfile.interests.length)}
 
-      {userProfile?.interests?.map((interest) => (
+      {userProfile?.interests?.map((interest: string) => (
         <div className='my-5'>
           <VideoCarousel searchQuery={interest} videoResults={videos} />
         </div>

@@ -5,6 +5,7 @@ import {
   limit,
   getDocs,
   where,
+  DocumentData,
 } from 'firebase/firestore';
 import { useContext, useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
@@ -14,6 +15,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import UserCard from './UserCard';
 import 'react-multi-carousel/lib/styles.css';
+import { Query } from 'firebase/database';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -60,7 +62,7 @@ function UserCarousel({ category }: UserCarouselProps) {
     if (!user) return;
     let collectionRef = collection(db, 'userInfo');
 
-    let queryRef;
+    let queryRef = query(collectionRef);
     if (category === 'New Users') {
       queryRef = query(collectionRef, orderBy('createdAt', 'desc'), limit(10));
     } else if (category === 'New Content Creators') {
@@ -76,7 +78,7 @@ function UserCarousel({ category }: UserCarouselProps) {
       queryRef = query(collectionRef, limit(10));
     }
 
-    const CustomRightArrow = ({ onClick, ...rest }) => {
+    const CustomRightArrow = ({ onClick, ...rest }: any) => {
       const {
         onMove,
         carouselState: { currentSlide, deviceType },
