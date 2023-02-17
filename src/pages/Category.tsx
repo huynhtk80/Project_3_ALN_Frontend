@@ -72,7 +72,7 @@ function Category() {
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
 
       {userProfile?.interests?.map((interest: string) => (
-        <div className='my-5'>
+        <div key={interest} className='my-5'>
           <VideoCarousel searchQuery={interest} videoResults={videos} />
         </div>
       ))}
