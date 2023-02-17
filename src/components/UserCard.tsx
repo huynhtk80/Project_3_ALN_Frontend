@@ -9,6 +9,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
 import { addFollowingUser, removeFollowingUser } from '../utils/fireStoreAPI';
+import { Link } from 'react-router-dom';
 
 interface AppProps {
   userCardInfo: UserProfileProps;
@@ -66,7 +67,9 @@ function UserCard({ userCardInfo }: AppProps) {
         ></img>
       </div>
       <div className='card-body pt-0'>
-        <h2 className='card-title text-lg'>{`${userCardInfo.firstName} ${userCardInfo.lastName}`}</h2>
+        <Link to={`/home/profile/${userCardInfo.DOC_ID}`}>
+          <h2 className='card-title text-lg'>{`${userCardInfo.firstName} ${userCardInfo.lastName}`}</h2>
+        </Link>
         <p className='text-sm'>
           {userCardInfo?.about?.length > 75
             ? userCardInfo?.about?.slice(0, 75) + '...'

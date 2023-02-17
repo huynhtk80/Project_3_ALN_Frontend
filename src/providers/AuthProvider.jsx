@@ -73,6 +73,7 @@ export const AuthProvider = (props) => {
           firstName,
           lastName,
           createdAt: serverTimestamp(),
+          isPublic: true,
         });
 
         return 'success';

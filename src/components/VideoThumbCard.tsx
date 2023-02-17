@@ -59,8 +59,8 @@ function VideoThumbCard({
   };
 
   return (
-    <div className='relative max-w-sm text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg  group rounded-lg '>
-      <div className='flex justify-center '>
+    <div className='relative w-full max-w-sm h-64 text-base-content bg-primary bg-opacity-50 overflow-hidden shadow-lg  group rounded-lg'>
+      <div className='flex justify-center basis-2 h-[55%] overflow-hidden'>
         <ReactPlayer
           config={{
             file: {
@@ -79,7 +79,8 @@ function VideoThumbCard({
             ></img>
           }
           id={index}
-          height='215px'
+          height='100%'
+          width='100%'
           url={url}
           // onReady={() => setActiveIndex(index)}
           playing={activeIndex === index ? true : false}
@@ -89,7 +90,7 @@ function VideoThumbCard({
         />
       </div>
 
-      <div className='p-2 w-full'>
+      <div className='p-2 w-full basis-1'>
         <div
           className='font-bold text-lg mb-2 cursor-pointer text-base-content'
           onClick={() => setIsOpen(true)}

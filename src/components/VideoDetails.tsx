@@ -14,6 +14,7 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { UserDBContext } from '../providers/UserDBProvider';
 import { UserProfileProps } from '../pages/EditProfile';
 import { Link } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -128,7 +129,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
     }
   };
 
-  return (
+  return createPortal(
     <>
       <div className='fixed top-0 right-0 left-0 bottom-0 h-screen w-screen bg-black opacity-60 z-40'></div>
       <div className='fixed top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 max-h-[90%] w-full sm:w-[80%] max-w-4xl bg-base-100 flex flex-col rounded-md overflow-hidden z-50'>
@@ -285,7 +286,9 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
         {/* actions */}
         <div className='flex flex-row'></div>
       </div>
-    </>
+    </>,
+    //@ts-ignore
+    document.getElementById('portal')
   );
 }
 

@@ -5,26 +5,17 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from '../components/VideoThumbCard';
+import VideoCarousel from '../components/VideoCarousel';
+import { UserDBContext } from '../providers/UserDBProvider';
 
 function Category() {
   const { category, country } = useParams();
   console.log(country);
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
+  const { userProfile } = useContext(UserDBContext);
   const db = fbContext.db;
-  const [videos, setVideos] = useState<VideoParams[]>([
-    {
-      userId: '',
-      title: '',
-      url: '',
-      thumbnail: '',
-      description: '',
-      collection: '',
-      DOC_ID: '',
-      approval: '',
-      rejectMsg: '',
-    },
-  ]);
+  const [videos, setVideos] = useState<VideoParams[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -70,7 +61,7 @@ function Category() {
   }, [user, category]);
 
   return (
-    <div className='p-20'>
+    <div className='pt-20 w-full'>
       <div className='flex flex-row justify-center gap-5'>
         {['All', 'Film', 'Short Film', 'Documentary', 'Series'].map((cat) => (
           <Link to={`/home/Category/${cat}`}>
@@ -79,7 +70,13 @@ function Category() {
         ))}
       </div>
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
-      <div className='flex flex-row flex-wrap gap-4'>
+
+      {userProfile?.interests?.map((interest: string) => (
+        <div className='my-5'>
+          <VideoCarousel searchQuery={interest} videoResults={videos} />
+        </div>
+      ))}
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
         {videos?.map((vid, index) => {
           return (
             <VideoThumbCard

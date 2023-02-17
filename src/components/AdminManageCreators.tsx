@@ -89,6 +89,7 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
     const result = await addCreator({ uid: uid });
     const docRef = doc(db, 'userInfo', uid);
 
+    //@ts-ignore
     if (result.data?.message === 'success')
       await updateDoc(docRef, { requestCreator: 'approved' });
 
@@ -98,6 +99,7 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
   const onClickHandleDelCreator = async (uid: string) => {
     const result = await deleteCreator({ uid: uid });
     const docRef = doc(db, 'userInfo', uid);
+    //@ts-ignore
     if (result.data?.message === 'success')
       await updateDoc(docRef, { requestCreator: null });
 

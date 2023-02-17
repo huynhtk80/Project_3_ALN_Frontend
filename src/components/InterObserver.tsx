@@ -76,7 +76,7 @@ function InterObserver({
             className='flex flex-col justify-center fade-in-r mx-auto max-w-max basis-2/5 sm:mx-1'
             ref={containerRef}
           >
-            <img className='min-w-0' src={image} alt='moe' />
+            <img className='min-w-0 rounded-lg' src={image} alt='moe' />
           </div>
         </div>
         {/* <div className="isVisible mx-auto bg-gray-600">
@@ -96,7 +96,11 @@ function InterObserver({
             className='fade-in-l mx-auto sm:mx-1 max-w-max basis-2/5'
             ref={containerRef}
           >
-            <img className='sm:object-center' src={image} alt='moe' />
+            <img
+              className='sm:object-center rounded-lg'
+              src={image}
+              alt='moe'
+            />
           </div>
           <div
             className='flex flex-col justify-center fade-in-r prose dark:prose-invert basis-3/5 mx-auto sm:mx-1 order-first sm:order-last text-center'

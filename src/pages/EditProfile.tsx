@@ -37,7 +37,7 @@ export default function EditProfile() {
   const db = fbContext.db;
   const store = fbContext.store;
 
-  const [interests, setInterests] = useState([]);
+  const [interests, setInterests] = useState<string[]>([]);
 
   const [userProfile, setUserProfile] = useState<UserProfileProps>({
     about: '',
@@ -49,11 +49,13 @@ export default function EditProfile() {
     city: '',
     stateProvince: '',
     zipPostal: '',
-    interests: '',
+    interests: [],
     photo: '',
     coverPhoto: '',
     introVideo: '',
     DOC_ID: '',
+    isPublic: false,
+    requestCreator: null,
   });
 
   useEffect(() => {
@@ -169,8 +171,13 @@ export default function EditProfile() {
   };
 
   const handleCheckboxChange = (event: any) => {
-    let newArray = [...interests, event.target.name];
-    if (interests.includes(event.target.name)) {
+    let newArray = [];
+    if (interests) {
+      newArray = [...interests, event.target.name];
+    } else {
+      newArray = [event.target.name];
+    }
+    if (interests?.includes(event.target.name)) {
       newArray = newArray.filter((int) => int !== event.target.name);
     }
     setInterests(newArray);

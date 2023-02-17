@@ -58,7 +58,7 @@ function ImageUploader({
                 id='vidFileUpload'
                 name='vidFileUpload'
                 type='file'
-                accept='video/*'
+                accept='image/*'
                 className='sr-only'
                 onChange={onChangeHandle}
               />

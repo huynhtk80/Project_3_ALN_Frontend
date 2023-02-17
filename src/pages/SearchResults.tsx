@@ -101,7 +101,7 @@ function SearchResults() {
   return (
     <div className='p-20'>
       <h1>Search Results for: {searchQuery}</h1>
-      <div className='flex flex-row flex-wrap justify-evenly gap-10 text-base-content'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
         {videos &&
           videos.map((vid, index) => {
             return (

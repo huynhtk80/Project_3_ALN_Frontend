@@ -21,6 +21,7 @@ import AdminOnly from '../pages/AdminOnly';
 import Profile from '../pages/Profile';
 import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
+import AlnColors from '../pages/AlnColors';
 import UserSearchResults from '../pages/userSearchResults';
 
 export const RestOfApp = () => {
@@ -35,7 +36,7 @@ export const RestOfApp = () => {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Landing />} />
-
+        <Route path='/color' element={<AlnColors />} />
         <Route path='/home' element={<Navbar />}>
           <Route
             index
@@ -125,6 +126,14 @@ export const RestOfApp = () => {
           
           <Route
             path='profile'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path='profile/:profileId'
             element={
               <ProtectedRoutes isAllowed={!!user}>
                 <Profile />
