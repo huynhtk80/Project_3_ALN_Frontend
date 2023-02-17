@@ -51,7 +51,7 @@ function Landing() {
       <InterObserver
         image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/proj2.jpg'
         sectionId='See Content'
-        heading='See your content on'
+        heading='See your content on Africa Live Network'
         message={message2}
         imagePosition='right'
       />
