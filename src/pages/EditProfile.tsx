@@ -511,8 +511,8 @@ export default function EditProfile() {
                           {[
                             'Travel',
                             'Music',
-                            'Current Events',
-                            'Investments',
+                            'Events',
+                            'Investment',
                             'Networking',
                           ].map((name) => (
                             <div className='flex items-center'>
