@@ -14,14 +14,14 @@ function AfricanMap() {
     if (cName) {
       const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
-        country.style.fill = '#00743f ';
+        country.classList.add('fill-accent');
       });
       const countrySelected = document.querySelectorAll<HTMLElement>(
         '#' + cName
       );
       console.log(countrySelected);
       countrySelected.forEach((area) => {
-        if (area) area.style.fill = '#f1a104 ';
+        if (area) area.classList.add('fill-accent-content');
       });
 
       setShowModal(true);
@@ -47,10 +47,7 @@ function AfricanMap() {
       <div className='cursor-pointer text-base-content '>
         <div className='map' onClick={(e) => handleClick(e.target)}>
           <div className='flex  justify-center items-center my-5 '>
-            <div
-              className='relative rounded-lg border border-base-content overflow-hidden'
-              style={{ backgroundColor: '#9cdddf' }}
-            >
+            <div className='relative rounded-lg  overflow-hidden bg-neutral bg-opacity-50 glass hover:bg-neutral transition-all ease-in-out duration-300'>
               <TransformWrapper initialScale={1}>
                 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                   <>
@@ -78,10 +75,9 @@ function AfricanMap() {
                       <svg
                         version='1.1'
                         viewBox='-30 -20 1050 1050'
-                        fill='#008e4d'
                         strokeWidth='0.60'
                         stroke='black'
-                        className=' lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg '
+                        className=' lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg fill-current text-accent'
                       >
                         <g transform='matrix(1.59433, 0, 0, 1.59433, -1721.78, -693.262)'>
                           <path
