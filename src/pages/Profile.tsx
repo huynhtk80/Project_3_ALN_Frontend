@@ -138,16 +138,18 @@ export default function profileData() {
                         </div>
                       </div>
                     </div>
-                    <div className='mt-4 lg:order-3 lg:ml-[55%]'>
-                      <iframe
-                        src={profileData?.introVideo}
-                        width='320'
-                        height=''
-                        frameBorder='0'
-                        allow='autoplay; fullscreen; picture-in-picture'
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    {profileData?.introVideo && (
+                      <div className='mt-4 lg:order-3 lg:ml-[55%]'>
+                        <iframe
+                          src={profileData?.introVideo}
+                          width='320'
+                          height=''
+                          frameBorder='0'
+                          allow='autoplay; fullscreen; picture-in-picture'
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    )}
                   </div>
                   <div className='flex justify-center lg:justify-start lg:content-center lg:items-start space-x-2'>
                     {!isCurrentUser ? (

@@ -26,7 +26,7 @@ export const UserDBProvider = (props: UserDBContextProps) => {
     city: '',
     stateProvince: '',
     zipPostal: '',
-    interests: [''],
+    interests: [],
     photo: '',
     coverPhoto: '',
     introVideo: '',
