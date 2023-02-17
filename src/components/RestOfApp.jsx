@@ -21,6 +21,7 @@ import AdminOnly from '../pages/AdminOnly';
 import Profile from '../pages/Profile';
 import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
+import AlnColors from '../pages/AlnColors';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -34,7 +35,7 @@ export const RestOfApp = () => {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Landing />} />
-
+        <Route path='/color' element={<AlnColors />} />
         <Route path='/home' element={<Navbar />}>
           <Route
             index

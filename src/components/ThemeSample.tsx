@@ -3,10 +3,10 @@ import React from 'react';
 function ThemeSample() {
   return (
     <>
-      <h1 className='bg-slate-500 text-sm lg:text-2xl text-white text-center pt-20'>
+      <h1 className='bg-slate-500 text-sm lg:text-2xl text-white text-center'>
         ALN COLOR THEME
       </h1>
-      <div className='px-20 p-10 bg-slate-500 text-base-100 '>
+      <div className='px-20 p-10 text-base-100 '>
         <div className='overflow-x-auto '>
           <div className='whitespace-nowrap '>
             <table className='text-black'>

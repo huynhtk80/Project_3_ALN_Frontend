@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PricingTiers() {
   return (
     <>
@@ -29,7 +27,7 @@ function PricingTiers() {
           ].map((card, index) => (
             <div
               key={index + card.plan}
-              className='card max-w-96 bg-base-200 shadow-xl hover:scale-105'
+              className='card max-w-96 bg-primary-focus shadow-xl hover:scale-105 transition-all duration-300 ease-in-out'
             >
               <div className='card-body items-center gap-6'>
                 <h2 className='card-title'>{card.plan}</h2>
@@ -66,7 +64,10 @@ function PricingTiers() {
                 </ul>
 
                 <div className='card-actions'>
-                  <button className='btn btn-primary' disabled={card.disabled}>
+                  <button
+                    className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
+                    disabled={card.disabled}
+                  >
                     Choose this Plan
                   </button>
                 </div>
