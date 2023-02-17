@@ -207,7 +207,7 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                       <Link key={index} to={item.href}>
                         <Disclosure.Button
                           key={item.name}
-                          className='text-base-content transition ease-in-out duration-500 hover:text-primary-content hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'
+                          className='text-black transition ease-in-out duration-500 hover:text-primary-focus hover:scale-110 block px-3 py-2 rounded-md text-base font-medium'
                         >
                           {item.name}
                         </Disclosure.Button>

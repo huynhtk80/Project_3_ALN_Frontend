@@ -30,15 +30,16 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         backdropFilter: 'blur(20px)',
       }}
     >
-      <div className='modal-content bg-primary text-lg p-5 rounded-lg bg-opacity-80'>
-        <div className='order-2 border-solid rounded-md border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
+      <div className='modal-content bg-primary text-lg p-4 rounded-lg bg-opacity-80'>
+        <div className='order-2 border-solid rounded-lg border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
           <button
             className='btn btn-lg btn-primary text-primary-content  transition-all duration-300'
             onClick={() => setShowModal(false)}
+            style={{ height: 'auto' }}
           >
             <Link
               to={'/Home/Category/All/' + CountryName}
-              className='font-bold lg:text-4xl'
+              className='font-bold lg:text-2xl'
               id='name'
             >
               {CountryName}
