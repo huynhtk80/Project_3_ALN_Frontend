@@ -15,6 +15,7 @@ function AfricanMap() {
       const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
         country.classList.add('fill-accent');
+        country.classList.remove('fill-accent-content');
       });
       const countrySelected = document.querySelectorAll<HTMLElement>(
         '#' + cName
