@@ -33,36 +33,39 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
       <div className='modal-content bg-primary text-lg p-4 rounded-lg bg-opacity-80'>
         <div className='order-2 border-solid rounded-lg border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
           <button
-            className='btn btn-lg btn-primary text-primary-content  transition-all duration-300'
+            className='btn btn-md btn-primary text-info-content  transition-all duration-300 mb-5'
             onClick={() => setShowModal(false)}
             style={{ height: 'auto' }}
           >
             <Link
               to={'/Home/Category/All/' + CountryName}
-              className='font-bold lg:text-2xl'
+              className='font-bold lg:text-xl'
               id='name'
             >
               {CountryName}
             </Link>
           </button>
-          <div id='flag' className='text-base-content float-right p-5'>
+          <div
+            id='flag'
+            className='text-info-content float-right scale-150 mx-5'
+          >
             <img src={Flag} className='text-sm'></img>
           </div>
-          <div id='Quadrent' className='text-base-content'>
+          <div id='Quadrent' className='text-info-content'>
             Region : <span className='font-bold'>{Quadrant}</span>
           </div>
-          <div id='PopulationSize' className='text-base-content'>
+          <div id='PopulationSize' className='text-info-content'>
             Population Size :{' '}
             <span className='font-bold'>{PopulationSize.toLocaleString()}</span>
           </div>
-          <div id='capital' className='text-base-content'>
+          <div id='capital' className='text-info-content'>
             Capital City : <span className='font-bold'>{Capital}</span>
           </div>
-          <div id='language' className='text-base-content'>
+          <div id='language' className='text-info-content'>
             Official Language :{' '}
             <span className='font-bold'>{OfficialLanguage}</span>
           </div>
-          <div id='currency' className='text-base-content'>
+          <div id='currency' className='text-info-content'>
             Currency : <span className='font-bold'>{Currency} </span>
           </div>
         </div>
@@ -71,14 +74,14 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         <ul>
           <li>
             <button
-              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Film/' + CountryName}>Film</Link>
             </button>
 
             <button
-              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Short%20Film/' + CountryName}>
@@ -87,7 +90,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             </button>
 
             <button
-              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Documentary/' + CountryName}>
@@ -97,14 +100,14 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </li>
           <li>
             <button
-              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/category/Series/' + CountryName}>Series</Link>
             </button>
 
             <button
-              className='btn btn-md btn-primary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <a href='#'>Want to get involved?</a>
@@ -113,10 +116,10 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         </ul>
         <div className='justify-end flex'>
           <button
-            className='btn btn-md btn-secondary text-primary-content md:btn-md bg-neutral transition-all duration-300'
+            className='btn btn-md btn-secondary text-white md:btn-md bg-neutral transition-all duration-300'
             onClick={() => setShowModal(false)}
           >
-            Close
+            X
           </button>
         </div>
       </div>

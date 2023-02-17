@@ -53,19 +53,19 @@ function AfricanMap() {
                   <>
                     <div className='tools absolute bottom-5 left-5 flex flex-col gap-1 z-40'>
                       <button
-                        className='btn btn-neutral btn-sm'
+                        className='btn btn-accent-focus btn-sm rounded-full'
                         onClick={() => zoomIn()}
                       >
                         +
                       </button>
                       <button
-                        className='btn btn-neutral btn-sm'
+                        className='btn btn-accent-focus btn-sm rounded-full'
                         onClick={() => zoomOut()}
                       >
                         -
                       </button>
                       <button
-                        className='btn btn-neutral btn-sm'
+                        className='btn btn-accent-focus btn-sm rounded-full'
                         onClick={() => resetTransform()}
                       >
                         x
