@@ -21,6 +21,7 @@ import AdminOnly from '../pages/AdminOnly';
 import Profile from '../pages/Profile';
 import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
+import UserSearchResults from '../pages/userSearchResults';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -117,10 +118,11 @@ export const RestOfApp = () => {
             }
           />
           <Route path='logout' element={<Logout />} />
-          <Route path='Donate' element={<Donate />} />
+          {/* <Route path='Donate' element={<Donate />} /> */}
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='editprofile' element={<EditProfile />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
+          
           <Route
             path='profile'
             element={
@@ -137,6 +139,15 @@ export const RestOfApp = () => {
                 <SearchResults />
               </ProtectedRoutes>
             }
+            />
+            <Route path='*' element={<NotFound />} />
+            <Route
+              path='userResult'
+              element={
+                <ProtectedRoutes isAllowed={!!user}>
+                  <UserSearchResults />
+                </ProtectedRoutes>
+              }
           />
         </Route>
         <Route path='*' element={<NotFound />} />

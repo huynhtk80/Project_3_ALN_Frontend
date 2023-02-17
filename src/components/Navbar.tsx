@@ -15,14 +15,14 @@ import Footer from './Footer';
 import SearchDropdown from './SearchBar';
 import { UserDBContext } from '../providers/UserDBProvider';
 import Chat from './Chat';
-import Donate from '../pages/Donate';
+// import Donate from '../pages/Donate';
 
 const navigation = [
   { name: 'Home Roots ➤', href: '/home' },
   { name: 'Baobab Community ➤', href: '/home/network' },
   { name: 'Categories ➤', href: '/home/Category' },
   { name: 'Upload Video ➤', href: '/home/uploadvideo' },
-  { name: 'Donate ➤', href: '/home/Donate' },
+  // { name: 'Donate ➤', href: '/home/Donate' },
 ];
 
 function classNames(...classes: string[]) {

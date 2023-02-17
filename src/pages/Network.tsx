@@ -14,6 +14,7 @@ import UserCarousel from '../components/UserCarousel';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
+import { useNavigate } from 'react-router';
 
 function Network() {
   const fbContext = useContext(FirebaseContext);
@@ -23,8 +24,34 @@ function Network() {
   const [lastDoc, setLastDoc] = useState<any>();
   const [allfound, setAllFound] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState('');
+  const [showInput, setShowInput] = useState(false);
+  const navigate = useNavigate();
 
-  const searchQuery = searchParams.get('userName');
+  const searchQuery = searchParams.get('query');
+
+  const handleChange = (e: any) => {
+    setSearchValue(e.target.value);
+  };
+
+  const onClickSearch = (e: any) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      navigate({
+        pathname: '/home/userResult',
+        search: `?query=${searchValue}`,
+      });
+    }
+  };
+
+  const handleGoButtonClick = () => {
+    navigate({
+      pathname: '/home/userResult',
+      search: `?query=${searchValue}`,
+    });
+  };
+
+
 
   useEffect(() => {
     if (!user) return;
