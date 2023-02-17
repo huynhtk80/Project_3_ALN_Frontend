@@ -6,7 +6,7 @@ interface ThumbFromVideoProps {
 }
 function ThumbFromVideo({ videoUrl, videoFileName }: ThumbFromVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   const onClickCreateThumb = async () => {
     await createThumb();
