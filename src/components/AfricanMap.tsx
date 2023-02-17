@@ -14,15 +14,15 @@ function AfricanMap() {
     if (cName) {
       const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
-        country.classList.add('fill-accent');
-        country.classList.remove('fill-accent-content');
+        country.classList.add('fill-secondary');
+        country.classList.remove('fill-success-content');
       });
       const countrySelected = document.querySelectorAll<HTMLElement>(
         '#' + cName
       );
       console.log(countrySelected);
       countrySelected.forEach((area) => {
-        if (area) area.classList.add('fill-accent-content');
+        if (area) area.classList.add('fill-success-content');
       });
 
       setShowModal(true);
