@@ -47,7 +47,7 @@ function AfricanMap() {
       <div className='cursor-pointer text-base-content '>
         <div className='map' onClick={(e) => handleClick(e.target)}>
           <div className='flex  justify-center items-center my-5 '>
-            <div className='relative rounded-lg  overflow-hidden bg-neutral bg-opacity-50 glass hover:bg-neutral transition-all ease-in-out duration-300'>
+            <div className='relative rounded-lg  overflow-hidden bg-primary-focus bg-opacity-50 glass hover:bg-primary-focus transition-all ease-in-out duration-300'>
               <TransformWrapper initialScale={1}>
                 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
                   <>
