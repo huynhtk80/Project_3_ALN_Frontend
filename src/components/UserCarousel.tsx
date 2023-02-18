@@ -16,6 +16,10 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import UserCard from './UserCard';
 import 'react-multi-carousel/lib/styles.css';
 import { Query } from 'firebase/database';
+import {
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from '@heroicons/react/24/outline';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -118,6 +122,13 @@ function UserCarousel({ category }: UserCarouselProps) {
           swipeable={true}
           draggable={true}
           showDots={false}
+          customTransition='transform 500ms ease-in-out'
+          customLeftArrow={
+            <ArrowLeftCircleIcon className='w-10 absolute left-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+          }
+          customRightArrow={
+            <ArrowRightCircleIcon className='w-10 absolute right-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+          }
         >
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />

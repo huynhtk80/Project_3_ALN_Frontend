@@ -55,10 +55,12 @@ function UserCard({ userCardInfo }: AppProps) {
         />
       </figure>
       {userCardInfo?.requestCreator === 'approved' && (
-        <img
-          className='absolute bottom-3 left-3 h-7  transition-all duration-500 bg-opacity-70 rounded-sm'
-          src={playLogo}
-        />
+        <div className='tooltip absolute' data-tip='creator badge'>
+          <img
+            className='hover:scale-110 container content-around scale-50 h-7  transition-all ease-in-out duration-500 bg-opacity-70 rounded-sm'
+            src={playLogo}
+          />
+        </div>
       )}
       <div className='relative mx-auto -mt-14'>
         <img
