@@ -72,6 +72,12 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
             if (userProfile?.following?.includes(video.userId)) return true;
           })
         );
+      } else if (searchQuery === 'Liked') {
+        setVideos(
+          videoResults.filter((video) => {
+            if (userProfile?.likedVideos?.includes(video.DOC_ID)) return true;
+          })
+        );
         console.log('got to following');
       } else {
         setVideos(
@@ -157,7 +163,7 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
           {videos &&
             videos.map((vid, index) => {
               return (
-                <div className=' w-80'>
+                <div key={vid.DOC_ID + searchQuery} className=' w-80'>
                   <VideoThumbCard
                     url={vid.url}
                     description={vid.description}
@@ -167,7 +173,6 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
                     setActiveIndex={setActiveIndex}
                     docId={vid.DOC_ID}
                     posterImg={vid.thumbnail}
-                    key={vid.DOC_ID}
                   />
                 </div>
               );
