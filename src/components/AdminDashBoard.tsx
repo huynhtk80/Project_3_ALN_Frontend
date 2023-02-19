@@ -1,11 +1,63 @@
-import React, { useContext } from 'react';
+import {
+  collection,
+  getCountFromServer,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { UserProfileProps } from '../pages/EditProfile';
 
 function AdminDashBoard() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
+  const [users, setUsers] = useState<UserProfileProps[]>();
+
+  const onClickGetStats = async () => {
+    const userCollectionRef = collection(db, 'userInfo');
+
+    //beta feature getCountFromServer
+    const userCountSnap = await getCountFromServer(userCollectionRef);
+    console.log('user count', userCountSnap.data().count);
+
+    const lastWeek = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    // console.log(currentTime);
+    // const lastWeek = currentTime - 7 * 24 * 60 * 60 * 1000;
+    const queryUserActiveWeekCount = query(
+      userCollectionRef,
+      where('lastOnline', '>', lastWeek)
+    );
+    const userActiveWeekCount = await getCountFromServer(
+      queryUserActiveWeekCount
+    );
+    console.log('online this week', userActiveWeekCount.data().count);
+
+    const usersWeek = await getDocs(queryUserActiveWeekCount);
+    console.log(
+      'user weeks',
+      usersWeek.docs.map((doc) => console.log(doc.data()))
+    );
+
+    // if(userQuerySnap.empty){
+    //   console.log("no users")
+    // }else {
+    //   let userData = userQuerySnap.docs.map(
+    //     (doc) =>
+    //       ({
+    //         ...doc.data(),
+    //         DOC_ID: doc.id,
+    //       } as UserProfileProps)
+    //   );
+    //   setUsers(userData);
+
+    // }
+    const videoCollectionRef = collection(db, 'videos');
+    const videoCountSnap = await getCountFromServer(videoCollectionRef);
+    console.log('video count', userCountSnap.data().count);
+  };
 
   return (
     <>
@@ -99,6 +151,9 @@ function AdminDashBoard() {
             </div>
           </div>
         </div>
+        <button className='btn btn-primary' onClick={onClickGetStats}>
+          get stats
+        </button>
       </div>
     </>
   );

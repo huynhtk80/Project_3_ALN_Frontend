@@ -7,7 +7,13 @@ import {
   getIdTokenResult,
 } from 'firebase/auth';
 import { FirebaseContext } from './FirebaseProvider';
-import { doc, serverTimestamp, setDoc, updateDoc } from '@firebase/firestore';
+import {
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from '@firebase/firestore';
 
 export const AuthContext = React.createContext();
 
@@ -74,6 +80,12 @@ export const AuthProvider = (props) => {
           lastName,
           createdAt: serverTimestamp(),
           isPublic: true,
+        });
+
+        const privateColRef = collection(docRef, 'private');
+        await setDoc(doc(privateColRef, 'pdata'), {
+          streetAddress: '',
+          zipPostal: '',
         });
 
         return 'success';
