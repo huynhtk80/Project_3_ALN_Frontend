@@ -513,10 +513,7 @@ export default function EditProfile() {
                           >
                             ZIP / Postal code
                           </label>
-                          {console.log(
-                            'zip postal',
-                            userPrivateData?.zipPostal
-                          )}
+
                           <input
                             type='text'
                             name='zipPostal'
