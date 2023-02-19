@@ -1,4 +1,10 @@
-import { doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
@@ -16,10 +22,10 @@ export interface UserProfileProps {
   lastName: string;
   emailAddress: string;
   country: string;
-  streetAddress: string;
+
   city: string;
   stateProvince: string;
-  zipPostal: string;
+
   interests: string[];
   photo: string;
   coverPhoto: string;
@@ -30,6 +36,11 @@ export interface UserProfileProps {
   requestCreator: 'requested' | 'approved' | null;
 }
 
+export interface UserPrivateData {
+  streetAddress: string;
+  zipPostal: string;
+}
+
 export default function EditProfile() {
   const navigate = useNavigate();
   const fbContext = useContext(FirebaseContext);
@@ -38,6 +49,10 @@ export default function EditProfile() {
   const store = fbContext.store;
 
   const [interests, setInterests] = useState<string[]>([]);
+  const [userPrivateData, setUserPrivateData] = useState<UserPrivateData>({
+    streetAddress: '',
+    zipPostal: '',
+  });
 
   const [userProfile, setUserProfile] = useState<UserProfileProps>({
     about: '',
@@ -45,10 +60,8 @@ export default function EditProfile() {
     lastName: '',
     emailAddress: '',
     country: '',
-    streetAddress: '',
     city: '',
     stateProvince: '',
-    zipPostal: '',
     interests: [],
     photo: '',
     coverPhoto: '',
@@ -58,6 +71,7 @@ export default function EditProfile() {
     requestCreator: null,
   });
 
+  // regular user data
   useEffect(() => {
     if (!user) return;
     console.log('loading information from doc', user.uid);
@@ -71,7 +85,11 @@ export default function EditProfile() {
           DOC_ID: docSnap.id,
         } as UserProfileProps;
         setUserProfile(userData);
-        setInterests(userData.interests);
+        if (userData.interests) {
+          setInterests(userData.interests);
+        } else {
+          setInterests([]);
+        }
       } else {
         // doc.data() will be undefined in this case
         console.log('No such document!');
@@ -80,7 +98,31 @@ export default function EditProfile() {
 
     return unsubscribe;
   }, [user]);
-  ``;
+
+  // private user data
+  useEffect(() => {
+    if (!user) return;
+    console.log('loading information from doc', user.uid);
+
+    const docRef = doc(db, 'userInfo', user.uid);
+    const privateDocRef = doc(collection(docRef, 'private'), 'pdata');
+
+    const unsubscribe = onSnapshot(privateDocRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const userData = {
+          ...docSnap.data(),
+        } as UserPrivateData;
+        console.log('private user', userData);
+        setUserPrivateData(userData);
+        // setUserProfile(userData);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!');
+      }
+    });
+
+    return unsubscribe;
+  }, [user]);
 
   const onChangeAvatar = async (e: any) => {
     let file = e.target.files[0];
@@ -163,10 +205,21 @@ export default function EditProfile() {
     setUserProfile({ ...userProfile, [name]: value });
   };
 
+  const onChangeHandlePrivateData = (e: any) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    if (userPrivateData)
+      setUserPrivateData({ ...userPrivateData, [name]: value });
+  };
+
   const onClickSaveHandle = async (e: any) => {
     e.preventDefault();
     const docRef = doc(db, 'userInfo', user.uid);
-    updateDoc(docRef, { ...userProfile, interests });
+    const privateDocRef = doc(db, 'userInfo', user.uid, 'private', 'pdata');
+    await updateDoc(docRef, { ...userProfile, interests });
+    //setdoc instead of updatedoc to accomodate users create prior to creation of private section. Feb 02, 18
+    await setDoc(privateDocRef, { ...userPrivateData });
     navigate('/home/profile');
   };
 
@@ -409,11 +462,11 @@ export default function EditProfile() {
                           <input
                             type='text'
                             name='streetAddress'
-                            onChange={onChangeHandle}
+                            onChange={onChangeHandlePrivateData}
                             id='streetAddress'
                             autoComplete='street-address'
                             className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
-                            value={userProfile.streetAddress}
+                            value={userPrivateData?.streetAddress}
                           />
                         </div>
 
@@ -460,12 +513,13 @@ export default function EditProfile() {
                           >
                             ZIP / Postal code
                           </label>
+
                           <input
                             type='text'
                             name='zipPostal'
                             id='zipPostal'
-                            value={userProfile.zipPostal}
-                            onChange={onChangeHandle}
+                            value={userPrivateData?.zipPostal}
+                            onChange={onChangeHandlePrivateData}
                             autoComplete='postal-code'
                             className='input input-bordered input-sm w-full max-w-xs mt-1 bg-white'
                           />

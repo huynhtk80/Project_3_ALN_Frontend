@@ -19,6 +19,7 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from './VideoThumbCard';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { ArrowProps } from 'react-multi-carousel/lib/types';
+import { UserDBContext } from '../providers/UserDBProvider';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -60,51 +61,70 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
   const [lastDoc, setLastDoc] = useState<any>();
   const [videos, setVideos] = useState<VideoParams[]>();
   const [activeIndex, setActiveIndex] = useState(null);
+  const { userProfile } = useContext(UserDBContext);
 
   useEffect(() => {
     if (searchQuery) {
-      setVideos(
-        videoResults.filter((video) => {
-          if (video.titleUpper?.includes(searchQuery?.toUpperCase()))
-            return true;
+      console.log('the search', searchQuery);
+      if (searchQuery === 'Following') {
+        setVideos(
+          videoResults.filter((video) => {
+            if (userProfile?.following?.includes(video.userId)) return true;
+          })
+        );
+      } else if (searchQuery === 'Liked') {
+        setVideos(
+          videoResults.filter((video) => {
+            if (userProfile?.likedVideos?.includes(video.DOC_ID)) return true;
+          })
+        );
+        console.log('got to following');
+      } else {
+        setVideos(
+          videoResults.filter((video) => {
+            if (video.titleUpper?.includes(searchQuery?.toUpperCase()))
+              return true;
 
-          if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
-            return true;
+            if (video.descriptionUpper?.includes(searchQuery?.toUpperCase()))
+              return true;
 
-          if (
-            video.collection.toUpperCase()?.includes(searchQuery?.toUpperCase())
-          )
-            return true;
-
-          if (video.tags) {
-            const filter = video.tags.filter((tag) => {
-              return tag.toUpperCase().includes(searchQuery?.toUpperCase());
-            });
-
-            if (filter.length > 0) return true;
-          }
-
-          if (video.country) {
-            const filter = video.country.filter((count) => {
-              return count.toUpperCase().includes(searchQuery?.toUpperCase());
-            });
-
-            if (filter.length > 0) return true;
-          }
-
-          if (video.credits) {
-            const filter = video.credits.filter((cred) => {
-              return cred.name
+            if (
+              video.collection
                 .toUpperCase()
-                .includes(searchQuery?.toUpperCase());
-            });
+                ?.includes(searchQuery?.toUpperCase())
+            )
+              return true;
 
-            if (filter.length > 0) return true;
-          }
+            if (video.tags) {
+              const filter = video.tags.filter((tag) => {
+                return tag.toUpperCase().includes(searchQuery?.toUpperCase());
+              });
 
-          return false;
-        })
-      );
+              if (filter.length > 0) return true;
+            }
+
+            if (video.country) {
+              const filter = video.country.filter((count) => {
+                return count.toUpperCase().includes(searchQuery?.toUpperCase());
+              });
+
+              if (filter.length > 0) return true;
+            }
+
+            if (video.credits) {
+              const filter = video.credits.filter((cred) => {
+                return cred.name
+                  .toUpperCase()
+                  .includes(searchQuery?.toUpperCase());
+              });
+
+              if (filter.length > 0) return true;
+            }
+
+            return false;
+          })
+        );
+      }
     } else {
       setVideos(videoResults);
     }
@@ -143,7 +163,7 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
           {videos &&
             videos.map((vid, index) => {
               return (
-                <div className=' w-80'>
+                <div key={vid.DOC_ID + searchQuery} className=' w-80'>
                   <VideoThumbCard
                     url={vid.url}
                     description={vid.description}
@@ -153,7 +173,6 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
                     setActiveIndex={setActiveIndex}
                     docId={vid.DOC_ID}
                     posterImg={vid.thumbnail}
-                    key={vid.DOC_ID}
                   />
                 </div>
               );

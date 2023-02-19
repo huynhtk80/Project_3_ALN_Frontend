@@ -47,6 +47,7 @@ export default function profileData() {
           ...docSnap.data(),
           DOC_ID: docSnap.id,
         } as UserProfileProps;
+        console.log(userInfoData);
         setProfileData(userInfoData);
       } else {
         console.log('No such document!');

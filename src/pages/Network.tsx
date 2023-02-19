@@ -15,10 +15,12 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
 import { useNavigate } from 'react-router';
+import { UserDBContext } from '../providers/UserDBProvider';
 
 function Network() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
+  const { userProfile } = useContext(UserDBContext);
   const { functions, db } = fbContext;
   const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [lastDoc, setLastDoc] = useState<any>();
@@ -50,8 +52,6 @@ function Network() {
       search: `?query=${searchValue}`,
     });
   };
-
-
 
   useEffect(() => {
     if (!user) return;
@@ -115,42 +115,46 @@ function Network() {
 
   return (
     <>
-   
-
       <div className='pt-20 m-8'>
-      <div className='flex justify-center rounded-md shadow-md'>
-      <div className='input-group'>
-        <input
-          type='text'
-          placeholder='Search ALN Profiles...'
-          className='input input-primary w-full input-sm md:input-md md:w-56  lg:w-96 text-base-content placeholder-primary-content opacity-50 transition-all duration-300'
-          onChange={handleChange}
-          onKeyDown={onClickSearch}
-        />
-        <button
-          className='btn btn-circle btn-sm btn-primary md:btn-md  bg-primary transition-all duration-300'
-          onClick={handleGoButtonClick}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 stroke-primary-content'
-            fill='none'
-            viewBox='0 0 24 24'
-            // stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+        <div className='flex justify-center rounded-md shadow-md'>
+          <div className='input-group'>
+            <input
+              type='text'
+              placeholder='Search ALN Profiles...'
+              className='input input-primary w-full input-sm md:input-md md:w-56  lg:w-96 text-base-content placeholder-primary-content opacity-50 transition-all duration-300'
+              onChange={handleChange}
+              onKeyDown={onClickSearch}
             />
-          </svg>
-        </button>
-      </div>
-    </div>
+            <button
+              className='btn btn-circle btn-sm btn-primary md:btn-md  bg-primary transition-all duration-300'
+              onClick={handleGoButtonClick}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-6 w-6 stroke-primary-content'
+                fill='none'
+                viewBox='0 0 24 24'
+                // stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {userProfile?.following?.length > 0 && (
+          <>
+            <UserCarousel category='Following' />
+          </>
+        )}
         <UserCarousel category='New Users' />
         <UserCarousel category='New Content Creators' />
         <UserCarousel category='Active Users' />
+
         {/* <div className='flex flex-row flex-wrap justify-center gap-2'>
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />
