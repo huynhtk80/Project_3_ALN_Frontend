@@ -22,7 +22,7 @@ import Profile from '../pages/Profile';
 import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
 import AlnColors from '../pages/AlnColors';
-import UserSearchResults from '../pages/userSearchResults';
+import UserSearchResults from '../pages/UserSearchResults';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
