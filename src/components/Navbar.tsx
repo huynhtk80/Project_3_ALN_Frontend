@@ -19,10 +19,10 @@ import Chat from './Chat';
 
 const navigation = [
   { name: 'Browse All ➤', href: '/home/Category' },
-  { name: '-Film ➤', href: '/home/Category/Film' },
-  { name: '-Short Film ➤', href: '/home/Category/Short Film' },
-  { name: '-Documentary ➤', href: '/home/Category/Documentary' },
-  { name: '-Series ➤', href: '/home/Category/Series' },
+  { name: '- Film ➤', href: '/home/Category/Film' },
+  { name: '- Short Film ➤', href: '/home/Category/Short Film' },
+  { name: '- Documentary ➤', href: '/home/Category/Documentary' },
+  { name: '- Series ➤', href: '/home/Category/Series' },
   { name: 'African Roots ➤', href: '/home' },
   { name: 'Baobab Community ➤', href: '/home/network' },
 
