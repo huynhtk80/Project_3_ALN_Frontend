@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 function AdminDashBoard() {
+  const fbContext = useContext(FirebaseContext);
+  const { user } = useContext(AuthContext);
+  const db = fbContext.db;
+
   return (
     <>
       <p className=' text-center'>Stats currently using mock data</p>

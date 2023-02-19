@@ -58,7 +58,7 @@ function Category() {
       }
     });
     return unsubscribe;
-  }, [user, category]);
+  }, [user, category, userProfile]);
 
   return (
     <div className='pt-20 w-full'>
@@ -70,10 +70,15 @@ function Category() {
         ))}
       </div>
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
-      {console.log('I am following', userProfile.following)}
-      {userProfile?.following.length > 0 && (
+
+      {userProfile?.following?.length > 0 && (
         <div className='my-5'>
           <VideoCarousel searchQuery={'Following'} videoResults={videos} />
+        </div>
+      )}
+      {userProfile?.likedVideos?.length > 0 && (
+        <div className='my-5'>
+          <VideoCarousel searchQuery={'Liked'} videoResults={videos} />
         </div>
       )}
 
