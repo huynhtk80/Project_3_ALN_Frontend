@@ -38,6 +38,7 @@ export const UserDBProvider = (props: UserDBContextProps) => {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
@@ -56,7 +57,7 @@ export const UserDBProvider = (props: UserDBContextProps) => {
         console.log('No such document!');
       }
     });
-
+    setIsLoading(false);
     return unsubscribe;
   }, [user]);
 

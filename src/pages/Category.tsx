@@ -70,6 +70,12 @@ function Category() {
         ))}
       </div>
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
+      {console.log('I am following', userProfile.following)}
+      {userProfile?.following.length > 0 && (
+        <div className='my-5'>
+          <VideoCarousel searchQuery={'Following'} videoResults={videos} />
+        </div>
+      )}
 
       {userProfile?.interests?.map((interest: string) => (
         <div key={interest} className='my-5'>

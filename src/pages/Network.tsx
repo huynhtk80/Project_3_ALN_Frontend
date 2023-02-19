@@ -15,10 +15,12 @@ import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
 import { useNavigate } from 'react-router';
+import { UserDBContext } from '../providers/UserDBProvider';
 
 function Network() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
+  const { userProfile } = useContext(UserDBContext);
   const { functions, db } = fbContext;
   const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [lastDoc, setLastDoc] = useState<any>();
@@ -50,8 +52,6 @@ function Network() {
       search: `?query=${searchValue}`,
     });
   };
-
-
 
   useEffect(() => {
     if (!user) return;
@@ -116,9 +116,15 @@ function Network() {
   return (
     <>
       <div className='pt-20 m-8'>
+        {userProfile?.following?.length > 0 && (
+          <>
+            <UserCarousel category='Following' />
+          </>
+        )}
         <UserCarousel category='New Users' />
         <UserCarousel category='New Content Creators' />
         <UserCarousel category='Active Users' />
+
         {/* <div className='flex flex-row flex-wrap justify-center gap-2'>
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />
