@@ -23,6 +23,7 @@ const navigation = [
   { name: '- Short Film ➤', href: '/home/Category/Short Film' },
   { name: '- Documentary ➤', href: '/home/Category/Documentary' },
   { name: '- Series ➤', href: '/home/Category/Series' },
+  { name: '- Podcast ➤', href: '/home/Category/Podcast' },
   { name: 'African Roots ➤', href: '/home' },
   { name: 'Baobab Community ➤', href: '/home/network' },
 

@@ -4,9 +4,9 @@ import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadFileStorage } from '../utils/fireStorageAPI';
 import { addMovie } from '../utils/fireStoreAPI';
 import { getThumbnailForVideo } from '../utils/videoTools';
-import UploadedVidDetail from './UploadedVidDetail';
+import VideoEditDetails from './VideoEditDetails';
 
-function SelectAndUpFile() {
+function VideoSelectAndUpload() {
   const fbContext = useContext(FirebaseContext);
   const db = fbContext.db;
   const store = fbContext.store;
@@ -141,10 +141,10 @@ function SelectAndUpFile() {
         )}
       </div>
       {showModal && (
-        <UploadedVidDetail docID={movieDocId} setShowModal={setShowModal} />
+        <VideoEditDetails docID={movieDocId} setShowModal={setShowModal} />
       )}
     </>
   );
 }
 
-export default SelectAndUpFile;
+export default VideoSelectAndUpload;

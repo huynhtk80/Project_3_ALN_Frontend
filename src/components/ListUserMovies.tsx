@@ -14,9 +14,10 @@ import {
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import UploadedVidDetail from './UploadedVidDetail';
+import VideoEditDetails from './VideoEditDetails';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ApprovalStatus from './ApprovalStatus';
+import VideoTagsMultiInput from './VideoTagsMultiInput';
 
 function ListUserMovies() {
   const fbContext = useContext(FirebaseContext);
@@ -41,6 +42,7 @@ function ListUserMovies() {
   const [isCheck, setIsCheck] = useState<string[]>([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
+  const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
     if (!user) return;
@@ -90,10 +92,12 @@ function ListUserMovies() {
   const onClickUpdateMulti = async () => {
     isCheck.map(async (id) => {
       const docRef = doc(db, 'videos', id);
-      if (select == 'Collections') {
+      if (select == 'Category') {
         await updateDoc(docRef, {
           collection: category,
         });
+        alert('Updated Category of selected');
+        setCategory('');
       } else if (select === 'Submit for Approval') {
         const videoDoc = videos.find((vid) => vid.DOC_ID === id);
         if (
@@ -104,6 +108,14 @@ function ListUserMovies() {
             approval: 'pending',
             submitforApprovalDate: serverTimestamp(),
           });
+      } else if (select === 'Tags') {
+        try {
+          await updateDoc(docRef, { tags: tags });
+          alert('Updated Tags of selected');
+          setTags([]);
+        } catch (err) {
+          console.log(err);
+        }
       }
     });
   };
@@ -138,11 +150,11 @@ function ListUserMovies() {
           <tbody>
             {isCheck?.length > 0 ? (
               <tr>
-                <td colSpan={7}>
+                <td colSpan={6}>
                   {' '}
                   Update Multiple:
                   <select
-                    className='select select-bordered w-full max-w-xs'
+                    className='select select-bordered  max-w-xs'
                     name='collection'
                     value={select}
                     onChange={(e) => setSelect(e.target.value)}
@@ -150,13 +162,13 @@ function ListUserMovies() {
                     <option disabled selected value={''}>
                       Select property
                     </option>
-                    <option>Collections</option>
+                    <option>Category</option>
                     <option>Tags</option>
                     <option>Submit for Approval</option>
                   </select>
-                  {select === 'Collections' ? (
+                  {select === 'Category' ? (
                     <select
-                      className='select select-bordered w-full max-w-xs'
+                      className='select select-bordered  max-w-xs'
                       name='collection'
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
@@ -168,7 +180,11 @@ function ListUserMovies() {
                       <option>Film</option>
                       <option>Short Film</option>
                       <option>Series</option>
+                      <option>Podcast</option>
                     </select>
+                  ) : null}
+                  {select === 'Tags' ? (
+                    <VideoTagsMultiInput tags={tags} setTags={setTags} />
                   ) : null}
                   <button className='btn' onClick={onClickUpdateMulti}>
                     Update Selected
@@ -228,7 +244,7 @@ function ListUserMovies() {
         </table>
       </div>
       {showModal && (
-        <UploadedVidDetail setShowModal={setShowModal} docID={currentDocID} />
+        <VideoEditDetails setShowModal={setShowModal} docID={currentDocID} />
       )}
     </>
   );
