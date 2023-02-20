@@ -4,7 +4,7 @@ import React from 'react';
 
 function Marketing() {
   return (
-    <div className='pt-20'>
+    <div className='grid justify-items-center pt-20 container mx-auto px-4 '>
       Are you an entrepreneur looking to create a co-production film that
       showcases African culture & business to help grow Africa's business
       presence around the world?
