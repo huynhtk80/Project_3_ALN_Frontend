@@ -140,7 +140,7 @@ export const CreateAccount = () => {
   //   return <h1>Already Logged In Redirecting</h1>;
   // }
   if (user) {
-    return <Navigate to='/home/' replace />;
+    return <Navigate to='/home/Category' replace />;
   }
 
   return (

@@ -8,23 +8,35 @@ function Footer() {
       <footer className='footer grid-cols-3 gap-10 p-5 bg-base-200 text-base-content'>
         <div>
           <span className='footer-title'>Services</span>
-          <a className='link link-hover'>Marketing</a>
-          <a className='link link-hover'>Advertisement</a>
+          <Link to='/home/Marketing' className='link link-hover'>
+            Marketing
+          </Link>
+          <Link to='/home/Advertising' className='link link-hover'>
+            Advertisement
+          </Link>
         </div>
         <div>
           <span className='footer-title'>Company</span>
-          <a className='link link-hover'>About us</a>
-          <a className='link link-hover'>Contact</a>
-          <a className='link link-hover'>Jobs</a>
-          <a className='link link-hover'>Press kit</a>
+          <Link to='/home/AboutUs' className='link link-hover'>
+            About us
+          </Link>
+          <Link to='/home/Contact' className='link link-hover'>
+            Contact
+          </Link>
+          <Link Link to='/home/Jobs' className='link link-hover'>
+            Jobs
+          </Link>
         </div>
         <div>
           <span className='footer-title'>Legal</span>
-          <a className='link link-hover'>Terms of use</a>
-          <a className='link link-hover'>Privacy policy</a>
-          <a className='link link-hover'>Cookie policy</a>
+          <Link to='/home/TermsOfService' className='link link-hover'>
+            Terms of Service
+          </Link>
+          <Link to='/home/PrivacyPolicy' className='link link-hover'>
+            Privacy policy
+          </Link>
         </div>
-        <div>
+        {/* <div>
           <span className='footer-title'>Newsletter</span>
           <div className='form-control w-80'>
             <label className='label'>
@@ -41,7 +53,7 @@ function Footer() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </footer>
       <footer className='footer footer-center px-10 py-4 border-t bg-base-200 text-base-content border-base-300'>
         <div className='md:place-self-center md:justify-self-center'>

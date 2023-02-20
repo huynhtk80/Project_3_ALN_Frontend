@@ -17,6 +17,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
     Capital,
     OfficialLanguage: OfficialLanguage,
     Currency,
+    PlacesOfInterest,
   } = AfricanCountryList[props.selectedCountry.toUpperCase()];
   return (
     <div
@@ -30,7 +31,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         backdropFilter: 'blur(20px)',
       }}
     >
-      <div className='modal-content bg-primary text-lg p-4 rounded-lg bg-opacity-80'>
+      <div className='modal-content bg-primary text-lg p-4 rounded-lg bg-opacity-80 '>
         <div className='order-2 border-solid rounded-lg border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
           <button
             className='btn btn-md btn-primary text-info-content  transition-all duration-300 mb-5'
@@ -39,7 +40,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           >
             <Link
               to={'/Home/Category/All/' + CountryName}
-              className='font-bold lg:text-xl'
+              className='font-bold text-4xl'
               id='name'
             >
               {CountryName}
@@ -51,22 +52,31 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           >
             <img src={Flag} className='text-sm'></img>
           </div>
-          <div id='Quadrent' className='text-info-content'>
+          <div id='Quadrent' className='text-sucess-content'>
             Region : <span className='font-bold'>{Quadrant}</span>
           </div>
-          <div id='PopulationSize' className='text-info-content'>
+
+          <div id='PopulationSize' className='text-sucess-content'>
             Population Size :{' '}
             <span className='font-bold'>{PopulationSize.toLocaleString()}</span>
           </div>
-          <div id='capital' className='text-info-content'>
+
+          <div id='capital' className='text-sucess-content'>
             Capital City : <span className='font-bold'>{Capital}</span>
           </div>
-          <div id='language' className='text-info-content'>
+
+          <div id='Language' className='text-sucess-content'>
             Official Language :{' '}
             <span className='font-bold'>{OfficialLanguage}</span>
           </div>
-          <div id='currency' className='text-info-content'>
+
+          <div id='Currency' className='text-sucess-content'>
             Currency : <span className='font-bold'>{Currency} </span>
+          </div>
+
+          <div id='PlacesOfInterest' className='text-sucess-content '>
+            Natural Attractions :{' '}
+            <span className=' font-bold'>{PlacesOfInterest}</span>
           </div>
         </div>
 
