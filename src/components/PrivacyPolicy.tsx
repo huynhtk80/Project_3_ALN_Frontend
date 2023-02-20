@@ -2,11 +2,12 @@ import React from 'react';
 
 function PrivacyPolicy() {
   return (
-    <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 '>
+    <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 text-xl'>
       <h1>PrivacyPolicy</h1>
       <br />
       <p className='grid justify-items-center'>
         1. WHAT INFORMATION DO WE COLLECT?
+        <br />
         <br />
         Personal information you disclose to us
         <br />
@@ -57,11 +58,12 @@ function PrivacyPolicy() {
         will collect the information described in the section called &quot;HOW
         DO WE HANDLE YOUR SOCIAL LOGINS?&quot; below. Application Data. If you
         use our application(s), we also may collect the following information if
-        you choose to provide us with access or permission:  Push
-        Notifications. We may request to send you push notifications regarding
-        your account or certain features of the application(s). If you wish to
-        opt out from receiving these types of communications, you may turn them
-        off in your device’s settings.
+        you choose to provide us with access or permission:
+        <br />
+         Push Notifications. We may request to send you push notifications
+        regarding your account or certain features of the application(s). If you
+        wish to opt out from receiving these types of communications, you may
+        turn them off in your device’s settings.
         <br />
         <br />
         This information is primarily needed to maintain the security and
@@ -108,6 +110,7 @@ function PrivacyPolicy() {
         <br />
         2. HOW DO WE PROCESS YOUR INFORMATION?
         <br />
+        <br />
          In Short: We process your information to provide, improve, and
         administer our Services, communicate with you, for security and fraud
         prevention, and to comply with law. We may also process your information
@@ -134,11 +137,14 @@ function PrivacyPolicy() {
         <br />
          To fulfill and manage your orders. We may process your information to
         fulfill and manage your orders, payments, returns, and exchanges made
-        through the Services.  To enable user-to-user communications. We may
-        process your information if you choose to use any of our offerings that
-        allow for communication with another user.  To request feedback. We may
-        process your information when necessary to request feedback and to
-        contact you about your use of our Services.
+        through the Services.
+        <br />
+         To enable user-to-user communications. We may process your information
+        if you choose to use any of our offerings that allow for communication
+        with another user.
+        <br />
+         To request feedback. We may process your information when necessary to
+        request feedback and to contact you about your use of our Services.
         <br />
          To send you marketing and promotional communications. We may process
         the personal information you send to us for our marketing purposes, if
@@ -162,6 +168,7 @@ function PrivacyPolicy() {
         <br />
         <br />
         3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?
+        <br />
         <br />
         In Short: We only process your personal information when we believe it
         is necessary and we have a valid legal reason (i.e., legal basis) to do
@@ -511,6 +518,7 @@ function PrivacyPolicy() {
         <br />
         11. CONTROLS FOR DO-NOT-TRACK FEATURES
         <br />
+        <br />
         Most web browsers and some mobile operating systems and mobile
         applications include a Do- Not-Track (&quot;DNT&quot;) feature or
         setting you can activate to signal your privacy preference not to have
@@ -528,6 +536,7 @@ function PrivacyPolicy() {
         <br />
         <br />
         12. DO CALIFORNIA RESIDENTS HAVE SPECIFICPRIVACY RIGHTS?
+        <br />
         <br />
         In Short: Yes, if you are a resident of California, you are granted
         specific rights regarding access to your personal information.2/18/23,
@@ -772,8 +781,9 @@ function PrivacyPolicy() {
         <br />
          the business or commercial purpose for collecting, selling, or sharing
         personal information; <br />
-        and  the specific pieces of personal information we collected about
-        you.
+        and
+        <br />
+         the specific pieces of personal information we collected about you.
         <br />
         In accordance with applicable law, we are not obligated to provide or
         delete consumer information that is de-identified in response to a
@@ -984,6 +994,7 @@ function PrivacyPolicy() {
         <br />
         <br />
         16. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?
+        <br />
         <br />
         Based on the applicable laws of your country, you may have the right to
         request access to the personal information we collect from you, change
