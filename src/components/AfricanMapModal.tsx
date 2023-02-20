@@ -40,7 +40,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           >
             <Link
               to={'/Home/Category/All/' + CountryName}
-              className='font-bold lg:text-xl'
+              className='font-bold text-4xl'
               id='name'
             >
               {CountryName}
@@ -52,26 +52,31 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           >
             <img src={Flag} className='text-sm'></img>
           </div>
-          <div id='Quadrent' className='text-info-content'>
+          <div id='Quadrent' className='text-sucess-content'>
             Region : <span className='font-bold'>{Quadrant}</span>
           </div>
-          <div id='PopulationSize' className='text-info-content'>
+
+          <div id='PopulationSize' className='text-sucess-content'>
             Population Size :{' '}
             <span className='font-bold'>{PopulationSize.toLocaleString()}</span>
           </div>
-          <div id='capital' className='text-info-content'>
+
+          <div id='capital' className='text-sucess-content'>
             Capital City : <span className='font-bold'>{Capital}</span>
           </div>
-          <div id='Language' className='text-info-content'>
+
+          <div id='Language' className='text-sucess-content'>
             Official Language :{' '}
             <span className='font-bold'>{OfficialLanguage}</span>
           </div>
-          <div id='Currency' className='text-info-content'>
+
+          <div id='Currency' className='text-sucess-content'>
             Currency : <span className='font-bold'>{Currency} </span>
           </div>
-          <div id='PlacesOfInterest' className='text-info-content'>
+
+          <div id='PlacesOfInterest' className='text-sucess-content '>
             Natural Attractions :{' '}
-            <span className='font-bold'>{PlacesOfInterest}</span>
+            <span className=' font-bold'>{PlacesOfInterest}</span>
           </div>
         </div>
 
