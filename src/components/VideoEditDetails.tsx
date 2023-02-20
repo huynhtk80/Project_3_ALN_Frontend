@@ -23,11 +23,11 @@ import VideoCreditInput from './VideoCreditInput';
 import VideoTagsInput from './VideoTagsInput';
 import VideoUploader from './VideoUploader';
 
-interface UploadVidDetailProps {
+interface VideoEditDetailsProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   docID: string;
 }
-function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
+function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
   const fbContext = useContext(FirebaseContext);
   const { user, userRoles } = useContext(AuthContext);
   const db = fbContext.db;
@@ -378,6 +378,7 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
                   <option>Film</option>
                   <option>Short Film</option>
                   <option>Series</option>
+                  <option>Podcast</option>
                 </select>
                 <label className='label'>
                   <span className='label-text'>Content Origin</span>
@@ -613,4 +614,4 @@ function UploadedVidDetail({ setShowModal, docID }: UploadVidDetailProps) {
   );
 }
 
-export default UploadedVidDetail;
+export default VideoEditDetails;

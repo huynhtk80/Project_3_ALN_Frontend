@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ListUserMovies from '../components/ListUserMovies';
-import SelectAndUpFile from '../components/SelectAndUpFile';
+import VideoSelectAndUpload from '../components/VideoSelectAndUpload';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 
@@ -13,7 +13,7 @@ function UploadVideo() {
 
   return (
     <>
-      <SelectAndUpFile />
+      <VideoSelectAndUpload />
 
       <ListUserMovies />
     </>
