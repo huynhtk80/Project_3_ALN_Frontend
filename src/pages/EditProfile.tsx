@@ -22,10 +22,10 @@ export interface UserProfileProps {
   lastName: string;
   emailAddress: string;
   country: string;
-
   city: string;
   stateProvince: string;
-
+  following?: string[];
+  likedVideos?: string[];
   interests: string[];
   photo: string;
   coverPhoto: string;
