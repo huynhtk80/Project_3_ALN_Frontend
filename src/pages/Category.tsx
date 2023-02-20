@@ -63,13 +63,19 @@ function Category() {
   return (
     <div className='pt-20 w-full'>
       <div className='flex flex-row justify-center gap-5'>
-        {['All', 'Film', 'Short Film', 'Documentary', 'Series', 'Podcast'].map(
-          (cat) => (
-            <Link to={`/home/Category/${cat}`}>
-              <button className='btn btn-primary'>{cat}</button>
-            </Link>
-          )
-        )}
+        {[
+          'All',
+          'Film',
+          'Short Film',
+          'Documentary',
+          'Series',
+          'Podcast',
+          'African Roots',
+        ].map((cat) => (
+          <Link to={`/home/Category/${cat}`}>
+            <button className='btn btn-primary'>{cat}</button>
+          </Link>
+        ))}
       </div>
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
 
