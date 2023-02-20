@@ -120,7 +120,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
               className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
-              <a href='#'>Want to get involved?</a>
+              <Link to={'/home/Marketing'}>Want to get involved?</Link>
             </button>
           </li>
         </ul>
