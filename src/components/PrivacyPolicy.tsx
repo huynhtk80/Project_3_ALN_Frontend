@@ -2,10 +2,10 @@ import React from 'react';
 
 function PrivacyPolicy() {
   return (
-    <div className='pt-20'>
+    <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 '>
       <h1>PrivacyPolicy</h1>
       <br />
-      <p>
+      <p className='grid justify-items-center'>
         1. WHAT INFORMATION DO WE COLLECT?
         <br />
         Personal information you disclose to us
