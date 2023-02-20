@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ALN_LOGO_3_45 from '../assets/ALN_LOGO-3-45.png';
 
 export const LoginForm = () => {
@@ -78,12 +78,16 @@ export const LoginForm = () => {
       const isLoggedin = await loginFn(email, password);
       if (isLoggedin) {
         console.log("it's working!");
-        navigate('/home', { replace: true });
+        navigate('/home/Category', { replace: true });
       } else {
         setAuthError(true);
       }
     }
   };
+
+  if (user) {
+    return <Navigate to='/home/Category' replace />;
+  }
 
   return (
     <>
