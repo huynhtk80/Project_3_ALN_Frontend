@@ -24,6 +24,8 @@ function VideoCardsSection({
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const [activeIndex, setActiveIndex] = useState(null);
+  const [toShow, setToShow] = useState(8);
+  const [allFound, setAllFound] = useState(false);
   const [videos, setVideos] = useState<VideoParams[]>([
     {
       userId: '',
@@ -62,29 +64,49 @@ function VideoCardsSection({
             } as VideoParams)
         );
         setVideos(videoData);
+        if (videoData.length <= toShow) setAllFound(true);
       }
     });
     return unsubscribe;
   }, [user, searchUserId, likeVideos]);
+
+  const onClickShowMore = () => {
+    const numberToShow = toShow + 8;
+    setToShow(numberToShow);
+
+    if (numberToShow >= videos?.length) {
+      setAllFound(true);
+    }
+  };
+
   return (
     <div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4'>
-        {videos?.map((vid, index) => {
-          return (
-            <VideoThumbCard
-              url={vid.url}
-              title={vid.title}
-              description={vid.description}
-              setActiveIndex={setActiveIndex}
-              index={index}
-              activeIndex={activeIndex}
-              docId={vid.DOC_ID}
-              posterImg={vid.thumbnail}
-              key={vid.DOC_ID}
-            />
-          );
-        })}
+        {videos
+          ?.filter((item, index) => index < toShow)
+          ?.map((vid, index) => {
+            return (
+              <VideoThumbCard
+                url={vid.url}
+                title={vid.title}
+                description={vid.description}
+                setActiveIndex={setActiveIndex}
+                index={index}
+                activeIndex={activeIndex}
+                docId={vid.DOC_ID}
+                posterImg={vid.thumbnail}
+                key={vid.DOC_ID}
+              />
+            );
+          })}
       </div>
+      {!allFound && (
+        <div className='flex justify-center'>
+          <button onClick={onClickShowMore} className='btn btn-primary mx-auto'>
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
