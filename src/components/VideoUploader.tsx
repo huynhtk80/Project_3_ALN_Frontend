@@ -62,7 +62,7 @@ function VideoUploader({ video, poster, onChangeHandle }: ImageUploaderProps) {
               />
             </label>
           </div>
-          <p className='text-xs text-black'>mp4,avi,etc up to 10MB</p>
+          <p className='text-xs text-black'>mp4,avi,etc</p>
         </div>
       </div>
     </>

@@ -282,8 +282,7 @@ export default function EditProfile() {
                           />
                         </div>
                         <p className='mt-2 text-sm text-base-content'>
-                          Brief description for your profile. URLs are
-                          hyperlinked.
+                          Brief description for your profile.
                         </p>
                       </div>
 
