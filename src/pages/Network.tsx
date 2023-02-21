@@ -6,6 +6,7 @@ import {
   limit,
   getDocs,
   startAfter,
+  where,
 } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -59,6 +60,7 @@ function Network() {
 
     let queryRef = query(
       collectionRef,
+      where('isPublic', '==', true),
       orderBy('createdAt', 'desc'),
       limit(10)
     );

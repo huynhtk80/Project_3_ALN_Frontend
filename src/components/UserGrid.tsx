@@ -71,23 +71,29 @@ function UserGrid({ category }: UserGridProps) {
   useEffect(() => {
     if (!user) return;
 
-    let queryRef = query(collectionRef);
+    let queryRef = query(collectionRef, where('isPublic', '==', true));
     if (category === 'New Users') {
       queryRef = query(
         collectionRef,
-
+        where('isPublic', '==', true),
         orderBy('createdAt', 'desc'),
         limit(10)
       );
     } else if (category === 'New Content Creators') {
       queryRef = query(
         collectionRef,
+        where('isPublic', '==', true),
         where('requestCreator', '==', 'approved'),
         orderBy('createdAt', 'desc'),
         limit(10)
       );
     } else if (category === 'Active Users') {
-      queryRef = query(collectionRef, orderBy('lastOnline', 'desc'), limit(10));
+      queryRef = query(
+        collectionRef,
+        where('isPublic', '==', true),
+        orderBy('lastOnline', 'desc'),
+        limit(10)
+      );
     } else if (category === 'Following') {
       queryRef = query(
         collectionRef,
@@ -96,7 +102,7 @@ function UserGrid({ category }: UserGridProps) {
         limit(10)
       );
     } else {
-      queryRef = query(collectionRef, limit(10));
+      queryRef = query(collectionRef, where('isPublic', '==', true), limit(10));
     }
 
     const fetchData = async () => {

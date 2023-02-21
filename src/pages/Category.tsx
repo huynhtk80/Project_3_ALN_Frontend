@@ -10,7 +10,7 @@ import { UserDBContext } from '../providers/UserDBProvider';
 
 function Category() {
   const { category, country } = useParams();
-  console.log(country);
+
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const { userProfile } = useContext(UserDBContext);
@@ -19,8 +19,6 @@ function Category() {
 
   const [activeIndex, setActiveIndex] = useState(null);
 
-  console.log(category);
-
   useEffect(() => {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
@@ -28,9 +26,13 @@ function Category() {
     let queryRef;
 
     if (!category || category === 'All') {
-      queryRef = query(collectionRef);
+      queryRef = query(collectionRef, where('approval', '==', 'approved'));
     } else {
-      queryRef = query(collectionRef, where('collection', '==', category));
+      queryRef = query(
+        collectionRef,
+        where('collection', '==', category),
+        where('approval', '==', 'approved')
+      );
     }
 
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
@@ -70,7 +72,7 @@ function Category() {
       <div className='flex flex-row justify-center gap-5'>
         {['All', 'Film', 'Short Film', 'Documentary', 'Series', 'Podcast'].map(
           (cat) => (
-            <Link to={`/home/Category/${cat}`}>
+            <Link key={cat} to={`/home/Category/${cat}`}>
               <button className='btn btn-primary'>{cat}</button>
             </Link>
           )
@@ -79,22 +81,23 @@ function Category() {
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
 
       {userProfile?.following?.length > 0 && (
-        <div className='my-5'>
+        <div className='m-5'>
           <VideoCarousel searchQuery={'Following'} videoResults={videos} />
         </div>
       )}
       {userProfile?.likedVideos?.length > 0 && (
-        <div className='my-5'>
+        <div className='m-5'>
           <VideoCarousel searchQuery={'Liked'} videoResults={videos} />
         </div>
       )}
 
       {userProfile?.interests?.map((interest: string) => (
-        <div key={interest} className='my-5'>
+        <div key={interest} className='m-5'>
           <VideoCarousel searchQuery={interest} videoResults={videos} />
         </div>
       ))}
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
+      <h1 className='text-xl mb-3 ml-3'>Browse</h1>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-5 mb-5'>
         {videos?.map((vid, index) => {
           return (
             <VideoThumbCard
@@ -106,6 +109,7 @@ function Category() {
               activeIndex={activeIndex}
               docId={vid.DOC_ID}
               posterImg={vid.thumbnail}
+              key={vid.DOC_ID}
             />
           );
         })}
