@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Landing from '../pages/Landing';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadAdminStorage } from '../utils/fireStorageAPI';

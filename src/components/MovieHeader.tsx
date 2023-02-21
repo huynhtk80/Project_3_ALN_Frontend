@@ -21,6 +21,27 @@ function MovieHeader() {
   const [isMuted, setIsMuted] = useState(true);
   const [hasSound, sethasSound] = useState(true);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cursorState, setCursorState] = useState(true);
+  const text = 'Click the play button below and start exploring !';
+  const cursorRef = useRef(null);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeoutId = setTimeout(() => {
+        setCurrentIndex(currentIndex + 1);
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    } else {
+      const intervalId = setInterval(() => {
+        setCursorState((prevState) => !prevState);
+      }, 500);
+      return () => clearInterval(intervalId);
+    }
+  }, [currentIndex]);
+
+  const visibleText = text.substring(0, currentIndex);
+
   useEffect(() => {
     let docRef = doc(db, 'assets', 'header');
     let unsubscribe;
@@ -73,15 +94,25 @@ function MovieHeader() {
             A gateway to a global market with africans
             <br /> telling their authentic stories
           </p>
-          <Link to='/home/Category'>
-            <button className='btn btn-primary bg-primary btn-lg group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
+          <p className='text-lg'>
+            {visibleText}
+            <span
+              ref={cursorRef}
+              className={`${
+                cursorState ? 'opacity-100' : 'opacity-0'
+              } duration-250 ease-in-out transition-all`}
+            >
+              |
+            </span>
+          </p>
+          <div className='flex justify-center'>
+            <Link to='/home/Category'>
               <img
-                className='h-10 px-2 -rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
+                className='scale-[300%] h-10 px-2 m-20 hover:-rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
                 src={playLogo}
               />
-              Get Started
-            </button>
-          </Link>
+            </Link>
+          </div>
           <br />
           <br />
           <a href='https://buy.stripe.com/4gw9Cb56D68ecTe000'>

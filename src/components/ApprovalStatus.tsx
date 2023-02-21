@@ -1,5 +1,5 @@
 import { doc, serverTimestamp, updateDoc } from 'firebase/firestore';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
