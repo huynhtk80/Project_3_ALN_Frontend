@@ -39,7 +39,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             id='name'
           >
             <button
-              className='btn btn-md btn-primary text-base-content  transition-all duration-300 mb-5'
+              className='btn btn-sm btn-primary text-base-content  transition-all duration-300 mb-5'
               onClick={() => setShowModal(false)}
               style={{ height: 'auto' }}
             >
@@ -85,7 +85,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           <li>
             <Link to={'/Home/Category/Film/' + CountryName}>
               <button
-                className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+                className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
                 onClick={() => setShowModal(false)}
               >
                 Film
@@ -94,7 +94,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
 
             <Link to={'/Home/Category/Short%20Film/' + CountryName}>
               <button
-                className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+                className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
                 onClick={() => setShowModal(false)}
               >
                 Shorts
@@ -103,7 +103,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
 
             <Link to={'/Home/Category/Documentary/' + CountryName}>
               <button
-                className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+                className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
                 onClick={() => setShowModal(false)}
               >
                 Documentaries
@@ -113,7 +113,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           <li>
             <Link to={'/Home/category/Series/' + CountryName}>
               <button
-                className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+                className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
                 onClick={() => setShowModal(false)}
               >
                 Series
@@ -121,7 +121,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             </Link>
             <Link to={'/home/Marketing'}>
               <button
-                className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+                className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
                 onClick={() => setShowModal(false)}
               >
                 Want to get involved?
@@ -131,7 +131,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         </ul>
         <div className='justify-end flex'>
           <button
-            className='btn btn-sm btn-secondary text-white md:btn-md bg-neutral transition-all duration-300'
+            className='btn btn-xs btn-secondary text-white bg-neutral transition-all duration-300'
             onClick={() => setShowModal(false)}
           >
             X
