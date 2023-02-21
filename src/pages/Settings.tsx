@@ -1,5 +1,5 @@
 import { doc, updateDoc } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PricingTiers from '../components/PricingTiers';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';

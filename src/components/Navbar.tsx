@@ -1,20 +1,17 @@
-import { Fragment, useContext, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Fragment, useContext, useState } from 'react';
 import { Outlet } from 'react-router';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ALN_LOGO_3_47 from '../assets/ALN_LOGO-3-47.png';
 import ALN_LOGO_3_48 from '../assets/ALN_LOGO-3-48_sm.png';
 import AvatarTemp from '../assets/avatar-temp.png';
-import { LoginForm } from './LoginForm';
-import Switcher from './ThemeSwitcher';
-import LandingFooter from './LandingFooter';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
+import { UserDBContext } from '../providers/UserDBProvider';
 import Footer from './Footer';
 import SearchDropdown from './SearchBar';
-import { UserDBContext } from '../providers/UserDBProvider';
-import Chat from './Chat';
+import Switcher from './ThemeSwitcher';
 // import Donate from '../pages/Donate';
 
 const navigation = [

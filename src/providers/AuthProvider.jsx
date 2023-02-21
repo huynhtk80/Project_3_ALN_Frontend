@@ -1,13 +1,3 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  getIdTokenResult,
-  sendPasswordResetEmail,
-} from 'firebase/auth';
-import { FirebaseContext } from './FirebaseProvider';
 import {
   collection,
   doc,
@@ -15,6 +5,16 @@ import {
   setDoc,
   updateDoc,
 } from '@firebase/firestore';
+import {
+  createUserWithEmailAndPassword,
+  getIdTokenResult,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
+import React, { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from './FirebaseProvider';
 
 export const AuthContext = React.createContext();
 

@@ -2,7 +2,6 @@ import {
   addDoc,
   collection,
   getCountFromServer,
-  getDocs,
   limit,
   onSnapshot,
   orderBy,
@@ -12,11 +11,10 @@ import {
   where,
 } from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
+import flimprojectimg from '../assets/filmprojector.jpg';
+import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { UserProfileProps } from '../pages/EditProfile';
-import { VideoParams } from '../utils/fireStoreAPI';
-import flimprojectimg from '../assets/filmprojector.jpg';
 
 interface Stats {
   allUsers: number;

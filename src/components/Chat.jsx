@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 const Chat = () => {
   const { user } = useContext(AuthContext);

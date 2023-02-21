@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import {
   collection,
-  query,
-  getDocs,
-  orderBy,
-  onSnapshot,
-  where,
   doc,
-  updateDoc,
+  onSnapshot,
+  query,
   serverTimestamp,
+  updateDoc,
+  where,
 } from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import VideoEditDetails from './VideoEditDetails';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ApprovalStatus from './ApprovalStatus';
+import VideoEditDetails from './VideoEditDetails';
 import VideoTagsMultiInput from './VideoTagsMultiInput';
 
 function ListUserMovies() {

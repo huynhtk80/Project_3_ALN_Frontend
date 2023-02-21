@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import VideoThumbCard from '../components/VideoThumbCard';
 import { videoArray } from '../utils/mockDb';
 

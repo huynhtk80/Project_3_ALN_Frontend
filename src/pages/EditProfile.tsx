@@ -5,16 +5,15 @@ import {
   setDoc,
   updateDoc,
 } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthProvider';
-import { FirebaseContext } from '../providers/FirebaseProvider';
-import { photoCrop } from '../utils/photoCrop';
-import { uploadFileStorage, deleteFileURL } from '../utils/fireStorageAPI';
-import { VideoParams } from '../utils/fireStoreAPI';
-import { countryList } from '../utils/countyOptions';
 import ImageUploader from '../components/ImageUploader';
 import VideoUploader from '../components/VideoUploader';
+import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
+import { countryList } from '../utils/countyOptions';
+import { deleteFileURL, uploadFileStorage } from '../utils/fireStorageAPI';
+import { photoCrop } from '../utils/photoCrop';
 
 export interface UserProfileProps {
   about: string;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import AfricanCountryList from './AfricanCountryList';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import AfricanCountryList from './AfricanCountryList';
 
 interface AfricanMapModalProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
+import { useContext, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ALN_LOGO_3_45 from '../assets/ALN_LOGO-3-45.png';
+import { AuthContext } from '../providers/AuthProvider';
 
 export const CreateAccount = () => {
   const authContext = useContext(AuthContext);

@@ -1,23 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import {
   collection,
-  query,
-  getDocs,
-  orderBy,
-  onSnapshot,
-  where,
   doc,
-  updateDoc,
+  onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
+  updateDoc,
+  where,
 } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import VideoEditDetails from './VideoEditDetails';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
-import { stringify } from 'uuid';
+import VideoEditDetails from './VideoEditDetails';
 
 function AdminActiveC() {
   const fbContext = useContext(FirebaseContext);

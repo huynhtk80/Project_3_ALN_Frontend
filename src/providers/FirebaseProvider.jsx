@@ -1,11 +1,11 @@
-import React from 'react';
+import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth';
-import { connectStorageEmulator, getStorage } from 'firebase/storage';
+import { getDatabase } from 'firebase/database';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
-import { getAnalytics, setUserProperties } from 'firebase/analytics';
-import { getDatabase } from 'firebase/database';
+import { connectStorageEmulator, getStorage } from 'firebase/storage';
+import React from 'react';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,

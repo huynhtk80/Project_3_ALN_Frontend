@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useDarkSide() {
   const [theme, setTheme] = useState(localStorage.theme);

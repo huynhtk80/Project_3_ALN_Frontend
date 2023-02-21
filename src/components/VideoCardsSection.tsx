@@ -1,12 +1,11 @@
-import { user } from 'firebase-functions/v1/auth';
 import {
   collection,
+  documentId,
+  onSnapshot,
   query,
   where,
-  onSnapshot,
-  documentId,
 } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { VideoParams } from '../utils/fireStoreAPI';

@@ -1,9 +1,9 @@
-import React, { ReactElement, useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from './FirebaseProvider';
 import { doc } from '@firebase/firestore';
-import { AuthContext } from './AuthProvider';
-import { UserProfileProps } from '../pages/EditProfile';
 import { onSnapshot } from 'firebase/firestore';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserProfileProps } from '../pages/EditProfile';
+import { AuthContext } from './AuthProvider';
+import { FirebaseContext } from './FirebaseProvider';
 
 interface UserDBContextType {
   userProfile: UserProfileProps;

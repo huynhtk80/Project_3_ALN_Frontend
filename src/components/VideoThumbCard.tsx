@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import imgPlaceHolder from '../assets/card-top-temp.jpg';
-import VideoPlayer from './videoPlayer';
-import ReactPlayer from 'react-player';
-import VideoDetails from './VideoDetails';
-import playALNLogo from '../assets/ALN_LOGO-3-48_sm.png';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import ReactPlayer from 'react-player';
+import playALNLogo from '../assets/ALN_LOGO-3-48_sm.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
 import { addLikedMovies, removeLikedMovies } from '../utils/fireStoreAPI';
+import VideoDetails from './VideoDetails';
 
 interface AppProps {
   url: string;

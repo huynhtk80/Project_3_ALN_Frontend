@@ -1,17 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import SearchDropdown from '../components/SearchBar';
+import { collection, onSnapshot, query, where } from '@firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  collection,
-  where,
-  onSnapshot,
-  Query,
-  query,
-} from '@firebase/firestore';
-import { VideoParams } from '../utils/fireStoreAPI';
+import VideoThumbCard from '../components/VideoThumbCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import VideoThumbCard from '../components/VideoThumbCard';
+import { VideoParams } from '../utils/fireStoreAPI';
 
 function SearchResults() {
   const fbContext = useContext(FirebaseContext);

@@ -1,20 +1,20 @@
-import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
 
+import { createPortal } from 'react-dom';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { UserDBContext } from '../providers/UserDBProvider';
 import {
   addLikedMovies,
   removeLikedMovies,
   VideoParams,
 } from '../utils/fireStoreAPI';
 import VideoComments from './VideoComments';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { UserDBContext } from '../providers/UserDBProvider';
-import { UserProfileProps } from '../pages/EditProfile';
-import { Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
 
 interface UploadVidDetailProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

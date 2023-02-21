@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import {
   collection,
-  getDocs,
-  orderBy,
-  query,
   doc,
-  onSnapshot,
   getCountFromServer,
+  onSnapshot,
+  query,
   where,
 } from 'firebase/firestore';
-import { UserProfileProps } from './EditProfile';
-import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
-import { CgOrganisation } from 'react-icons/cg';
-import Documentaries from './Documentaries';
+import { useContext, useEffect, useState } from 'react';
+import { TfiEmail, TfiLocationPin, TfiVideoClapper } from 'react-icons/tfi';
 import { Link, useParams } from 'react-router-dom';
-import imgPlaceHolder from '../assets/coverTemp.jpg';
 import tempAvatar from '../assets/avatar-temp.png';
+import imgPlaceHolder from '../assets/coverTemp.jpg';
 import VideoCardsSection from '../components/VideoCardsSection';
+import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
+import { UserProfileProps } from './EditProfile';
 
 export default function profileData() {
   const { profileId } = useParams();

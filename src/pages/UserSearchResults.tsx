@@ -1,18 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import SearchDropdown from '../components/SearchBar';
-import {
-  collection,
-  where,
-  onSnapshot,
-  Query,
-  query,
-} from '@firebase/firestore';
+import { collection, onSnapshot, query } from '@firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Link, useSearchParams } from 'react-router-dom';
+import UserCard from '../components/UserCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
-import { useNavigate } from 'react-router';
-import UserCard from '../components/UserCard';
 
 function UserSearchResults() {
   const fbContext = useContext(FirebaseContext);

@@ -1,12 +1,12 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import VideoCarousel from '../components/VideoCarousel';
+import VideoThumbCard from '../components/VideoThumbCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { VideoParams } from '../utils/fireStoreAPI';
-import VideoThumbCard from '../components/VideoThumbCard';
-import VideoCarousel from '../components/VideoCarousel';
 import { UserDBContext } from '../providers/UserDBProvider';
+import { VideoParams } from '../utils/fireStoreAPI';
 
 function Category() {
   const { category, country } = useParams();

@@ -1,6 +1,5 @@
-import React from 'react';
-import { HiOutlineLightBulb } from 'react-icons/hi';
 import { FaGlobeAfrica, FaRegMoneyBillAlt } from 'react-icons/fa';
+import { HiOutlineLightBulb } from 'react-icons/hi';
 
 function LandingInfoSimple() {
   return (

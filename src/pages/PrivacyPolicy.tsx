@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PrivacyPolicy() {
   return (
     <div className='grid justify-items-center pt-20 container mx-auto px-4 mb-5'>

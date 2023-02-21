@@ -1,11 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import {
-  addMovieTag,
-  deleteMovieTag,
-  VideoParams,
-} from '../utils/fireStoreAPI';
 
 interface VideoTagsInputProps {
   tags: string[];

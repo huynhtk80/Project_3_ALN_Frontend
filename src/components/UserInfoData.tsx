@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { useContext, useState } from 'react';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 export const UserInfoData = () => {
   const fbContext = useContext(FirebaseContext);

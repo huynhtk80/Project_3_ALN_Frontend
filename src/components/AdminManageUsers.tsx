@@ -1,25 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import {
   collection,
-  query,
-  getDocs,
-  orderBy,
-  onSnapshot,
-  where,
   doc,
+  onSnapshot,
+  query,
   updateDoc,
 } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import VideoEditDetails from './VideoEditDetails';
-import { VideoParams } from '../utils/fireStoreAPI';
-import ConfirmModalInputMsg from './ConfirmModalInputMsg';
-import { UserProfileProps } from '../pages/EditProfile';
 import { httpsCallable } from 'firebase/functions';
-import { stringify } from 'uuid';
-import UserCard from './UserCard';
+import { UserProfileProps } from '../pages/EditProfile';
 
 function AdminManageUsers() {
   const fbContext = useContext(FirebaseContext);

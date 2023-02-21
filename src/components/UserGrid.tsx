@@ -9,19 +9,12 @@ import {
   where,
 } from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
 import UserCard from './UserCard';
-import 'react-multi-carousel/lib/styles.css';
-import { Query } from 'firebase/database';
-import {
-  ArrowLeftCircleIcon,
-  ArrowRightCircleIcon,
-} from '@heroicons/react/24/outline';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.

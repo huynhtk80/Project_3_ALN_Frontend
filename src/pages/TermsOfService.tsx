@@ -1,5 +1,3 @@
-import React from 'react';
-
 function TermsOfService() {
   return (
     <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 text-xl'>

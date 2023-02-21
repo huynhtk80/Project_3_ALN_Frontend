@@ -1,29 +1,16 @@
 import {
-  collection,
-  query,
-  orderBy,
-  limit,
-  getDocs,
-  where,
-  onSnapshot,
-} from 'firebase/firestore';
-import { useContext, useState, useEffect } from 'react';
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from '@heroicons/react/24/outline';
+import { useContext, useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import UserCard from './UserCard';
-import 'react-multi-carousel/lib/styles.css';
+import { UserDBContext } from '../providers/UserDBProvider';
 import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from './VideoThumbCard';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { ArrowProps } from 'react-multi-carousel/lib/types';
-import { UserDBContext } from '../providers/UserDBProvider';
-import {
-  ArrowLeftCircleIcon,
-  ArrowRightCircleIcon,
-} from '@heroicons/react/24/outline';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.

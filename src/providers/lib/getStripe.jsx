@@ -1,5 +1,4 @@
 import { loadStripe } from '@stripe/stripe-js';
-import React from 'react';
 
 let stripePromise;
 const getStripe = () => {

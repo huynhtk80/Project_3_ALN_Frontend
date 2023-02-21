@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import Typewriter from 'typewriter-effect';
 import bgImage from '../assets/pano.jpg';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';

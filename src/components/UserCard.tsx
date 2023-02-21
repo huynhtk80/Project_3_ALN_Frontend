@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
-import imgPlaceHolder from '../assets/coverTemp.jpg';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
+import imgPlaceHolder from '../assets/coverTemp.jpg';
 import { UserProfileProps } from '../pages/EditProfile';
 
-import { TfiVideoClapper } from 'react-icons/tfi';
+import { Link } from 'react-router-dom';
 import tempAvatar from '../assets/avatar-temp.png';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserDBContext } from '../providers/UserDBProvider';
 import { addFollowingUser, removeFollowingUser } from '../utils/fireStoreAPI';
-import { Link } from 'react-router-dom';
 
 interface AppProps {
   userCardInfo: UserProfileProps;

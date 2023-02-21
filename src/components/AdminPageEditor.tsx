@@ -1,14 +1,10 @@
 import { useContext, useRef, useState } from 'react';
-import Landing from '../pages/Landing';
+import Frame from 'react-frame-component';
+import styles from '../iframe.css?inline';
+import DemoLanding from '../pages/DemoLanding';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { uploadAdminStorage } from '../utils/fireStorageAPI';
 import { addHeaderMovie } from '../utils/fireStoreAPI';
-import Frame from 'react-frame-component';
-import styles from '../iframe.css?inline';
-import App from '../App';
-import { RestOfApp } from './RestOfApp';
-// import styles from '../index.css?inline';
-import DemoLanding from '../pages/DemoLanding';
 
 function AdminPageEditor() {
   const fbContext = useContext(FirebaseContext);

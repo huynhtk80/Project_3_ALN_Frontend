@@ -1,8 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroImage from '../assets/HeroImageTemp.jpg';
-import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
-import Switcher from './ThemeSwitcher';
 import headerVideo from '../assets/LandingHeader.mp4';
 
 function HeroSection() {

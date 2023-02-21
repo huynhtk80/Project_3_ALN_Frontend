@@ -1,23 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
-import { FirebaseContext } from '../providers/FirebaseProvider';
 import {
   collection,
-  query,
-  getDocs,
-  orderBy,
-  onSnapshot,
-  where,
   doc,
-  updateDoc,
+  onSnapshot,
+  query,
   serverTimestamp,
+  updateDoc,
+  where,
 } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from '../providers/FirebaseProvider';
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import VideoEditDetails from './VideoEditDetails';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
-
+import VideoEditDetails from './VideoEditDetails';
 function AdminApproveC() {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);

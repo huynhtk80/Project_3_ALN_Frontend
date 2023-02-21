@@ -15,7 +15,6 @@ import {
   addMovieComments,
   deleteMovieComments,
   deleteReplyMovieComments,
-  replyMovieComments,
 } from '../utils/fireStoreAPI';
 import VideoCommentReply from './VideoCommentReply';
 

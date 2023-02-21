@@ -1,10 +1,6 @@
-import { user } from 'firebase-functions/v1/auth';
-import { doc, updateDoc } from 'firebase/firestore';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { deleteFileURL, uploadFileStorage } from '../utils/fireStorageAPI';
-import { photoCrop } from '../utils/photoCrop';
 
 interface ImageUploaderProps {
   image: string;

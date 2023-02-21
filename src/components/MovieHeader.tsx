@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { VscMute, VscUnmute } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
-import { VscUnmute, VscMute } from 'react-icons/vsc';
-import headerVideo from '../assets/LandingHeader.mp4';
 import drumVideo from '../assets/drumHeader.mp4';
-import { user } from 'firebase-functions/v1/auth';
-import { collection, query, where, onSnapshot, doc } from 'firebase/firestore';
-import { VideoParams } from '../utils/fireStoreAPI';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 
@@ -85,7 +82,7 @@ function MovieHeader() {
         </video>
       </div>
       <div className='hero-overlay bg-slate-800 animate-fadein opacity-60  z-[2]'></div>
-      <div className='hero-content text-center text-white z-[3] text-opacity-80 hover:text-'>
+      <div className='hero-content text-center text-white z-[3] text-opacity-80'>
         <div className='max-w-2xl'>
           <h1 className='mb-5 text-5xl md:text-6xl font-bold '>
             AFRICA LIVE NETWORK

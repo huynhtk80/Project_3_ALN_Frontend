@@ -1,15 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
-import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
 import ImageSection from '../components/ImageSection';
 import ImageTyperSection from '../components/ImageTyperSection';
 import InterObserver from '../components/InterObserver';
-import LandingFooter from '../components/LandingFooter';
 import MovieHeader from '../components/MovieHeader';
-import Navbar from '../components/Navbar';
 import PricingTiers from '../components/PricingTiers';
 
 function DemoLanding() {

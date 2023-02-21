@@ -1,14 +1,12 @@
-import './videoPlayer.css';
 import ReactPlayer from 'react-player';
-import React from 'react';
-import { SourceProps } from 'react-player/base';
+import './videoPlayer.css';
 
 interface AppProps {
-  url: string
-  height?: string
+  url: string;
+  height?: string;
 }
 
-function VideoPlayer({url, height="360px"}:AppProps) {
+function VideoPlayer({ url, height = '360px' }: AppProps) {
   return (
     <>
       <div className='videoPlayer'>
@@ -19,4 +17,3 @@ function VideoPlayer({url, height="360px"}:AppProps) {
 }
 
 export default VideoPlayer;
-

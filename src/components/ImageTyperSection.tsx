@@ -1,15 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import playLogo from '../assets/ALN_LOGO-3-48_sm.png';
-import { VscUnmute, VscMute } from 'react-icons/vsc';
-import headerVideo from '../assets/LandingHeader.mp4';
+import { useContext } from 'react';
+import Typewriter from 'typewriter-effect';
 import bgImage from '../assets/typeImage.jpg';
-import { user } from 'firebase-functions/v1/auth';
-import { collection, query, where, onSnapshot, doc } from 'firebase/firestore';
-import { VideoParams } from '../utils/fireStoreAPI';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import Typewriter from 'typewriter-effect';
 
 function ImageTyperSection() {
   const fbContext = useContext(FirebaseContext);

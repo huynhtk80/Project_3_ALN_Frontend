@@ -1,25 +1,24 @@
 import {
   deleteDoc,
   doc,
-  getDoc,
   onSnapshot,
   serverTimestamp,
   updateDoc,
 } from 'firebase/firestore';
+import Multiselect from 'multiselect-react-dropdown';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { countryList } from '../utils/countyOptions';
 import { deleteFileURL, uploadFileStorage } from '../utils/fireStorageAPI';
 import { updateMovie, VideoParams } from '../utils/fireStoreAPI';
+import { photoCrop } from '../utils/photoCrop';
 import { getThumbnailForVideo } from '../utils/videoTools';
 import ApprovalStatus from './ApprovalStatus';
-import DeleteModal from './DeleteModal';
-import VideoDetails from './VideoDetails';
-import Multiselect from 'multiselect-react-dropdown';
-import { photoCrop } from '../utils/photoCrop';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
+import DeleteModal from './DeleteModal';
 import VideoCreditInput from './VideoCreditInput';
+import VideoDetails from './VideoDetails';
 import VideoTagsInput from './VideoTagsInput';
 import VideoUploader from './VideoUploader';
 

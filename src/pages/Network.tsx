@@ -1,22 +1,20 @@
 import {
   collection,
-  query,
-  onSnapshot,
-  orderBy,
-  limit,
   getDocs,
+  limit,
+  orderBy,
+  query,
   startAfter,
   where,
 } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
-import UserCard from '../components/UserCard';
 import UserGrid from '../components/UserGrid';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { UserProfileProps } from './EditProfile';
-import { useNavigate } from 'react-router';
 import { UserDBContext } from '../providers/UserDBProvider';
+import { UserProfileProps } from './EditProfile';
 
 function Network() {
   const fbContext = useContext(FirebaseContext);

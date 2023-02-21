@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 import AfricanMapModal from './AfricanMapModal';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 function AfricanMap() {
   const [showModal, setShowModal] = useState(false);

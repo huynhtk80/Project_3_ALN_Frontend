@@ -1,5 +1,4 @@
 import getStripe from '../providers/lib/getStripe';
-import React from 'react';
 
 export default function () {
   async function handleCheckout() {

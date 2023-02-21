@@ -1,5 +1,4 @@
-import { httpsCallable } from '@firebase/functions';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import AdminActiveC from '../components/AdminActiveC';
 import AdminApproveC from '../components/AdminApproveC';
@@ -7,10 +6,8 @@ import AdminDashBoard from '../components/AdminDashBoard';
 import AdminManageCreators from '../components/AdminManageCreators';
 import AdminManageUsers from '../components/AdminManageUsers';
 import AdminPageEditor from '../components/AdminPageEditor';
-import UserCard from '../components/UserCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
-import { UserDBContext } from '../providers/UserDBProvider';
 
 function AdminOnly() {
   const fbcontext = useContext(FirebaseContext);
