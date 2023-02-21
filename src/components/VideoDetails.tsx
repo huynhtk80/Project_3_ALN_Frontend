@@ -270,7 +270,10 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
                       </svg>
                     </span>
                   )}{' '}
-                  <Link to={'/home/profile'} className='ml-2 btn btn-primary'>
+                  <Link
+                    to={`/home/profile/${creatorProfile?.DOC_ID}`}
+                    className='ml-2 btn btn-primary'
+                  >
                     {creatorProfile?.firstName + ' ' + creatorProfile?.lastName}
                   </Link>
                 </div>

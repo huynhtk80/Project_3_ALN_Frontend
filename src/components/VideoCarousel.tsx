@@ -20,6 +20,10 @@ import VideoThumbCard from './VideoThumbCard';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { ArrowProps } from 'react-multi-carousel/lib/types';
 import { UserDBContext } from '../providers/UserDBProvider';
+import {
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from '@heroicons/react/24/outline';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -148,16 +152,12 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
           // showDots={true}
           partialVisbile={false}
           partialVisible={false}
-          itemClass=' max-w-[350px] min-w-[350px]'
+          itemClass=' max-w-[335px] min-w-[335px]'
           customLeftArrow={
-            <div className='absolute top-1/2 left-4 max-w-4 cursor-pointer text-primary-400 bg-slate-400 bg opacity-40 rounded-full'>
-              <FaChevronLeft size={'60px'} />
-            </div>
+            <ArrowLeftCircleIcon className='w-10 absolute left-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
           }
           customRightArrow={
-            <div className='absolute top-1/2 right-4 max-w-4 cursor-pointer text-primary-400 bg-slate-400 bg opacity-40 rounded-full'>
-              <FaChevronRight size={'60px'} />
-            </div>
+            <ArrowRightCircleIcon className='w-10 absolute right-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
           }
         >
           {videos &&

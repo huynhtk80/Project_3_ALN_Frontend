@@ -23,13 +23,13 @@ import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
 import AlnColors from '../pages/AlnColors';
 import UserSearchResults from '../pages/UserSearchResults';
-import Marketing from './Marketing';
-import Advertising from './Advertising';
-import AboutUs from './AboutUs';
-import PrivacyPolicy from './PrivacyPolicy';
-import TermsOfService from './TermsOfService';
-import Jobs from './Jobs';
-import Contact from './Contact';
+import Marketing from '../pages/Marketing';
+import Advertising from '../pages/Advertising';
+import AboutUs from '../pages/AboutUs';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
+import TermsOfService from '../pages/TermsOfService';
+import Jobs from '../pages/Jobs';
+import Contact from '../pages/Contact';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);

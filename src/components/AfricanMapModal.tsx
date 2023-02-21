@@ -34,7 +34,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
       <div className='modal-content bg-primary text-lg p-4 rounded-lg bg-opacity-80 '>
         <div className='order-2 border-solid rounded-lg border-primary bg-primary-focus bg-opacity-80 shadow-lg p-5 w-96'>
           <button
-            className='btn btn-md btn-primary text-info-content  transition-all duration-300 mb-5'
+            className='btn btn-md btn-primary text-base-content  transition-all duration-300 mb-5'
             onClick={() => setShowModal(false)}
             style={{ height: 'auto' }}
           >
@@ -48,7 +48,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </button>
           <div
             id='flag'
-            className='text-info-content float-right scale-150 mx-5'
+            className='text-base-content float-right scale-150 mx-5'
           >
             <img src={Flag} className='text-sm'></img>
           </div>
