@@ -14,7 +14,7 @@ function AfricanMap() {
     if (cName) {
       const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
-        country.classList.add('fill-secondary');
+        country.classList.add('fill-success-content');
         country.classList.remove('fill-success-content');
       });
       const countrySelected = document.querySelectorAll<HTMLElement>(
