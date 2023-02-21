@@ -7,7 +7,7 @@ import {
   Query,
   query,
 } from '@firebase/firestore';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
@@ -128,8 +128,11 @@ function UserSearchResults() {
         </div>
         <h2 className='text-xl my-4'>
           <span className='font-bold'>Search for:</span>{' '}
-          {searchQuery && searchQuery}
-        </h2>
+          {searchQuery && searchQuery}{' '}
+          <Link className='link text-sm' to='/home/network'>
+            Clear search
+          </Link>
+        </h2>{' '}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
           {users?.map((user) => (
             <UserCard key={user.DOC_ID} userCardInfo={user} />
