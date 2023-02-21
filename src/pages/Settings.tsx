@@ -55,26 +55,27 @@ function Settings() {
 
   return (
     <div className='pt-20 m-10'>
-      <h1>Settings</h1>
-
-      <div className='my-5'>
-        <h2>Privacy Settings</h2>
-        <div className='form-control w-52'>
+      <h1 className='text-4xl text-center'>Settings</h1>
+      <div className=' divider'></div>
+      <div className='my-5 flex flex-col justify-center items-center'>
+        <h2 className='font-bold mb-2'>Privacy Settings</h2>
+        <div className='form-control w-fit'>
           <label className='cursor-pointer label'>
-            <span className='label-text'>Profile Visible to Others</span>
+            <span className='label-text'>Profile Visibility:</span>
             <input
               type='checkbox'
-              className='toggle toggle-secondary'
+              className='toggle toggle-secondary mx-3'
               onChange={onClickPublic}
               checked={isPublic}
             />
+            {isPublic ? <span>Visible</span> : <span>Hidden</span>}
           </label>
         </div>
+        <div className=' divider'></div>
+        <h2 className='font-bold mb-2'>Content Creator</h2>
+        {contentCreatorRender()}
       </div>
-
-      <h2>Content Creator</h2>
-      {contentCreatorRender()}
-
+      <div className=' divider'></div>
       <PricingTiers />
     </div>
   );

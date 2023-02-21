@@ -4,7 +4,7 @@ function PricingTiers() {
       <div className='flex flex-col items-center my-5'>
         <h1 className='text-4xl mb-5'>Choose Your Plan</h1>
         <p className='mb-6'>Choose a plan that works best for you.</p>
-        <div className='flex flex-col  md:flex-row justify-center items-center gap-4'>
+        <div className='flex flex-col  lg:flex-row justify-center items-center gap-4'>
           {[
             {
               plan: 'Entertainment, first month free!',
@@ -42,7 +42,7 @@ function PricingTiers() {
           ].map((card, index) => (
             <div
               key={index + card.plan}
-              className='card w-96 min-h-[28rem] bg-primary-focus shadow-xl hover:scale-105 transition-all duration-300 ease-in-out'
+              className='card w-80 min-h-[28rem] bg-primary-focus shadow-xl hover:scale-105 transition-all duration-300 ease-in-out'
             >
               <div className='card-body items-center justify-between h-full '>
                 <h2 className='card-title'>{card.plan}</h2>
