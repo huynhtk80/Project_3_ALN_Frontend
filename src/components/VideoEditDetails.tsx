@@ -470,6 +470,13 @@ function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
                   onChangeHandle={onChangeUploadTrailer}
                   poster={videoDetails.trailerThumb}
                 />
+                {progress != 0 && progress != 100 && (
+                  <progress
+                    className='progress w-56 mx-auto'
+                    value={progress}
+                    max='100'
+                  ></progress>
+                )}
                 {/* {videoDetails.trailer === undefined ? (
                   <div className='card w-[80%] h-44 bg-base-100 shadow-xl image-full mt-1'>
                     <div className='border-2 m-2 rounded-xl flex justify-center items-center'>
