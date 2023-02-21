@@ -23,7 +23,7 @@ function MovieHeader() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cursorState, setCursorState] = useState(true);
-  const text = 'Click the play button below and start exploring !';
+  const text = 'Click the play button and Explore!';
   const cursorRef = useRef(null);
 
   useEffect(() => {
@@ -94,6 +94,15 @@ function MovieHeader() {
             A gateway to a global market with africans
             <br /> telling their authentic stories
           </p>
+
+          <div className='flex justify-center'>
+            <Link to='/home/Category'>
+              <img
+                className='scale-[300%] h-10 px-2 m-20 hover:-rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
+                src={playLogo}
+              />
+            </Link>
+          </div>
           <p className='text-lg'>
             {visibleText}
             <span
@@ -105,19 +114,11 @@ function MovieHeader() {
               |
             </span>
           </p>
-          <div className='flex justify-center'>
-            <Link to='/home/Category'>
-              <img
-                className='scale-[300%] h-10 px-2 m-20 hover:-rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
-                src={playLogo}
-              />
-            </Link>
-          </div>
           <br />
           <br />
           <a href='https://buy.stripe.com/4gw9Cb56D68ecTe000'>
-            <button className='btn btn-primary bg-primary btn-lg group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
-              Donate
+            <button className='btn btn-primary bg-primary btn-md group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
+              Donate to ALN
             </button>
           </a>
           <br />
