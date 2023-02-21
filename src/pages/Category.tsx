@@ -16,7 +16,8 @@ function Category() {
   const { userProfile } = useContext(UserDBContext);
   const db = fbContext.db;
   const [videos, setVideos] = useState<VideoParams[]>([]);
-
+  const [toShow, setToShow] = useState(15);
+  const [allFound, setAllFound] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
@@ -54,26 +55,46 @@ function Category() {
             vid.country?.includes(country)
           );
           setVideos(filterVids);
+          if (filterVids.length <= 15) setAllFound(true);
         } else {
           setVideos(videoData);
+          if (videoData.length <= 15) setAllFound(true);
         }
       }
     });
     return unsubscribe;
   }, [user, category, userProfile]);
 
+  const onClickShowMore = () => {
+    const numberToShow = toShow + 10;
+    setToShow(numberToShow);
+
+    if (numberToShow >= videos?.length) {
+      setAllFound(true);
+    }
+  };
   return (
     <div className='pt-20 w-full font-bold text-5xl'>
       <div className='flex justify-center  '>
-        <button className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'>
-          <Link to={'/home'}>African Roots</Link>
-        </button>
+        <Link to={'/home'}>
+          <button className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'>
+            African Roots
+          </button>
+        </Link>
       </div>
       <div className='flex flex-row justify-center gap-5'>
         {['All', 'Film', 'Short Film', 'Documentary', 'Series', 'Podcast'].map(
           (cat) => (
             <Link key={cat} to={`/home/Category/${cat}`}>
-              <button className='btn btn-primary'>{cat}</button>
+              <button
+                onClick={() => {
+                  setAllFound(false);
+                  setToShow(15);
+                }}
+                className='btn btn-primary'
+              >
+                {cat}
+              </button>
             </Link>
           )
         )}
@@ -98,22 +119,31 @@ function Category() {
       ))}
       <h1 className='text-xl mb-3 ml-3'>Browse</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-5 mb-5'>
-        {videos?.map((vid, index) => {
-          return (
-            <VideoThumbCard
-              url={vid.url}
-              title={vid.title}
-              description={vid.description}
-              setActiveIndex={setActiveIndex}
-              index={index}
-              activeIndex={activeIndex}
-              docId={vid.DOC_ID}
-              posterImg={vid.thumbnail}
-              key={vid.DOC_ID}
-            />
-          );
-        })}
+        {videos
+          .filter((item, index) => index < toShow)
+          ?.map((vid, index) => {
+            return (
+              <VideoThumbCard
+                url={vid.url}
+                title={vid.title}
+                description={vid.description}
+                setActiveIndex={setActiveIndex}
+                index={index}
+                activeIndex={activeIndex}
+                docId={vid.DOC_ID}
+                posterImg={vid.thumbnail}
+                key={vid.DOC_ID}
+              />
+            );
+          })}
       </div>
+      {!allFound && (
+        <div className='flex justify-center'>
+          <button onClick={onClickShowMore} className='btn btn-primary mx-auto'>
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
