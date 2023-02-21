@@ -13,6 +13,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 import { httpsCallable } from 'firebase/functions';
 import { UserProfileProps } from '../pages/EditProfile';
+import Loadingspiner from './Loadingspiner';
 
 interface AdminManageCreatorsProps {
   requestStatus: 'requested' | 'approved' | null;
@@ -32,6 +33,7 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
   const [isCheck, setIsCheck] = useState<string[]>([]);
   const [select, setSelect] = useState('');
   const [category, setCategory] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   //cloud functions
   interface RolesInterfaceRes {
@@ -79,6 +81,7 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
   }, [user]);
 
   const onClickHandleCreator = async (uid: string) => {
+    setIsLoading(true);
     const result = await addCreator({ uid: uid });
     const docRef = doc(db, 'userInfo', uid);
 
@@ -86,74 +89,27 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
     if (result.data?.message === 'success')
       await updateDoc(docRef, { requestCreator: 'approved' });
 
+    setIsLoading(false);
     console.log(result);
   };
 
   const onClickHandleDelCreator = async (uid: string) => {
+    setIsLoading(true);
     const result = await deleteCreator({ uid: uid });
     const docRef = doc(db, 'userInfo', uid);
     //@ts-ignore
     if (result.data?.message === 'success')
       await updateDoc(docRef, { requestCreator: null });
 
+    setIsLoading(false);
     console.log(result);
-  };
-
-  const mergeArrays = (
-    arr1: UserProfileProps[],
-    arr2: { DOC_ID: string; roles: { admin: boolean; creator?: boolean } }[]
-  ) => {
-    let res = [];
-    res = arr1.map((obj) => {
-      const index = arr2.findIndex((el) => el['DOC_ID'] == obj['DOC_ID']);
-
-      //@ts-ignore
-      const { roles } = index !== -1 ? arr2[index] : {};
-      return {
-        ...obj,
-        roles,
-      };
-    });
-    return res;
-  };
-
-  const handleSelectAll = (e: any) => {
-    setIsCheckAll(!isCheckAll);
-
-    if (users) setIsCheck(users.map((user) => user.DOC_ID));
-
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
-
-  const handleCheckClick = (e: any) => {
-    const { id, checked } = e.target;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
-
-  const onClickUpdateMulti = async () => {
-    isCheck.map(async (id) => {
-      const docRef = doc(db, 'userInfo', id);
-      if (select == 'Collections') {
-        await updateDoc(docRef, {
-          collection: category,
-        });
-      } else if (select === 'Submit for Approval') {
-        await updateDoc(docRef, {
-          approval: 'pending',
-        });
-      }
-    });
   };
 
   return (
     <>
       <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
-        Content Creator {requestStatus?.toUpperCase()}
+        Content Creator {requestStatus?.toUpperCase()}{' '}
+        {isLoading && <Loadingspiner />}
       </div>
 
       <div className='overflow-x-auto w-full'>
