@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import ALN_LOGO_3_43 from '../assets/ALN_LOGO-3-43.png';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
+import ImageSection from '../components/ImageSection';
+import ImageTyperSection from '../components/ImageTyperSection';
 import InterObserver from '../components/InterObserver';
 import LandingFooter from '../components/LandingFooter';
 import MovieHeader from '../components/MovieHeader';
 import Navbar from '../components/Navbar';
+import PricingTiers from '../components/PricingTiers';
 
 function DemoLanding() {
   useEffect(() => {
@@ -52,10 +55,11 @@ function DemoLanding() {
         message={message}
         imagePosition='left'
       />
-      <hr
+      {/* <hr
         id='LearnMore'
         className='w-4/5 h-0.5 border-0 rounded mx-auto bg-slate-500'
-      ></hr>
+      ></hr> */}
+      <ImageTyperSection />
       <InterObserver
         image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/proj2.jpg'
         sectionId='See Content'
@@ -63,6 +67,10 @@ function DemoLanding() {
         message={message2}
         imagePosition='right'
       />
+      <ImageSection />
+      <div className='flex justify-center items-center'>
+        <PricingTiers />
+      </div>
       <Footer />
     </div>
   );

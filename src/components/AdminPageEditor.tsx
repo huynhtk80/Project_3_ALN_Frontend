@@ -84,7 +84,10 @@ function AdminPageEditor() {
   return (
     <>
       {' '}
-      <div>AdminPageEditor</div>;<h1>Select Landing Video</h1>
+      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
+        AdminPageEditor
+      </div>
+      <h1 className='font-bold'>Select Landing Video</h1>
       <div className='flex flex-col md:flex-row h-full'>
         <div className='flex flex-col ml-r p-1'>
           <div className='grid h-auto card my-2 bg-base-300 rounded-box place-items-center'>
