@@ -107,9 +107,7 @@ function MovieHeader() {
             {visibleText}
             <span
               ref={cursorRef}
-              className={`${
-                cursorState ? 'opacity-100' : 'opacity-0'
-              } duration-250 ease-in-out transition-all`}
+              className={`${cursorState ? 'opacity-100' : 'opacity-0'} `}
             >
               |
             </span>
