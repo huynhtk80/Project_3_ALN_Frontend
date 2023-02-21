@@ -2,9 +2,11 @@ import React from 'react';
 
 function AboutUs() {
   return (
-    <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 text-xl'>
-      <h1>AboutUs</h1>
-      <p>
+    <div className='grid justify-items-center pt-20 container mx-auto px-4'>
+      <h1 className='text-3xl font-bold'>AboutUs</h1>
+      <br />
+      <br />
+      <p className='text-l tracking-wide leading-loose italic'>
         The new African voice to echo the globe & inspire growth, <br />
         Introducing 'Africa Live Network', a global company that creates,
         curates, & distributes valuable African content.

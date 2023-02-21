@@ -2,8 +2,8 @@ import React from 'react';
 
 function PrivacyPolicy() {
   return (
-    <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 text-xl'>
-      <h1>PrivacyPolicy</h1>
+    <div className='grid justify-items-center pt-20 container mx-auto px-4 mb-5'>
+      <h1 className='text-3xl font-bold'>Privacy Policy</h1>
       <br />
       <p className='grid justify-items-center'>
         1. WHAT INFORMATION DO WE COLLECT?
@@ -60,7 +60,7 @@ function PrivacyPolicy() {
         use our application(s), we also may collect the following information if
         you choose to provide us with access or permission:
         <br />
-         Push Notifications. We may request to send you push notifications
+        * Push Notifications. We may request to send you push notifications
         regarding your account or certain features of the application(s). If you
         wish to opt out from receiving these types of communications, you may
         turn them off in your device’s settings.
@@ -111,56 +111,56 @@ function PrivacyPolicy() {
         2. HOW DO WE PROCESS YOUR INFORMATION?
         <br />
         <br />
-         In Short: We process your information to provide, improve, and
+        * In Short: We process your information to provide, improve, and
         administer our Services, communicate with you, for security and fraud
         prevention, and to comply with law. We may also process your information
         for other purposes with your consent.
         <br />
-         We process your personal information for a variety of reasons,
+        * We process your personal information for a variety of reasons,
         depending on how you interact with our Services, including:
         <br />
-         To facilitate account creation and authentication and otherwise manage
+        * To facilitate account creation and authentication and otherwise manage
         user accounts. We may process your information so you can create and
         login to your account, as well as keep your account in working order.
         <br />
         <br />
-         To deliver and facilitate delivery of services to the user. We may
+        * To deliver and facilitate delivery of services to the user. We may
         process your information to provide you with the requested service.
         <br />
-         To respond to user inquiries/offer support to users. We may process
+        * To respond to user inquiries/offer support to users. We may process
         your information to respond to your inquiries and solve any potential
         issues you might have with the requested service.
         <br />
-         To send administrative information to you. We may process your
+        * To send administrative information to you. We may process your
         information to send you details about our products and services, changes
         to our terms and policies, and other similar information.
         <br />
-         To fulfill and manage your orders. We may process your information to
+        * To fulfill and manage your orders. We may process your information to
         fulfill and manage your orders, payments, returns, and exchanges made
         through the Services.
         <br />
-         To enable user-to-user communications. We may process your information
+        * To enable user-to-user communications. We may process your information
         if you choose to use any of our offerings that allow for communication
         with another user.
         <br />
-         To request feedback. We may process your information when necessary to
+        * To request feedback. We may process your information when necessary to
         request feedback and to contact you about your use of our Services.
         <br />
-         To send you marketing and promotional communications. We may process
+        * To send you marketing and promotional communications. We may process
         the personal information you send to us for our marketing purposes, if
         this is in accordance with your marketing preferences. You can opt out
         of our marketing emails at any time. For more information, see
         &quot;WHAT ARE YOUR PRIVACY RIGHTS?&quot; below).
         <br />
-         To protect our Services. We may process your information as part of
+        * To protect our Services. We may process your information as part of
         our efforts to keep our Services safe and secure, including fraud
         monitoring and prevention.
         <br />
-         To identify usage trends. We may process information about how you use
+        * To identify usage trends. We may process information about how you use
         our Services to better understand how they are being used so we can
         improve them.
         <br />
-         To save or protect an individual&#39;s vital interest. We may process
+        * To save or protect an individual&#39;s vital interest. We may process
         your information when necessary to save or protect an individual’s vital
         interest, such as to prevent harm.
         <br />
@@ -188,42 +188,42 @@ function PrivacyPolicy() {
         Termly
         <br />
         <br />
-         Consent. We may process your information if you have given us
+        * Consent. We may process your information if you have given us
         permission(i.e., consent) to use your personal information for a
         specific purpose. You can withdraw your consent at any time.
         <br />
         <br /> Click here to learn more**AddButton**.
         <br />
         <br />
-         Performance of a Contract. We may process your personal information
+        * Performance of a Contract. We may process your personal information
         when we believe it is necessary to fulfill our contractual obligations
         to you, including providing our Services or at your request prior to
         entering into a contract with you.
         <br />
-         Legitimate Interests. We may process your information when we believe
+        * Legitimate Interests. We may process your information when we believe
         it is reasonably necessary to achieve our legitimate business interests
         and those interests do not outweigh your interests and fundamental
         rights and freedoms. For example, we may process your personal
         information for some of the purposes described in order to:
         <br />
-         Send users information about special offers and discounts on our
+        * Send users information about special offers and discounts on our
         products and services
         <br />
-         Analyze how our Services are used so we can improve them to engage and
+        * Analyze how our Services are used so we can improve them to engage and
         retain users
         <br />
-         Diagnose problems and/or prevent fraudulent activities
+        * Diagnose problems and/or prevent fraudulent activities
         <br />
-         Understand how our users use our products and services so we can
+        * Understand how our users use our products and services so we can
         improve user experience
         <br />
-         Legal Obligations. We may process your information where we believe it
+        * Legal Obligations. We may process your information where we believe it
         is necessary for compliance with our legal obligations, such as to
         cooperate with a law enforcement body or regulatory agency, exercise or
         defend our legal rights, or disclose your information as evidence in
         litigation in which we are involved.
         <br />
-         Vital Interests. We may process your information where we believe it
+        * Vital Interests. We may process your information where we believe it
         is necessary to protect your vital interests or the vital interests of a
         third party, such as situations involving potential threats to the
         safety of any person.
@@ -241,31 +241,31 @@ function PrivacyPolicy() {
         example:
         <br />
         <br />
-         If collection is clearly in the interests of an individual and consent
+        * If collection is clearly in the interests of an individual and consent
         cannot be obtained in a timely way
         <br />
-         For investigations and fraud detection and prevention
+        * For investigations and fraud detection and prevention
         <br />
-         For business transactions provided certain conditions are met
+        * For business transactions provided certain conditions are met
         <br />
-         If it is contained in a witness statement and the collection is
+        * If it is contained in a witness statement and the collection is
         necessary to assess, process, or settle an insurance claim
         <br />
-         For identifying injured, ill, or deceased persons and communicating
+        * For identifying injured, ill, or deceased persons and communicating
         with next of kin
         <br />
-         If we have reasonable grounds to believe an individual has been, is,
+        * If we have reasonable grounds to believe an individual has been, is,
         or may be victim of financial abuse
         <br />
-         If it is reasonable to expect collection and use with consent would
+        * If it is reasonable to expect collection and use with consent would
         compromise the availability or the accuracy of the information and the
         collection is reasonable for purposes related to investigating a breach
         of an agreement or a contravention of the laws of Canada or a province
         <br />
-         If disclosure is required to comply with a subpoena, warrant, court
+        * If disclosure is required to comply with a subpoena, warrant, court
         order, or rules of the court relating to the production of records
         <br />
-         If it was produced by an individual in the course of their employment,
+        * If it was produced by an individual in the course of their employment,
         business, or profession and the collection is consistent with the
         purposes for which the information was produced.
         <br />
@@ -273,10 +273,10 @@ function PrivacyPolicy() {
         Termly
         <br />
         <br />
-         If the collection is solely for journalistic, artistic, or literary
+        * If the collection is solely for journalistic, artistic, or literary
         purposes
         <br />
-         If the information is publicly available and is specified by the
+        * If the information is publicly available and is specified by the
         regulations
         <br />
         <br />
@@ -291,26 +291,26 @@ function PrivacyPolicy() {
         We may need to share your personal information in the following
         situations:
         <br />
-         Business Transfers. We may share or transfer your information in
+        * Business Transfers. We may share or transfer your information in
         connection with, or during negotiations of, any merger, sale of company
         assets, financing, or acquisition of all or a portion of our business to
         another company.
         <br />
-         When we use Google Maps Platform APIs. We may share your information
+        * When we use Google Maps Platform APIs. We may share your information
         with certain Google Maps Platform APIs (e.g., Google Maps API, Places
         API).To find out more about Google’s Privacy Policy, please refer to
         this link.
         <br />
-         Affiliates. We may share your information with our affiliates, in
+        * Affiliates. We may share your information with our affiliates, in
         which case we will require those affiliates to honor this privacy
         notice. Affiliates include our parent company and any subsidiaries,
         joint venture partners, or other companies that we control or that are
         under common control with us.
         <br />
-         Business Partners. We may share your information with our business
+        * Business Partners. We may share your information with our business
         partners to offer you certain products, services, or promotions.
         <br />
-         Offer Wall. Our application(s) may display a third-party hosted
+        * Offer Wall. Our application(s) may display a third-party hosted
         &quot;offer wall. “Such an offer wall allows third-party advertisers to
         offer virtual currency, gifts, or other items to users in return for the
         acceptance and completion of an advertisement offer. Such an offer wall
@@ -692,24 +692,24 @@ function PrivacyPolicy() {
         We will use and retain the collected personal information as needed to
         provide the Services or for:
         <br />
-         Category A - As long as the user has an account with us
+        * Category A - As long as the user has an account with us
         <br />
-         Category B - As long as the user has an account with us
+        * Category B - As long as the user has an account with us
         <br />
-         Category C - As long as the user has an account with us
+        * Category C - As long as the user has an account with us
         <br />
-         Category D - As long as the user has an account with us
+        * Category D - As long as the user has an account with us
         <br />
-         Category G -1 year
+        * Category G -1 year
         <br />
         We may also collect other personal information outside of these
         categories through instances where you interact with us in person,
         online, or by phone or mail in the context of:
         <br />
-         Receiving help through our customer support channels;
+        * Receiving help through our customer support channels;
         <br />
-         Participation in customer surveys or contests;
-        <br /> and  Facilitation in the delivery of our Services and to respond
+        * Participation in customer surveys or contests;
+        <br /> and * Facilitation in the delivery of our Services and to respond
         to your inquiries.
         <br />
         How do we use and share your personal information?
@@ -761,29 +761,29 @@ function PrivacyPolicy() {
         <br />
         Right to be informed — Request to know
         <br />
-         Depending on the circumstances, you have a right to know:
+        * Depending on the circumstances, you have a right to know:
         <br />
-         whether we collect and use your personal information;
+        * whether we collect and use your personal information;
         <br />
-         the categories of personal information that we collect;
+        * the categories of personal information that we collect;
         <br />
-         the purposes for which the collected personal information is used;
+        * the purposes for which the collected personal information is used;
         <br />
         <br />
         <br />
-         whether we sell or share personal information to third parties;
+        * whether we sell or share personal information to third parties;
         <br />
-         the categories of personal information that we sold, shared, or
+        * the categories of personal information that we sold, shared, or
         disclosed for a business purpose;
         <br />
-         the categories of third parties to whom the personal information was
+        * the categories of third parties to whom the personal information was
         sold, shared, or disclosed for a business purpose;
         <br />
-         the business or commercial purpose for collecting, selling, or sharing
+        * the business or commercial purpose for collecting, selling, or sharing
         personal information; <br />
         and
         <br />
-         the specific pieces of personal information we collected about you.
+        * the specific pieces of personal information we collected about you.
         <br />
         In accordance with applicable law, we are not obligated to provide or
         delete consumer information that is de-identified in response to a
@@ -823,18 +823,18 @@ function PrivacyPolicy() {
         <br />
         Other privacy rights
         <br />
-         You may object to the processing of your personal information.
+        * You may object to the processing of your personal information.
         <br />
-         You may request correction of your personal data if it is incorrect or
+        * You may request correction of your personal data if it is incorrect or
         no longer relevant, or ask to restrict the processing of the
         information.
         <br />
-         You can designate an authorized agent to make a request under the CCPA
+        * You can designate an authorized agent to make a request under the CCPA
         on your behalf. We may deny a request from an authorized agent that does
         not submit proof that they have been validly authorized to act on your
         behalf in accordance with the CCPA.
         <br />
-         You may request to opt out from future selling or sharing of your
+        * You may request to opt out from future selling or sharing of your
         personal information to third parties. Upon receiving an opt-out
         request, we will act upon the request as soon as feasibly possible, but
         no later than fifteen (15) days from the date of the request submission.
@@ -876,33 +876,33 @@ function PrivacyPolicy() {
         depending on how you interact with Africa Live Network Inc. and our
         Services. To find out more, please visit the following links:
         <br />
-         Personal data we collect
+        * Personal data we collect
         <br />
-         How we use your personal data
+        * How we use your personal data
         <br />
-         When and with whom we share your personal data
+        * When and with whom we share your personal data
         <br />
         Your rights with respect to your personal data
         <br />
-         Right to be informed whether or not we are processing your personal
+        * Right to be informed whether or not we are processing your personal
         data
         <br />
-         Right to access your personal data
+        * Right to access your personal data
         <br />
-         Right to correct inaccuracies in your personal data
+        * Right to correct inaccuracies in your personal data
         <br />
-         Right to request deletion of your personal data
+        * Right to request deletion of your personal data
         <br />
-         Right to obtain a copy of the personal data you previously shared with
+        * Right to obtain a copy of the personal data you previously shared with
         us
         <br />
-         Right to opt out of the processing of your personal data if it is used
+        * Right to opt out of the processing of your personal data if it is used
         for targeted
         <br />
-         advertising, the sale of personal data, or profiling in furtherance of
+        * advertising, the sale of personal data, or profiling in furtherance of
         decisions
         <br />
-         that produce legal or similarly significant effects
+        * that produce legal or similarly significant effects
         (&quot;profiling&quot;)
         <br />
         <br />
@@ -998,11 +998,9 @@ function PrivacyPolicy() {
         <br />
         Based on the applicable laws of your country, you may have the right to
         request access to the personal information we collect from you, change
-        that information, or
-        https://app.termly.io/dashboard/website/a37d4b17-4f66-451d-8d0e-b8e0969b867b/privacy-
-        policy
+        that information or, delete it. To request to review, update, or delete
+        your personal information, please visit: Africa Live Network Inc.
         <br />
-        13/14
       </p>
     </div>
   );
