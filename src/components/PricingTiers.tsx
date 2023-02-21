@@ -1,4 +1,18 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
+import { FirebaseContext } from '../providers/FirebaseProvider';
+
 function PricingTiers() {
+  const fbContext = useContext(FirebaseContext);
+  const authContext = useContext(AuthContext);
+  const user = authContext.user;
+  const navigate = useNavigate();
+
+  const onClickHandle = () => {
+    navigate('/home/Category');
+  };
+
   return (
     <>
       <div className='flex flex-col items-center my-5'>
@@ -17,6 +31,7 @@ function PricingTiers() {
                 'Access to film competitions and quizzes',
               ],
               disabled: false,
+              currentPlan: true,
             },
             {
               plan: 'Networker, Coming soon!',
@@ -28,6 +43,7 @@ function PricingTiers() {
                 'Limited access to live streaming, webinars and product launches.',
               ],
               disabled: true,
+              currentPlan: false,
             },
             {
               plan: 'Entrepreneur, Coming soon!',
@@ -38,6 +54,7 @@ function PricingTiers() {
                 'Access to virtual business symposiums, conferences and fairs',
               ],
               disabled: true,
+              currentPlan: false,
             },
           ].map((card, index) => (
             <div
@@ -79,12 +96,22 @@ function PricingTiers() {
                 </ul>
 
                 <div className='card-actions'>
-                  <button
-                    className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
-                    disabled={card.disabled}
-                  >
-                    Choose this Plan
-                  </button>
+                  {user && card.currentPlan ? (
+                    <button
+                      className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
+                      disabled={true}
+                    >
+                      Your Current Plan
+                    </button>
+                  ) : (
+                    <button
+                      className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
+                      disabled={card.disabled}
+                      onClick={onClickHandle}
+                    >
+                      Choose this Plan
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
