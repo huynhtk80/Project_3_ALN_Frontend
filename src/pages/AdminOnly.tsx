@@ -47,6 +47,9 @@ function AdminOnly() {
   return (
     <>
       <div className='pt-20 flex flex-row justify-center items-center pb-4'>
+        <Link to='/home/admin'>
+          <button className='btn btn-primary mx-1'>Admin home</button>
+        </Link>
         <Link to='/home/admin/approvecontent'>
           <button className='btn btn-primary mx-1'>Approve Content</button>
         </Link>

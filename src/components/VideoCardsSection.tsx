@@ -1,5 +1,11 @@
 import { user } from 'firebase-functions/v1/auth';
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  documentId,
+} from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
@@ -7,10 +13,14 @@ import { VideoParams } from '../utils/fireStoreAPI';
 import VideoThumbCard from './VideoThumbCard';
 
 interface VideoCardsSectionProps {
-  searchUserId: string;
+  searchUserId?: string;
+  likeVideos?: string[];
 }
 
-function VideoCardsSection({ searchUserId }: VideoCardsSectionProps) {
+function VideoCardsSection({
+  searchUserId,
+  likeVideos,
+}: VideoCardsSectionProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
@@ -33,7 +43,13 @@ function VideoCardsSection({ searchUserId }: VideoCardsSectionProps) {
     if (!user) return;
     let collectionRef = collection(db, 'videos');
 
-    let queryRef = query(collectionRef, where('userId', '==', searchUserId));
+    let queryRef = query(collectionRef, where('userId', '==', 'unknown'));
+    if (searchUserId) {
+      queryRef = query(collectionRef, where('userId', '==', searchUserId));
+    } else if (likeVideos && likeVideos.length > 0) {
+      queryRef = query(collectionRef, where(documentId(), 'in', likeVideos));
+    }
+
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
       if (querySnap.empty) {
         console.log('No docs found');
@@ -50,7 +66,7 @@ function VideoCardsSection({ searchUserId }: VideoCardsSectionProps) {
       }
     });
     return unsubscribe;
-  }, [user, searchUserId]);
+  }, [user, searchUserId, likeVideos]);
   return (
     <div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4'>

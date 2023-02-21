@@ -8,6 +8,8 @@ import {
   query,
   doc,
   onSnapshot,
+  getCountFromServer,
+  where,
 } from 'firebase/firestore';
 import { UserProfileProps } from './EditProfile';
 import { TfiVideoClapper, TfiEmail, TfiLocationPin } from 'react-icons/tfi';
@@ -26,6 +28,8 @@ export default function profileData() {
   const store = fbContext.store;
   const [profileData, setProfileData] = useState<UserProfileProps>();
   const [isCurrentUser, setIsCurrentUser] = useState(false);
+  const [numberVideos, setNumberVideos] = useState(0);
+  const [numberComments, setNumberComments] = useState(0);
 
   useEffect(() => {
     let searchId = '';
@@ -55,6 +59,31 @@ export default function profileData() {
     });
 
     return unsubscribe;
+  }, [user, profileId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const videoCollectionRef = collection(db, 'videos');
+      const userVideoQuery = query(
+        videoCollectionRef,
+        where('userId', '==', profileId)
+      );
+      //beta feature getCountFromServer
+      const userVideoCountSnap = await getCountFromServer(userVideoQuery);
+      const videoCount = userVideoCountSnap.data().count;
+      setNumberVideos(videoCount);
+
+      const commentsCollectionRef = collection(db, 'comments');
+      const userCommentQuery = query(
+        commentsCollectionRef,
+        where('uid', '==', profileId)
+      );
+      //beta feature getCountFromServer
+      const userCommentCountSnap = await getCountFromServer(userCommentQuery);
+      const commentCount = userCommentCountSnap.data().count;
+      setNumberComments(commentCount);
+    };
+    fetchData();
   }, [user, profileId]);
 
   return (
@@ -115,15 +144,17 @@ export default function profileData() {
                       <div className='flex justify-center py-4 lg:pt-4 pt-8'>
                         <div className='mr-4 p-3 text-center'>
                           <span className='text-xl font-bold block uppercase tracking-wide text-primary-focus'>
-                            22
+                            {profileData?.following?.length
+                              ? profileData?.following?.length
+                              : 0}
                           </span>
                           <span className='text-sm text-primary-focus'>
-                            Friends
+                            Following
                           </span>
                         </div>
                         <div className='mr-4 p-3 text-center'>
                           <span className='text-xl font-bold block uppercase tracking-wide text-primary-focus'>
-                            10
+                            {numberVideos}
                           </span>
                           <span className='text-sm text-primary-focus'>
                             Videos
@@ -131,7 +162,7 @@ export default function profileData() {
                         </div>
                         <div className='lg:mr-4 p-3 text-center'>
                           <span className='text-xl font-bold block uppercase tracking-wide text-primary-focus'>
-                            89
+                            {numberComments}
                           </span>
                           <span className='text-sm text-primary-focus'>
                             Comments
@@ -183,14 +214,16 @@ export default function profileData() {
                         ', ' +
                         profileData?.city}
                     </div>
-                    <div className='mb-2 text-primary-focus mt-2'>
-                      {/* <i className='fas fa-briefcase mr-2 text-lg text-primary-focus' /> */}
-                      <TfiVideoClapper
-                        size={'20px'}
-                        className='inline py-auto mr-2'
-                      />
-                      Content Creator
-                    </div>
+                    {profileData?.requestCreator === 'approved' && (
+                      <div className='mb-2 text-primary-focus mt-2'>
+                        {/* <i className='fas fa-briefcase mr-2 text-lg text-primary-focus' /> */}
+                        <TfiVideoClapper
+                          size={'20px'}
+                          className='inline py-auto mr-2'
+                        />
+                        Content Creator
+                      </div>
+                    )}
                     <div className='mb-2 text-primary-focus'>
                       <TfiEmail size={'20px'} className='inline mr-2' />
                       {/* <i className='fas fa-university mr-2 text-lg text-primary-focus' /> */}
@@ -212,24 +245,32 @@ export default function profileData() {
                         </a> */}
                       </div>
                     </div>
-                    <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
-                      <div className='flex flex-wrap justify-center bg-'>
-                        <div className='w-full px-4 text-xl font-semibold text-primary-focus'>
-                          <h1>{profileData?.firstName}'s Videos</h1>
-                          {profileData && (
+                    {profileData?.requestCreator === 'approved' && (
+                      <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
+                        <div className='flex flex-wrap justify-center bg-'>
+                          <div className='w-full px-4 text-xl font-semibold text-primary-focus'>
+                            <h1>{profileData?.firstName}'s Videos</h1>
                             <VideoCardsSection
                               searchUserId={profileData?.DOC_ID}
                             />
-                          )}
-                          {/* <a
-                            href='#pablo'
-                            className='font-normal text-pink-500'
-                          >
-                            Show more
-                          </a> */}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
+                    {profileData?.likedVideos &&
+                      profileData?.likedVideos?.length > 0 && (
+                        <div className='mt-10 py-10 border-t border-blueGray-200 text-center'>
+                          <div className='flex flex-wrap justify-center bg-'>
+                            <div className='w-full px-4 text-xl font-semibold text-primary-focus'>
+                              <h1>Videos liked by {profileData?.firstName}</h1>
+
+                              <VideoCardsSection
+                                likeVideos={profileData?.likedVideos}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>
