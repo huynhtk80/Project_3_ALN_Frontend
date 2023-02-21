@@ -7,6 +7,7 @@ export const LoginForm = () => {
   const authContext = useContext(AuthContext);
   const loginFn = authContext.login;
   const logoutFn = authContext.logout;
+  const resetPassword = authContext.resetPassword;
   const user = authContext.user;
   const navigate = useNavigate();
   const [email, setEmail] = useState(null);
@@ -85,6 +86,23 @@ export const LoginForm = () => {
     }
   };
 
+  const onClickResetPassword = async (e) => {
+    e.preventDefault();
+    setAuthError(false);
+    if (!email) {
+      alert('input email to request password reset');
+      return;
+    }
+
+    const result = await resetPassword(email);
+    if (result === 'success') {
+      alert('password reset has been sent');
+    } else {
+      console.log('reset error', result);
+      setAuthError(true);
+    }
+  };
+
   if (user) {
     return <Navigate to='/home/Category' replace />;
   }
@@ -158,7 +176,7 @@ export const LoginForm = () => {
               </button>
               <br />
               {authError && (
-                <p className='text-red-800'>Credentials not matching</p>
+                <p className='text-red-800'>invalid email or password</p>
               )}
 
               <div className='flex items-center justify-between hover:font-bold'>
@@ -186,12 +204,12 @@ export const LoginForm = () => {
                 </div>
 
                 <div className='text-sm'>
-                  <a
-                    href='#'
+                  <button
+                    onClick={onClickResetPassword}
                     className='font-medium text-primary-content hover:font-bold'
                   >
                     Forgot your password?
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
