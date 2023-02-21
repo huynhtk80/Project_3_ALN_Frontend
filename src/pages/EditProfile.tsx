@@ -47,7 +47,8 @@ export default function EditProfile() {
   const { user } = useContext(AuthContext);
   const db = fbContext.db;
   const store = fbContext.store;
-
+  const [progressVid, setProgressVid] = useState(0);
+  const [progressCov, setProgressCov] = useState(0);
   const [interests, setInterests] = useState<string[]>([]);
   const [userPrivateData, setUserPrivateData] = useState<UserPrivateData>({
     streetAddress: '',
@@ -173,7 +174,8 @@ export default function EditProfile() {
       user.uid,
       imageFile,
       'user',
-      'profile'
+      'profile',
+      setProgressCov
     );
     setUserProfile({
       ...userProfile,
@@ -191,7 +193,8 @@ export default function EditProfile() {
       user.uid,
       file,
       'user',
-      'profile'
+      'profile',
+      setProgressVid
     );
     setUserProfile({ ...userProfile, introVideo: downloadUrl });
     const docRef = doc(db, 'userInfo', user.uid);
@@ -335,7 +338,13 @@ export default function EditProfile() {
                           onChangeHandle={onChangeCover}
                         />
                       </div>
-
+                      {progressCov != 0 && progressCov != 100 && (
+                        <progress
+                          className='progress w-56 mx-auto'
+                          value={progressCov}
+                          max='100'
+                        ></progress>
+                      )}
                       <div>
                         <label className='block text-sm font-medium text-base-content'>
                           Profile Video
@@ -345,6 +354,13 @@ export default function EditProfile() {
                           onChangeHandle={onChangeVideo}
                         />
                       </div>
+                      {progressVid != 0 && progressVid != 100 && (
+                        <progress
+                          className='progress w-56 mx-auto'
+                          value={progressVid}
+                          max='100'
+                        ></progress>
+                      )}
                     </div>
                   </div>
                 </form>

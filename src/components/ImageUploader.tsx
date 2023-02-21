@@ -46,13 +46,13 @@ function ImageUploader({
           </svg>
           <div className='flex text-sm text-base-content'>
             <label
-              htmlFor='vidFileUpload'
+              htmlFor='imageFileUpload'
               className='badge cursor-pointer text-center items-center justify-center w-full rounded-md hover:bg-primary-focus hover:text-primary-content'
             >
               <span className='mx-auto'>Upload a file</span>
               <input
-                id='vidFileUpload'
-                name='vidFileUpload'
+                id='imageFileUpload'
+                name='imageFileUpload'
                 type='file'
                 accept='image/*'
                 className='sr-only'
