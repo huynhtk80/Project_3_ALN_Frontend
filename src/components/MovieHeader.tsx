@@ -23,7 +23,7 @@ function MovieHeader() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cursorState, setCursorState] = useState(true);
-  const text = 'Click the play button and Eplore!';
+  const text = 'Click the play button and Explore!';
   const cursorRef = useRef(null);
 
   useEffect(() => {
