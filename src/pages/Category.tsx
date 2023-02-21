@@ -76,9 +76,11 @@ function Category() {
   return (
     <div className='pt-20 w-full font-bold text-5xl'>
       <div className='flex justify-center  '>
-        <button className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'>
-          <Link to={'/home'}>African Roots</Link>
-        </button>
+        <Link to={'/home'}>
+          <button className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'>
+            African Roots
+          </button>
+        </Link>
       </div>
       <div className='flex flex-row justify-center gap-5'>
         {['All', 'Film', 'Short Film', 'Documentary', 'Series', 'Podcast'].map(
