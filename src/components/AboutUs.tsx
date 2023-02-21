@@ -5,39 +5,53 @@ function AboutUs() {
     <div className='grid justify-items-center font-bold pt-20 container mx-auto px-4 text-xl'>
       <h1>AboutUs</h1>
       <p>
-        The new African voice, Africalivenetwork. Tv is a platform for
-        enlightenment and empowerment. We aim to be the preeminent provider of
-        African content throughout Africa and the world. The online platform is
-        founded on the foundation of authentic storytelling of African values,
-        history, innovations, and untold stories. Africa Live Network was
-        created knowing that a sincere need was found for the African stories to
-        be told by Africans themselves. Beyond telling stories, we want to
-        create impact by promoting products and profiling extraordinary
-        compelling elements of the African continent's Africalivenetwork. Tv
-        aims to also create an extensive networking platform for people in
-        various parts of the world with an affiliation, interest, and connection
-        with Africa to get a more updated reality of events, progress, and
-        programs that engage, inspire, and motivate development around the
-        continent. The Networking platform is carefully designed to host
-        specialized groups of people with common interests, organizations, and
-        individuals to access contacts and information on areas of interest.
+        The new African voice to echo the globe & inspire growth, <br />
+        Introducing 'Africa Live Network', a global company that creates,
+        curates, & distributes valuable African content.
+        <br />
+        Streaming is a platform for enlightenment & empowerment. The goal is to
+        be the preeminent provider of African content throughout Africa & the
+        world.
+        <br />
+        Connecting audiences directly to authentic African culture via films,
+        documentaries, music, & events. Also uniquely connecting audiences with
+        each other.
+        <br />
+        Africa's story has been erroneously told for many years. Attempts of
+        telling the story have been made by sources that lacked the real fiber &
+        background of the authentic story & what actually happened down on the
+        grounds of each individual country.
         <br />
         <br />
-        about company Africa live network who we are Africa Live Network™ (ALN)
-        is a global company that creates, curates, and distributes valuable
-        African content. Through its streaming media platform, ALN connects
-        audiences directly to films, documentaries, music, events, and uniquely
-        connects audiences with each other. The story about Africa has been
-        caved for many years. Where attempts of telling it have been made it has
-        been through sources that lacked the real fiber and background of the
-        story itself. On this platform, you will venture into the untold
-        stories, the core of what makes Africa thrive. We explore the pride of
-        the Ubuntu philosophy which is something that has kept Africans united
-        for many years. The stories told here will connect with any part of the
-        globe and link historical information with present eventualities whilst
-        paving way for future possibilities. The Stories are unique, exciting,
-        and invigorating to those who have never really heard the full story.
-        Keep watching Africa live aims to tell the African story, authentically.
+        Beyond telling stories, we want to create impact by promoting products &
+        profiling extraordinary compelling elements of the African continent's
+        culture, biodiversity, tourism, and innovation through our Baobab
+        Community.
+        <br />
+        The Baobab Community aims to also create an extensive networking
+        platform for people in various parts of the world with an affiliation,
+        interest, & connection with Africa to get a more updated reality of
+        events, progress, & programs that engage, inspire, & motivate
+        development around the continent. Keeping Africans connected with Africa
+        no matter how far across the globe they are.
+        <br />
+        The Networking platform is carefully designed to host specialized groups
+        of people with common interests, organizations, & individuals to access
+        contacts & information on areas of interest.
+        <br />
+        <br />
+        Africa Live Network is built upon the foundation of authentic
+        storytelling of African values, history, innovations, & untold stories.
+        With the sincere need for the African stories to be told by Africans
+        themselves, this very platform was created to give that space for our
+        Baobab Community to grow & thrive.
+        <br />
+        Exploring the pride of the Ubuntu philosophy which is something that has
+        kept Africans united for many years.
+        <br />
+        Venture into the untold stories, the core of what makes Africa thrive.
+        <br />
+        Keep watching, the African story, authentically.
       </p>
     </div>
   );
