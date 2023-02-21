@@ -97,12 +97,19 @@ function AdminPageEditor() {
           </div>
           {/* <div className='divider lg:divider-horizontal'></div> */}
           {videoBlob && (
-            <div className='grid h-content card p-3 bg-base-300 rounded-box place-items-center'>
-              <video width='500px' controls src={videoBlob} />
-              <button className='btn btn-primary' onClick={onSubmitHandle}>
-                Submit
-              </button>
-            </div>
+            <>
+              <div className='grid h-content card p-3 bg-base-300 rounded-box place-items-center'>
+                <video width='500px' controls src={videoBlob} />
+                <button className='btn btn-primary' onClick={onSubmitHandle}>
+                  Submit
+                </button>
+              </div>
+              <progress
+                className='progress w-56 mx-auto'
+                value={progress}
+                max='100'
+              ></progress>
+            </>
           )}
         </div>
         <Frame
