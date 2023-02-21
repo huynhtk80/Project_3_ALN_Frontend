@@ -12,6 +12,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 import { httpsCallable } from 'firebase/functions';
 import { UserProfileProps } from '../pages/EditProfile';
+import { Link } from 'react-router-dom';
 
 function AdminManageUsers() {
   const fbContext = useContext(FirebaseContext);
@@ -218,7 +219,12 @@ function AdminManageUsers() {
                       src={user.photo}
                     />
                   </td>
-                  <td>{`${user.firstName} ${user.lastName}`}</td>
+                  <td>
+                    <Link to={`/home/profile/${user.DOC_ID}`}>
+                      {' '}
+                      {`${user.firstName} ${user.lastName}`}
+                    </Link>
+                  </td>
                   <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
                     {user.emailAddress}
                   </td>
