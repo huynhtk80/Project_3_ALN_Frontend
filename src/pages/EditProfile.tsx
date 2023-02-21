@@ -34,6 +34,7 @@ export interface UserProfileProps {
   roles?: { admin: boolean; creator?: boolean };
   isPublic: boolean;
   requestCreator: 'requested' | 'approved' | null;
+  admin?: boolean;
 }
 
 export interface UserPrivateData {

@@ -73,107 +73,68 @@ function AdminManageUsers() {
             } as UserProfileProps)
         );
         setUsers(userData);
-        getUserRoles(userData);
+        // getUserRoles(userData);
       }
     });
     return unsubscribe;
   }, [user]);
 
-  const getUserRoles = async (users: UserProfileProps[]) => {
-    if (!users) return;
+  // const getUserRoles = async (users: UserProfileProps[]) => {
+  //   if (!users) return;
 
-    const searchUsers = users.map((user) => {
-      return { uid: user.DOC_ID };
-    });
+  //   const searchUsers = users.map((user) => {
+  //     return { uid: user.DOC_ID };
+  //   });
 
-    const result = await getRoles(searchUsers);
-    console.log('the roles', result);
-    const merged = mergeArrays(users, result.data);
+  //   const result = await getRoles(searchUsers);
+  //   console.log('the roles', result);
+  //   const merged = mergeArrays(users, result.data);
 
-    console.log('the merged', merged);
-    if (!merged) return;
-    setUsers(merged);
-  };
-
-  const onClickHandle = (DocId: string) => {
-    setCurrentDocID(DocId);
-    setShowModal(true);
-  };
+  //   console.log('the merged', merged);
+  //   if (!merged) return;
+  //   setUsers(merged);
+  // };
 
   const onClickHandleAdmin = async (uid: string) => {
     const result = await addAdmin({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
+    const docRef = doc(db, 'userInfo', uid);
+
+    //@ts-ignore
+    if (result.data?.message === 'success')
+      await updateDoc(docRef, { admin: true });
+
+    // if (users) getUserRoles(users);
+    // console.log(result);
   };
 
   const onClickHandleDelAdmin = async (uid: string) => {
     const result = await delAdmin({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
+
+    const docRef = doc(db, 'userInfo', uid);
+    //@ts-ignore
+    if (result.data?.message === 'success')
+      await updateDoc(docRef, { admin: false });
+    // if (users) getUserRoles(users);
+    // console.log(result);
   };
 
-  const onClickHandleCreator = async (uid: string) => {
-    const result = await addCreator({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
-  };
+  // const mergeArrays = (
+  //   arr1: UserProfileProps[],
+  //   arr2: { DOC_ID: string; roles: { admin: boolean; creator?: boolean } }[]
+  // ) => {
+  //   let res = [];
+  //   res = arr1.map((obj) => {
+  //     const index = arr2.findIndex((el) => el['DOC_ID'] == obj['DOC_ID']);
 
-  const onClickHandleDelCreator = async (uid: string) => {
-    const result = await deleteCreator({ uid: uid });
-    if (users) getUserRoles(users);
-    console.log(result);
-  };
-
-  const mergeArrays = (
-    arr1: UserProfileProps[],
-    arr2: { DOC_ID: string; roles: { admin: boolean; creator?: boolean } }[]
-  ) => {
-    let res = [];
-    res = arr1.map((obj) => {
-      const index = arr2.findIndex((el) => el['DOC_ID'] == obj['DOC_ID']);
-
-      //@ts-ignore
-      const { roles } = index !== -1 ? arr2[index] : {};
-      return {
-        ...obj,
-        roles,
-      };
-    });
-    return res;
-  };
-
-  const handleSelectAll = (e: any) => {
-    setIsCheckAll(!isCheckAll);
-
-    if (users) setIsCheck(users.map((user) => user.DOC_ID));
-
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
-
-  const handleCheckClick = (e: any) => {
-    const { id, checked } = e.target;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
-
-  const onClickUpdateMulti = async () => {
-    isCheck.map(async (id) => {
-      const docRef = doc(db, 'userInfo', id);
-      if (select == 'Collections') {
-        await updateDoc(docRef, {
-          collection: category,
-        });
-      } else if (select === 'Submit for Approval') {
-        await updateDoc(docRef, {
-          approval: 'pending',
-        });
-      }
-    });
-  };
+  //     //@ts-ignore
+  //     const { roles } = index !== -1 ? arr2[index] : {};
+  //     return {
+  //       ...obj,
+  //       roles,
+  //     };
+  //   });
+  //   return res;
+  // };
 
   return (
     <>
@@ -270,9 +231,9 @@ function AdminManageUsers() {
                     {user.emailAddress}
                   </td>
                   <td>{user.DOC_ID}</td>
-                  <th>{user.roles?.admin && <p>Admin</p>}</th>
+                  <th>{user.admin && <p>Admin</p>}</th>
                   <th>
-                    {user.roles?.admin ? (
+                    {user.admin ? (
                       <button
                         className='btn btn-warning btn-sm'
                         onClick={() => onClickHandleDelAdmin(user.DOC_ID)}
