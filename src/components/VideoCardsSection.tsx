@@ -80,6 +80,7 @@ function VideoCardsSection({
               activeIndex={activeIndex}
               docId={vid.DOC_ID}
               posterImg={vid.thumbnail}
+              key={vid.DOC_ID}
             />
           );
         })}
