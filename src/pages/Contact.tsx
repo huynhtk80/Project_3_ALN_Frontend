@@ -5,19 +5,21 @@ function Contact() {
       <br />
       <p>
         <h2 className='text-xl'>Head Quarters</h2>
+        Grand Terrace Offices and Studios,
         <br />
-        57 Jason Moyo Avenue B2C admin office Harare,
-        <br /> Zimbabwe
+        2323 Grand Avenue,
         <br />
-        +263 77 224 4624
+        Des Moines,
         <br />
+        Iowa, USA,
         <br />
-        <h2 className='text-xl'>International Office</h2>
+        info@africalivenetwork.tv
         <br />
-        Des Moines, IA 50315
+        Phone numbers: +1 5157327205,
         <br />
-        +1 (571) 464-9443
+        &
         <br />
+        +1(571) 464-9443
       </p>
     </div>
   );
