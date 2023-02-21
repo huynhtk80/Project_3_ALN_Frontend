@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   getIdTokenResult,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { FirebaseContext } from './FirebaseProvider';
 import {
@@ -104,7 +105,24 @@ export const AuthProvider = (props) => {
     await signOut(auth);
   };
 
-  const theValues = { user, userRoles, login, logout, createUser, isLoading };
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      return 'success';
+    } catch (err) {
+      return err;
+    }
+  };
+
+  const theValues = {
+    user,
+    userRoles,
+    login,
+    logout,
+    createUser,
+    resetPassword,
+    isLoading,
+  };
 
   return (
     <AuthContext.Provider value={theValues}>{children}</AuthContext.Provider>
