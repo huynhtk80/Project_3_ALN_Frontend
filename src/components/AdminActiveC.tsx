@@ -172,7 +172,7 @@ function AdminActiveC() {
         <table className='table table-auto mx-auto'>
           <thead>
             <tr>
-              <th>
+              {/* <th>
                 <label>
                   <input
                     type='checkbox'
@@ -181,7 +181,7 @@ function AdminActiveC() {
                     checked={isCheckAll}
                   />
                 </label>
-              </th>
+              </th> */}
               <th>Video</th>
               <th>Title</th>
               <th>Approval Date</th>
@@ -190,7 +190,7 @@ function AdminActiveC() {
             </tr>
           </thead>
           <tbody>
-            {isCheck.length > 0 ? (
+            {/* {isCheck.length > 0 ? (
               <tr>
                 <td colSpan={7}>
                   {' '}
@@ -229,11 +229,11 @@ function AdminActiveC() {
                   </button>
                 </td>
               </tr>
-            ) : null}
+            ) : null} */}
             {videos?.map((video) => {
               return (
                 <tr key={video.DOC_ID}>
-                  <th>
+                  {/* <th>
                     <label>
                       <input
                         id={video.DOC_ID}
@@ -243,7 +243,7 @@ function AdminActiveC() {
                         onChange={handleCheckClick}
                       />
                     </label>
-                  </th>
+                  </th> */}
                   <td>
                     <img
                       className='max-h-36'
@@ -278,7 +278,7 @@ function AdminActiveC() {
 
           <tfoot>
             <tr>
-              <th></th>
+              {/* <th></th> */}
               <th>Video</th>
               <th>Title</th>
               <th>Approval Date</th>
