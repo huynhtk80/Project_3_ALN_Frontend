@@ -69,7 +69,6 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
 
   useEffect(() => {
     if (searchQuery) {
-      console.log('the search', searchQuery);
       if (searchQuery === 'Following') {
         setVideos(
           videoResults.filter((video) => {
@@ -82,7 +81,6 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
             if (userProfile?.likedVideos?.includes(video.DOC_ID)) return true;
           })
         );
-        console.log('got to following');
       } else {
         setVideos(
           videoResults.filter((video) => {
@@ -134,9 +132,12 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
     }
   }, [searchQuery, videoResults]);
 
-  if (videos && videos?.length == 0) return null;
+  const ArrowFix = (arrowProps: any) => {
+    const { carouselState, children, ...restArrowProps } = arrowProps;
+    return <span {...restArrowProps}> {children} </span>;
+  };
 
-  console.log('car vid', videos);
+  if (videos && videos?.length == 0) return null;
 
   return (
     <>
@@ -150,14 +151,18 @@ function VideoCarousel({ searchQuery, videoResults }: UserCarouselProps) {
           swipeable={true}
           draggable={true}
           // showDots={true}
-          partialVisbile={false}
+          // partialVisbile={false}
           partialVisible={false}
           itemClass=' max-w-[335px] min-w-[335px]'
           customLeftArrow={
-            <ArrowLeftCircleIcon className='w-10 absolute left-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+            <ArrowFix>
+              <ArrowLeftCircleIcon className='w-10 absolute left-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+            </ArrowFix>
           }
           customRightArrow={
-            <ArrowRightCircleIcon className='w-10 absolute right-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+            <ArrowFix>
+              <ArrowRightCircleIcon className='w-10 absolute right-4 max-w-4 top-1/2 -translate-y-[50%] cursor-pointer text-primary bg-primary-content bg opacity-50 rounded-full hover:text-info hover:bg-base-300 hover:scale-110 transition-all ease-in-out duration-300' />
+            </ArrowFix>
           }
         >
           {videos &&
