@@ -224,12 +224,11 @@ export default function profileData() {
                         Content Creator
                       </div>
                     )}
-                    <div className='mb-2 text-primary-focus'>
+                    {/* <div className='mb-2 text-primary-focus'>
                       <TfiEmail size={'20px'} className='inline mr-2' />
-                      {/* <i className='fas fa-university mr-2 text-lg text-primary-focus' /> */}
-                      {/* <CgOrganisation size={'20px'} className='inline  mr-2' /> */}
+
                       {profileData?.emailAddress}
-                    </div>
+                    </div> */}
                   </div>
                   <div className='py-10 border-t border-primary text-center'>
                     <div className='flex flex-wrap justify-center'>
