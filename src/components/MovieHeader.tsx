@@ -98,7 +98,7 @@ function MovieHeader() {
           <div className='flex justify-center'>
             <Link to='/home/Category'>
               <img
-                className='scale-[300%] h-10 px-2 m-20 hover:-rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
+                className='scale-[300%] h-10 px-2 mt-20 mb-10 hover:-rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
                 src={playLogo}
               />
             </Link>
