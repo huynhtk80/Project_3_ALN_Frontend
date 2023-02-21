@@ -59,6 +59,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
     const unsubscribe = onSnapshot(queryRef, (docSnap) => {
       if (docSnap.empty) {
         // doc.data() will be undefined in this case
+        setVidComments([]);
       } else {
         const commentData = docSnap.docs.map(
           (doc) =>
@@ -131,7 +132,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                     />
                   </div>
                   <div className='flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed relative'>
-                    {comment.uid === user.uid && (
+                    {(comment.uid === user?.uid || userRoles?.admin) && (
                       <button
                         className='absolute top-2 right-2 '
                         onClick={() => onClickRemoveComment(comment.DOC_ID)}
@@ -173,7 +174,8 @@ function VideoComments({ videoId }: VideoCommentsProp) {
                                 ).toLocaleTimeString()}
                               </span>
                               <p className='text-sm'>{reply.content}</p>
-                              {reply.uid === user.uid && (
+                              {(reply.uid === user?.uid ||
+                                userRoles?.admin) && (
                                 <button
                                   className='absolute top-2 right-2 hidden group-hover:block'
                                   onClick={() =>
