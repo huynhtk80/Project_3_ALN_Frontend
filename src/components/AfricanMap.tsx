@@ -21,7 +21,7 @@ function AfricanMap() {
       );
       console.log(countrySelected);
       countrySelected.forEach((area) => {
-        if (area) area.classList.add('fill-accent-content');
+        if (area) area.classList.add('fill-neutral-content');
       });
 
       setShowModal(true);
