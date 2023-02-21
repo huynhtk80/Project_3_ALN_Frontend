@@ -102,9 +102,9 @@ exports.deleteCreatorRole = functions.https.onCall((data, context) => {
 
 exports.addAdminRoleById = functions.https.onCall((data, context) => {
   // get user and add admin custom claim
-  // if (context.auth?.token.admin !== true) {
-  //   return { error: 'only admins can add other admins' };
-  // }
+  if (context.auth?.token.admin !== true) {
+    return { error: 'only admins can add other admins' };
+  }
   console.log('need to update this');
   return auth
     .getUser(data.uid)
