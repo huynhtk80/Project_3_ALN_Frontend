@@ -84,14 +84,14 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         <ul>
           <li>
             <button
-              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Film/' + CountryName}>Film</Link>
             </button>
 
             <button
-              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Short%20Film/' + CountryName}>
@@ -100,7 +100,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             </button>
 
             <button
-              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/Category/Documentary/' + CountryName}>
@@ -110,14 +110,14 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
           </li>
           <li>
             <button
-              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/Home/category/Series/' + CountryName}>Series</Link>
             </button>
 
             <button
-              className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'
+              className='btn btn-sm btn-primary text-white bg-neutral transition-all duration-300'
               onClick={() => setShowModal(false)}
             >
               <Link to={'/home/Marketing'}>Want to get involved?</Link>
@@ -126,7 +126,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
         </ul>
         <div className='justify-end flex'>
           <button
-            className='btn btn-md btn-secondary text-white md:btn-md bg-neutral transition-all duration-300'
+            className='btn btn-sm btn-secondary text-white md:btn-md bg-neutral transition-all duration-300'
             onClick={() => setShowModal(false)}
           >
             X
