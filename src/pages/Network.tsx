@@ -6,11 +6,12 @@ import {
   limit,
   getDocs,
   startAfter,
+  where,
 } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import UserCard from '../components/UserCard';
-import UserCarousel from '../components/UserCarousel';
+import UserGrid from '../components/UserGrid';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import { UserProfileProps } from './EditProfile';
@@ -59,6 +60,7 @@ function Network() {
 
     let queryRef = query(
       collectionRef,
+      where('isPublic', '==', true),
       orderBy('createdAt', 'desc'),
       limit(10)
     );
@@ -115,7 +117,6 @@ function Network() {
 
   return (
     <>
-    
       <div className='pt-20 m-8'>
         <div className='flex justify-center rounded-md shadow-md'>
           <div className='input-group'>
@@ -149,14 +150,14 @@ function Network() {
         </div>
         {userProfile?.following?.length > 0 && (
           <>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'></div>
-          
-            <UserCarousel category='Following' />
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'></div>
+
+            <UserGrid category='Following' />
           </>
         )}
-        <UserCarousel category='New Users' />
-        <UserCarousel category='New Content Creators' />
-        <UserCarousel category='Active Users' />
+        <UserGrid category='New Users' />
+        <UserGrid category='New Content Creators' />
+        <UserGrid category='Active Users' />
 
         {/* <div className='flex flex-row flex-wrap justify-center gap-2'>
           {users?.map((user) => (

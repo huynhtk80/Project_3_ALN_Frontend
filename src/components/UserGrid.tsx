@@ -54,10 +54,10 @@ const responsive = {
   },
 };
 
-interface UserCarouselProps {
+interface UserGridProps {
   category: 'New Users' | 'New Content Creators' | 'Active Users' | 'Following';
 }
-function UserCarousel({ category }: UserCarouselProps) {
+function UserGrid({ category }: UserGridProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
   const { userProfile } = useContext(UserDBContext);
@@ -71,23 +71,29 @@ function UserCarousel({ category }: UserCarouselProps) {
   useEffect(() => {
     if (!user) return;
 
-    let queryRef = query(collectionRef);
+    let queryRef = query(collectionRef, where('isPublic', '==', true));
     if (category === 'New Users') {
       queryRef = query(
         collectionRef,
-
+        where('isPublic', '==', true),
         orderBy('createdAt', 'desc'),
         limit(10)
       );
     } else if (category === 'New Content Creators') {
       queryRef = query(
         collectionRef,
+        where('isPublic', '==', true),
         where('requestCreator', '==', 'approved'),
         orderBy('createdAt', 'desc'),
         limit(10)
       );
     } else if (category === 'Active Users') {
-      queryRef = query(collectionRef, orderBy('lastOnline', 'desc'), limit(10));
+      queryRef = query(
+        collectionRef,
+        where('isPublic', '==', true),
+        orderBy('lastOnline', 'desc'),
+        limit(10)
+      );
     } else if (category === 'Following') {
       queryRef = query(
         collectionRef,
@@ -96,7 +102,7 @@ function UserCarousel({ category }: UserCarouselProps) {
         limit(10)
       );
     } else {
-      queryRef = query(collectionRef, limit(10));
+      queryRef = query(collectionRef, where('isPublic', '==', true), limit(10));
     }
 
     const fetchData = async () => {
@@ -202,7 +208,7 @@ function UserCarousel({ category }: UserCarouselProps) {
   return (
     <div className=' border-b-2 my-2 '>
       <h1 className='text-xl my-3 ml-3'>{category}</h1>
-      {users && (
+      {/* {users && (
         <Carousel
           responsive={responsive}
           infinite={false}
@@ -223,7 +229,7 @@ function UserCarousel({ category }: UserCarouselProps) {
             <UserCard key={user.DOC_ID} userCardInfo={user} />
           ))}
         </Carousel>
-      )}
+      )} */}
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
         {users?.map((user) => (
           <UserCard key={user.DOC_ID} userCardInfo={user} />
@@ -243,4 +249,4 @@ function UserCarousel({ category }: UserCarouselProps) {
   );
 }
 
-export default UserCarousel;
+export default UserGrid;

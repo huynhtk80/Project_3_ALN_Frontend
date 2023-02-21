@@ -167,7 +167,7 @@ function AdminActiveC() {
   return (
     <>
       <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
-        Content to be Approved
+        Approved Content
       </div>
 
       <div className='overflow-x-auto w-full'>

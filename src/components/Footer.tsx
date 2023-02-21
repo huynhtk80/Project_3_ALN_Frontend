@@ -22,7 +22,7 @@ function Footer() {
           <Link to='/home/Contact' className='link link-hover'>
             Contact
           </Link>
-          <Link Link to='/home/Jobs' className='link link-hover'>
+          <Link to='/home/Jobs' className='link link-hover'>
             Jobs
           </Link>
         </div>
