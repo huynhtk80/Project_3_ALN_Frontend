@@ -145,10 +145,12 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
             loop
             src={videoDetails?.url}
             ref={videoPlayer}
+            onContextMenu={(e: any) => e.preventDefault()}
+            controlsList='nodownload'
           ></video>
           <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-t from-black'></div>
           <button
-            className=' absolute top-3 right-3 bg-black bg-opacity-40 rounded-3xl w-fit px-2.5 py-0.5'
+            className=' absolute top-3 right-3 bg-black bg-opacity-40 rounded-full w-fit px-3 py-1 text-white'
             onClick={() => setShowModal(false)}
           >
             x
