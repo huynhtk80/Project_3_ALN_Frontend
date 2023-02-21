@@ -22,6 +22,14 @@ import Profile from '../pages/Profile';
 import ScrollToTop from './ScrollToTop';
 import Donate from '../pages/Donate';
 import AlnColors from '../pages/AlnColors';
+import UserSearchResults from '../pages/UserSearchResults';
+import Marketing from './Marketing';
+import Advertising from './Advertising';
+import AboutUs from './AboutUs';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
+import Jobs from './Jobs';
+import Contact from './Contact';
 
 export const RestOfApp = () => {
   const fbContext = useContext(FirebaseContext);
@@ -118,10 +126,11 @@ export const RestOfApp = () => {
             }
           />
           <Route path='logout' element={<Logout />} />
-          <Route path='Donate' element={<Donate />} />
+          {/* <Route path='Donate' element={<Donate />} /> */}
           <Route path='LoginForm' element={<LoginForm />} />
           <Route path='editprofile' element={<EditProfile />} />
           <Route path='CreateAccount' element={<CreateAccount />} />
+
           <Route
             path='profile'
             element={
@@ -147,6 +156,23 @@ export const RestOfApp = () => {
               </ProtectedRoutes>
             }
           />
+          <Route path='*' element={<NotFound />} />
+          <Route
+            path='userResult'
+            element={
+              <ProtectedRoutes isAllowed={!!user}>
+                <UserSearchResults />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route path='Marketing' element={<Marketing />} />
+          <Route path='Advertising' element={<Advertising />} />
+          <Route path='AboutUs' element={<AboutUs />} />
+          <Route path='Contact' element={<Contact />} />
+          <Route path='Jobs' element={<Jobs />} />
+          <Route path='TermsOfService' element={<TermsOfService />} />
+          <Route path='PrivacyPolicy' element={<PrivacyPolicy />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

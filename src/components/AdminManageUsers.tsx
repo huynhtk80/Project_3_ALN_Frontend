@@ -13,7 +13,7 @@ import {
 
 import { AuthContext } from '../providers/AuthProvider';
 
-import UploadedVidDetail from './UploadedVidDetail';
+import VideoEditDetails from './VideoEditDetails';
 import { VideoParams } from '../utils/fireStoreAPI';
 import ConfirmModalInputMsg from './ConfirmModalInputMsg';
 import { UserProfileProps } from '../pages/EditProfile';

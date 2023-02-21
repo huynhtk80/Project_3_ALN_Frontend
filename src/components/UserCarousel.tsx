@@ -1,18 +1,20 @@
 import {
   collection,
-  query,
-  orderBy,
-  limit,
+  documentId,
   getDocs,
+  limit,
+  orderBy,
+  query,
+  startAfter,
   where,
-  DocumentData,
 } from 'firebase/firestore';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { UserProfileProps } from '../pages/EditProfile';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
+import { UserDBContext } from '../providers/UserDBProvider';
 import UserCard from './UserCard';
 import 'react-multi-carousel/lib/styles.css';
 import { Query } from 'firebase/database';
@@ -53,22 +55,30 @@ const responsive = {
 };
 
 interface UserCarouselProps {
-  category: 'New Users' | 'New Content Creators' | 'Active Users';
+  category: 'New Users' | 'New Content Creators' | 'Active Users' | 'Following';
 }
 function UserCarousel({ category }: UserCarouselProps) {
   const fbContext = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
+  const { userProfile } = useContext(UserDBContext);
   const { functions, db } = fbContext;
   const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [lastDoc, setLastDoc] = useState<any>();
 
+  const [allfound, setAllFound] = useState(false);
+  const collectionRef = collection(db, 'userInfo');
+
   useEffect(() => {
     if (!user) return;
-    let collectionRef = collection(db, 'userInfo');
 
     let queryRef = query(collectionRef);
     if (category === 'New Users') {
-      queryRef = query(collectionRef, orderBy('createdAt', 'desc'), limit(10));
+      queryRef = query(
+        collectionRef,
+
+        orderBy('createdAt', 'desc'),
+        limit(10)
+      );
     } else if (category === 'New Content Creators') {
       queryRef = query(
         collectionRef,
@@ -78,18 +88,16 @@ function UserCarousel({ category }: UserCarouselProps) {
       );
     } else if (category === 'Active Users') {
       queryRef = query(collectionRef, orderBy('lastOnline', 'desc'), limit(10));
+    } else if (category === 'Following') {
+      queryRef = query(
+        collectionRef,
+        where(documentId(), 'in', userProfile.following),
+        // orderBy('lastOnline', 'desc'),
+        limit(10)
+      );
     } else {
       queryRef = query(collectionRef, limit(10));
     }
-
-    const CustomRightArrow = ({ onClick, ...rest }: any) => {
-      const {
-        onMove,
-        carouselState: { currentSlide, deviceType },
-      } = rest;
-      // onMove means if dragging or swiping in progress.
-      return <button onClick={() => onClick()} />;
-    };
 
     const fetchData = async () => {
       const querySnap = await getDocs(queryRef);
@@ -104,15 +112,96 @@ function UserCarousel({ category }: UserCarouselProps) {
               DOC_ID: doc.id,
             } as UserProfileProps)
         );
-        setUsers(userData);
+
+        if (category === 'Following') {
+          setUsers(userData);
+        } else {
+          const removeFollowing = userData.filter((user) => {
+            if (userProfile?.following?.includes(user.DOC_ID)) {
+              return false;
+            }
+            return true;
+          });
+
+          setUsers(removeFollowing);
+        }
+
         setLastDoc(querySnap.docs[querySnap.docs.length - 1]);
+        if (querySnap.docs.length < 10) setAllFound(true);
       }
     };
     fetchData();
-  }, [user]);
+  }, [user, userProfile]);
+
+  const onClickLoad = async () => {
+    // let collectionRef = collection(db, 'userInfo');
+
+    let queryRef = query(collectionRef);
+
+    if (category === 'New Users') {
+      queryRef = query(
+        collectionRef,
+
+        orderBy('createdAt', 'desc'),
+        startAfter(lastDoc),
+        limit(10)
+      );
+    } else if (category === 'New Content Creators') {
+      queryRef = query(
+        collectionRef,
+        where('requestCreator', '==', 'approved'),
+        orderBy('createdAt', 'desc'),
+        startAfter(lastDoc),
+        limit(10)
+      );
+    } else if (category === 'Active Users') {
+      queryRef = query(
+        collectionRef,
+        orderBy('lastOnline', 'desc'),
+        startAfter(lastDoc),
+        limit(10)
+      );
+    } else if (category === 'Following') {
+      queryRef = query(
+        collectionRef,
+        where(documentId(), 'in', userProfile.following),
+        // orderBy('lastOnline', 'desc'),
+        startAfter(lastDoc),
+        limit(10)
+      );
+    } else {
+      queryRef = query(collectionRef, startAfter(lastDoc), limit(10));
+    }
+
+    // let queryRef = query(
+    //   collectionRef,
+    //   orderBy('createdAt', 'desc'),
+    //   startAfter(lastDoc),
+    //   limit(10)
+    // );
+
+    const querySnap = await getDocs(queryRef);
+    if (querySnap.empty) {
+      console.log('No docs found');
+      // setUsers(null);
+      setAllFound(true);
+    } else {
+      let userData = querySnap.docs.map(
+        (doc) =>
+          ({
+            ...doc.data(),
+            DOC_ID: doc.id,
+          } as UserProfileProps)
+      );
+      if (!users) return;
+      setUsers([...users, ...userData]);
+      setLastDoc(querySnap.docs[querySnap.docs.length - 1]);
+      if (querySnap.docs.length < 10) setAllFound(true);
+    }
+  };
   return (
-    <>
-      <h1 className='text-xl mb-3 ml-3'>{category}</h1>
+    <div className=' border-b-2 my-2 '>
+      <h1 className='text-xl my-3 ml-3'>{category}</h1>
       {users && (
         <Carousel
           responsive={responsive}
@@ -135,7 +224,22 @@ function UserCarousel({ category }: UserCarouselProps) {
           ))}
         </Carousel>
       )}
-    </>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mx-2'>
+        {users?.map((user) => (
+          <UserCard key={user.DOC_ID} userCardInfo={user} />
+        ))}
+      </div>
+      {!allfound && (
+        <div className='flex justify-center my-5'>
+          <button
+            className='btn btn-primary bg-base-200 '
+            onClick={onClickLoad}
+          >
+            Load more
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 

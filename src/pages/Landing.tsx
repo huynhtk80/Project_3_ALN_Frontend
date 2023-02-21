@@ -39,7 +39,7 @@ function Landing() {
       <InterObserver
         image='https://jacksshackint.com/wp-content/plugins/arile-extra/inc/arilewp/images/film2.jpg'
         sectionId='LearnMore'
-        heading='Who we are'
+        heading='Who we are & what we want to accomplish'
         message={message}
         imagePosition='left'
       />

@@ -161,7 +161,15 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
               {videoDetails?.country &&
                 videoDetails?.country.map((coun, index) => {
                   if (videoDetails.country)
-                    if (index < videoDetails.country?.length - 1) {
+                    if (index > 5) {
+                      return null;
+                    } else if (index === 5) {
+                      return (
+                        <span className='inline-block mr-1  '>
+                          {coun}, and more...
+                        </span>
+                      );
+                    } else if (index < videoDetails.country?.length - 1) {
                       return (
                         <span className='inline-block mr-1  '>{coun}, </span>
                       );

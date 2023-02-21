@@ -15,14 +15,20 @@ import Footer from './Footer';
 import SearchDropdown from './SearchBar';
 import { UserDBContext } from '../providers/UserDBProvider';
 import Chat from './Chat';
-import Donate from '../pages/Donate';
+// import Donate from '../pages/Donate';
 
 const navigation = [
-  { name: 'Home Roots ➤', href: '/home' },
+  { name: 'Browse All ➤', href: '/home/Category' },
+  { name: '- Film ➤', href: '/home/Category/Film' },
+  { name: '- Short Film ➤', href: '/home/Category/Short Film' },
+  { name: '- Documentary ➤', href: '/home/Category/Documentary' },
+  { name: '- Series ➤', href: '/home/Category/Series' },
+  { name: '- Podcast ➤', href: '/home/Category/Podcast' },
+  { name: 'African Roots ➤', href: '/home' },
   { name: 'Baobab Community ➤', href: '/home/network' },
-  { name: 'Categories ➤', href: '/home/Category' },
-  { name: 'Upload Video ➤', href: '/home/uploadvideo' },
-  { name: 'Donate ➤', href: '/home/Donate' },
+
+  // { name: 'Upload Video ➤', href: '/home/uploadvideo' },
+  // { name: 'Donate ➤', href: '/home/Donate' },
 ];
 
 function classNames(...classes: string[]) {
@@ -162,6 +168,23 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                               )}
                             </Menu.Item>
                           )}
+                          {/* {userRoles.admin ||
+                            (userRoles.creator && ( */}
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                to='/home/uploadvideo'
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-base-content'
+                                )}
+                              >
+                                Upload Videos
+                              </Link>
+                            )}
+                          </Menu.Item>
+                          {/* ))} */}
+
                           <Menu.Item>
                             {({ active }) => (
                               <Link

@@ -42,7 +42,7 @@ const AfricanCountryList: AfricanCountries = {
     PopulationSize: 44903225,
     ColonizationHistory: '',
     //WikiLink:  `href =""`,
-    PlacesOfInterest: '"Le Jardin dEssai du Hamma, Algerian Sahara, Tassili NAjjer National Park',
+    PlacesOfInterest: 'Le Jardin dEssai du Hamma, Algerian Sahara, Tassili NAjjer National Park',
   },
 
   EG: {

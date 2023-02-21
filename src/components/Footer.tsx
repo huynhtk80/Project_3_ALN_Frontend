@@ -8,23 +8,35 @@ function Footer() {
       <footer className='footer grid-cols-3 gap-10 p-5 bg-base-200 text-base-content'>
         <div>
           <span className='footer-title'>Services</span>
-          <a className='link link-hover'>Marketing</a>
-          <a className='link link-hover'>Advertisement</a>
+          <Link to='/home/Marketing' className='link link-hover'>
+            Marketing
+          </Link>
+          <Link to='/home/Advertising' className='link link-hover'>
+            Advertisement
+          </Link>
         </div>
         <div>
           <span className='footer-title'>Company</span>
-          <a className='link link-hover'>About us</a>
-          <a className='link link-hover'>Contact</a>
-          <a className='link link-hover'>Jobs</a>
-          <a className='link link-hover'>Press kit</a>
+          <Link to='/home/AboutUs' className='link link-hover'>
+            About us
+          </Link>
+          <Link to='/home/Contact' className='link link-hover'>
+            Contact
+          </Link>
+          <Link Link to='/home/Jobs' className='link link-hover'>
+            Jobs
+          </Link>
         </div>
         <div>
           <span className='footer-title'>Legal</span>
-          <a className='link link-hover'>Terms of use</a>
-          <a className='link link-hover'>Privacy policy</a>
-          <a className='link link-hover'>Cookie policy</a>
+          <Link to='/home/TermsOfService' className='link link-hover'>
+            Terms of Service
+          </Link>
+          <Link to='/home/PrivacyPolicy' className='link link-hover'>
+            Privacy policy
+          </Link>
         </div>
-        <div>
+        {/* <div>
           <span className='footer-title'>Newsletter</span>
           <div className='form-control w-80'>
             <label className='label'>
@@ -41,12 +53,12 @@ function Footer() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </footer>
       <footer className='footer footer-center px-10 py-4 border-t bg-base-200 text-base-content border-base-300'>
         <div className='md:place-self-center md:justify-self-center'>
           <div className='grid grid-flow-col gap-4'>
-            <a href='#'>
+            <a href='https://twitter.com/africalivenetw1?s=11&t=puR2gOeqpaC3AO7mKOxpGw'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='24'
@@ -57,7 +69,7 @@ function Footer() {
                 <path d='M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z'></path>
               </svg>
             </a>
-            <a href='https://www.instagram.com/africalivenetwork.tv/?igshid=dbz211mnhm6k'>
+            <a href='https://www.instagram.com/africalivenetwork.tv/'>
               <svg
                 className='fill-current'
                 width='24'

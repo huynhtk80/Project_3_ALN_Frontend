@@ -73,7 +73,7 @@ function MovieHeader() {
             A gateway to a global market with africans
             <br /> telling their authentic stories
           </p>
-          <Link to='/home'>
+          <Link to='/home/Category'>
             <button className='btn btn-primary bg-primary btn-lg group bg-opacity-30 glass hover:text-white transition-all duration-500 ease-in-out'>
               <img
                 className='h-10 px-2 -rotate-[450deg] transition-all duration-500 group-hover:rotate-0'
