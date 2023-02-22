@@ -41,13 +41,13 @@ function ConfirmModalInputMsg({
         <div className='modal-action'>
           <button
             onClick={() => onClickHandle('cancel')}
-            className='btn btn-primary'
+            className='btn btn-warning'
           >
             Cancel
           </button>
           <button
             onClick={() => onClickHandle('confirm')}
-            className='btn btn-warning'
+            className='btn btn-error'
           >
             Confirm
           </button>

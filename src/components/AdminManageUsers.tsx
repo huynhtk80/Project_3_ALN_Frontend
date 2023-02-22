@@ -233,14 +233,14 @@ function AdminManageUsers() {
                   <th>
                     {user.admin ? (
                       <button
-                        className='btn btn-warning btn-sm'
+                        className='btn btn-warning border-none text-base-100 btn-sm'
                         onClick={() => onClickHandleDelAdmin(user.DOC_ID)}
                       >
                         Remove admin
                       </button>
                     ) : (
                       <button
-                        className='btn btn-sucess btn-sm'
+                        className='btn btn-success border-none text-base-100 btn-sm'
                         onClick={() => onClickHandleAdmin(user.DOC_ID)}
                       >
                         set admin

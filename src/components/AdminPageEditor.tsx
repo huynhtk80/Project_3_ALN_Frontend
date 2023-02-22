@@ -79,18 +79,17 @@ function AdminPageEditor() {
 
   return (
     <>
-      {' '}
-      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
-        AdminPageEditor
+      <div className='text-center text-primary-content m-5 lg:text-3xl'>
+        Admin Page Editor
       </div>
-      <h1 className='font-bold'>Select Landing Video</h1>
+      <h1 className='font-bold ml-5'>Select Landing Video</h1>
       <div className='flex flex-col md:flex-row h-full'>
-        <div className='flex flex-col ml-r p-1'>
+        <div className='flex flex-col m-5'>
           <div className='grid h-auto card my-2 bg-base-300 rounded-box place-items-center'>
             <input
               type='file'
               ref={inputFileRef}
-              className='file-input file-input-bordered file-input-primary w-full  max-w-xs '
+              className='file-input file-input-bordered file-input-success text-base-300 w-full max-w-xs'
               accept='video/*'
               onChange={handleChange}
             />
@@ -98,7 +97,7 @@ function AdminPageEditor() {
           {/* <div className='divider lg:divider-horizontal'></div> */}
           {videoBlob && (
             <>
-              <div className='grid h-content card p-3 bg-base-300 rounded-box place-items-center'>
+              <div className='grid card p-3 bg-base-300 rounded-box place-items-center'>
                 <video width='500px' controls src={videoBlob} />
                 <button className='btn btn-primary' onClick={onSubmitHandle}>
                   Submit

@@ -140,7 +140,7 @@ function AdminDashBoard() {
           new Date(stats?.statsDate?.seconds * 1000).toDateString()}
       </p>
       <div className='flex flex-row flex-wrap justify-center gap-10'>
-        <div className='card card-side bg-base-100 shadow-xl w-96'>
+        <div className='card card-side bg-neutral shadow-xl w-96'>
           <figure>
             <img
               className=' object-cover min-h-full'
@@ -149,7 +149,7 @@ function AdminDashBoard() {
             />
           </figure>
           <div className='card-body'>
-            <h2 className='card-title'>User Stats</h2>
+            <h2 className='card-title text-base-100'>User Stats</h2>
             <div className='card-actions justify-end'>
               <div className='stats shadow'>
                 <div className='stat'>
@@ -174,7 +174,7 @@ function AdminDashBoard() {
             </div>
           </div>
         </div>
-        <div className='card card-side bg-base-100 shadow-xl w-96'>
+        <div className='card card-side bg-neutral shadow-xl w-96'>
           <figure>
             <img
               className=' object-cover min-h-full'
@@ -183,7 +183,7 @@ function AdminDashBoard() {
             />
           </figure>
           <div className='card-body'>
-            <h2 className='card-title'>Video Stats</h2>
+            <h2 className='card-title text-base-100'>Video Stats</h2>
             <div className='card-actions justify-end'>
               <div className='stats shadow'>
                 <div className='stat'>
@@ -208,7 +208,7 @@ function AdminDashBoard() {
         </div>
       </div>
       <button
-        className='btn btn-primary max-w-sm mx-auto my-5'
+        className='btn bg-accent text-base-100 max-w-sm mx-auto my-5'
         onClick={onClickGetStats}
       >
         get stats

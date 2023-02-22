@@ -45,25 +45,37 @@ function AdminOnly() {
     <>
       <div className='pt-20 flex flex-row justify-center items-center pb-4'>
         <Link to='/home/admin'>
-          <button className='btn btn-primary mx-1'>Admin home</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Admin home
+          </button>
         </Link>
         <Link to='/home/admin/approvecontent'>
-          <button className='btn btn-primary mx-1'>Approve Content</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Approve Content
+          </button>
         </Link>
         <Link to='/home/admin/activeContent'>
-          <button className='btn btn-primary mx-1'>Active Content</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Active Content
+          </button>
         </Link>
         {/* <Link to='/home/admin/rejectedcontent'>
-          <button className='btn btn-primary mx-1'>Rejected Content</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>Rejected Content</button>
         </Link> */}
         <Link to='/home/admin/manageusers'>
-          <button className='btn btn-primary mx-1'>Manage Users</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Manage Users
+          </button>
         </Link>
         <Link to='/home/admin/managecreators'>
-          <button className='btn btn-primary mx-1'>Manage creators</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Manage creators
+          </button>
         </Link>
         <Link to='/home/admin/pageeditor'>
-          <button className='btn btn-primary mx-1'>Page Editor</button>
+          <button className='btn bg-neutral text-base-100 mx-1'>
+            Page Editor
+          </button>
         </Link>
       </div>
       {renderAdmin()}

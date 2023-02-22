@@ -118,13 +118,13 @@ function AdminApproveC() {
       return (
         <>
           <button
-            className='btn btn-primary btn-sm'
+            className='btn bg-success border-none text-base-100 btn-sm mx-1'
             onClick={() => onClickApproveHandle(viddocId, 'approved')}
           >
             Approve
           </button>
           <button
-            className='btn btn-primary btn-sm'
+            className='btn bg-error border-none text-base-100 btn-sm mx-1'
             onClick={() => onClickApproveHandle(viddocId, 'reject')}
           >
             Reject
@@ -148,7 +148,7 @@ function AdminApproveC() {
 
   return (
     <>
-      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
+      <div className='text-center text-primary-content tracking-wide lg:text-3xl p-5'>
         Content to be Approved
       </div>
 
@@ -237,7 +237,7 @@ function AdminApproveC() {
                     />
                   </td>
                   <td>{video.title}</td>
-                  <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
+                  <td className='min-w-[12rem] max-w-[20rem] whitespace-normal '>
                     {video.description}
                   </td>
                   <td>{video.collection}</td>

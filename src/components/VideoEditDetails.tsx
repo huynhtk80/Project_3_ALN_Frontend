@@ -545,7 +545,7 @@ function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
                   {userRoles?.admin && videoDetails.approval === 'pending' && (
                     <>
                       <button
-                        className='btn btn-primary mr-1'
+                        className='btn btn-success border-none mr-1'
                         type='button'
                         onClick={() =>
                           onClickApproveHandle(videoDetails.DOC_ID, 'approved')
@@ -554,7 +554,7 @@ function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
                         approve
                       </button>
                       <button
-                        className='btn btn-secondary mr-1'
+                        className='btn btn-error border-none mr-1'
                         type='button'
                         onClick={() =>
                           onClickApproveHandle(videoDetails.DOC_ID, 'approved')
@@ -567,7 +567,7 @@ function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
                   {userRoles?.admin && videoDetails.approval === 'approved' && (
                     <>
                       <button
-                        className='btn btn-secondary mr-1'
+                        className='btn btn-error border-none mr-1'
                         type='button'
                         onClick={() =>
                           onClickApproveHandle(videoDetails.DOC_ID, 'reject')

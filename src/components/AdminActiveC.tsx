@@ -140,9 +140,9 @@ function AdminActiveC() {
     } else if (approval === 'approved') {
       return (
         <>
-          <p>Approved</p>
+          <p className='text-success'>Approved</p>
           <button
-            className='btn btn-primary btn-sm'
+            className='btn btn-error border-none btn-sm'
             onClick={() => onClickApproveHandle(viddocId, 'reject')}
           >
             Reject
@@ -164,7 +164,7 @@ function AdminActiveC() {
 
   return (
     <>
-      <div className='text-center text-primary-content tracking-wide lg:text-3xl mt-6 p-5'>
+      <div className='text-center text-primary-content tracking-wide lg:text-3xl p-5'>
         Approved Content
       </div>
 

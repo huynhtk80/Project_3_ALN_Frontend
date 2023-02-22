@@ -217,7 +217,7 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
                       </button>
                     ) : (
                       <button
-                        className='btn btn-primary btn-sm'
+                        className='btn btn-success border-none btn-sm'
                         onClick={() => onClickHandleCreator(user.DOC_ID)}
                       >
                         Set creator
