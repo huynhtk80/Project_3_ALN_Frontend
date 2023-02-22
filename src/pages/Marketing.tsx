@@ -5,16 +5,35 @@ function Marketing() {
         Services Offered by Africa Live Network
       </h1>
       <div className='grid justify-items-start container mx-auto px-4 mb-10'>
-        <div className='italic font-bold'>
-          Are you an entrepreneur looking to create a co-production film that
-          showcases African culture & business to help grow Africa's business
-          presence around the world?
+        <div className='italic font-bold'></div>
+        <br /> <br />
+        <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>
+              {' '}
+              Are you an entrepreneur looking to create a co-production film
+              that showcases African culture & business to help grow Africa's
+              business presence around the world?
+            </h2>
+            <p>
+              {' '}
+              At Africa Live Network, it is our goal to develop and grow richer
+              investments from around the world into many budding African
+              businesses ran by amazing entrepreneur's with big goals and
+              dreams.
+            </p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
         </div>
-        <br /> <br />
-        At Africa Live Network, it is our goal to develop and grow richer
-        investments from around the world into many budding African businesses
-        ran by amazing entrepreneur's with big goals and dreams.
-        <br /> <br />
         <br /> <br />
         <div className='italic font-bold'>
           Want to create a film, have it produced and a place to share it?
@@ -24,6 +43,21 @@ function Marketing() {
         Starting with conceptualization, scripting, filming, post production and
         packaging of projects.
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
         <div className='italic font-bold'>
           Are you looking to sponsor or be sponsored?
@@ -43,6 +77,21 @@ function Marketing() {
           help.
         </div>
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
         <div className='italic font-bold'>
           Need assistance finding & securing filming locations in Africa?{' '}
@@ -55,6 +104,21 @@ function Marketing() {
         for a full production set to proceed. Done by utilizing Africa Live
         Network's Baobab Community.
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
         <div className='italic font-bold'>
           Something in your area that celebrates African culture in your area
@@ -67,6 +131,21 @@ function Marketing() {
         Africa. Highlighting cultural cuisine, areas to visit, monuments, and
         heritage sites.
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
         <div className='italic font-bold'>
           Interested in Traveling to Africa and Would Like Personal
@@ -76,6 +155,21 @@ function Marketing() {
         Africa Live Network has contacts with travel agents and boards that will
         make travel much easier and more accessible from any part of the world.
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
         <div className='italic font-bold'>
           Ready to Revolutionize the World with a New Product, But Need Help
@@ -86,25 +180,58 @@ function Marketing() {
         Network offers Unique Solutions for Product Launch Support in Africa,
         the United States of America, Canada, & around the world.
         <br /> <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <h2 className='card-title'>Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-primary'>Buy Now</button>
+            </div>
+          </div>
+        </div>
         <br /> <br />
-        <div className='italic font-bold'>
-          Hosting An Event That Aligns With ALN’s Vision And Mission?
-        </div>{' '}
         <br />
-        <div className='italic font-bold'>Offering Media Coverage On:</div>
-        <ul className='list-disc'>
-          <li>Live Conferences </li>
-          <li>Virtual Seminars / Webinars </li>
-          <li>Entrepreneurial / African Cultural Events </li>
-          <li>Corporate/Commercial Promotion</li>
-          <li>NON Profits impact projects</li>
-          <li>Visual Story telling Social media and Video marketing </li>
-        </ul>
-        <button className='btn btn-sm mt-5'>
-          <a href='https://jacksshackint.com/' target='_blank'>
-            Jacks Shack
-          </a>
-        </button>
+        <br />
+        <br />
+        <br />
+        <div className='card w-96 bg-base-100 shadow-xl image-full'>
+          <figure>
+            <img
+              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+              alt='Shoes'
+            />
+          </figure>
+          <div className='card-body'>
+            <div className='italic font-bold'>
+              Hosting An Event That Aligns With ALN’s Vision And Mission?
+            </div>
+            <h2 className='card-title'>Offering Media Coverage On:</h2>
+            <p>
+              {' '}
+              <ul className='list-disc'>
+                <li>Live Conferences </li>
+                <li>Virtual Seminars / Webinars </li>
+                <li>Entrepreneurial / African Cultural Events </li>
+                <li>Corporate/Commercial Promotion</li>
+                <li>NON Profits impact projects</li>
+                <li>Visual Story telling Social media and Video marketing </li>
+              </ul>
+            </p>
+            <div className='card-actions justify-end'>
+              <button className='btn btn-sm mt-5'>
+                <a href='https://jacksshackint.com/' target='_blank'>
+                  Jacks Shack
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
