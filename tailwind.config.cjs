@@ -53,7 +53,7 @@ module.exports = {
           neutral: '#A0AEC0',
           'base-100': '#0a1a36',
           info: '#81A1C1',
-          success: '#1e8a0b',
+          success: '#087830',
           warning: '#f28218',
           error: '#E53E3E',
         },

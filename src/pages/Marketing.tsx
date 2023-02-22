@@ -1,7 +1,7 @@
 function Marketing() {
   return (
     <>
-      <h1 className='text-3xl mb-10 pt-20 text-center'>
+      <h1 className='text-3xl font-bold mb-10 pt-20 text-center'>
         Services Offered by Africa Live Network
       </h1>
       <div className='grid justify-items-start container mx-auto px-4 mb-10'>
