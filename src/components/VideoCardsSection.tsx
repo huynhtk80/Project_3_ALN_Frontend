@@ -48,7 +48,11 @@ function VideoCardsSection({
     if (searchUserId) {
       queryRef = query(collectionRef, where('userId', '==', searchUserId));
     } else if (likeVideos && likeVideos.length > 0) {
-      queryRef = query(collectionRef, where(documentId(), 'in', likeVideos));
+      if (likeVideos.length >= 10) {
+        queryRef = query(collectionRef);
+      } else {
+        queryRef = query(collectionRef, where(documentId(), 'in', likeVideos));
+      }
     }
 
     const unsubscribe = onSnapshot(queryRef, (querySnap) => {
@@ -63,8 +67,16 @@ function VideoCardsSection({
               DOC_ID: doc.id,
             } as VideoParams)
         );
-        setVideos(videoData);
-        if (videoData.length <= toShow) setAllFound(true);
+        if (likeVideos) {
+          const filteredLike = videoData.filter((video) => {
+            if (likeVideos?.includes(video.DOC_ID)) return true;
+          });
+          setVideos(filteredLike);
+          if (filteredLike.length <= toShow) setAllFound(true);
+        } else {
+          setVideos(videoData);
+          if (videoData.length <= toShow) setAllFound(true);
+        }
       }
     });
     return unsubscribe;
