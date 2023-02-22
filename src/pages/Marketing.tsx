@@ -1,7 +1,7 @@
 function Marketing() {
   return (
-    <>
-      <h1 className='text-3xl font-bold mb-10 pt-20 text-center'>
+    <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
+      <h1 className='text-3xl font-bold mb-10 pt-20 text-center '>
         Services Offered by Africa Live Network
       </h1>
       <div className='grid justify-items-start container mx-auto px-4 mb-10'>
@@ -106,7 +106,7 @@ function Marketing() {
           </a>
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

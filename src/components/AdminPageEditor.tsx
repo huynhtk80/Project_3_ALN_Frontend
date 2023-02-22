@@ -79,7 +79,7 @@ function AdminPageEditor() {
 
   return (
     <>
-      <div className='text-center text-primary-content m-5 lg:text-3xl'>
+      <div className='text-center text-secondary m-5 lg:text-3xl'>
         Admin Page Editor
       </div>
       <h1 className='font-bold ml-5'>Select Landing Video</h1>
@@ -89,7 +89,7 @@ function AdminPageEditor() {
             <input
               type='file'
               ref={inputFileRef}
-              className='file-input file-input-bordered file-input-success text-base-300 w-full max-w-xs'
+              className='file-input file-input-bordered file-input-success text-secondary w-full max-w-xs'
               accept='video/*'
               onChange={handleChange}
             />
@@ -104,7 +104,7 @@ function AdminPageEditor() {
                 </button>
               </div>
               <progress
-                className='progress w-56 mx-auto'
+                className='progress w-56 mx-auto m-5'
                 value={progress}
                 max='100'
               ></progress>

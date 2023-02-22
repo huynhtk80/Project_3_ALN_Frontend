@@ -28,8 +28,8 @@ const SearchDropdown = () => {
   };
 
   return (
-    <div className='flex justify-center rounded-md shadow-md'>
-      <div className='input-group'>
+    <div className='flex justify-center rounded-xl shadow-md'>
+      <div className='input-group border border-solid rounded-xl border-secondary-content'>
         <input
           type='text'
           placeholder='Search ALN...'
@@ -38,7 +38,7 @@ const SearchDropdown = () => {
           onKeyDown={onClickSearch}
         />
         <button
-          className='btn btn-circle btn-sm btn-primary md:btn-md  bg-primary transition-all duration-300'
+          className='btn btn-sm btn-primary md:btn-md  bg-primary-focus border-none transition-all duration-300'
           onClick={handleGoButtonClick}
         >
           <svg
