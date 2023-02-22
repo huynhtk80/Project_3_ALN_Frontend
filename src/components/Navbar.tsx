@@ -16,8 +16,8 @@ import Switcher from './ThemeSwitcher';
 
 const navigation = [
   { name: 'Browse All ➤', href: '/home/Category' },
-  { name: '- Film ➤', href: '/home/Category/Film' },
-  { name: '- Short Film ➤', href: '/home/Category/Short Film' },
+  { name: '- Films ➤', href: '/home/Category/Film' },
+  { name: '- Short Films ➤', href: '/home/Category/Short Film' },
   { name: '- Documentary ➤', href: '/home/Category/Documentary' },
   { name: '- Series ➤', href: '/home/Category/Series' },
   { name: '- Podcast ➤', href: '/home/Category/Podcast' },
@@ -198,15 +198,15 @@ export default function Navbar({ landing = false }: { landing?: boolean }) {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <button
+                              <a
                                 onClick={logout}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-base-content'
+                                  'block px-4 py-2 text-sm text-base-content cursor-pointer'
                                 )}
                               >
                                 Sign out
-                              </button>
+                              </a>
                             )}
                           </Menu.Item>
                         </Menu.Items>

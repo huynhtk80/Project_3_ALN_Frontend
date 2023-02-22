@@ -77,7 +77,7 @@ function Category() {
     <div className='pt-20 w-full font-bold text-5xl'>
       <div className='flex justify-center  '>
         <Link to={'/home'}>
-          <button className='btn btn-md btn-primary text-white md:btn-md bg-neutral transition-all duration-300'>
+          <button className='btn btn-md btn-success text-base-100 md:btn-md'>
             African Roots
           </button>
         </Link>
@@ -91,7 +91,7 @@ function Category() {
                   setAllFound(false);
                   setToShow(15);
                 }}
-                className='btn btn-primary'
+                className='btn bg-neutral text-base-100'
               >
                 {cat}
               </button>
@@ -139,7 +139,10 @@ function Category() {
       </div>
       {!allFound && (
         <div className='flex justify-center'>
-          <button onClick={onClickShowMore} className='btn btn-primary mx-auto'>
+          <button
+            onClick={onClickShowMore}
+            className='btn btn-neutral-content mx-auto'
+          >
             Show More
           </button>
         </div>
