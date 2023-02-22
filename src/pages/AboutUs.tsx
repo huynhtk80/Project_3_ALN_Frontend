@@ -1,10 +1,10 @@
 function AboutUs() {
   return (
-    <div className='grid justify-items-center pt-20 container mx-auto px-4'>
+    <div className='grid justify-items-center pt-20 container mx-auto px-4 pb-10'>
       <h1 className='text-3xl font-bold'>AboutUs</h1>
       <br />
       <br />
-      <p className='text-l tracking-wide leading-loose italic'>
+      <p className='text-md tracking-wide italic font-medium mb-10'>
         The new African voice to echo the globe & inspire growth, <br />
         Introducing 'Africa Live Network', a global company that creates,
         curates, & distributes valuable African content.
@@ -53,9 +53,17 @@ function AboutUs() {
         <br />
         Keep watching, the African story, authentically.
       </p>
-      <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/71043993_124308138952926_7866351259685486592_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=65qZrchYNu4AX81-gRw&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfBDbUzaUG3GpXHzVNdT6NxOJC6p2RxKjAQBFK7O0dSi1Q&oe=641D370E'></img>
-      <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/70556441_112715170112223_1745345696866762752_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=DyXPGmJTsV0AX_ea9ZL&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfCt8dHBaUBHpaS8CgyNky55rvJmQIOkwEdNwklSPNbEVg&oe=641D4A72'></img>
-      <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/69960964_107528510630889_9127846406504054784_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=jIIwtxkyLA4AX9Mvx0E&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfBd9VrEInZLtfvfV4P4eRb8WvlcSeXu6ktL31Zz8khPDg&oe=641D367E'></img>
+      <div className='grid grid-cols-3 gap-4 justify-center content-center'>
+        <div className='object-contain h-24 md:h-36 lg:h-80 overflow-hidden rounded-lg drop-shadow-xl'>
+          <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/71043993_124308138952926_7866351259685486592_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=65qZrchYNu4AX81-gRw&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfBDbUzaUG3GpXHzVNdT6NxOJC6p2RxKjAQBFK7O0dSi1Q&oe=641D370E'></img>
+        </div>
+        <div className='object-contain h-24 md:h-36 lg:h-80 overflow-hidden rounded-lg drop-shadow-xl'>
+          <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/70556441_112715170112223_1745345696866762752_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=DyXPGmJTsV0AX_ea9ZL&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfCt8dHBaUBHpaS8CgyNky55rvJmQIOkwEdNwklSPNbEVg&oe=641D4A72'></img>
+        </div>
+        <div className='object-contain h-24 md:h-36 lg:h-80 overflow-hidden rounded-lg drop-shadow-xl'>
+          <img src='https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.6435-9/69960964_107528510630889_9127846406504054784_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=jIIwtxkyLA4AX9Mvx0E&_nc_ht=scontent.fyyc2-1.fna&oh=00_AfBd9VrEInZLtfvfV4P4eRb8WvlcSeXu6ktL31Zz8khPDg&oe=641D367E'></img>
+        </div>
+      </div>
     </div>
   );
 }
