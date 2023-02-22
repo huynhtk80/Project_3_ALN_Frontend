@@ -204,7 +204,10 @@ function AdminManageCreators({ requestStatus }: AdminManageCreatorsProps) {
                     </Link>
                   </td>
                   <td className='min-w-[12rem] max-w-[20rem] whitespace-normal'>
-                    {user.emailAddress}
+                    {user?.emailAddress?.replace(
+                      /(\w{2})[\w.-]+@([\w.]+\w)/,
+                      '$1***@$2'
+                    )}
                   </td>
                   <td>{user.DOC_ID}</td>
                   <th>
