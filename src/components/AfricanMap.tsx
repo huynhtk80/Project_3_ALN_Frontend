@@ -14,15 +14,15 @@ function AfricanMap() {
     if (cName) {
       const countries = document.querySelectorAll<HTMLElement>('.land');
       countries.forEach((country) => {
-        country.classList.add('fill-success-content');
-        country.classList.remove('fill-success-content');
+        country.classList.add('fill-warning');
+        country.classList.remove('fill-warning');
       });
       const countrySelected = document.querySelectorAll<HTMLElement>(
         '#' + cName
       );
       console.log(countrySelected);
       countrySelected.forEach((area) => {
-        if (area) area.classList.add('fill-success-content');
+        if (area) area.classList.add('fill-warning');
       });
 
       setShowModal(true);
@@ -78,7 +78,7 @@ function AfricanMap() {
                         viewBox='-30 -20 1050 1050'
                         strokeWidth='0.60'
                         stroke='black'
-                        className=' lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg fill-current text-accent'
+                        className=' lg:h-[100vh] md:h-[75vh] sm:h-[50vh] xs:h-[25vh] mx-auto mb-10 w-full rounded-lg fill-success text-accent'
                       >
                         <g transform='matrix(1.59433, 0, 0, 1.59433, -1721.78, -693.262)'>
                           <path

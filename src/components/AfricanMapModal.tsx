@@ -39,7 +39,7 @@ const AfricanMapModal = (props: AfricanMapModalProps) => {
             id='name'
           >
             <button
-              className='btn btn-md btn-block  bg-neutral text-base-300  transition-all duration-300 mb-3'
+              className='btn btn-md btn-block  bg-neutral text-base-300 text-2xl  tracking-widest  transition-all duration-300 mb-3'
               onClick={() => setShowModal(false)}
               style={{ height: 'auto' }}
             >
