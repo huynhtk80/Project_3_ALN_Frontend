@@ -4,21 +4,37 @@ function Advertising() {
       <h1 className='text-3xl font-bold'>
         Looking for a Advertising Services?
       </h1>
-      <br />
-      <div className='italic font-bold'>
-        You can advertise with us through our advertising platform on the
-        channel. ALN will provide opportunities for banners in different parts
-        of the platform and on pages with a lot of traffic.
-        <br />
-        <br />
-        By adding advertising breaks, you can promote your brand through brand
-        placement with features coming soon to your subscription account as an
-        additional feature, that will allow advertisement to be aired on our
-        platform.
-        <br />
-        <br />
-        Companies chosen will be given an opportunity to place their adverts on
-        selected available criteria.
+
+      <div className='card w-96 bg-base-100 shadow-xl image-full'>
+        <div className='card-body'>
+          <h2 className='card-title'>
+            Ad Placement Opportunities Coming Soon!
+          </h2>
+          <p>
+            {' '}
+            You can promote & advertise your companies products & services with
+            us by advertising on our platform. In the future, Africa Live
+            Network will provide opportunities for banners in different parts of
+            the platform on pages with a lot of traffic that will help your
+            business generate more business.
+            <br />
+            <br />
+            Advertising is a feature coming soon to your subscription as an
+            additional subscription bonus. Allowing budding entrepreneur's the
+            extra boost their business needs to generate more clients traffic by
+            giving them the space to have their advertisement aired.
+            <br />
+            <br />
+            Companies chosen, are chosen based on if the content aligns &
+            represents Africa Live Networks's brand.
+          </p>
+
+          <button className='btn btn-sm mt-5'>
+            <a href='https://jacksshackint.com/' target='_blank'>
+              Click Here If You Wish to Make an Ad
+            </a>
+          </button>
+        </div>
       </div>
     </div>
   );
