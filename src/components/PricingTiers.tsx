@@ -71,7 +71,7 @@ function PricingTiers() {
                     <li key={index} className='flex items-center'>
                       <div className='mr-3'>
                         <svg
-                          className='w-4 h-4  text-teal-700'
+                          className='w-4 h-4  text-accent'
                           viewBox='0 0 24 24'
                           strokeLinecap='round'
                           strokeWidth='2'
@@ -98,14 +98,16 @@ function PricingTiers() {
                 <div className='card-actions'>
                   {user && card.currentPlan ? (
                     <button
-                      className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
+                      className='btn bg-secondary-content border-none text-white hover:bg-primary transition-all duration-300 ease-in-out
+                      disabled:text-white disabled:bg-secondary-content'
                       disabled={true}
                     >
                       Your Current Plan
                     </button>
                   ) : (
                     <button
-                      className='btn btn-primary bg-base-100 border-none hover:bg-primary transition-all duration-300 ease-in-out'
+                      className='btn bg-accent-focus text-white border-none hover:bg-primary transition-all duration-300 ease-in-out
+                      disabled:text-white disabled:bg-accent-focus'
                       disabled={card.disabled}
                       onClick={onClickHandle}
                     >
