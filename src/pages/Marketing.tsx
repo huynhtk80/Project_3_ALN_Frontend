@@ -1,10 +1,10 @@
 function Marketing() {
   return (
     <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
-      <h1 className='text-3xl font-bold mb-10 pt-20 text-center '>
-        Services Offered by Africa Live Network
+      <h1 className='text-3xl font-bold -mb-5 p-7 text-center '>
+        Services Offered By Africa Live Network
       </h1>
-      <div className='italic font-bold grid justify-items-center'>
+      <div className='italic font-bold grid justify-items-center px-7'>
         Have a great idea and want to get it started? Let us know and we can
         help.
       </div>

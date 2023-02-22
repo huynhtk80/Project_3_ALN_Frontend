@@ -17,10 +17,10 @@ function Footer() {
         <div>
           <span className='footer-title'>Company</span>
           <Link to='/home/AboutUs' className='link link-hover'>
-            About us
+            About Us
           </Link>
           <Link to='/home/Contact' className='link link-hover'>
-            Contact us
+            Contact Us
           </Link>
           <Link to='/home/Jobs' className='link link-hover'>
             Careers
@@ -32,7 +32,7 @@ function Footer() {
             Terms of Service
           </Link>
           <Link to='/home/PrivacyPolicy' className='link link-hover'>
-            Privacy policy
+            Privacy Policy
           </Link>
         </div>
         {/* <div>

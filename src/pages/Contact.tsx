@@ -2,7 +2,7 @@ function Contact() {
   return (
     <div className='grid justify-items-center container pt-20 mx-auto px-4'>
       <br />
-      <div className=' z-10 text-slate-700 tracking-widest bg-clip-text '>
+      <div className=' z-10 text-white tracking-widest bg-clip-text '>
         <div>
           <h1 className='text-4xl font-bold mb-10 pt-20'>Contact Us</h1>
         </div>
