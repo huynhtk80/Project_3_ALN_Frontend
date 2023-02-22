@@ -15,12 +15,27 @@ function Contact() {
         <br />
         info@africalivenetwork.tv
         <br />
-        Phone numbers: +1 5157327205,
+        Phone numbers:
         <br />
-        &
+        +1 (515) 732-7205, &
         <br />
-        +1(571) 464-9443
+        +1 (571) 464-9443
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </p>
+      <h2>
+        © Africalivenetwork-tv.web.app – all rights reserved. This platform is a
+        subsidiary of Jack’s Shack International LLC with Branches in Harare and
+        Des Moines Iowa.
+      </h2>
     </div>
   );
 }
