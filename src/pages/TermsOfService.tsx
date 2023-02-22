@@ -1,12 +1,12 @@
 function TermsOfService() {
   return (
-    <div className='grid justify-items-center pt-20 container mx-auto px-4 text-xl'>
-      <h1 className='font-bold text-3xl'>
+    <div className='grid justify-items-center pt-20 container mx-auto px-4 text-xl text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
+      <h1 className='font-bold text-2xl'>
         AGREEMENT TO OUR LEGAL TERMS OF SERVICE
       </h1>
       <br />
       <br />
-      <p>
+      <p className='text-sm'>
         We are Africa Live Network Inc.
         <br /> A company registered in Iowa, United States at Grand Terrace
         Office and Studios, <br />

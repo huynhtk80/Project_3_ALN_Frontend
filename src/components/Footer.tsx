@@ -8,10 +8,10 @@ function Footer() {
         <div>
           <span className='footer-title'>Services</span>
           <Link to='/home/Marketing' className='link link-hover'>
-            Marketing
+            Get Involved
           </Link>
           <Link to='/home/Advertising' className='link link-hover'>
-            Advertisement
+            Advertising
           </Link>
         </div>
         <div>
@@ -20,10 +20,10 @@ function Footer() {
             About us
           </Link>
           <Link to='/home/Contact' className='link link-hover'>
-            Contact
+            Contact us
           </Link>
           <Link to='/home/Jobs' className='link link-hover'>
-            Jobs
+            Careers
           </Link>
         </div>
         <div>
