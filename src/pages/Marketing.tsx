@@ -12,21 +12,13 @@ function Marketing() {
         {/* <div className='grid justify-items-evenly auto-rows-auto container mx-auto px-4 mb-10'> */}
         {/* <br /> */}
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
-              {' '}
               Are you an entrepreneur looking to create a co-production film
               that showcases African culture & business to help grow Africa's
               business presence around the world?
             </h2>
             <p>
-              {' '}
               At Africa Live Network, it is our goal to develop and grow richer
               investments from around the world into many budding African
               businesses ran by amazing entrepreneur's with big goals and
@@ -35,20 +27,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Want to create a film, have it produced and a place to share it?
@@ -62,20 +48,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Are you looking to sponsor or be sponsored?
@@ -93,20 +73,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Need assistance finding & securing filming locations in Africa?
@@ -122,20 +96,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Something in your area that celebrates African culture in your
@@ -151,20 +119,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Interested in Traveling to Africa and Would Like Personal
@@ -178,20 +140,14 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
           </div>
         </div>
-        {/* <br /> */}
+
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <h2 className='card-title'>
               Ready to Revolutionize the World with a New Product, But Need Help
@@ -205,7 +161,7 @@ function Marketing() {
             <div className='card-actions justify-end'>
               <button className='btn btn-sm mt-5'>
                 <a href='https://jacksshackint.com/' target='_blank'>
-                  Jack's Shack
+                  Learn More
                 </a>
               </button>
             </div>
@@ -213,12 +169,6 @@ function Marketing() {
         </div>
         {/* <br /> */}
         <div className='card w-96 bg-base-100 shadow-xl image-full'>
-          <figure>
-            <img
-              src='/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
-              alt='Shoes'
-            />
-          </figure>
           <div className='card-body'>
             <div className='italic font-bold'>
               Hosting An Event That Aligns With ALN’s Vision And Mission?
