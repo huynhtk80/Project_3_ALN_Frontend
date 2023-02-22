@@ -57,6 +57,8 @@ function UserGrid({ category }: UserGridProps) {
   const { functions, db } = fbContext;
   const [users, setUsers] = useState<UserProfileProps[] | null>(null);
   const [lastDoc, setLastDoc] = useState<any>();
+  const [toShow, setToShow] = useState(10);
+  const [allFollowing, setAllFollowing] = useState<UserProfileProps[]>();
 
   const [allfound, setAllFound] = useState(false);
   const collectionRef = collection(db, 'userInfo');
@@ -88,12 +90,7 @@ function UserGrid({ category }: UserGridProps) {
         limit(10)
       );
     } else if (category === 'Following') {
-      queryRef = query(
-        collectionRef,
-        where(documentId(), 'in', userProfile.following),
-        // orderBy('lastOnline', 'desc'),
-        limit(10)
-      );
+      queryRef = query(collectionRef, where('isPublic', '==', true));
     } else {
       queryRef = query(collectionRef, where('isPublic', '==', true), limit(10));
     }
@@ -113,7 +110,17 @@ function UserGrid({ category }: UserGridProps) {
         );
 
         if (category === 'Following') {
-          setUsers(userData);
+          const filteredFollowing = userData.filter((user) => {
+            if (userProfile.following?.includes(user.DOC_ID)) return true;
+          });
+          const limitShow = filteredFollowing.filter(
+            (item, index) => index < toShow
+          );
+          setAllFollowing(filteredFollowing);
+          if (filteredFollowing.length < toShow) {
+            setAllFound(true);
+          }
+          setUsers(limitShow);
         } else {
           const removeFollowing = userData.filter((user) => {
             if (userProfile?.following?.includes(user.DOC_ID)) {
@@ -161,13 +168,17 @@ function UserGrid({ category }: UserGridProps) {
         limit(10)
       );
     } else if (category === 'Following') {
-      queryRef = query(
-        collectionRef,
-        where(documentId(), 'in', userProfile.following),
-        // orderBy('lastOnline', 'desc'),
-        startAfter(lastDoc),
-        limit(10)
+      if (!allFollowing) return;
+      const numberToShow = toShow + 10;
+
+      const limitShow = allFollowing.filter(
+        (item, index) => index < numberToShow
       );
+      setToShow(numberToShow);
+      setUsers(limitShow);
+      if (allFollowing.length < numberToShow) {
+        setAllFound(true);
+      }
     } else {
       queryRef = query(collectionRef, startAfter(lastDoc), limit(10));
     }
@@ -178,24 +189,25 @@ function UserGrid({ category }: UserGridProps) {
     //   startAfter(lastDoc),
     //   limit(10)
     // );
-
-    const querySnap = await getDocs(queryRef);
-    if (querySnap.empty) {
-      console.log('No docs found');
-      // setUsers(null);
-      setAllFound(true);
-    } else {
-      let userData = querySnap.docs.map(
-        (doc) =>
-          ({
-            ...doc.data(),
-            DOC_ID: doc.id,
-          } as UserProfileProps)
-      );
-      if (!users) return;
-      setUsers([...users, ...userData]);
-      setLastDoc(querySnap.docs[querySnap.docs.length - 1]);
-      if (querySnap.docs.length < 10) setAllFound(true);
+    if (category !== 'Following') {
+      const querySnap = await getDocs(queryRef);
+      if (querySnap.empty) {
+        console.log('No docs found');
+        // setUsers(null);
+        setAllFound(true);
+      } else {
+        let userData = querySnap.docs.map(
+          (doc) =>
+            ({
+              ...doc.data(),
+              DOC_ID: doc.id,
+            } as UserProfileProps)
+        );
+        if (!users) return;
+        setUsers([...users, ...userData]);
+        setLastDoc(querySnap.docs[querySnap.docs.length - 1]);
+        if (querySnap.docs.length < 10) setAllFound(true);
+      }
     }
   };
   return (

@@ -2,6 +2,7 @@ import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import VideoCarousel from '../components/VideoCarousel';
+import VideoGrid from '../components/VideoGrid';
 import VideoThumbCard from '../components/VideoThumbCard';
 import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
@@ -102,19 +103,19 @@ function Category() {
       <h1 className=' text-2xl underline m-4 '>{category}</h1>
 
       {userProfile?.following?.length > 0 && (
-        <div className='m-5'>
-          <VideoCarousel searchQuery={'Following'} videoResults={videos} />
+        <div>
+          <VideoGrid searchQuery={'Following'} videoResults={videos} />
         </div>
       )}
       {userProfile?.likedVideos?.length > 0 && (
-        <div className='m-5'>
-          <VideoCarousel searchQuery={'Liked'} videoResults={videos} />
+        <div>
+          <VideoGrid searchQuery={'Liked'} videoResults={videos} />
         </div>
       )}
 
       {userProfile?.interests?.map((interest: string) => (
-        <div key={interest} className='m-5'>
-          <VideoCarousel searchQuery={interest} videoResults={videos} />
+        <div key={interest}>
+          <VideoGrid searchQuery={interest} videoResults={videos} />
         </div>
       ))}
       <h1 className='text-xl mb-3 ml-3'>Browse</h1>
