@@ -1,6 +1,6 @@
 function PrivacyPolicy() {
   return (
-    <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 my-20 mx-auto rounded-lg '>
+    <div className='text-base-100 card-bordered shadow-xl bg-neutral rounded-lg pb-5 px-5 mx-auto mt-20 mb-10'>
       <h1 className='grid justify-center text-3xl font-bold pt-5'>
         Privacy Policy
       </h1>
