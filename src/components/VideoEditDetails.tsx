@@ -557,7 +557,7 @@ function VideoEditDetails({ setShowModal, docID }: VideoEditDetailsProps) {
                         className='btn btn-error border-none mr-1'
                         type='button'
                         onClick={() =>
-                          onClickApproveHandle(videoDetails.DOC_ID, 'approved')
+                          onClickApproveHandle(videoDetails.DOC_ID, 'reject')
                         }
                       >
                         reject
