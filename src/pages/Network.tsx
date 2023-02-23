@@ -116,12 +116,15 @@ function Network() {
   return (
     <>
       <div className='pt-20 m-8'>
-        <div className='flex justify-center rounded-md shadow-md'>
-          <div className='input-group'>
+        <h1 className='text-3xl text-center font-bold text-neutral'>
+          The Baobab Community
+        </h1>
+        <div className='flex justify-center rounded-md'>
+          <div className='input-group '>
             <input
               type='text'
               placeholder='Search ALN Profiles...'
-              className='input input-primary w-full input-sm md:input-md md:w-56  lg:w-96 text-base-content placeholder-primary-content opacity-50 transition-all duration-300'
+              className='input shadow-md input-primary input-sm md:input-md md:w-56  lg:w-96 text-base-content placeholder-primary-content opacity-50 transition-all duration-300'
               onChange={handleChange}
               onKeyDown={onClickSearch}
             />
