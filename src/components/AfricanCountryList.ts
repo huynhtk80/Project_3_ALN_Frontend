@@ -143,7 +143,7 @@ const AfricanCountryList: AfricanCountries = {
   ES: {
     Quadrant: 'North',
     CountryAbbrv: 'ES-CN',
-    CountryName: 'Spain / Canary Islands',
+    CountryName: 'Canary Islands',
     AreaCode: 928 || 828 || 922 || 822,
     OfficialLanguage: 'Spanish',
     Capital: 'Las Palmas de Gran Canaria and Santa Cruz de Tenerife',
@@ -545,7 +545,7 @@ const AfricanCountryList: AfricanCountries = {
   SZ: {
     Quadrant: 'South',
     CountryAbbrv: 'SZ',
-    CountryName: 'Eswatini/aka: Swaziland',
+    CountryName: 'Eswatini',
     AreaCode: 268,
     OfficialLanguage: 'English',
     Capital: 'Mbabane',
