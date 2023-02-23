@@ -1,7 +1,7 @@
 function TermsOfService() {
   return (
-    <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg '>
-      <h1 className='grid justify-center text-3xl font-bold mx-7 pt-5'>
+    <div className='grid justify-center text-base-100 card-bordered shadow-xl bg-neutral pb-5 my-20 mx-auto rounded-lg '>
+      <h1 className=' text-3xl font-bold mx-7 pt-5'>
         AGREEMENT TO OUR LEGAL TERMS OF SERVICE
       </h1>
 

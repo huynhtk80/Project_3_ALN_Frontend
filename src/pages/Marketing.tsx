@@ -1,6 +1,7 @@
 function Marketing() {
   return (
-    <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
+    <div className='grid justify-items-center pt-1 container mx-auto text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
+      {/* <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-auto my-20 mx-auto rounded-lg'> */}
       <h1 className='text-3xl font-bold -mb-5 p-7 text-center '>
         Services Offered By Africa Live Network
       </h1>

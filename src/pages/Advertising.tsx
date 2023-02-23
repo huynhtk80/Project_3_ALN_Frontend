@@ -1,7 +1,7 @@
 function Advertising() {
   return (
-    <div className='grid justify-items-center pt-20 container mx-auto px-4 text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
-      <h1 className='text-3xl font-bold'>
+    <div className='grid justify-items-center pt-3 container mx-auto text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg'>
+      <h1 className='text-3xl font-bold p-3'>
         Looking for a Advertising Services?
       </h1>
 

@@ -1,9 +1,11 @@
 function PrivacyPolicy() {
   return (
-    <div className='grid justify-items-center pt-20 container text-base-100 card-bordered shadow-xl bg-neutral pb-5 m-20 rounded-lg mx-auto px-4 mb-5'>
-      <h1 className='text-3xl font-bold'>Privacy Policy</h1>
+    <div className='text-base-100 card-bordered shadow-xl bg-neutral pb-5 my-20 mx-auto rounded-lg '>
+      <h1 className='grid justify-center text-3xl font-bold pt-5'>
+        Privacy Policy
+      </h1>
       <br />
-      <p className='grid justify-items-center mx-7'>
+      <p className='grid justify-items-center mx-3'>
         1. WHAT INFORMATION DO WE COLLECT?
         <br />
         <br />
