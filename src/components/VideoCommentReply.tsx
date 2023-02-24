@@ -22,7 +22,7 @@ function VideoCommentReply({ commentId }: VideoCommentReplyProps) {
       commentID,
       user.uid,
       userProfile.photo,
-      `${user.firstName} ${user.lastName}`,
+      `${userProfile.firstName} ${userProfile.lastName}`,
       reply
     );
     setReply('');
