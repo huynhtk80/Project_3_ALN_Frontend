@@ -83,7 +83,7 @@ function VideoComments({ videoId }: VideoCommentsProp) {
       videoId,
       user.uid,
       userProfile.photo,
-      `${user.firstName} ${user.lastName}`,
+      `${userProfile.firstName} ${userProfile.lastName}`,
       currentComment
     );
     setCurrentComment('');
