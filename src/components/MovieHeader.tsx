@@ -71,6 +71,7 @@ function MovieHeader() {
         <video
           className='z-1 absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover'
           autoPlay
+          playsInline={true}
           muted={isMuted}
           loop
           id='myVideo'

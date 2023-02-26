@@ -147,6 +147,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
             ref={videoPlayer}
             onContextMenu={(e: any) => e.preventDefault()}
             controlsList='nodownload'
+            playsInline={true}
           ></video>
           <div className='absolute top-0 left-0 h-full w-full bg-gradient-to-t from-black'></div>
           <button
@@ -188,7 +189,7 @@ function VideoDetails({ setShowModal, docId }: UploadVidDetailProps) {
               >
                 <div className=' h-10'>
                   <img
-                    className=' object-cover w-full h-full transition ease-in-out duration-300 hover:scale-110 hover:rotate-[360deg]'
+                    className=' object-cover h-10 transition ease-in-out duration-300 hover:rotate-[360deg]'
                     src={playLogo}
                   />
                 </div>

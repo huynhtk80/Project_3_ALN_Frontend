@@ -85,6 +85,7 @@ function VideoThumbCard({
           onPlay={() => {
             setActiveIndex(index);
           }}
+          playsinline
         />
       </div>
 
